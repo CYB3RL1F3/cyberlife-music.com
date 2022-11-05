@@ -1,0 +1,10 @@
+{
+  "files.watcherExclude": {
+    "**/*.js.map": true,
+    "**/public/build/**": true
+  },
+  "files.exclude": {
+    "**/*.js.map": true,
+    "**/public/build/**": true
+  }
+}
