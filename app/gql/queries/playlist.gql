@@ -1,0 +1,25 @@
+fragment TrackSnippetFragment on Track {
+  id
+  title
+  genre
+  description
+  artwork
+  date
+  uri
+  url
+  waveform
+}
+
+fragment PlaylistFragment on Playlist {
+  id
+  tracks {
+    ...TrackSnippetFragment
+  }
+}
+
+query PlaylistQuery($profile: String!, $name: String!) {
+  playlist(profile: $profile, name: $name) {
+    ...PlaylistFragment
+  }
+}
+

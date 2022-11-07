@@ -5,8 +5,7 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
-  useLoaderData
+  ScrollRestoration
 } from "@remix-run/react";
 import Application from "./components/layouts/Application";
 import styles from "./styles/styles.css";
@@ -23,15 +22,7 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export const loader = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  return {
-    x: true
-  };
-};
-
 export default function App() {
-  const data = useLoaderData();
   return (
     <html lang="en">
       <head>

@@ -1,0 +1,18 @@
+fragment ReleaseSnippetFragment on Release {
+  _id
+  title
+  releaseDate
+  role
+  year
+  label
+  tracklist {
+    title
+  }
+  notes
+}
+
+query ReleasesQuery($profile: String!) {
+  releases(profile: $profile) {
+    ...ReleaseSnippetFragment
+  }
+}

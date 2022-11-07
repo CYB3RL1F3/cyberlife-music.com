@@ -1,6 +1,6 @@
-import NavContextProvider from "~/components/contexts/Nav";
+import NavContextProvider from "~/components/contexts/NavContext";
 import type { NavProps } from "./Nav.types";
-import NavIndicatorContainer from "../NavIndicatorContainer";
+import NavIndicatorContainer from "~/components/organisms/LinkNavIndicatorContainer";
 
 const Nav = ({ routes, children }: NavProps) => {
   return (

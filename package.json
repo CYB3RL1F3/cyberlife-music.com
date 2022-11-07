@@ -7,7 +7,11 @@
     "dev": "concurrently \"pnpm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "start": "remix-serve build",
-    "create-component": "npx ts-node ./create-component.ts"
+    "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
+    "download:schema": "apollo service:download --endpoint=http://localhost:3000/graphql ./graphql-schema.json",
+    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql",
+    "generate:component": "npx ts-node ./scripts/create-component.ts",
+    "generate:graphql": "pnpm codegen && pnpm clean:types"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -15,16 +19,21 @@
     "@remix-run/react": "^1.7.5",
     "@remix-run/serve": "^1.7.5",
     "@types/node": "^18.11.9",
+    "apollo": "^2.34.0",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
     "concurrently": "^7.5.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "isbot": "^3.6.3",
+    "node-fetch": "^3.2.10",
     "postcss": "^8.4.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
     "tailwind-scrollbar": "^2.0.1",
-    "tailwindcss": "^3.2.2"
+    "tailwindcss": "^3.2.2",
+    "tailwindcss-animation-delay": "^1.0.7"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.7.5",

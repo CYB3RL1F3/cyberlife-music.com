@@ -1,0 +1,19 @@
+fragment SubscriptionFragment on Subscription {
+  endpoint
+  keys {
+    auth
+    p256dh
+  }
+}
+
+mutation SubscribeMutation(
+  $notificationPoolId: String!
+  $subscription: SubscriptionDto!
+) {
+  subscribe(
+    notificationPoolId: $notificationPoolId
+    subscription: $subscription
+  ) {
+    ...SubscriptionFragment
+  }
+}

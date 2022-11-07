@@ -1,0 +1,3 @@
+mutation ContactMutation($profile: String!, $message: ContactDto!) {
+  contact(profile: $profile, message: $message)
+}

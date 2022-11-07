@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
+! tailwindcss v3.2.2 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -30,6 +30,7 @@
 2. Prevent adjustments of font size after orientation changes in iOS.
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
 */
 
 html {
@@ -44,6 +45,8 @@ html {
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
 }
 
 /*
@@ -531,11 +534,6 @@ video {
   margin: 0px;
 }
 
-.mx-1 {
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
-}
-
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -549,20 +547,12 @@ video {
   margin-top: 2rem;
 }
 
-.mr-1 {
-  margin-right: 0.25rem;
-}
-
-.mr-4 {
-  margin-right: 1rem;
+.ml-48 {
+  margin-left: 12rem;
 }
 
 .mr-6 {
   margin-right: 1.5rem;
-}
-
-.ml-48 {
-  margin-left: 12rem;
 }
 
 .block {
@@ -581,16 +571,16 @@ video {
   height: 100vh;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-12 {
   height: 3rem;
 }
 
 .h-1 {
   height: 0.25rem;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .w-screen {
@@ -605,8 +595,45 @@ video {
   flex: 1 1 auto;
 }
 
+.translate-x-\[500px\] {
+  --tw-translate-x: 500px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes appear {
+  0% {
+    transform: translateX(500px);
+  }
+
+  80% {
+    transform: translateX(-50px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-appear {
+  animation: appear 250ms ease-in-out forwards;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-opacity {
+  animation: opacity 250ms ease-in-out forwards;
 }
 
 .scroll-py-4 {
@@ -616,6 +643,10 @@ video {
 
 .list-none {
   list-style-type: none;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -634,16 +665,21 @@ video {
   justify-content: space-between;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
 
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .bg-black {
@@ -673,39 +709,33 @@ video {
   padding-bottom: 3rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
 }
 
 .pl-8 {
   padding-left: 2rem;
 }
 
+.pr-4 {
+  padding-right: 1rem;
+}
+
 .text-right {
   text-align: right;
 }
 
-.text-lg {
-  font-size: 16pt;
-}
-
 .text-sm {
   font-size: 10pt;
+}
+
+.text-md {
+  font-size: 12pt;
+}
+
+.text-lg {
+  font-size: 16pt;
 }
 
 .font-semibold {
@@ -716,12 +746,12 @@ video {
   text-transform: uppercase;
 }
 
-.leading-3 {
-  line-height: .75rem;
-}
-
 .leading-4 {
   line-height: 1rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
 }
 
 .text-lightGray {
@@ -1242,6 +1272,10 @@ body * {
   mask-image: linear-gradient(to top,transparent 0%,rgb(0, 0, 0) 10%,rgb(0, 0, 0) 90%,transparent 99.5%);
 }
 
+li {
+  list-style: none;
+}
+
 .scrollbar::-webkit-scrollbar {
   width: 0.3rem !important;
 }
@@ -1264,6 +1298,21 @@ body * {
   background: transparent;
 }
 
+.before\:w-4::before {
+  content: var(--tw-content);
+  width: 1rem;
+}
+
+.before\:text-center::before {
+  content: var(--tw-content);
+  text-align: center;
+}
+
+.before\:content-\[\'-\'\]::before {
+  --tw-content: '-';
+  content: var(--tw-content);
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1272,10 +1321,6 @@ body * {
 @media (min-width: 768px) {
   .md\:h-\[calc\(100vh_-_6rem\)\] {
     height: calc(100vh - 6rem);
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:w-1\/3 {

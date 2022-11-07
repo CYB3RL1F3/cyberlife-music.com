@@ -4,7 +4,9 @@ import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import ApolloProvider from "./components/providers/ApolloProvider";
+import { getDataFromTree } from "@apollo/client/react/ssr";
+import ApolloContext from "./components/contexts/ApolloContext";
+import { getClient } from "./components/contexts/ApolloContext/ApolloContext";
 
 const ABORT_DELAY = 5000;
 
@@ -28,6 +30,7 @@ export default function handleRequest(
         remixContext
       );
 }
+const client = getClient();
 
 function handleBotRequest(
   request: Request,
@@ -35,15 +38,29 @@ function handleBotRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  return new Promise((resolve, reject) => {
+  const App = (
+    <ApolloContext client={client}>
+      <RemixServer context={remixContext} url={request.url} />,
+    </ApolloContext>
+  );
+  return getDataFromTree(App).then(() => {
     let didError = false;
-
-    const { pipe, abort } = renderToPipeableStream(
-      <ApolloProvider request={request}>
-        <RemixServer context={remixContext} url={request.url} />,
-      </ApolloProvider>,
-      {
-        onAllReady() {
+    const initialState = client.extract();
+    const markup = (
+      <>
+        {App}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__APOLLO_STATE__=${JSON.stringify(
+              initialState
+            ).replace(/</g, "\\u003c")}` // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
+          }}
+        />
+      </>
+    );
+    return new Promise((resolve, reject) => {
+      const { pipe, abort } = renderToPipeableStream(markup, {
+        onShellReady() {
           const body = new PassThrough();
 
           responseHeaders.set("Content-Type", "text/html");
@@ -65,10 +82,10 @@ function handleBotRequest(
 
           console.error(error);
         }
-      }
-    );
+      });
 
-    setTimeout(abort, ABORT_DELAY);
+      setTimeout(abort, ABORT_DELAY);
+    });
   });
 }
 
@@ -78,17 +95,31 @@ function handleBrowserRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  return new Promise((resolve, reject) => {
-    let didError = false;
+  const App = (
+    <ApolloContext client={client}>
+      <RemixServer context={remixContext} url={request.url} />
+    </ApolloContext>
+  );
 
-    const { pipe, abort } = renderToPipeableStream(
-      <ApolloProvider request={request}>
-        <RemixServer context={remixContext} url={request.url} />
-      </ApolloProvider>,
-      {
+  return getDataFromTree(App).then(() => {
+    let didError = false;
+    const initialState = client.extract();
+    const markup = (
+      <>
+        {App}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__APOLLO_STATE__=${JSON.stringify(
+              initialState
+            ).replace(/</g, "\\u003c")}` // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
+          }}
+        />
+      </>
+    );
+    return new Promise((resolve, reject) => {
+      const { pipe, abort } = renderToPipeableStream(markup, {
         onShellReady() {
           const body = new PassThrough();
-
           responseHeaders.set("Content-Type", "text/html");
 
           resolve(
@@ -108,9 +139,9 @@ function handleBrowserRequest(
 
           console.error(error);
         }
-      }
-    );
+      });
 
-    setTimeout(abort, ABORT_DELAY);
+      setTimeout(abort, ABORT_DELAY);
+    });
   });
 }

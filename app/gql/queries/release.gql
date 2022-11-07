@@ -1,0 +1,19 @@
+fragment ReleaseFragment on Release {
+  ...ReleaseSnippetFragment
+  notes
+  tracklist {
+    position
+    stream {
+      id
+      artwork
+      uri
+      url
+    }
+  }
+}
+
+query ReleaseQuery($profile: String!, $id: String!) {
+  release(profile: $profile, id: $id) {
+    ...ReleaseFragment
+  }
+}

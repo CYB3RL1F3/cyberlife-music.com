@@ -1,0 +1,14 @@
+fragment EventSnippetFragment on Event {
+  _id
+  date
+  title
+  date
+  country
+  address
+}
+
+query EventsQuery($profile: String!) {
+  events(profile: $profile) {
+    ...EventSnippetFragment
+  }
+}

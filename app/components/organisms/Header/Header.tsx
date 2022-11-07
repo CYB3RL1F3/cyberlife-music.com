@@ -1,11 +1,11 @@
-import { headerLinkClassName } from "~/components/ions/header";
 import Nav from "~/components/organisms/Nav";
-import NavItemList from "~/components/organisms/NavItemList";
+import LinkNavItemList from "~/components/organisms/LinkNavItemList";
 import { Link } from "@remix-run/react";
-import type { NavItemProps } from "~/components/atoms/NavItem/NavItem.types";
+import type { LinkNavItemProps } from "~/components/atoms/LinkNavItem/LinkNavItem.types";
 import type { Routes } from "~/routes/routes";
+import { theme } from "~/theme";
 
-const items: NavItemProps[] = [
+const items: LinkNavItemProps[] = [
   {
     href: "/",
     label: "Podcasts"
@@ -30,11 +30,11 @@ const Header = () => {
   return (
     <header className="w-screen h-12 flex justify-between items-center px-6 text-sm">
       <h1 className="m-0 p-0">
-        <Link to="/" className={headerLinkClassName}>
+        <Link to="/" className={theme.largeSemiBoldUppercase}>
           Cyberlife
         </Link>
       </h1>
-      <Nav routes={routes} children={<NavItemList items={items} />} />
+      <Nav routes={routes} children={<LinkNavItemList items={items} />} />
     </header>
   );
 };

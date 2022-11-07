@@ -1,42 +1,5 @@
+import PodcastsPage from "~/components/pages/PodcastsPage";
+
 export default function Index() {
-  return (
-    <div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-      <div>PODCASTS</div>
-    </div>
-  );
+  return <PodcastsPage />;
 }

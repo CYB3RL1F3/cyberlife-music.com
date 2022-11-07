@@ -1,0 +1,24 @@
+fragment EventFragment on Event {
+  ...EventSnippetFragment
+  cost
+  lineup
+  promoter
+  venue
+  time {
+    begin
+    end
+  }
+  flyer {
+    front
+    back
+  }
+  location {
+    position
+  }
+}
+
+query EventQuery($profile: String!, $id: String!) {
+  event(profile: $profile, eventId: $id) {
+    ...EventFragment
+  }
+}

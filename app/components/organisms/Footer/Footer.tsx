@@ -1,7 +1,13 @@
-import type { FooterProps } from "./Footer.types";
+import FooterAnchorsInfosContainer from "~/components/organisms/FooterAnchorsInfosContainer";
+import FooterAnchorsCopyrights from "~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights";
 
-const Footer = ({ children }: FooterProps) => {
-  return <footer className="h-12 w-screen">{children}</footer>;
+const Footer = () => {
+  return (
+    <footer className="h-12 w-screen flex items-center justify-between px-6">
+      <FooterAnchorsCopyrights />
+      <FooterAnchorsInfosContainer />
+    </footer>
+  );
 };
 
 export default Footer;
