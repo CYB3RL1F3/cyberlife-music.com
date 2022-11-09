@@ -8,6 +8,8 @@ fragment ReleaseFragment on Release {
       artwork
       uri
       url
+      waveform
+      duration
     }
   }
 }

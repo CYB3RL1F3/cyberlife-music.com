@@ -3,14 +3,17 @@ import {
   Links,
   LiveReload,
   Meta,
-  Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useLocation,
+  useOutlet
 } from "@remix-run/react";
 import Application from "./components/layouts/Application";
 import styles from "./styles/styles.css";
 import DisplayInfosContainer from "./components/organisms/DisplayInfosContainer/DisplayInfosContainer";
 import ContainerScrollPage from "./components/organisms/ContainerScrollPage/ContainerScrollPage";
+import { AnimatePresence, motion } from "framer-motion";
+import AudioContainer from "./components/molecules/AudioContainer";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -23,18 +26,32 @@ export function links() {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
+  console.log(pathname);
+  const outlet = useOutlet();
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="m-0 p-0 bg-black text-lightGray w-screen h-screen overflow-hidden">
+      <body className="w-screen h-screen p-0 m-0 overflow-hidden bg-black text-lightGray">
         <Application>
           <DisplayInfosContainer />
           <ContainerScrollPage className="mt-4">
-            <Outlet />
+            <AnimatePresence exitBeforeEnter initial={false}>
+              <motion.div
+                key={useLocation().pathname}
+                initial={{ opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ opacity: 0.8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {outlet}
+              </motion.div>
+            </AnimatePresence>
           </ContainerScrollPage>
+          <AudioContainer />
         </Application>
         <ScrollRestoration />
         <Scripts />

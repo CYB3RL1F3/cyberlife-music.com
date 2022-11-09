@@ -1,3 +1,2 @@
 export { default } from "./Audio";
-  export type { AudioProps } from "./Audio.types";
-  
+export type { AudioProps } from "./Audio.types";

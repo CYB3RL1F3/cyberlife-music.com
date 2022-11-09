@@ -5,12 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        lightGray: "#999999"
+        lightGray: "#999999",
+        lightPink: "#F9C3C5"
       },
       keyframes: {
         appear: {
-          "0%": { transform: "translateX(500px)" },
-          "80%": { transform: "translateX(-50px)" },
+          "0%": { transform: "translateX(50vw)" },
+          "80%": { transform: "translateX(-100px)" },
           "100%": { transform: "translateX(0)" }
         },
         opacity: {
@@ -19,8 +20,8 @@ module.exports = {
         }
       },
       animation: {
-        appear: "appear 250ms ease-in-out forwards",
-        opacity: "opacity 250ms ease-in-out forwards"
+        appear: "appear 300ms ease-in-out forwards",
+        opacity: "opacity 300ms ease-in-out forwards"
       },
       backgroundImage: {
         main: 'url("http://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp")'
@@ -36,7 +37,9 @@ module.exports = {
     }
   },
   plugins: [
+    require("tailwindcss-owl"),
     require("tailwindcss-animation-delay"),
+    require("@tailwindcss/line-clamp"),
     require("tailwind-scrollbar")({ nocompatible: true })
   ]
 };

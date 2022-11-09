@@ -190,7 +190,7 @@ body * {
 .mask-page {
   mask-type: alpha;
   -webkit-mask-image: linear-gradient(to top,transparent 0%,rgb(0, 0, 0) 10%,rgb(0, 0, 0) 90%,transparent 99.5%);
-  mask-image: linear-gradient(to top,transparent 0%,rgb(0, 0, 0) 10%,rgb(0, 0, 0) 90%,transparent 99.5%);
+  mask-image: linear-gradient(to top,transparent 0%,rgb(0, 0, 0) 8%,rgb(0, 0, 0) 92%,transparent 99.5%);
 }
 
 li {

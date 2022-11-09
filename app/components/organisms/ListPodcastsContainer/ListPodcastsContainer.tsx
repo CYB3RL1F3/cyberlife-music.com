@@ -7,7 +7,10 @@ const ListPodcastsContainer = () => {
   const { data } = usePlaylistQuery("dj-sets");
   return (
     <Suspense fallback={<PageLoader />}>
-      <ListPodcasts podcasts={data?.playlist?.tracks} />;
+      <ListPodcasts
+        artwork={data?.playlist?.artwork}
+        podcasts={data?.playlist?.tracks}
+      />
     </Suspense>
   );
 };

@@ -1,12 +1,19 @@
 import List from "~/components/molecules/List";
+import ListPodcastsItem from "../ListPodcastsItem";
 import type { ListPodcastsProps } from "./ListPodcasts.types";
 
-const ListPodcasts = ({ podcasts }: ListPodcastsProps) => {
+const ListPodcasts = ({ podcasts, artwork }: ListPodcastsProps) => {
   return (
     <List>
-      {podcasts?.map((podcast) => (
-        <div key={podcast.id}>{podcast.title}</div>
-      ))}
+      {podcasts?.map((podcast) =>
+        podcast.title && podcast.waveform ? (
+          <ListPodcastsItem
+            key={podcast.id}
+            podcast={podcast}
+            artworkFallback={artwork}
+          />
+        ) : null
+      )}
     </List>
   );
 };

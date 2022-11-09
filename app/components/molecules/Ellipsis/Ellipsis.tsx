@@ -1,9 +1,8 @@
+import clsx from "clsx";
+import type { EllipsisProps } from "./Ellipsis.types";
 
-  import type { EllipsisProps } from "./Ellipsis.types";
+const Ellipsis = ({ children, className }: EllipsisProps) => {
+  return <p className={clsx(className, "line-clamp-2")}>{children}</p>;
+};
 
-  const Ellipsis = ({ ...props }: EllipsisProps) => {
-    return <div>@Todo implement Ellipsis</div>
-  }
-
-  export default Ellipsis;
-  
+export default Ellipsis;

@@ -118,25 +118,25 @@ export interface TrackFragment {
    */
   url: string | null;
   /**
+   * track duration
+   */
+  duration: number | null;
+  /**
    * track waveform
    */
   waveform: string | null;
-  /**
-   * track download
-   */
-  download: string | null;
   /**
    * track soundcloud
    */
   soundcloud: string | null;
   /**
+   * track download
+   */
+  download: string | null;
+  /**
    * track downloadable
    */
   downloadable: boolean | null;
-  /**
-   * track duration
-   */
-  duration: number | null;
   /**
    * track stats
    */

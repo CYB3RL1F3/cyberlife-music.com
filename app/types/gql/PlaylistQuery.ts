@@ -42,6 +42,10 @@ export interface PlaylistQueryPlaylistTracks {
    */
   url: string | null;
   /**
+   * track duration
+   */
+  duration: number | null;
+  /**
    * track waveform
    */
   waveform: string | null;
@@ -53,6 +57,10 @@ export interface PlaylistQueryPlaylist {
    * playlist ID
    */
   id: number | null;
+  /**
+   * playlist artwork
+   */
+  artwork: string | null;
   /**
    * playlist tracks
    */

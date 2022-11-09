@@ -1,10 +1,8 @@
 fragment TrackFragment on Track {
   ...TrackSnippetFragment
-
-  download
   soundcloud
+  download
   downloadable
-  duration
   stats {
     count
     downloads

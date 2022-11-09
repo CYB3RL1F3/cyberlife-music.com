@@ -7,6 +7,7 @@ import { renderToPipeableStream } from "react-dom/server";
 import { getDataFromTree } from "@apollo/client/react/ssr";
 import ApolloContext from "./components/contexts/ApolloContext";
 import { getClient } from "./components/contexts/ApolloContext/ApolloContext";
+import PlayerContextProvider from "./components/contexts/PlayerContext";
 
 const ABORT_DELAY = 5000;
 
@@ -40,7 +41,9 @@ function handleBotRequest(
 ) {
   const App = (
     <ApolloContext client={client}>
-      <RemixServer context={remixContext} url={request.url} />,
+      <PlayerContextProvider>
+        <RemixServer context={remixContext} url={request.url} />,
+      </PlayerContextProvider>
     </ApolloContext>
   );
   return getDataFromTree(App).then(() => {

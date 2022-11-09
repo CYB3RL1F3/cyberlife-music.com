@@ -8,7 +8,7 @@ const ContainerScrollPage = ({
   return (
     <section
       className={clsx(
-        "ml-48 mx-2 pr-4 flex-auto overflow-y-scroll py-12 mask-page scroll-py-4 scrollbar scrollbar-w-1 scrollbar-thumb-lightGray scrollbar-track-black",
+        "ml-48 mx-2 pr-4 flex-auto overflow-x-visible overflow-y-scroll py-12 mask-page scroll-py-4 scrollbar scrollbar-w-1 scrollbar-thumb-lightGray scrollbar-track-black",
         className
       )}
     >

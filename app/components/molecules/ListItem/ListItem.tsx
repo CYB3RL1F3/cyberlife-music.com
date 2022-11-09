@@ -1,25 +1,11 @@
 import type { ListItemProps } from "./ListItem.types";
-import { useMemo } from "react";
 
-const ListItem = ({ children, index }: ListItemProps) => {
-  const delay = useMemo(() => 25 * index + 50, [index]);
-  const opacityDelay = useMemo(() => 25 + delay, [delay]);
+const ListItem = ({ children, thumbnail }: ListItemProps) => {
   return (
-    <li
-      className="flex justify-end translate-x-[500px] animate-appear border-b border-gray-400"
-      style={{
-        animationDelay: `${delay}ms`
-      }}
-    >
-      <div
-        className="animate-opacity w-full flex flex-end justify-end"
-        style={{
-          animationDelay: `${opacityDelay}ms`
-        }}
-      >
-        {children}
-      </div>
-    </li>
+    <div className="flex w-full gap-4">
+      <div className="flex flex-auto">{children}</div>
+      {thumbnail && <div className="flex">{thumbnail}</div>}
+    </div>
   );
 };
 

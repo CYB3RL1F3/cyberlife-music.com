@@ -42,6 +42,10 @@ export interface TrackSnippetFragment {
    */
   url: string | null;
   /**
+   * track duration
+   */
+  duration: number | null;
+  /**
    * track waveform
    */
   waveform: string | null;

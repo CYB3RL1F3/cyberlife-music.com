@@ -1,2 +1,2 @@
-export { default } from "./NavContextProvider";
+export { default } from "./NavContext.provider";
 export { useNavContext } from "./NavContext.hook";

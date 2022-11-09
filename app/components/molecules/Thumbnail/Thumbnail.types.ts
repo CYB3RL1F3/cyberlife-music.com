@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-  export type ThumbnailProps = {
-    children?: ReactNode;
-  }
-  
+export type ThumbnailProps = {
+  src: string;
+  children?: ReactNode;
+};

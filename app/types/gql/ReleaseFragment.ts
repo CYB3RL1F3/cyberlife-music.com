@@ -25,6 +25,14 @@ export interface ReleaseFragmentTracklistStream {
    * track url
    */
   url: string | null;
+  /**
+   * track waveform
+   */
+  waveform: string | null;
+  /**
+   * track duration
+   */
+  duration: number | null;
 }
 
 export interface ReleaseFragmentTracklist {
