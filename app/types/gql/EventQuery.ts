@@ -7,18 +7,6 @@
 // GraphQL query operation: EventQuery
 // ====================================================
 
-export interface EventQueryEventTime {
-  _typename: "time";
-  /**
-   * time start
-   */
-  begin: string | null;
-  /**
-   * time end
-   */
-  end: string | null;
-}
-
 export interface EventQueryEventFlyer {
   _typename: "flyer";
   /**
@@ -31,6 +19,18 @@ export interface EventQueryEventFlyer {
   back: string | null;
 }
 
+export interface EventQueryEventTime {
+  _typename: "time";
+  /**
+   * time start
+   */
+  begin: string | null;
+  /**
+   * time end
+   */
+  end: string | null;
+}
+
 export interface EventQueryEventLocation {
   _typename: "location";
   /**
@@ -39,12 +39,24 @@ export interface EventQueryEventLocation {
   position: number[] | null;
 }
 
+export interface EventQueryEventLinks {
+  _typename: "links";
+  /**
+   * event
+   */
+  event: string | null;
+  /**
+   * venue
+   */
+  venue: string | null;
+}
+
 export interface EventQueryEvent {
   _typename: "Event";
   /**
    * event ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * event date
    */
@@ -61,6 +73,10 @@ export interface EventQueryEvent {
    * address
    */
   address: string | null;
+  /**
+   * time (begin / end)
+   */
+  flyer: EventQueryEventFlyer | null;
   /**
    * cost
    */
@@ -82,13 +98,13 @@ export interface EventQueryEvent {
    */
   time: EventQueryEventTime | null;
   /**
-   * time (begin / end)
-   */
-  flyer: EventQueryEventFlyer | null;
-  /**
    * location
    */
   location: EventQueryEventLocation | null;
+  /**
+   * time (begin / end)
+   */
+  links: EventQueryEventLinks | null;
 }
 
 export interface EventQuery {

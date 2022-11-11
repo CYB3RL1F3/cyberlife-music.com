@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import { profile } from "~/config";
 import contactMutation from "~/gql/mutations/contact.gql";
 import type {
@@ -6,17 +6,28 @@ import type {
   ContactMutationVariables
 } from "~/types/gql/ContactMutation";
 
-const mutation = gql`
+const contactMutationGql = gql`
   ${contactMutation}
 `;
 
 export const useContactMutation = (
-  message: ContactMutationVariables["message"]
+  onCompleted: (data: ContactMutation) => void
 ) => {
-  return useQuery<ContactMutation, ContactMutationVariables>(mutation, {
-    variables: {
-      profile,
-      message
-    }
+  const [mutation, mutationResults] = useMutation<
+    ContactMutation,
+    ContactMutationVariables
+  >(contactMutationGql, {
+    onCompleted,
+    errorPolicy: "all"
   });
+
+  const contact = (message: ContactMutationVariables["message"]) => {
+    return mutation({
+      variables: {
+        profile,
+        message
+      }
+    });
+  };
+  return [contact, mutationResults] as const;
 };

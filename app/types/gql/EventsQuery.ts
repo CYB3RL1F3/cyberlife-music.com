@@ -7,12 +7,20 @@
 // GraphQL query operation: EventsQuery
 // ====================================================
 
+export interface EventsQueryEventsFlyer {
+  _typename: "flyer";
+  /**
+   * front image source
+   */
+  front: string | null;
+}
+
 export interface EventsQueryEvents {
   _typename: "Event";
   /**
    * event ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * event date
    */
@@ -29,6 +37,10 @@ export interface EventsQueryEvents {
    * address
    */
   address: string | null;
+  /**
+   * time (begin / end)
+   */
+  flyer: EventsQueryEventsFlyer | null;
 }
 
 export interface EventsQuery {

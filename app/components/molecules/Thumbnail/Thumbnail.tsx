@@ -1,13 +1,15 @@
 import BackgroundImage from "~/components/atoms/BackgroundImage";
-import { useDynamicSource } from "~/hooks/useDynamicSource";
 import type { ThumbnailProps } from "./Thumbnail.types";
+import { clsx } from "clsx";
 
-const Thumbnail = ({ children, src }: ThumbnailProps) => {
-  const backgroundImage = useDynamicSource(src, "");
+const Thumbnail = ({ children, src, variant = "normal" }: ThumbnailProps) => {
   return (
     <BackgroundImage
-      className="items-center justify-center w-32 h-32 "
-      src={backgroundImage}
+      className={clsx("items-center justify-center h-32 ", {
+        "w-32": variant === "normal",
+        "w-48": variant === "large"
+      })}
+      src={src}
     >
       {children}
     </BackgroundImage>

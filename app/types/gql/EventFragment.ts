@@ -7,18 +7,6 @@
 // GraphQL fragment: EventFragment
 // ====================================================
 
-export interface EventFragmentTime {
-  _typename: "time";
-  /**
-   * time start
-   */
-  begin: string | null;
-  /**
-   * time end
-   */
-  end: string | null;
-}
-
 export interface EventFragmentFlyer {
   _typename: "flyer";
   /**
@@ -31,6 +19,18 @@ export interface EventFragmentFlyer {
   back: string | null;
 }
 
+export interface EventFragmentTime {
+  _typename: "time";
+  /**
+   * time start
+   */
+  begin: string | null;
+  /**
+   * time end
+   */
+  end: string | null;
+}
+
 export interface EventFragmentLocation {
   _typename: "location";
   /**
@@ -39,12 +39,24 @@ export interface EventFragmentLocation {
   position: number[] | null;
 }
 
+export interface EventFragmentLinks {
+  _typename: "links";
+  /**
+   * event
+   */
+  event: string | null;
+  /**
+   * venue
+   */
+  venue: string | null;
+}
+
 export interface EventFragment {
   _typename: "Event";
   /**
    * event ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * event date
    */
@@ -61,6 +73,10 @@ export interface EventFragment {
    * address
    */
   address: string | null;
+  /**
+   * time (begin / end)
+   */
+  flyer: EventFragmentFlyer | null;
   /**
    * cost
    */
@@ -82,11 +98,11 @@ export interface EventFragment {
    */
   time: EventFragmentTime | null;
   /**
-   * time (begin / end)
-   */
-  flyer: EventFragmentFlyer | null;
-  /**
    * location
    */
   location: EventFragmentLocation | null;
+  /**
+   * time (begin / end)
+   */
+  links: EventFragmentLinks | null;
 }

@@ -1,3 +1,5 @@
+import EventsPage from "~/components/pages/EventsPage";
+
 export default function Releases() {
-  return <h1>GIGS</h1>;
+  return <EventsPage />;
 }

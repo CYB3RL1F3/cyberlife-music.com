@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 export const useDynamicSource = (src: string, placeholder: string): string => {
   const [img, setImg] = useState(placeholder);
   useEffect(() => {
-    fetch(src)
+    fetch(src, {
+      mode: "cors"
+    })
       .then(async (response) => {
         if (response.status === 200 || response.status === 201) {
           const imgSrc = URL.createObjectURL(await response.blob());

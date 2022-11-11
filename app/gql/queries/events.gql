@@ -5,6 +5,9 @@ fragment EventSnippetFragment on Event {
   date
   country
   address
+  flyer {
+    front
+  }
 }
 
 query EventsQuery($profile: String!) {

@@ -1,3 +1,5 @@
+import ReleasesPage from "~/components/pages/ReleasesPage";
+
 export default function Releases() {
-  return <h1>Releases</h1>;
+  return <ReleasesPage />;
 }

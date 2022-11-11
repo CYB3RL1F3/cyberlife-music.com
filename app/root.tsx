@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
@@ -14,6 +15,7 @@ import DisplayInfosContainer from "./components/organisms/DisplayInfosContainer/
 import ContainerScrollPage from "./components/organisms/ContainerScrollPage/ContainerScrollPage";
 import { AnimatePresence, motion } from "framer-motion";
 import AudioContainer from "./components/molecules/AudioContainer";
+import { ClientOnly } from "./components/atoms/ClientOnly/ClientOnly";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -35,7 +37,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="w-screen h-screen p-0 m-0 overflow-hidden bg-black text-lightGray">
+      <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
         <Application>
           <DisplayInfosContainer />
           <ContainerScrollPage className="mt-4">
@@ -51,7 +53,7 @@ export default function App() {
               </motion.div>
             </AnimatePresence>
           </ContainerScrollPage>
-          <AudioContainer />
+          <ClientOnly>{() => <AudioContainer />}</ClientOnly>
         </Application>
         <ScrollRestoration />
         <Scripts />

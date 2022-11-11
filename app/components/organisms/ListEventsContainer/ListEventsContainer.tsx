@@ -1,6 +1,18 @@
-import ListEvents from "../ListEvents";
+import ListEvents from "~/components/organisms/ListEvents";
+import HandlerContent from "~/components/organisms/HandlerContent";
+import Loader from "~/components/organisms/Loader";
+import { useEventsQuery } from "~/hooks/queries/useEventsQuery";
+
 const ListEventsContainer = () => {
-  return <ListEvents />;
+  const { data, loading } = useEventsQuery();
+  return (
+    <HandlerContent
+      loading={!data && loading}
+      loader={<Loader mention="Please wait while we're chasing releases..." />}
+    >
+      <ListEvents events={data?.events} />
+    </HandlerContent>
+  );
 };
 
 export default ListEventsContainer;

@@ -7,12 +7,20 @@
 // GraphQL fragment: EventSnippetFragment
 // ====================================================
 
+export interface EventSnippetFragmentFlyer {
+  _typename: "flyer";
+  /**
+   * front image source
+   */
+  front: string | null;
+}
+
 export interface EventSnippetFragment {
   _typename: "Event";
   /**
    * event ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * event date
    */
@@ -29,4 +37,8 @@ export interface EventSnippetFragment {
    * address
    */
   address: string | null;
+  /**
+   * time (begin / end)
+   */
+  flyer: EventSnippetFragmentFlyer | null;
 }

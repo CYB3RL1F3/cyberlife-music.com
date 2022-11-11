@@ -6,7 +6,10 @@ const replacer = (match: string, value: string) => {
 };
 
 const snakeToCamelCase = (value: string) => {
-  return value.replace(/_(.)/gim, replacer);
+  return value
+    .replace(/_(.)/gim, replacer)
+    .replace(/(Id:)/g, "_id:")
+    .replace("Pool_id", "PoolId");
 };
 
 const run = () => {

@@ -1,17 +1,21 @@
-import { Suspense } from "react";
 import ListPodcasts from "~/components/organisms/ListPodcasts";
 import { usePlaylistQuery } from "~/hooks/queries/usePlaylistQuery";
-import PageLoader from "../PageLoader";
+import HandlerContent from "../HandlerContent";
+import Loader from "../Loader";
 
 const ListPodcastsContainer = () => {
-  const { data } = usePlaylistQuery("dj-sets");
+  const { data, loading } = usePlaylistQuery("dj-sets");
+
   return (
-    <Suspense fallback={<PageLoader />}>
+    <HandlerContent
+      loading={!data && loading}
+      loader={<Loader mention="Please wait while we're chasing podcasts..." />}
+    >
       <ListPodcasts
         artwork={data?.playlist?.artwork}
         podcasts={data?.playlist?.tracks}
       />
-    </Suspense>
+    </HandlerContent>
   );
 };
 

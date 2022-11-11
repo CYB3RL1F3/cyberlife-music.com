@@ -8,12 +8,16 @@ fragment EventFragment on Event {
     begin
     end
   }
+  location {
+    position
+  }
   flyer {
     front
     back
   }
-  location {
-    position
+  links {
+    event
+    venue
   }
 }
 

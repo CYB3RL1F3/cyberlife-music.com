@@ -10,7 +10,7 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
   }, [index]);
   const opacityDelay = useMemo(() => 0.05 + delay, [delay]);
   console.log(children);
-  const className = clsx("flex justify-end border-gray-400", {
+  const className = clsx("flex justify-end border-gray-gray-400", {
     "border-t pt-4": index > 0
   });
   return (

@@ -56,7 +56,7 @@ export interface ReleaseFragment {
   /**
    * release ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * Release title
    */
@@ -74,6 +74,10 @@ export interface ReleaseFragment {
    */
   year: number | null;
   /**
+   * Release thumb url
+   */
+  thumb: string | null;
+  /**
    * Release label
    */
   label: string | null;
@@ -81,6 +85,10 @@ export interface ReleaseFragment {
    * Release tracklist
    */
   tracklist: ReleaseFragmentTracklist[] | null;
+  /**
+   * Release discogs
+   */
+  discogs: string | null;
   /**
    * Release notes
    */

@@ -4,10 +4,12 @@ fragment ReleaseSnippetFragment on Release {
   releaseDate
   role
   year
+  thumb
   label
   tracklist {
     title
   }
+  discogs
   notes
 }
 

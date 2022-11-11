@@ -20,7 +20,7 @@ export interface ReleasesQueryReleases {
   /**
    * release ID
    */
-  Id: string | null;
+  _id: string | null;
   /**
    * Release title
    */
@@ -38,6 +38,10 @@ export interface ReleasesQueryReleases {
    */
   year: number | null;
   /**
+   * Release thumb url
+   */
+  thumb: string | null;
+  /**
    * Release label
    */
   label: string | null;
@@ -45,6 +49,10 @@ export interface ReleasesQueryReleases {
    * Release tracklist
    */
   tracklist: ReleasesQueryReleasesTracklist[] | null;
+  /**
+   * Release discogs
+   */
+  discogs: string | null;
   /**
    * Release notes
    */
