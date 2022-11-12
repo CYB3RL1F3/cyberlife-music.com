@@ -561,16 +561,16 @@ video {
   margin-right: 0.5rem;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
 
 .ml-0 {
   margin-left: 0px;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mt-8 {
@@ -587,6 +587,22 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mr-12 {
+  margin-right: 3rem;
+}
+
+.ml-12 {
+  margin-left: 3rem;
+}
+
+.ml-40 {
+  margin-left: 10rem;
 }
 
 .block {
@@ -657,6 +673,10 @@ video {
   height: 8rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .h-28 {
   height: 7rem;
 }
@@ -689,6 +709,14 @@ video {
   width: inherit;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -709,10 +737,6 @@ video {
   width: 6rem;
 }
 
-.w-12 {
-  width: 3rem;
-}
-
 .w-4 {
   width: 1rem;
 }
@@ -721,17 +745,16 @@ video {
   width: 8rem;
 }
 
+.w-40 {
+  width: 10rem;
+}
+
 .w-\[40vw\] {
   width: 40vw;
 }
 
-.w-1\/3 {
-  width: 33.333333%;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
+.w-16 {
+  width: 4rem;
 }
 
 .min-w-\[1rem\] {
@@ -1017,6 +1040,10 @@ video {
   padding-bottom: 2rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
 .pl-8 {
   padding-left: 2rem;
 }
@@ -1033,8 +1060,8 @@ video {
   padding-left: 1rem;
 }
 
-.pr-2 {
-  padding-right: 0.5rem;
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .text-center {
@@ -1113,6 +1140,11 @@ video {
   color: rgb(204 204 204 / var(--tw-text-opacity));
 }
 
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
@@ -1121,11 +1153,6 @@ video {
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(222 222 222 / var(--tw-text-opacity));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1158,6 +1185,10 @@ video {
   opacity: 0.3;
 }
 
+.opacity-70 {
+  opacity: 0.7;
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1187,6 +1218,12 @@ video {
 
 .transition-all {
   transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1801,6 +1838,10 @@ input:-webkit-autofill:active{
 .hover\:text-gray-200:hover {
   --tw-text-opacity: 1;
   color: rgb(204 204 204 / var(--tw-text-opacity));
+}
+
+.hover\:opacity-90:hover {
+  opacity: 0.9;
 }
 
 @media (min-width: 768px) {

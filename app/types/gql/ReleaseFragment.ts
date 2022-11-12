@@ -7,6 +7,18 @@
 // GraphQL fragment: ReleaseFragment
 // ====================================================
 
+export interface ReleaseFragmentTracklistArtists {
+  _typename: "artist";
+  /**
+   * Artist Name
+   */
+  name: string | null;
+  /**
+   * Artist Role
+   */
+  role: string | null;
+}
+
 export interface ReleaseFragmentTracklistStream {
   _typename: "Track";
   /**
@@ -45,6 +57,14 @@ export interface ReleaseFragmentTracklist {
    * Release's Track position
    */
   position: string | null;
+  /**
+   * Release's Track Id
+   */
+  id: string | null;
+  /**
+   * Release's Track artists
+   */
+  artists: ReleaseFragmentTracklistArtists[] | null;
   /**
    * Release's Track stream
    */
@@ -93,4 +113,16 @@ export interface ReleaseFragment {
    * Release notes
    */
   notes: string | null;
+  /**
+   * Release cat
+   */
+  cat: string | null;
+  /**
+   * Release format
+   */
+  format: string | null;
+  /**
+   * Release genre
+   */
+  genre: string | null;
 }

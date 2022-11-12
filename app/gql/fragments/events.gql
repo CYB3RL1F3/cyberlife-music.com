@@ -1,0 +1,34 @@
+fragment EventSnippetFragment on Event {
+  _id
+  date
+  title
+  date
+  country
+  address
+  flyer {
+    front
+  }
+}
+
+fragment EventFragment on Event {
+  ...EventSnippetFragment
+  cost
+  lineup
+  promoter
+  venue
+  time {
+    begin
+    end
+  }
+  location {
+    position
+  }
+  flyer {
+    front
+    back
+  }
+  links {
+    event
+    venue
+  }
+}

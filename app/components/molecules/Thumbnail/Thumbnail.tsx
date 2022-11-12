@@ -5,9 +5,10 @@ import { clsx } from "clsx";
 const Thumbnail = ({ children, src, variant = "normal" }: ThumbnailProps) => {
   return (
     <BackgroundImage
-      className={clsx("items-center justify-center h-32 ", {
-        "w-32": variant === "normal",
-        "w-48": variant === "large"
+      className={clsx("items-center justify-center ", {
+        "w-32 h-32": variant === "normal",
+        "w-48 h-32": variant === "large",
+        "w-40 h-40": variant === "wider"
       })}
       src={src}
     >

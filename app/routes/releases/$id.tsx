@@ -1,6 +1,8 @@
 import { useParams } from "@remix-run/react";
+import ReleasePage from "~/components/pages/ReleasePage";
 
 export default function Release() {
   const { id } = useParams();
-  return <h1>Release {id}</h1>;
+  if (!id) return null;
+  return <ReleasePage id={id} />;
 }

@@ -165,5 +165,5 @@ export interface PlaylistTrackQuery {
 
 export interface PlaylistTrackQueryVariables {
   profile: string;
-  track_id: string;
+  trackId: string;
 }

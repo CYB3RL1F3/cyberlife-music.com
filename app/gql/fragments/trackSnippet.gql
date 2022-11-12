@@ -1,0 +1,12 @@
+fragment TrackSnippetFragment on Track {
+  id
+  title
+  genre
+  description
+  artwork
+  date
+  uri
+  url
+  duration
+  waveform
+}

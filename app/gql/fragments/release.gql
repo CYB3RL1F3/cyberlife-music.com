@@ -1,0 +1,25 @@
+fragment ReleaseFragment on Release {
+  ...ReleaseSnippetFragment
+  notes
+  cat
+  format
+  role
+  genre
+  tracklist {
+    position
+    id
+    title
+    artists {
+      name
+      role
+    }
+    stream {
+      id
+      artwork
+      uri
+      url
+      waveform
+      duration
+    }
+  }
+}

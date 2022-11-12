@@ -1,0 +1,12 @@
+fragment InfosFragment on Infos {
+  bio {
+    content
+  }
+  instagram
+  RA
+  facebook
+  twitter
+  soundcloud
+  discogs
+  bookingDetails
+}

@@ -1,0 +1,14 @@
+fragment ReleaseSnippetFragment on Release {
+  _id
+  title
+  releaseDate
+  role
+  year
+  thumb
+  label
+  tracklist {
+    title
+  }
+  discogs
+  notes
+}

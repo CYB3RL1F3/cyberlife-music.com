@@ -16,6 +16,7 @@ import ContainerScrollPage from "./components/organisms/ContainerScrollPage/Cont
 import { AnimatePresence, motion } from "framer-motion";
 import AudioContainer from "./components/molecules/AudioContainer";
 import { ClientOnly } from "./components/atoms/ClientOnly/ClientOnly";
+import PageDetailHeaderPortal from "./components/molecules/PageDetailHeaderPortal/PageDetailHeaderPortal";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -40,7 +41,10 @@ export default function App() {
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
         <Application>
           <DisplayInfosContainer />
-          <ContainerScrollPage className="mt-4">
+          <div className="h-8">
+            <PageDetailHeaderPortal.Container />
+          </div>
+          <ContainerScrollPage>
             <AnimatePresence exitBeforeEnter initial={false}>
               <motion.div
                 key={useLocation().pathname}

@@ -1,0 +1,30 @@
+fragment TrackFragment on Track {
+  ...TrackSnippetFragment
+  soundcloud
+  download
+  downloadable
+  stats {
+    count
+    downloads
+  }
+  taglist
+  tracklist
+  likes {
+    id
+    avatar
+    userName
+    soundcloud
+    uri
+  }
+  comments {
+    id
+    createdAt
+    body
+    user {
+      avatar
+      userName
+      soundcloud
+      uri
+    }
+  }
+}

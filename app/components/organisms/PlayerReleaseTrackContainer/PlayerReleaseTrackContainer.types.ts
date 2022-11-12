@@ -1,5 +1,5 @@
-import type { usePodcastTrackPlayer } from "~/hooks/player/usePodcastTrackPlayer";
+import type { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
 
 export type PlayerReleaseTrackContainerProps = {
-  track: Parameters<typeof usePodcastTrackPlayer>[0];
+  track: Parameters<typeof useReleaseTrackPlayer>[0];
 };

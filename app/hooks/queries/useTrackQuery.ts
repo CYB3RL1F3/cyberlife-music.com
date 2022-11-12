@@ -1,6 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import { profile } from "~/config";
 import trackQuery from "~/gql/queries/track.gql";
+import trackSnippetFragment from "~/gql/fragments/trackSnippet.gql";
+import trackFragment from "~/gql/fragments/track.gql";
 
 import type {
   PlaylistTrackQuery,
@@ -8,6 +10,8 @@ import type {
 } from "~/types/gql/PlaylistTrackQuery";
 
 const query = gql`
+  ${trackSnippetFragment}
+  ${trackFragment}
   ${trackQuery}
 `;
 

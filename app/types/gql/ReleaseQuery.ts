@@ -7,6 +7,18 @@
 // GraphQL query operation: ReleaseQuery
 // ====================================================
 
+export interface ReleaseQueryReleaseTracklistArtists {
+  _typename: "artist";
+  /**
+   * Artist Name
+   */
+  name: string | null;
+  /**
+   * Artist Role
+   */
+  role: string | null;
+}
+
 export interface ReleaseQueryReleaseTracklistStream {
   _typename: "Track";
   /**
@@ -45,6 +57,14 @@ export interface ReleaseQueryReleaseTracklist {
    * Release's Track position
    */
   position: string | null;
+  /**
+   * Release's Track Id
+   */
+  id: string | null;
+  /**
+   * Release's Track artists
+   */
+  artists: ReleaseQueryReleaseTracklistArtists[] | null;
   /**
    * Release's Track stream
    */
@@ -93,6 +113,18 @@ export interface ReleaseQueryRelease {
    * Release notes
    */
   notes: string | null;
+  /**
+   * Release cat
+   */
+  cat: string | null;
+  /**
+   * Release format
+   */
+  format: string | null;
+  /**
+   * Release genre
+   */
+  genre: string | null;
 }
 
 export interface ReleaseQuery {
