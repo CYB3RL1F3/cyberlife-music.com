@@ -3,16 +3,24 @@ import { clsx } from "clsx";
 import { theme } from "~/theme";
 import { Link } from "@remix-run/react";
 import { useMemo } from "react";
+import { useButtonStyle } from "~/hooks/styles/useButtonStyle";
 
 const Anchor = ({
   children,
   href,
   className,
-  target = "_blank"
+  target = "_blank",
+  variant = "link"
 }: AnchorProps) => {
+  const buttonStyle = useButtonStyle(className);
   const cls = useMemo(
-    () => clsx(theme.midSemiBold, theme.linkHover, className),
-    [className]
+    () =>
+      clsx({
+        [clsx(theme.midSemiBold, theme.linkHover, className)]:
+          variant === "link",
+        [buttonStyle]: variant === "button"
+      }),
+    [buttonStyle, className, variant]
   );
 
   if (!href) return null;

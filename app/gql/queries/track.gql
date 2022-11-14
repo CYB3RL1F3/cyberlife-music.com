@@ -1,34 +1,3 @@
-fragment TrackFragment on Track {
-  ...TrackSnippetFragment
-  soundcloud
-  download
-  downloadable
-  stats {
-    count
-    downloads
-  }
-  taglist
-  tracklist
-  likes {
-    id
-    avatar
-    userName
-    soundcloud
-    uri
-  }
-  comments {
-    id
-    createdAt
-    body
-    user {
-      avatar
-      userName
-      soundcloud
-      uri
-    }
-  }
-}
-
 query PlaylistTrackQuery($profile: String!, $trackId: String!) {
   playlistTrack(profile: $profile, trackId: $trackId) {
     ...TrackFragment

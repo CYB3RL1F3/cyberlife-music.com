@@ -1,13 +1,23 @@
 import List from "~/components/molecules/List";
-import ReleaseTracklistItem from "../ReleaseTracklistItem";
+import { getCyberlifeReleaseTracks } from "~/utils/business/filters";
+import ReleaseTracklistItem from "~/components/organisms/ReleaseTracklistItem";
 import type { ReleaseTracklistProps } from "./ReleaseTracklist.types";
 
-const ReleaseTracklist = ({ tracks, thumb }: ReleaseTracklistProps) => {
+const ReleaseTracklist = ({ tracks, thumb, id }: ReleaseTracklistProps) => {
+  const cybertracks = getCyberlifeReleaseTracks(tracks);
   return (
     <List>
-      {tracks.map((track) => (
-        <ReleaseTracklistItem key={track.id} track={track} thumb={thumb} />
-      ))}
+      {cybertracks.map(
+        (track) =>
+          id && (
+            <ReleaseTracklistItem
+              key={track.id}
+              id={id}
+              track={track}
+              thumb={thumb}
+            />
+          )
+      )}
     </List>
   );
 };

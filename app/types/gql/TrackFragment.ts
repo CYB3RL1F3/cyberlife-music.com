@@ -132,6 +132,7 @@ export interface TrackFragment {
   /**
    * track download
    */
+  license?: string;
   download: string | null;
   /**
    * track downloadable

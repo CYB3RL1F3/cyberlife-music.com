@@ -26,6 +26,10 @@ export interface ReleaseQueryReleaseTracklistStream {
    */
   id: number | null;
   /**
+   * track title
+   */
+  title: string | null;
+  /**
    * track artwork
    */
   artwork: string | null;

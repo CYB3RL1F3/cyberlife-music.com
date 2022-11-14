@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import type { MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -26,6 +27,14 @@ export const meta: MetaFunction = () => ({
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
+}
+
+export async function loader() {
+  return json({
+    ENV: {
+      API_URL: process.env.API_URL
+    }
+  });
 }
 
 export default function App() {

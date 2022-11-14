@@ -3,9 +3,10 @@ import ActionPlay from "~/components/molecules/ActionPlay";
 import { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
 
 const ReleaseActionPlayContainer = ({
-  track
+  track,
+  id
 }: ReleaseActionPlayContainerProps) => {
-  const { isPlaying, togglePlay } = useReleaseTrackPlayer(track);
+  const { isPlaying, togglePlay } = useReleaseTrackPlayer(track, id);
   return <ActionPlay isPlaying={isPlaying} onChange={togglePlay} />;
 };
 

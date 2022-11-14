@@ -15,6 +15,7 @@ fragment ReleaseFragment on Release {
     }
     stream {
       id
+      title
       artwork
       uri
       url

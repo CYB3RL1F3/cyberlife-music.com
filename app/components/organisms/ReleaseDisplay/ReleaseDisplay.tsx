@@ -12,9 +12,15 @@ const ReleaseDisplay = ({ release }: ReleaseDisplayProps) => {
         <PageDetailHeader title={release.title} url="/releases" />
       </PageDetailHeaderPortal>
       <ReleaseDetails release={release} />
-      <Text>{release.notes}</Text>
+      <div className="py-4">
+        <Text size="md">{release.notes}</Text>
+      </div>
       {release.tracklist && (
-        <ReleaseTracklist tracks={release.tracklist} thumb={release.thumb} />
+        <ReleaseTracklist
+          id={release._id}
+          tracks={release.tracklist}
+          thumb={release.thumb}
+        />
       )}
     </div>
   );

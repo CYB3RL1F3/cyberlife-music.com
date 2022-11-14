@@ -5,4 +5,5 @@ export type AnchorProps = {
   href: string | null;
   target?: "_blank" | "_self";
   className?: string;
+  variant?: "link" | "button";
 };

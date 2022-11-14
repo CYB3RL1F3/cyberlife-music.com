@@ -11,6 +11,7 @@ const LinkNavItemContainer = ({
   const ref =
     useRef<HTMLAnchorElement>() as MutableRefObject<HTMLAnchorElement | null>;
   const { setItem, offset } = useNavContext();
+  console.log(offset);
   const width = ref.current?.clientWidth;
 
   const position = useMemo(

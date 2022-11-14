@@ -8,7 +8,10 @@ export const usePlayerTrackContext = () => {
 
   useEffect(() => {
     setCurrentTrackContext(pathname);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  console.log("CURR >>> ", pathname, currentTrack?.contexts);
 
   const isTrackInCurrentContext = useMemo(() => {
     return currentTrack && currentTrack.contexts.includes(pathname);

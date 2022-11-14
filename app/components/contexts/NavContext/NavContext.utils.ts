@@ -6,6 +6,7 @@ export const getCurrentRouteIndex = (
 ) => {
   if (currentRoute === "/")
     return routes.findIndex((route) => route === currentRoute);
+  if (currentRoute.includes("podcasts")) return 0;
   const routeIndex = routes.findIndex(
     (route) => route !== "/" && currentRoute.includes(route)
   );

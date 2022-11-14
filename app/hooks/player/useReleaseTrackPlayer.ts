@@ -3,9 +3,10 @@ import type { ReleaseFragmentTracklistStream } from "~/types/gql/ReleaseFragment
 import { getTrackTobuffer } from "~/utils/trackToBuffer";
 
 export const useReleaseTrackPlayer = (
-  track: ReleaseFragmentTracklistStream
+  track: ReleaseFragmentTracklistStream,
+  releaseId: string
 ) => {
-  const contexts = [`/releases/${track.id}`] as const;
+  const contexts = [`/releases/${releaseId}`] as const;
   const toBuffer = getTrackTobuffer(track, contexts);
   const playerContext = useBufferTrackPlayer(toBuffer);
   return playerContext;

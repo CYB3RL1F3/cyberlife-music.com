@@ -1,6 +1,9 @@
 import { useParams } from "@remix-run/react";
+import PodcastsPage from "~/components/pages/PodcastsPage";
+import PodcastPage from "~/components/pages/PodcastPage";
 
 export default function Podcast() {
   const { id } = useParams();
-  return <h1>Podcast {id}</h1>;
+  if (!id) return <PodcastsPage />;
+  return <PodcastPage id={id} />;
 }

@@ -546,6 +546,10 @@ video {
   margin: 0px;
 }
 
+.m-8 {
+  margin: 2rem;
+}
+
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -577,6 +581,10 @@ video {
   margin-top: 2rem;
 }
 
+.ml-40 {
+  margin-left: 10rem;
+}
+
 .ml-48 {
   margin-left: 12rem;
 }
@@ -591,18 +599,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mr-12 {
-  margin-right: 3rem;
-}
-
-.ml-12 {
-  margin-left: 3rem;
-}
-
-.ml-40 {
-  margin-left: 10rem;
 }
 
 .block {
@@ -669,6 +665,10 @@ video {
   height: 100%;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .h-32 {
   height: 8rem;
 }
@@ -683,10 +683,6 @@ video {
 
 .h-14 {
   height: 3.5rem;
-}
-
-.h-16 {
-  height: 4rem;
 }
 
 .h-\[50vh\] {
@@ -741,6 +737,10 @@ video {
   width: 1rem;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .w-32 {
   width: 8rem;
 }
@@ -751,10 +751,6 @@ video {
 
 .w-\[40vw\] {
   width: 40vw;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .min-w-\[1rem\] {
@@ -800,6 +796,10 @@ video {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-end {
   align-items: flex-end;
 }
@@ -840,12 +840,20 @@ video {
   overflow: hidden;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
 .overflow-x-visible {
   overflow-x: visible;
 }
 
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .rounded {
@@ -862,6 +870,14 @@ video {
 
 .border-8 {
   border-width: 8px;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-y-\[14px\] {
@@ -898,6 +914,10 @@ video {
   border-top-width: 1px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -914,6 +934,16 @@ video {
 .border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(34 34 34 / var(--tw-border-opacity));
+}
+
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(153 153 153 / var(--tw-border-opacity));
+}
+
+.border-yellow-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 252 232 / var(--tw-border-opacity));
 }
 
 .border-y-transparent {
@@ -981,6 +1011,10 @@ video {
   --tw-bg-opacity: 0.2;
 }
 
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
+}
+
 .bg-none {
   background-image: none;
 }
@@ -1003,6 +1037,10 @@ video {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-4 {
@@ -1040,6 +1078,16 @@ video {
   padding-bottom: 2rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -1052,6 +1100,14 @@ video {
   padding-top: 1rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -1060,8 +1116,8 @@ video {
   padding-left: 1rem;
 }
 
-.pr-6 {
-  padding-right: 1.5rem;
+.pt-12 {
+  padding-top: 3rem;
 }
 
 .text-center {
@@ -1169,6 +1225,10 @@ video {
   color: rgb(102 102 102 / var(--tw-placeholder-opacity));
 }
 
+.opacity-70 {
+  opacity: 0.7;
+}
+
 .opacity-60 {
   opacity: 0.6;
 }
@@ -1183,10 +1243,6 @@ video {
 
 .opacity-30 {
   opacity: 0.3;
-}
-
-.opacity-70 {
-  opacity: 0.7;
 }
 
 .outline-none {
@@ -1242,6 +1298,10 @@ video {
 
 .ease-linear {
   transition-timing-function: linear;
+}
+
+.o-2 > * + * {
+  margin-top: 0.5rem;
 }
 
 .o-4 > * + * {
@@ -1328,6 +1388,10 @@ video {
 .scrollbar::-webkit-scrollbar {
   width: 16px;
   height: 16px;
+}
+
+.scrollbar-thin.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .scrollbar-track-black {

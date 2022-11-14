@@ -21,12 +21,12 @@ const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
         }
       ]}
     >
-      <Text>
+      <Text size="md">
         {role} ({cat}) - {label}
       </Text>
       <br />
-      <Text>Published on {date}</Text>
-      <Text>{genre}</Text>
+      <Text size="md">Published on {date}</Text>
+      <Text size="md">{genre}</Text>
     </PageDetailLayout>
   );
 };

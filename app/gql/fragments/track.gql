@@ -3,6 +3,7 @@ fragment TrackFragment on Track {
   soundcloud
   download
   downloadable
+  license
   stats {
     count
     downloads

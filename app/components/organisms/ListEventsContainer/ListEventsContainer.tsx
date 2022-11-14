@@ -8,7 +8,7 @@ const ListEventsContainer = () => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={<Loader mention="Please wait while we're chasing releases..." />}
+      loader={<Loader mention="Please wait while we're chasing events..." />}
     >
       <ListEvents events={data?.events} />
     </HandlerContent>
