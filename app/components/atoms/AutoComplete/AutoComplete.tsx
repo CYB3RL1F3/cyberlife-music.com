@@ -47,9 +47,9 @@ const AutoComplete = ({
   );
 
   useLayoutEffect(() => {
-    document.addEventListener("keydown", handleKeyboard);
+    window.document.addEventListener("keydown", handleKeyboard);
     return () => {
-      document.removeEventListener("keydown", handleKeyboard);
+      window.document.removeEventListener("keydown", handleKeyboard);
     };
   }, [handleKeyboard]);
 

@@ -53,6 +53,7 @@ export const getSanitizedHtml = (
           "name",
           "target",
           "rel",
+          "class",
           "cite",
           "type",
           "src",
@@ -68,3 +69,16 @@ export const getSanitizedHtml = (
 
 export const parseHtml = (html: string) =>
   reactHtmlParser(getSanitizedHtml(html));
+
+export const toHtml = (html: string, className?: string) => {
+  return html
+    .replace(
+      /(https?:\/\/(?:www\.|(?!www) | (bit.ly))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gim,
+      `<a ${
+        className ? `class="${className}"` : ""
+      } rel="external nofollow" target="_blank" href="$1">$1</a>`
+    )
+    .replace('href="www', 'href="https://www')
+    .replace('href="bit.ly', 'href="https://bit.ly')
+    .replace(/(\n)/g, "<br />");
+};

@@ -1,6 +1,9 @@
 import { useParams } from "@remix-run/react";
+import EventsPage from "~/components/pages/EventsPage";
+import EventPage from "~/components/pages/EventPage/EventPage";
 
 export default function Release() {
   const { id } = useParams();
-  return <h1>Release {id}</h1>;
+  if (!id) return <EventsPage />;
+  return <EventPage id={id} />;
 }

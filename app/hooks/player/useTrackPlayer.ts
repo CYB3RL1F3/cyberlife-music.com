@@ -13,7 +13,6 @@ export const useTrackPlayer = (id: number) => {
   } = usePlayerContext();
 
   const currentTrack = useMemo(() => buffer[id], [buffer, id]);
-  console.log("UUUU");
 
   const isCurrentTrack = currentTrackId === id;
 
@@ -33,13 +32,11 @@ export const useTrackPlayer = (id: number) => {
   const setLoad = (value: number) => playerContext.setLoad(id, value);
   const setSeek = (value: number, jumping?: boolean) =>
     playerContext.setSeek(id, value, jumping);
+
   const isInCurrentContext =
     currentContext &&
     currentTrack?.contexts &&
     currentTrack.contexts.includes(currentContext);
-
-  console.log("LOAD >> ", currentTrack?.load);
-  console.log("SEEK >> ", currentTrack?.seek);
 
   return {
     load: currentTrack?.load || 0,

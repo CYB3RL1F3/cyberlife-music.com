@@ -8,12 +8,12 @@ const BackgroundImage = ({
 }: BackgroundImageProps) => {
   return (
     <div
-      className={clsx("flex bg-cover", className)}
+      className={clsx("flex bg-cover h-full", className)}
       style={{
         backgroundImage: `url("${src}")`
       }}
     >
-      {children}
+      {children}x
     </div>
   );
 };
