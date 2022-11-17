@@ -19,6 +19,7 @@ import AudioContainer from "./components/molecules/AudioContainer";
 import { ClientOnly } from "./components/atoms/ClientOnly/ClientOnly";
 import PageDetailHeaderPortal from "./components/molecules/PageDetailHeaderPortal/PageDetailHeaderPortal";
 import ConfigContextProvider from "./components/contexts/ConfigContext/ConfigContext.provider";
+import NotificationContextProvider from "./components/contexts/NotificationContext";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -60,26 +61,28 @@ export default function App() {
             }
           }}
         >
-          <Application>
-            <DisplayInfosContainer />
-            <div className="h-8">
-              <PageDetailHeaderPortal.Container />
-            </div>
-            <ContainerScrollPage>
-              <AnimatePresence exitBeforeEnter initial={false}>
-                <motion.div
-                  key={useLocation().pathname}
-                  initial={{ opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ opacity: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {outlet}
-                </motion.div>
-              </AnimatePresence>
-            </ContainerScrollPage>
-            <ClientOnly>{() => <AudioContainer />}</ClientOnly>
-          </Application>
+          <NotificationContextProvider>
+            <Application>
+              <DisplayInfosContainer />
+              <div className="h-6">
+                <PageDetailHeaderPortal.Container />
+              </div>
+              <ContainerScrollPage>
+                <AnimatePresence exitBeforeEnter initial={false}>
+                  <motion.div
+                    key={useLocation().pathname}
+                    initial={{ opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ opacity: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {outlet}
+                  </motion.div>
+                </AnimatePresence>
+              </ContainerScrollPage>
+              <ClientOnly>{() => <AudioContainer />}</ClientOnly>
+            </Application>
+          </NotificationContextProvider>
         </ConfigContextProvider>
         <ScrollRestoration />
         <Scripts />

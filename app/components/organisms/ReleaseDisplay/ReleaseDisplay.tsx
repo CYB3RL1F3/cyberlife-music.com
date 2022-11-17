@@ -13,7 +13,7 @@ const ReleaseDisplay = ({ release }: ReleaseDisplayProps) => {
       </PageDetailHeaderPortal>
       <ReleaseDetails release={release} />
       <div className="py-4">
-        <Text size="md">{release.notes}</Text>
+        <Text.RightItalic>{release.notes}</Text.RightItalic>
       </div>
       {release.tracklist && (
         <ReleaseTracklist

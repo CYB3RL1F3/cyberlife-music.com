@@ -21,9 +21,7 @@ const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
       <PlayerPodcastTrackContainer track={podcast} />
       <div className="pt-4 o-8">
         {description && (
-          <Text align="left" size="md">
-            {parseHtml(toHtml(description, "underline"))}
-          </Text>
+          <Text>{parseHtml(toHtml(description, "underline"))}</Text>
         )}
         {!!tracklist && <DisplayPodcastTracklist tracklist={tracklist} />}
         {!!taglist?.length && <ListTag tags={taglist} />}

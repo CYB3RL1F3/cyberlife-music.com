@@ -4,7 +4,7 @@ import type { ListEventsEmptyProps } from "./ListEventsEmpty.types";
 const ListEventsEmpty = ({ ...props }: ListEventsEmptyProps) => {
   return (
     <div className="flex gap-8 py-8">
-      <div className="justify-end flex-auto mt-4 h-24s">
+      <div className="justify-end flex-auto h-24 mt-4">
         <p className="text-xl text-right text-white">
           No future gigs at the moment
         </p>
@@ -16,7 +16,7 @@ const ListEventsEmpty = ({ ...props }: ListEventsEmptyProps) => {
         </p>
       </div>
       <div className="h-full">
-        <p className="text-white text-xxl leading-[1]">:(</p>
+        <p className="text-white text-xxl leading-[1] w-12">:(</p>
       </div>
     </div>
   );

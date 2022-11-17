@@ -14,11 +14,16 @@ const transition: AnimationOptions<number> = {
 };
 
 const Carousel = ({ index, children }: CarouselProps) => {
-  const childrens = Children.toArray(children);
+  console.log("INDEX >>>> ", index);
+  const childrens = useMemo(() => Children.toArray(children), [children]);
+  console.log(childrens);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemSize = containerRef.current?.clientWidth || 0;
-  const width = itemSize * childrens.length;
-  const currentX = useMemo(() => -index * itemSize, [index, itemSize]);
+  const width = useMemo(
+    () => itemSize * childrens.length,
+    [childrens, itemSize]
+  );
+  const currentX = useMemo(() => (-index + 0) * itemSize, [index, itemSize]);
   const x = useMotionValue(currentX);
   animate(x, currentX, transition);
 

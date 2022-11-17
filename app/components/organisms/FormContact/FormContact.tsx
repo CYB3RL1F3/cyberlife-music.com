@@ -80,7 +80,7 @@ const FormContact = ({
           </motion.div>
 
           <motion.div {...transition(0.3)} className="w-full">
-            <div className="flex justify-between h-6">
+            <div className="flex justify-between h-12">
               <ControlledFieldInput
                 autoComplete="off"
                 autoCorrect="off"

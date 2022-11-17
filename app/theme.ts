@@ -5,7 +5,7 @@ export const theme = {
     "h-8 inline-flex items-center uppercase text-lg font-semibold",
   linkHover: "cursor:pointer hover:text-white",
   linkSeparatorDash:
-    "inline-flex before:content-['-'] before:w-4 before:text-center"
+    "inline-flex md:before:content-['-'] md:before:w-4 before:text-center"
 };
 
 export type Theme = typeof theme;

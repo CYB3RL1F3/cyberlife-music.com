@@ -5,7 +5,7 @@ import { Link } from "@remix-run/react";
 
 const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
   return (
-    <div className="flex justify-between w-full h-16 pt-6 pr-6">
+    <div className="flex justify-between w-full h-16 pt-4 pr-6">
       {url && (
         <Link
           to={url}

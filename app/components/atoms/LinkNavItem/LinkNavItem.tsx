@@ -5,13 +5,17 @@ import { theme } from "~/theme";
 import clsx from "clsx";
 
 const LinkNavItem = forwardRef<HTMLAnchorElement, LinkNavItemProps>(
-  ({ href, label }, ref) => {
+  ({ href, label, onChange }, ref) => {
     return (
       <Link
         ref={ref}
         prefetch="intent"
+        onClick={onChange}
         to={href}
-        className={clsx(theme.largeSemiBoldUppercase, theme.linkHover)}
+        className={clsx(
+          "h-24 leading-24 md:leading-8 md:h-8 inline-flex items-center uppercase text-xl md:text-lg font-semibold",
+          theme.linkHover
+        )}
       >
         {label}
       </Link>

@@ -4,9 +4,9 @@ import Text from "~/components/atoms/Text";
 const WrapperListings = ({ title, children }: WrapperListingsProps) => {
   return (
     <div className="w-full o-2">
-      <Text align="left" size="sm">
+      <Text.Sm>
         {title}
-      </Text>
+      </Text.Sm>
       {children}
     </div>
   );

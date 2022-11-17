@@ -4,6 +4,9 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screen: {
+        "max-md": { max: "767px" }
+      },
       colors: {
         gray: {
           100: "#DEDEDE",

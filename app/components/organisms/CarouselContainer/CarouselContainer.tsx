@@ -8,7 +8,7 @@ const CarouselContainer = ({ children }: CarouselContainerProps) => {
   const nbItems = Children.toArray(children).length;
   return (
     <div className="flex flex-col items-end justify-end w-full h-80 o-4">
-      <Carousel index={currentIndex}>{children}</Carousel>
+      <Carousel nbItems={nbItems} index={currentIndex}>{children}</Carousel>
       <CarouselController
         nbItems={nbItems}
         index={currentIndex}

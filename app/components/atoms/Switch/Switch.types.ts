@@ -1,5 +1,4 @@
-
-  export type SwitchProps = {
-    
-  }
-  
+export type SwitchProps = {
+  value?: boolean;
+  onChange?: (value: boolean) => void;
+};

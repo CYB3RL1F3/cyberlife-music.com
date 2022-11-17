@@ -2,4 +2,5 @@ import type { LinkNavItemProps } from "~/components/atoms/LinkNavItem/LinkNavIte
 
 export type LinkNavItemListProps = {
   items: LinkNavItemProps[];
+  onChange?: () => void;
 };

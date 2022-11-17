@@ -33,13 +33,13 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
       }
       linkIcons={linkIcons.reverse()}
     >
-      <Text size="md">
+      <Text.RightItalic>
         Published on {date ? dayjs(date).format("DD/MM/YYYY") : "Soundcloud"}
-      </Text>
-      <Text size="md">
+      </Text.RightItalic>
+      <Text.RightItalic>
         Duration: {duration?.toString().substring(11, 11 + 8)}
-      </Text>
-      <Text size="md">{license}</Text>
+      </Text.RightItalic>
+      <Text.RightItalic>{license}</Text.RightItalic>
     </PageDetailLayout>
   );
 };

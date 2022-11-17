@@ -13,7 +13,7 @@ const BackgroundImage = ({
         backgroundImage: `url("${src}")`
       }}
     >
-      {children}x
+      {children}
     </div>
   );
 };

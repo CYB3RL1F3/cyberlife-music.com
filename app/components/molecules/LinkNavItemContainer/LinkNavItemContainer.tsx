@@ -1,23 +1,23 @@
 import type { LinkNavItemContainerProps } from "./LinkNavItemContainer.types";
 import type { MutableRefObject } from "react";
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useNavContext } from "~/components/contexts/NavContext";
 import LinkNavItem from "~/components/atoms/LinkNavItem";
 
 const LinkNavItemContainer = ({
   index,
+  onChange,
   ...props
 }: LinkNavItemContainerProps) => {
   const ref =
     useRef<HTMLAnchorElement>() as MutableRefObject<HTMLAnchorElement | null>;
   const { setItem, offset } = useNavContext();
-  console.log(offset);
   const width = ref.current?.clientWidth;
 
-  const position = useMemo(
-    () => (ref.current?.offsetLeft || 0) - (offset || 0),
-    [offset]
-  );
+  console.log("OFFSET >> ", offset);
+  console.log("CURRENT OFFSET LEFT >>> ", ref.current?.offsetLeft);
+
+  const position = (ref.current?.offsetLeft || 0) - (offset || 0);
 
   useEffect(() => {
     if (
@@ -31,10 +31,10 @@ const LinkNavItemContainer = ({
           position,
           width
         });
-      }, 100);
+      }, 350);
     }
   }, [width, setItem, index, position]);
-  return <LinkNavItem ref={ref} {...props} />;
+  return <LinkNavItem onChange={onChange} ref={ref} {...props} />;
 };
 
 export default LinkNavItemContainer;
