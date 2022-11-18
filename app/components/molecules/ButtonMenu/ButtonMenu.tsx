@@ -8,7 +8,7 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
   return (
     <Button
       onClick={onClick}
-      className="absolute rounded-sm z-20 flex flex-col items-center justify-center w-8 h-[30px] gap-1 right-2 top-2 md:hidden"
+      className="bg-transparent absolute rounded-sm z-20 flex flex-col items-center justify-center w-8 h-[30px] gap-1 right-2 top-2 md:hidden"
     >
       <div
         className={clsx(barClassName, {

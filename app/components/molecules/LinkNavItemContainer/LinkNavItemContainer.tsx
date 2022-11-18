@@ -23,15 +23,21 @@ const LinkNavItemContainer = ({
     if (
       typeof width !== "undefined" &&
       typeof index !== "undefined" &&
-      typeof position !== "undefined"
+      typeof position !== "undefined" &&
+      window.document
     ) {
-      setTimeout(() => {
+      window.document.fonts.ready.then(() => {
         setItem({
           index,
           position,
           width
         });
-      }, 350);
+      });
+      setItem({
+        index,
+        position,
+        width
+      });
     }
   }, [width, setItem, index, position]);
   return <LinkNavItem onChange={onChange} ref={ref} {...props} />;

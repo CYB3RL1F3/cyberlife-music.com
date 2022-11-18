@@ -3,8 +3,17 @@ module.exports = {
   mode: "jit",
   content: ["./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screen: {
+      mobile: "740px",
+      tablet: "1024px",
+      desktop: "1420px",
+      "max-md": { max: "767px" }
+    },
     extend: {
       screen: {
+        sm: "740px",
+        md: "1024px",
+        lg: "1420px",
         "max-md": { max: "767px" }
       },
       colors: {
