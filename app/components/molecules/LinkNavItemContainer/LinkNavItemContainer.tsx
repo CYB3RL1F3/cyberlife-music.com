@@ -15,9 +15,6 @@ const LinkNavItemContainer = ({
   const { setItem, offset } = useNavContext();
   const width = ref.current?.clientWidth;
 
-  console.log("OFFSET >> ", offset);
-  console.log("CURRENT OFFSET LEFT >>> ", ref.current?.offsetLeft);
-
   const position = (ref.current?.offsetLeft || 0) - (offset || 0);
 
   useEffect(() => {
@@ -28,16 +25,16 @@ const LinkNavItemContainer = ({
       window.document
     ) {
       const updateItem = () => {
-        setItem({
-          index,
-          position,
-          width
-        });
+        setTimeout(() => {
+          setItem({
+            index,
+            position,
+            width
+          });
+        }, 100);
       };
       const debounced = debounce(updateItem, 200);
-      window.document.fonts.ready.then(() => {
-        updateItem();
-      });
+      window.document.fonts.ready.then(updateItem);
       window.addEventListener("resize", debounced);
       updateItem();
       return () => {
