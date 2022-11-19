@@ -16,7 +16,7 @@ const Anchor = ({
   const cls = useMemo(
     () =>
       clsx({
-        [clsx(theme.midSemiBold, theme.linkHover, className)]:
+        [clsx("font-semibold leading-6", theme.linkHover, className)]:
           variant === "link",
         [buttonStyle]: variant === "button"
       }),

@@ -22,11 +22,13 @@ const ListPodcastsItem = ({
     >
       <ListItemSnippet title={title} href={`podcasts/${id}`}>
         <div className="w-full h-16">
-          <Ellipsis className="pr-2 text-sm italic text-right">
+          <Ellipsis className="pr-2 text-xs italic text-right md:text-sm">
             {description}
           </Ellipsis>
         </div>
-        <PlayerPodcastTrackContainer track={podcast} />
+        <div className="hidden md:block">
+          <PlayerPodcastTrackContainer track={podcast} />
+        </div>
       </ListItemSnippet>
     </ListItem>
   );

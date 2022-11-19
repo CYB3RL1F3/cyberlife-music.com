@@ -1,7 +1,10 @@
 import type { ReleaseFragmentTracklistStream } from "../types/gql/ReleaseFragment";
 import type { PlaylistQueryPlaylistTracks } from "../types/gql/PlaylistQuery";
 import type { PlaylistTrackQueryPlaylistTrack } from "../types/gql/PlaylistTrackQuery";
-import type { TrackToBuffer } from "~/components/contexts/PlayerContext/PlayerContext.types";
+import type {
+  TrackPlayerContext,
+  TrackToBuffer
+} from "~/components/contexts/PlayerContext/PlayerContext.types";
 
 type TrackType =
   | ReleaseFragmentTracklistStream
@@ -10,7 +13,7 @@ type TrackType =
 
 export const getTrackTobuffer = (
   track: TrackType,
-  contexts: readonly string[]
+  contexts: TrackPlayerContext
 ) => {
   const toBuffer: TrackToBuffer = {
     id: track.id || 0,

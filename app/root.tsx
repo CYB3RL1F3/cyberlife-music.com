@@ -20,6 +20,7 @@ import { ClientOnly } from "./components/atoms/ClientOnly/ClientOnly";
 import PageDetailHeaderPortal from "./components/molecules/PageDetailHeaderPortal/PageDetailHeaderPortal";
 import ConfigContextProvider from "./components/contexts/ConfigContext/ConfigContext.provider";
 import NotificationContextProvider from "./components/contexts/NotificationContext";
+import FooterMobile from "./components/organisms/FooterMobile";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -70,6 +71,7 @@ export default function App() {
               <ContainerScrollPage>
                 <AnimatePresence exitBeforeEnter initial={false}>
                   <motion.div
+                    className="max-md:min-h-[calc(100vh_-_20rem)]"
                     key={useLocation().pathname}
                     initial={{ opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -78,6 +80,7 @@ export default function App() {
                   >
                     {outlet}
                   </motion.div>
+                  <FooterMobile />
                 </AnimatePresence>
               </ContainerScrollPage>
               <ClientOnly>{() => <AudioContainer />}</ClientOnly>

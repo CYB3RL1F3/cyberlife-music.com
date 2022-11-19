@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 import { theme } from "../../../theme";
 
 const ListItemSnippet = ({ children, title, href }: ListItemSnippetProps) => {
-  const cls = "italic font-semibold text-right uppercase";
+  const cls = "italic font-semibold text-right uppercase text-sm md:text-md";
   return (
     <div className="flex flex-col w-full gap-2 py-2 flex-end">
       {href ? (

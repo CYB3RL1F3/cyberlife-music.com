@@ -16,17 +16,17 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
   return (
     <motion.li
       className={className}
-      initial={{ x: "55vw" }}
+      initial={{ x: "100vw" }}
       animate={{ x: 0 }}
-      exit={{ x: "55vw" }}
-      transition={{ duration: 0.25, delay }}
+      exit={{ x: "100vw" }}
+      transition={{ duration: 0.3, delay }}
     >
       <motion.div
         className="flex justify-end w-full flex-end"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3, delay: opacityDelay }}
+        transition={{ duration: 0.35, delay: opacityDelay }}
       >
         {children}
       </motion.div>

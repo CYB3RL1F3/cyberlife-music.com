@@ -13,7 +13,7 @@ const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
     <ListItem
       thumbnail={
         <BackgroundImage
-          className="items-center justify-center w-32 h-32 "
+          className="items-center justify-center w-24 h-24 md:w-32 md:h-32 "
           src={artwork}
         />
       }
@@ -26,8 +26,12 @@ const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
           </p>
         </div>
         <div className="w-full">
-          <p className="text-sm italic text-right">
-            {discogs && <Anchor href={discogs}>Buy on Discogs</Anchor>}
+          <p className="hidden text-sm italic text-right md:block">
+            {discogs && (
+              <Anchor className="text-sm" href={discogs}>
+                Buy on Discogs
+              </Anchor>
+            )}
           </p>
         </div>
       </ListItemSnippet>

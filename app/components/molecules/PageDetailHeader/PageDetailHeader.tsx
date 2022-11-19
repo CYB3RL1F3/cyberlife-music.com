@@ -5,11 +5,11 @@ import { Link } from "@remix-run/react";
 
 const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
   return (
-    <div className="flex justify-between w-full h-16 pt-4 pr-6">
+    <div className="z-10 flex justify-between w-full h-16 pt-4 pr-6 max-md:absolute">
       {url && (
         <Link
           to={url}
-          className="flex items-center justify-center w-16 h-8 ml-40 font-semibold text-white cursor-pointer"
+          className="flex items-center justify-center w-4 h-8 text-lg font-semibold text-white cursor-pointer md:text-md md:w-16 md:ml-40"
         >
           <HiArrowLeft />
         </Link>

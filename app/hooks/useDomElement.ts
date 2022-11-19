@@ -4,7 +4,9 @@ import { getDomElement } from "~/utils/getDomElement";
 
 export const useDomElement = (selector: string) => {
   const [element, setElement] = useState<Element | null>(
-    document.querySelector(selector)
+    typeof window !== "undefined"
+      ? window.document.querySelector(selector)
+      : null
   );
   useEffect(() => {
     const asyncEffect = async () => {

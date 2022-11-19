@@ -6,7 +6,11 @@ import { getTrackTobuffer } from "~/utils/trackToBuffer";
 export const usePodcastTrackPlayer = (
   track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks
 ) => {
-  const contexts = [`/`, `/podcasts/${track.id || 0}`] as const;
+  const url = `/podcasts/${track.id || 0}`;
+  const contexts = {
+    desktop: [`/`, url] as const,
+    mobile: [url]
+  };
   const toBuffer = getTrackTobuffer(track, contexts);
   const playerContext = useBufferTrackPlayer(toBuffer);
   return playerContext;

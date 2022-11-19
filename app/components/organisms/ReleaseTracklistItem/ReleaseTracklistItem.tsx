@@ -23,7 +23,9 @@ const ReleaseTracklistItem = ({
     >
       <ListItemSnippet title={title || ""}>
         <div className="w-full h-16" />
-        <PlayerReleaseTrackContainer track={stream} id={id} />
+        <div className="max-md:hidden">
+          <PlayerReleaseTrackContainer track={stream} id={id} />
+        </div>
       </ListItemSnippet>
     </ListItem>
   );

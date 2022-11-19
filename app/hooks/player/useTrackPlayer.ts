@@ -35,8 +35,8 @@ export const useTrackPlayer = (id: number) => {
 
   const isInCurrentContext =
     currentContext &&
-    currentTrack?.contexts &&
-    currentTrack.contexts.includes(currentContext);
+    currentTrack?.contexts?.desktop &&
+    currentTrack.contexts.desktop.includes(currentContext);
 
   return {
     load: currentTrack?.load || 0,

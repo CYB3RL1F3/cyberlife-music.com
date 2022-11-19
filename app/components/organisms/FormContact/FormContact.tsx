@@ -45,7 +45,7 @@ const FormContact = ({
             </a>
           </p>
         </div>
-        <form onSubmit={submit} className="w-[40vw] o-4">
+        <form onSubmit={submit} className="w-full md:w-[40vw] o-4">
           <motion.div {...transition(0.1)} className="w-full">
             <ControlledFieldInput
               control={control}
@@ -62,12 +62,12 @@ const FormContact = ({
             />
           </motion.div>
 
-          <motion.div {...transition(0.2)} className="w-[40vw]">
+          <motion.div {...transition(0.2)} className="w-full md:w-[40vw]">
             <ControlledFieldInputAutoComplete
               control={control}
               name="subject"
               placeholder="Your subject"
-              size="w-[40vw]"
+              size="w-full md:w-[40vw]"
               values={subjectSuggestions}
             />
           </motion.div>

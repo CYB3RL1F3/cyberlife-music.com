@@ -1,9 +1,14 @@
 import type { ReactNode } from "react";
 
+export type TrackPlayerContext = {
+  desktop: readonly string[];
+  mobile: readonly string[];
+};
+
 export type TrackToBuffer = {
   id: number;
   url: string;
-  contexts: readonly string[];
+  contexts: TrackPlayerContext;
   waveform: string;
   duration: number;
 };
