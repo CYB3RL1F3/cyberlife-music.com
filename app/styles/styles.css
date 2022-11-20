@@ -622,6 +622,10 @@ video {
   margin-top: 0.25rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .block {
   display: block;
 }
@@ -2125,6 +2129,14 @@ input:-webkit-autofill:active{
 
   .max-md\:min-h-\[calc\(100vh_-_2\B0rem\)\] {
     min-height: calc(100vh - 2°rem);
+  }
+
+  .max-md\:min-h-\[calc\(100vh_-_22rem\)\] {
+    min-height: calc(100vh - 22rem);
+  }
+
+  .max-md\:min-h-\[calc\(100vh_-_21rem\)\] {
+    min-height: calc(100vh - 21rem);
   }
 
   .max-md\:w-1\/2 {

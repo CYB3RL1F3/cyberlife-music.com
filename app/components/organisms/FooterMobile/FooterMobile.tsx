@@ -5,7 +5,9 @@ import NotificationActivationSwitch from "../NotificationActivationSwitch";
 const FooterMobile = () => {
   return (
     <div className="mt-4 md:hidden">
-      <NotificationActivationSwitch />
+      <div className="mb-4">
+        <NotificationActivationSwitch />
+      </div>
       <FooterAnchorsCopyrights />
       <FooterAnchorsInfosContainer />
     </div>

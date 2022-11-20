@@ -71,7 +71,7 @@ export default function App() {
               <ContainerScrollPage>
                 <AnimatePresence exitBeforeEnter initial={false}>
                   <motion.div
-                    className="max-md:min-h-[calc(100vh_-_20rem)]"
+                    className="max-md:min-h-[calc(100vh_-_21rem)]"
                     key={useLocation().pathname}
                     initial={{ opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
