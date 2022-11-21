@@ -20,15 +20,16 @@ export const useSubscribeMutation = (
     errorPolicy: "all"
   });
 
-  const contact = (
+  const subscribe = (
+    notificationPoolId: string,
     subscription: SubscribeMutationVariables["subscription"]
   ) => {
     return mutation({
       variables: {
-        notificationPoolId: "62fa4939c6d2ad9b9eeb036e",
+        notificationPoolId,
         subscription
       }
     });
   };
-  return [contact, mutationResults] as const;
+  return [subscribe, mutationResults] as const;
 };

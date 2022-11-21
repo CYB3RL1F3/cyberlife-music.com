@@ -1,6 +1,8 @@
+import React from "react";
 import type { MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -8,6 +10,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useLocation,
+  useMatches,
   useOutlet
 } from "@remix-run/react";
 import Application from "./components/layouts/Application";
@@ -21,17 +24,18 @@ import PageDetailHeaderPortal from "./components/molecules/PageDetailHeaderPorta
 import ConfigContextProvider from "./components/contexts/ConfigContext/ConfigContext.provider";
 import NotificationContextProvider from "./components/contexts/NotificationContext";
 import FooterMobile from "./components/organisms/FooterMobile";
+import PwaContextProvider from "./components/contexts/PwaContext";
+
+let isMount = true;
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "New Remix App",
   viewport: "width=device-width,initial-scale=1"
 });
-
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
-
 export async function loader() {
   return json({
     ENV: {
@@ -41,15 +45,51 @@ export async function loader() {
     }
   });
 }
-
 export default function App() {
   const data = useLoaderData();
   const outlet = useOutlet();
+  let location = useLocation();
+  let matches = useMatches();
+
+  React.useEffect(() => {
+    let mounted = isMount;
+    isMount = false;
+    if ("serviceWorker" in navigator) {
+      if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller?.postMessage({
+          type: "REMIX_NAVIGATION",
+          isMount: mounted,
+          location,
+          matches,
+          manifest: window.__remixManifest
+        });
+      } else {
+        let listener = async () => {
+          await navigator.serviceWorker.ready;
+          navigator.serviceWorker.controller?.postMessage({
+            type: "REMIX_NAVIGATION",
+            isMount: mounted,
+            location,
+            matches,
+            manifest: window.__remixManifest
+          });
+        };
+        navigator.serviceWorker.addEventListener("controllerchange", listener);
+        return () => {
+          navigator.serviceWorker.removeEventListener(
+            "controllerchange",
+            listener
+          );
+        };
+      }
+    }
+  }, [location, matches]);
+
   return (
     <html lang="en">
       <head>
-        <Meta />
-        <Links />
+        <Meta /> <Links />
+        <link rel="manifest" href="/resources/manifest.webmanifest" />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
         <ConfigContextProvider
@@ -62,33 +102,34 @@ export default function App() {
             }
           }}
         >
-          <NotificationContextProvider>
-            <Application>
-              <DisplayInfosContainer />
-              <div className="h-6">
-                <PageDetailHeaderPortal.Container />
-              </div>
-              <ContainerScrollPage>
-                <AnimatePresence exitBeforeEnter initial={false}>
-                  <motion.div
-                    className="max-md:min-h-[calc(100vh_-_21rem)]"
-                    key={useLocation().pathname}
-                    initial={{ opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ opacity: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {outlet}
-                  </motion.div>
-                  <FooterMobile />
-                </AnimatePresence>
-              </ContainerScrollPage>
-              <ClientOnly>{() => <AudioContainer />}</ClientOnly>
-            </Application>
-          </NotificationContextProvider>
+          <PwaContextProvider>
+            <NotificationContextProvider>
+              <Application>
+                <DisplayInfosContainer />
+                <div className="h-6">
+                  <PageDetailHeaderPortal.Container />
+                </div>
+                <ContainerScrollPage>
+                  <AnimatePresence exitBeforeEnter initial={false}>
+                    <motion.div
+                      className="max-md:min-h-[calc(100vh_-_21rem)]"
+                      key={useLocation().pathname}
+                      initial={{ opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ opacity: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {outlet}
+                    </motion.div>
+                    <FooterMobile />
+                  </AnimatePresence>
+                </ContainerScrollPage>
+                <ClientOnly>{() => <AudioContainer />}</ClientOnly>
+              </Application>
+            </NotificationContextProvider>
+          </PwaContextProvider>
         </ConfigContextProvider>
-        <ScrollRestoration />
-        <Scripts />
+        <ScrollRestoration /> <Scripts />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.ENV = ${JSON.stringify(data.ENV)}`

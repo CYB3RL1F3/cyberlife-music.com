@@ -2,10 +2,12 @@ import { useNotificationContext } from "~/components/contexts/NotificationContex
 import FieldSwitch from "~/components/molecules/FieldSwitch";
 
 const NotificationActivationSwitch = () => {
-  const { isActive, setActive } = useNotificationContext();
-  const adjective = isActive ? "enabled" : "disabled";
+  const { isSubscribed, setSubscribed } = useNotificationContext();
+  const adjective = isSubscribed ? "enabled" : "disabled";
   const label = `Notifications ${adjective} on my browser`;
-  return <FieldSwitch label={label} value={isActive} onChange={setActive} />;
+  return (
+    <FieldSwitch label={label} value={isSubscribed} onChange={setSubscribed} />
+  );
 };
 
 export default NotificationActivationSwitch;

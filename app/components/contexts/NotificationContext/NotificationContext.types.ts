@@ -2,8 +2,10 @@ import type { ReactNode } from "react";
 
 export type NotificationValues = {
   notifications?: [];
-  isActive?: boolean;
-  setActive?: (isActive: NotificationValues["isActive"]) => void;
+  isSubscribed: boolean;
+  setSubscribed?: (
+    isSubscribed: NotificationValues["isSubscribed"]
+  ) => Promise<void>;
 };
 
 export type NotificationContextProviderProps = {
