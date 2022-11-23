@@ -138,6 +138,10 @@ export interface PlaylistTrackQueryPlaylistTrack {
    */
   downloadable: boolean | null;
   /**
+   * track license
+   */
+  license: string | null;
+  /**
    * track stats
    */
   stats: PlaylistTrackQueryPlaylistTrackStats | null;

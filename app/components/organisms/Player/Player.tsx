@@ -27,6 +27,7 @@ const Player = ({
           waveform={waveform}
           seek={seek}
           load={load}
+          isPlaying={isPlaying}
           onSeekChange={handleSeekChange}
         />
       </div>

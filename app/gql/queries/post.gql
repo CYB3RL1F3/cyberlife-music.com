@@ -1,0 +1,5 @@
+query PostQuery($profile: String!, $id: String!) {
+  post(author: $profile, id: $id) {
+    ...PostFragment
+  }
+}

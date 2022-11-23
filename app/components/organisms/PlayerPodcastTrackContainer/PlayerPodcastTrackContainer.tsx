@@ -7,7 +7,7 @@ const PlayerPodcastTrackContainer = ({
   track
 }: PlayerPodcastTrackContainerProps) => {
   const { waveform } = track;
-  const { seek, load, setSeek } = usePodcastTrackPlayer(track);
+  const { seek, load, setSeek, isPlaying } = usePodcastTrackPlayer(track);
   const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
     setSeek(seek, true);
   };
@@ -17,6 +17,7 @@ const PlayerPodcastTrackContainer = ({
       waveform={waveform}
       load={load}
       seek={seek}
+      isPlaying={isPlaying}
       onSeekChange={handleSeekChange}
     />
   );

@@ -1,17 +1,13 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { profile } from "~/config";
-import eventsQuery from "~/gql/queries/events.gql";
 import type {
   EventsQuery,
   EventsQueryVariables
 } from "~/types/gql/EventsQuery";
-
-const query = gql`
-  ${eventsQuery}
-`;
+import { eventsGqlQuery } from "~/queries/events";
 
 export const useEventsQuery = () => {
-  return useQuery<EventsQuery, EventsQueryVariables>(query, {
+  return useQuery<EventsQuery, EventsQueryVariables>(eventsGqlQuery, {
     variables: {
       profile
     }

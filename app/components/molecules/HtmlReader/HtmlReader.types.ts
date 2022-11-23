@@ -1,5 +1,4 @@
-
-  export type HtmlReaderProps = {
-    
-  }
-  
+export type HtmlReaderProps = {
+  value?: string;
+  className?: string;
+};

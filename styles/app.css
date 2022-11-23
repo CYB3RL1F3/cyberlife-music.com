@@ -227,3 +227,16 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #333333 inset !important;
     
 }
+
+
+.about h2 {
+  @apply pb-4 text-lg;
+}
+
+.about a {
+  @apply text-gray-500
+}
+
+.about a:hover {
+  @apply text-white underline;
+}

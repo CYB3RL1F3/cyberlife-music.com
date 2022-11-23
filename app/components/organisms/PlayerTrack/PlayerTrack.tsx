@@ -2,11 +2,13 @@ import type { MouseEventHandler, MutableRefObject } from "react";
 import { useCallback, useRef } from "react";
 import Waveform from "~/components/atoms/Waveform";
 import type { PlayerTrackProps } from "./PlayerTrack.types";
+import { clsx } from "clsx";
 
 const PlayerTrack = ({
   waveform,
   seek,
   load,
+  isPlaying,
   onSeekChange
 }: PlayerTrackProps) => {
   const waveformRef =
@@ -35,7 +37,9 @@ const PlayerTrack = ({
     <div
       ref={playerRef}
       onClick={moveSeek}
-      className="relative w-full h-6 cursor-pointer opacity-80"
+      className={clsx("relative w-full h-6 cursor-pointer opacity-80", {
+        grayscale: !isPlaying
+      })}
     >
       <Waveform
         ref={waveformRef}

@@ -34,6 +34,9 @@ module.exports = {
       width: {
         inherit: "inherit"
       },
+      height: {
+        screen: "calc(var(--vh) * 100)"
+      },
       keyframes: {
         appear: {
           "0%": { transform: "translateX(50vw)" },
@@ -62,7 +65,9 @@ module.exports = {
         md: "12pt",
         sm: "10pt",
         xl: "20pt",
-        xxl: "70pt"
+        xxl: "70pt",
+        semilarge: "35pt",
+        large: "40pt"
       },
       fontFamily: {
         "myriad-pro": "myriad-pro"

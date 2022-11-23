@@ -1,9 +1,9 @@
+import type { HtmlReaderProps } from "./HtmlReader.types";
+import { parseHtml } from "~/utils/html";
 
-  import type { HtmlReaderProps } from "./HtmlReader.types";
+const HtmlReader = ({ value, className }: HtmlReaderProps) => {
+  const data = value && parseHtml(value);
+  return <article className={className}>{data}</article>;
+};
 
-  const HtmlReader = ({ ...props }: HtmlReaderProps) => {
-    return <div>@Todo implement HtmlReader</div>
-  }
-
-  export default HtmlReader;
-  
+export default HtmlReader;

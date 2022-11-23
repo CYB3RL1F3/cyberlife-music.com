@@ -32,8 +32,8 @@ const NotificationContextProvider = ({
     const subscription = await getSubscription(registration);
     if (!subscription) return null;
     const subscriptionParameters = getSubscriptionParameters(subscription);
-    await subscribe(config.notificationPoolId, subscriptionParameters);
-  }, [config.notificationPoolId, isSubscribed, registration, subscribe]);
+    await subscribe(config.NOTIFICATION_POOL_ID, subscriptionParameters);
+  }, [config.NOTIFICATION_POOL_ID, isSubscribed, registration, subscribe]);
 
   const doUnsubscribe = () => {
     toggleSubscribed(false);

@@ -1,11 +1,17 @@
-import type { ApplicationProps } from "./Application.types";
+import type { ApplicationProps } from "./Layout.types";
 import Background from "~/components/atoms/Background/Background";
 import Header from "~/components/organisms/Header";
 import Footer from "~/components/organisms/Footer";
 import PageLayout from "../PageLayout/PageLayout";
 import ExtraContent from "~/components/organisms/ExtraContent";
+import { useResize } from "~/hooks/useResize";
 
-const Application = ({ children }: ApplicationProps) => {
+const Layout = ({ children }: ApplicationProps) => {
+  useResize(() => {
+    if (typeof window === "undefined") return;
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  });
   return (
     <Background>
       <div className="relative flex flex-col w-screen h-screen">
@@ -17,4 +23,4 @@ const Application = ({ children }: ApplicationProps) => {
   );
 };
 
-export default Application;
+export default Layout;
