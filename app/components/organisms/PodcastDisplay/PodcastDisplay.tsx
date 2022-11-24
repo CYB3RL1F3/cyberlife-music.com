@@ -6,12 +6,22 @@ import Text from "~/components/atoms/Text";
 import { parseHtml, toHtml } from "~/utils/html";
 import DisplayPodcastTracklist from "~/components/organisms/DisplayPodcastTracklist";
 import DisplayPodcastLikes from "../DisplayPodcastLikes";
+import type { ListTagProps } from "~/components/molecules/ListTag";
 import ListTag from "~/components/molecules/ListTag";
 import DisplayPodcastComments from "~/components/organisms/DisplayPodcastComments";
 import PlayerPodcastTrackContainer from "~/components/organisms/PlayerPodcastTrackContainer";
+import { useMemo } from "react";
 
 const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
   const { title, description, tracklist, likes, comments, taglist } = podcast;
+  const tags: ListTagProps["tags"] = useMemo(
+    () =>
+      (taglist || []).map((tag) => ({
+        value: tag,
+        href: `https://soundcloud.com/tags/${tag}`
+      })),
+    [taglist]
+  );
   return (
     <div className="o-4">
       <PageDetailHeaderPortal>
@@ -24,7 +34,7 @@ const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
           <Text>{parseHtml(toHtml(description, "underline"))}</Text>
         )}
         {!!tracklist && <DisplayPodcastTracklist tracklist={tracklist} />}
-        {!!taglist?.length && <ListTag tags={taglist} />}
+        {!!tags.length && <ListTag tags={tags} />}
         {!!likes?.length && <DisplayPodcastLikes likes={likes} />}
         {!!comments?.length && <DisplayPodcastComments comments={comments} />}
       </div>

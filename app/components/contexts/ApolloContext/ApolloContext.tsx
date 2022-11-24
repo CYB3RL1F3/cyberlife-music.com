@@ -8,8 +8,9 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import type { ApolloContextProps } from "./ApolloContext.types";
 import { omitDeep } from "~/utils/object";
+import { getApiUrl } from "~/utils/config";
 
-const uri = "http://localhost:3000/graphql";
+const uri = getApiUrl();
 
 const httpLink = createHttpLink({
   uri

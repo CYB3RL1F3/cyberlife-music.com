@@ -1,11 +1,14 @@
-/// <reference types="@remix-run/dev" />
 /// <reference types="@remix-run/node" />
 
-interface Window {
+export interface Window {
   __APOLLO_STATE__: any;
   ENV: {
-    MAPBOX_API_KEY: string;
+    mapbox: {
+      accessToken: string;
+      style: string;
+    };
     api: string;
+    apiEndpoint: string;
     notificationPoolId: string;
   };
 }

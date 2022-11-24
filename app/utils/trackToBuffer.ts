@@ -5,6 +5,7 @@ import type {
   TrackPlayerContext,
   TrackToBuffer
 } from "~/components/contexts/PlayerContext/PlayerContext.types";
+import { getApiEndpoint } from "./config";
 
 type TrackType =
   | ReleaseFragmentTracklistStream
@@ -15,6 +16,8 @@ export const getTrackTobuffer = (
   track: TrackType,
   contexts: TrackPlayerContext
 ) => {
+  const apiUrl = getApiEndpoint();
+  console.log("apiEndpoint >> ", apiUrl);
   const toBuffer: TrackToBuffer = {
     id: track.id || 0,
     waveform: track.waveform || "",

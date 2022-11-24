@@ -97,8 +97,6 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     return playing && currentTrackId === id;
   };
 
-  console.log("UPDDD", playerContextState);
-
   return (
     <PlayerContext.Provider
       value={{

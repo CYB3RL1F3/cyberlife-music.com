@@ -1,0 +1,5 @@
+mutation UnSubscribeMutation($notificationPoolId: String!, $endpoint: String!) {
+  unsubscribe(notificationPoolId: $notificationPoolId, endpoint: $endpoint) {
+    deleted
+  }
+}

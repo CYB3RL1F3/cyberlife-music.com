@@ -12,6 +12,7 @@ export const getSubscription = async (
     return null;
   }
   let subscription = await registration.pushManager.getSubscription();
+  console.log(subscription);
   if (!subscription) {
     const subInfo = await fetch("/resources/subscribe");
     const applicationKey = await subInfo.text();
@@ -48,3 +49,8 @@ export const getSubscriptionParameters: (
     }
   };
 };
+
+export const disableSubscription = async (registration: ServiceWorkerRegistration) => {
+  const permission = window.Notification.permission;
+  registration.pushManager.permissionState
+}

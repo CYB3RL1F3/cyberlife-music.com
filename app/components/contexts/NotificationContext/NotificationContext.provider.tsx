@@ -8,11 +8,13 @@ import {
   getSubscriptionParameters
 } from "./NotificationContext.utils";
 import { usePwaContext } from "../PwaContext/PwaContext.hook";
+import { useUnSubscribeMutation } from "~/hooks/mutations/useUnsubscribeMutation";
+import { useLocalStorage } from "~/hooks/useLocaleStorage";
 
 const NotificationContextProvider = ({
   children
 }: NotificationContextProviderProps) => {
-  const [isChecked, setChecked] = useState(false);
+  const [isVerified, setVerified] = useState(false);
   const [isSubscribed, toggleSubscribed] = useState<boolean>(false);
   const { config } = useConfigContext();
   const [subscribe] = useSubscribeMutation((data) => {
@@ -21,22 +23,41 @@ const NotificationContextProvider = ({
     }
   });
 
+  const [storedSubscribeState, setStoredSubscribeState] = useLocalStorage<
+    boolean | undefined
+  >("subscription", undefined);
+
+  const [unsubscribe] = useUnSubscribeMutation((data) => {
+    if (data.unsubscribe.deleted) {
+      toggleSubscribed(false);
+    }
+  });
+
   const { registration } = usePwaContext();
 
   const doSubscribe = useCallback(async () => {
-    if (isSubscribed) return;
-    console.log("HERE", registration);
-    if (!registration) {
+    if (!registration || isSubscribed) {
       return;
     }
     const subscription = await getSubscription(registration);
-    if (!subscription) return null;
+    if (!subscription?.endpoint) return null;
     const subscriptionParameters = getSubscriptionParameters(subscription);
-    await subscribe(config.NOTIFICATION_POOL_ID, subscriptionParameters);
-  }, [config.NOTIFICATION_POOL_ID, isSubscribed, registration, subscribe]);
+    await subscribe(config.notificationPoolId, subscriptionParameters);
+    setStoredSubscribeState(true);
+  }, [
+    config.notificationPoolId,
+    isSubscribed,
+    registration,
+    setStoredSubscribeState,
+    subscribe
+  ]);
 
-  const doUnsubscribe = () => {
-    toggleSubscribed(false);
+  const doUnsubscribe = async () => {
+    if (!registration || !isSubscribed) return;
+    const subscription = await getSubscription(registration);
+    if (!subscription?.endpoint) return;
+    await unsubscribe(config.notificationPoolId, subscription.endpoint);
+    setStoredSubscribeState(false);
   };
 
   const setSubscribed = async (value: boolean) => {
@@ -45,17 +66,23 @@ const NotificationContextProvider = ({
     } else {
       doUnsubscribe();
     }
+    setVerified(true);
   };
 
   useEffect(() => {
     const asyncEffect = async () => {
       await doSubscribe();
     };
-    if (Notification.permission === "granted" && registration && !isChecked) {
-      setChecked(true);
+    if (
+      Notification.permission === "granted" &&
+      registration &&
+      !isVerified &&
+      (storedSubscribeState || typeof storedSubscribeState === "undefined")
+    ) {
+      setVerified(true);
       asyncEffect();
     }
-  }, [doSubscribe, isChecked, registration]);
+  }, [doSubscribe, isVerified, registration, storedSubscribeState]);
 
   return (
     <NotificationContext.Provider

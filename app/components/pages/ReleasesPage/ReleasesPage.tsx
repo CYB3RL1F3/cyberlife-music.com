@@ -1,10 +1,17 @@
-import ListReleasesContainer from "~/components/organisms/ListReleasesContainer";
+import { useReleasesQuery } from "~/hooks/queries/useReleasesQuery";
+import ListReleases from "~/components/organisms/ListReleases";
+import HandlerContent from "~/components/organisms/HandlerContent";
+import Loader from "~/components/organisms/Loader";
 
 const ReleasesPage = () => {
+  const { data, loading } = useReleasesQuery();
   return (
-    <section>
-      <ListReleasesContainer />
-    </section>
+    <HandlerContent
+      loading={!data && loading}
+      loader={<Loader mention="Please wait while we're chasing releases..." />}
+    >
+      <ListReleases releases={data?.releases} />
+    </HandlerContent>
   );
 };
 

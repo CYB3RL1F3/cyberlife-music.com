@@ -7,23 +7,37 @@ import Text from "~/components/atoms/Text";
 import { BsDownload } from "react-icons/bs";
 import dayjs from "dayjs";
 import PodcastActionPlayContainer from "../PodcastActionPlayContainer";
+import { useConfigContext } from "~/components/contexts/ConfigContext";
 
 const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
-  const { artwork, uri, date, duration, license, downloadable, download } =
-    podcast;
+  const {
+    id,
+    artwork,
+    soundcloud,
+    date,
+    duration,
+    license,
+    downloadable,
+    download
+  } = podcast;
+
+  const { config } = useConfigContext();
+  const apiUrl = config?.apiEndpoint || "";
 
   const linkIcons = [
     {
       icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
-      url: uri || ""
+      url: soundcloud || ""
     }
   ];
   if (downloadable && download) {
+    const url = `${apiUrl}/cyberlife/playlists/${id}/download`;
     linkIcons.push({
       icon: <BsDownload />,
-      url: download
+      url
     });
   }
+  console.log("duration >> ", duration);
   return (
     <PageDetailLayout
       thumbnail={
@@ -37,7 +51,10 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
         Published on {date ? dayjs(date).format("DD/MM/YYYY") : "Soundcloud"}
       </Text.RightItalic>
       <Text.RightItalic>
-        Duration: {duration?.toString().substring(11, 11 + 8)}
+        {duration &&
+          ` Duration: ${new Date(duration)
+            .toISOString()
+            .substring(11, 11 + 8)}`}
       </Text.RightItalic>
       <Text.RightItalic>{license}</Text.RightItalic>
     </PageDetailLayout>

@@ -10,9 +10,10 @@ import {
   useMatches
 } from "@remix-run/react";
 import Application from "./application";
-import styles from "./styles/styles.css";
+import styles from "~/styles/styles.css";
 import ErrorPage from "./components/pages/ErrorPage";
 import { runInfosQuery } from "~/queries/infos";
+import { getConfig } from "./utils/config";
 
 let isMount = true;
 
@@ -53,14 +54,11 @@ export const loader: LoaderFunction = async ({ request }) => {
   const { url } = request;
   const res = await runInfosQuery();
   const description = res?.data?.infos?.bio?.content;
+  const config = getConfig();
   const data = json({
     url,
     description,
-    ENV: {
-      API_URL: process.env.API_URL,
-      NOTIFICATION_POOL_ID: process.env.NOTIFICATION_POOL_ID,
-      MAPBOX_API_KEY: process.env.MAPBOX_API_KEY
-    }
+    config
   });
   return data;
 };
@@ -69,29 +67,11 @@ export function CatchBoundary() {
   const { status } = useCatch();
   if (typeof window !== "undefined") console.log(window);
   const code = status === 404 ? 404 : 500;
-  const api =
-    typeof window !== "undefined"
-      ? window.ENV.api || ""
-      : typeof process !== "undefined"
-      ? process.env.API_URL || ""
-      : "";
-  const notificationPoolId =
-    typeof window !== "undefined"
-      ? window.ENV.notificationPoolId || ""
-      : typeof process !== "undefined"
-      ? process.env.NOTIFICATION_POOL_ID || ""
-      : "";
+  const config = getConfig();
   const message =
     status === 404 ? "Nothing here!" : "A technical error occured!";
 
-  const config = {
-    api,
-    notificationPoolId,
-    mapbox: {
-      accessToken: "",
-      style: "mapbox://styles/cyberlife/cjq9kpl33b01d2smvny3ciast"
-    }
-  };
+  if (!config) return null;
   return (
     <html lang="en">
       <head>
@@ -154,16 +134,7 @@ export default function App() {
         <link rel="canonical" href={data.url} />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
-        <Application
-          config={{
-            api: data.ENV.API_URL,
-            notificationPoolId: data.ENV.NOTIFICATION_POOL_ID,
-            mapbox: {
-              accessToken: data.ENV.MAPBOX_API_KEY,
-              style: "mapbox://styles/cyberlife/cjq9kpl33b01d2smvny3ciast"
-            }
-          }}
-        />
+        <Application config={data.config} />
       </body>
     </html>
   );

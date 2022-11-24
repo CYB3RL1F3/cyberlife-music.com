@@ -7,8 +7,8 @@ const ListTag = ({ tags }: ListTagProps) => {
       {tags.map(
         (tag) =>
           tag && (
-            <li className="p-0 m-0 list-none" key={tag}>
-              <Tag value={tag} />
+            <li className="p-0 m-0 list-none" key={tag.value}>
+              <Tag {...tag} />
             </li>
           )
       )}
