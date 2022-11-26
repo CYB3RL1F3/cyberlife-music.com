@@ -21,7 +21,7 @@ export const getTrackTobuffer = (
   const toBuffer: TrackToBuffer = {
     id: track.id || 0,
     waveform: track.waveform || "",
-    url: `http://localhost:3000/api/cyberlife/playlists/${track.id}/stream`,
+    url: `${apiUrl}/cyberlife/playlists/${track.id}/stream`,
     duration: track.duration || 0,
     contexts
   };
