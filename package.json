@@ -36,7 +36,7 @@
     "dompurify": "^2.4.1",
     "dotenv": "^16.0.3",
     "esbuild": "^0.15.15",
-    "framer-motion": "^7.6.10",
+    "framer-motion": "^7.6.12",
     "html-react-parser": "^3.0.4",
     "isbot": "^3.6.5",
     "mapbox-gl": "^2.11.0",
@@ -51,7 +51,7 @@
     "react-hooks-form": "^2.0.1",
     "react-icons": "^4.6.0",
     "react-map-gl": "^7.0.19",
-    "remix-auth": "^3.3.0",
+    "remix-auth": "^3.4.0",
     "superstruct": "^1.0.3",
     "tailwind-scrollbar": "^2.0.1",
     "tailwindcss": "^3.2.4",
@@ -69,6 +69,6 @@
     "typescript": "^4.9.3"
   },
   "engines": {
-    "node": ">=14"
+    "node": "16.13.0"
   }
 }
