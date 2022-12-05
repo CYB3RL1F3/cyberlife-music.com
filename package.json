@@ -15,7 +15,7 @@
     "download:schema": "apollo service:download --endpoint=http://localhost:3000/graphql ./graphql-schema.json",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",
-    "start": "pnpm dev"
+    "start": "pnpm build && cross-env NODE_ENV=production pnpm remix-serve build"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",

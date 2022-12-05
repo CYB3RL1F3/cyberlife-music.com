@@ -27,7 +27,6 @@ const PlayerTrack = ({
         waveformRef.current.offsetLeft -
         (offsetLeft || playerRef.current.offsetLeft);
       const percent = (position / waveformRef.current.offsetWidth) * 100;
-      console.log(percent);
       onSeekChange?.(percent);
     },
     [onSeekChange]

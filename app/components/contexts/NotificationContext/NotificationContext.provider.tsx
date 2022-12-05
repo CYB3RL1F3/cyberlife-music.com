@@ -73,6 +73,7 @@ const NotificationContextProvider = ({
     const asyncEffect = async () => {
       await doSubscribe();
     };
+    if (typeof Notification === "undefined") return;
     if (
       Notification.permission === "granted" &&
       registration &&

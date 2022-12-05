@@ -10,19 +10,12 @@ import type { ApolloContextProps } from "./ApolloContext.types";
 import { omitDeep } from "~/utils/object";
 import { getApiUrl } from "~/utils/config";
 
-const uri = getApiUrl();
-
-const httpLink = createHttpLink({
-  uri
-});
-
 const cleanupLink = new ApolloLink((operation, forward) => {
   if (operation.variables) {
     operation.variables = omitDeep(operation.variables, "__typename");
   }
   return forward(operation);
 });
-
 export const getClient = () => {
   const link = setContext((operation, { headers }) => {
     // get the authentication token from local storage if it exists
@@ -31,6 +24,12 @@ export const getClient = () => {
     return {
       headers
     };
+  });
+
+  const uri = getApiUrl();
+
+  const httpLink = createHttpLink({
+    uri
   });
 
   const client = new ApolloClient({

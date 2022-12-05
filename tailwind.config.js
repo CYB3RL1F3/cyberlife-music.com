@@ -48,8 +48,8 @@ module.exports = {
           "100%": { opacity: 1 }
         },
         loading: {
-          "0%": { transform: "rotate(0deg" },
-          "100%": { transform: "rotate(360deg" }
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" }
         }
       },
       animation: {
@@ -58,7 +58,7 @@ module.exports = {
         loading: "loading 150ms linear infinite"
       },
       backgroundImage: {
-        main: 'url("http://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp")'
+        main: 'url("https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp")'
       },
       fontSize: {
         lg: "16pt",

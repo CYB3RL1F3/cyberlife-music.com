@@ -17,7 +17,6 @@ export const getTrackTobuffer = (
   contexts: TrackPlayerContext
 ) => {
   const apiUrl = getApiEndpoint();
-  console.log("apiEndpoint >> ", apiUrl);
   const toBuffer: TrackToBuffer = {
     id: track.id || 0,
     waveform: track.waveform || "",

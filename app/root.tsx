@@ -21,7 +21,7 @@ export const meta: MetaFunction = ({ data }) => {
   const description = data?.description;
   const title = "Cyberlife's music";
   const image =
-    "http://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
+    "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
   return {
     charset: "utf-8",
     description,

@@ -14,9 +14,7 @@ const transition: AnimationOptions<number> = {
 };
 
 const Carousel = ({ index, children }: CarouselProps) => {
-  console.log("INDEX >>>> ", index);
   const childrens = useMemo(() => Children.toArray(children), [children]);
-  console.log(childrens);
   const containerRef = useRef<HTMLDivElement>(null);
   const itemSize = containerRef.current?.clientWidth || 0;
   const width = useMemo(

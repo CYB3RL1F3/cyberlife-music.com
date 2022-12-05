@@ -37,7 +37,6 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
       url
     });
   }
-  console.log("duration >> ", duration);
   return (
     <PageDetailLayout
       thumbnail={

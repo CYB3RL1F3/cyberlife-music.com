@@ -19,7 +19,7 @@ import NotificationContextProvider from "./components/contexts/NotificationConte
 import FooterMobile from "./components/organisms/FooterMobile";
 import PwaContextProvider from "./components/contexts/PwaContext";
 import type { Config } from "./components/contexts/ConfigContext/ConfigContext.types";
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 import { useEffect } from "react";
 
 export type ApplicationProps = {

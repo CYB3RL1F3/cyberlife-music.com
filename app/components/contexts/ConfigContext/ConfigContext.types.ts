@@ -1,7 +1,14 @@
 import type { ReactNode } from "react";
-import type { Window } from "../../../../remix.env.d";
 
-export type Config = Window["ENV"];
+export type Config = {
+  mapbox: {
+    accessToken: string;
+    style: string;
+  };
+  api: string;
+  apiEndpoint: string;
+  notificationPoolId: string;
+};
 
 export type ConfigContextValues = {
   config: Config;

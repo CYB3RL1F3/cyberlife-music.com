@@ -58,29 +58,32 @@ var omitDeep = (obj, key) => typeof obj == "object" ? !obj || "getDate" in obj ?
 }, {}) : obj;
 
 // app/utils/config.ts
-var getServerConfig = () => typeof process < "u" && process.env ? {
-  api: process.env.API_URL || "",
-  apiEndpoint: process.env.API_ENDPOINT || "",
-  notificationPoolId: process.env.NOTIFICATION_POOL_ID || "",
-  mapbox: {
-    accessToken: process.env.MAPBOX_API_KEY || "",
-    style: "mapbox://styles/cyberlife/cjq9kpl33b01d2smvny3ciast"
-  }
-} : null, getConfig = () => typeof process < "u" && process.env ? getServerConfig() : typeof window < "u" && window.ENV ? window.ENV : null, getApiUrl = () => {
+var import_dotenv = __toESM(require("dotenv")), getServerConfig = () => {
+  let { parsed } = import_dotenv.default.config();
+  return typeof process < "u" && process.env ? {
+    api: (parsed == null ? void 0 : parsed.API_URL) || process.env.API_URL || "",
+    apiEndpoint: (parsed == null ? void 0 : parsed.API_ENDPOINT) || process.env.API_ENDPOINT || "",
+    notificationPoolId: (parsed == null ? void 0 : parsed.NOTIFICATION_POOL_ID) || process.env.NOTIFICATION_POOL_ID || "",
+    mapbox: {
+      accessToken: (parsed == null ? void 0 : parsed.MAPBOX_API_KEY) || process.env.MAPBOX_API_KEY || "",
+      style: "mapbox://styles/cyberlife/cjq9kpl33b01d2smvny3ciast"
+    }
+  } : null;
+}, getConfig = () => (console.log(typeof process < "u"), typeof process < "u" && process.env ? getServerConfig() : (console.log(typeof window < "u" ? window : "undefined window"), typeof window < "u" && window.ENV ? window.ENV : null)), getApiUrl = () => {
   let config = getConfig();
-  return console.log("CONFIG >>>> ", config), config == null ? void 0 : config.api;
+  return config == null ? void 0 : config.api;
 }, getApiEndpoint = () => {
   let config = getConfig();
-  return console.log("CONFIG >> ", config), config == null ? void 0 : config.apiEndpoint;
+  return config == null ? void 0 : config.apiEndpoint;
 };
 
 // app/components/contexts/ApolloContext/ApolloContext.tsx
-var import_jsx_runtime = require("react/jsx-runtime"), uri = getApiUrl(), httpLink = (0, import_client.createHttpLink)({
-  uri
-}), cleanupLink = new import_client.ApolloLink((operation, forward) => (operation.variables && (operation.variables = omitDeep(operation.variables, "__typename")), forward(operation))), getClient = () => {
+var import_jsx_runtime = require("react/jsx-runtime"), cleanupLink = new import_client.ApolloLink((operation, forward) => (operation.variables && (operation.variables = omitDeep(operation.variables, "__typename")), forward(operation))), getClient = () => {
   let link = (0, import_context.setContext)((operation, { headers }) => ({
     headers
-  }));
+  })), uri = getApiUrl(), httpLink = (0, import_client.createHttpLink)({
+    uri
+  });
   return new import_client.ApolloClient({
     link: link.concat(cleanupLink).concat(httpLink),
     cache: new import_client.InMemoryCache(),
@@ -1095,7 +1098,7 @@ var import_clsx11 = require("clsx"), import_jsx_runtime26 = require("react/jsx-r
         return;
       e.preventDefault(), e.stopPropagation();
       let offsetLeft = (_a = playerRef.current.getClientRects().item(0)) == null ? void 0 : _a.left, percent = (e.clientX - waveformRef.current.offsetLeft - (offsetLeft || playerRef.current.offsetLeft)) / waveformRef.current.offsetWidth * 100;
-      console.log(percent), onSeekChange == null || onSeekChange(percent);
+      onSeekChange == null || onSeekChange(percent);
     },
     [onSeekChange]
   );
@@ -1279,8 +1282,9 @@ var subscribeMutationGql = import_client4.gql`
 // app/components/contexts/ConfigContext/ConfigContext.tsx
 var import_react25 = require("react"), ConfigContext = (0, import_react25.createContext)({
   config: {
-    API_URL: "",
-    NOTIFICATION_POOL_ID: "",
+    api: "",
+    apiEndpoint: "",
+    notificationPoolId: "",
     mapbox: {
       accessToken: "",
       style: ""
@@ -1321,7 +1325,7 @@ var getSubscription = async (registration) => {
   if (!("Notification" in window) || await window.Notification.requestPermission() !== "granted")
     return null;
   let subscription = await registration.pushManager.getSubscription();
-  if (console.log(subscription), !subscription) {
+  if (!subscription) {
     let applicationKey = await (await fetch("/resources/subscribe")).text(), applicationServerKey = urlBase64ToUint8Array(applicationKey);
     subscription = await registration.pushManager.subscribe({
       userVisibleOnly: !0,
@@ -1437,7 +1441,7 @@ var import_jsx_runtime34 = require("react/jsx-runtime"), NotificationContextProv
     let asyncEffect = async () => {
       await doSubscribe();
     };
-    Notification.permission === "granted" && registration && !isVerified && (storedSubscribeState || typeof storedSubscribeState > "u") && (setVerified(!0), asyncEffect());
+    typeof Notification > "u" || Notification.permission === "granted" && registration && !isVerified && (storedSubscribeState || typeof storedSubscribeState > "u") && (setVerified(!0), asyncEffect());
   }, [doSubscribe, isVerified, registration, storedSubscribeState]), /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(NotificationContext.Provider, {
     value: {
       isSubscribed,
@@ -1908,7 +1912,7 @@ var import_react41 = require("react"), import_jsx_runtime49 = require("react/jsx
 }, application_default = Application;
 
 // app/styles/styles.css
-var styles_default = "/build/_assets/styles-4YP5CJKZ.css";
+var styles_default = "/build/_assets/styles-4JVXXVAT.css";
 
 // app/components/pages/ErrorPage/ErrorPage.tsx
 var import_jsx_runtime50 = require("react/jsx-runtime"), ErrorPage = ({
@@ -1945,7 +1949,7 @@ var import_jsx_runtime50 = require("react/jsx-runtime"), ErrorPage = ({
 
 // app/root.tsx
 var import_jsx_runtime51 = require("react/jsx-runtime"), isMount2 = !0, meta = ({ data }) => {
-  let description = data == null ? void 0 : data.description, title = "Cyberlife's music", image = "http://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
+  let description = data == null ? void 0 : data.description, title = "Cyberlife's music", image = "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
   return {
     charset: "utf-8",
     description,
@@ -2191,7 +2195,6 @@ __export(podcasts_exports, {
   default: () => Podcast,
   loader: () => loader5
 });
-var import_react49 = require("@remix-run/react");
 
 // app/components/molecules/List/List.tsx
 var import_react45 = require("react");
@@ -2242,7 +2245,7 @@ var useBufferTrackPlayer = (track) => {
 // app/utils/trackToBuffer.ts
 var getTrackTobuffer = (track, contexts) => {
   let apiUrl = getApiEndpoint();
-  return console.log("apiEndpoint >> ", apiUrl), {
+  return {
     id: track.id || 0,
     waveform: track.waveform || "",
     url: `${apiUrl}/cyberlife/playlists/${track.id}/stream`,
@@ -2529,8 +2532,7 @@ var import_jsx_runtime67 = require("react/jsx-runtime"), loader5 = async ({ requ
   };
 };
 function Podcast() {
-  let data = (0, import_react49.useLoaderData)(), transition2 = (0, import_react49.useTransition)();
-  return console.log("DATA >> ", data), console.log("TRANSITION >>>> ", transition2), /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(PodcastsPage_default, {});
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(PodcastsPage_default, {});
 }
 
 // app/routes/releases/index.tsx
@@ -2662,7 +2664,7 @@ var id_exports = {};
 __export(id_exports, {
   default: () => Podcast2
 });
-var import_react53 = require("@remix-run/react");
+var import_react52 = require("@remix-run/react");
 
 // app/hooks/queries/usePlaylistTrackQuery.ts
 var import_client11 = require("@apollo/client");
@@ -2740,10 +2742,10 @@ var import_jsx_runtime72 = require("react/jsx-runtime"), Title = ({ children, al
 }), Title_default = Title;
 
 // app/components/molecules/PageDetailHeader/PageDetailHeader.tsx
-var import_react50 = require("@remix-run/react"), import_jsx_runtime73 = require("react/jsx-runtime"), PageDetailHeader = ({ title, url }) => /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)("div", {
+var import_react49 = require("@remix-run/react"), import_jsx_runtime73 = require("react/jsx-runtime"), PageDetailHeader = ({ title, url }) => /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)("div", {
   className: "z-10 flex justify-between w-full h-16 pt-4 pr-6 max-md:absolute",
   children: [
-    url && /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_react50.Link, {
+    url && /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_react49.Link, {
       to: url,
       className: "flex items-center justify-center w-4 h-8 text-lg font-semibold text-white cursor-pointer md:text-md md:w-16 md:ml-40",
       children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_hi.HiArrowLeft, {})
@@ -2833,7 +2835,7 @@ var import_jsx_runtime78 = require("react/jsx-runtime"), PodcastDetails = ({ pod
       url
     });
   }
-  return console.log("duration >> ", duration), /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(PageDetailLayout_default, {
+  return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(PageDetailLayout_default, {
     thumbnail: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Thumbnail_default, {
       variant: "wider",
       src: artwork || "",
@@ -2940,9 +2942,9 @@ var import_jsx_runtime79 = require("react/jsx-runtime"), DisplayPodcastTracklist
 }), DisplayPodcastTracklist_default = DisplayPodcastTracklist;
 
 // app/hooks/useDynamicSource.ts
-var import_react51 = require("react"), useDynamicSource = (src, placeholder) => {
-  let [img, setImg] = (0, import_react51.useState)(placeholder);
-  return (0, import_react51.useEffect)(() => {
+var import_react50 = require("react"), useDynamicSource = (src, placeholder) => {
+  let [img, setImg] = (0, import_react50.useState)(placeholder);
+  return (0, import_react50.useEffect)(() => {
     fetch(src, {
       mode: "cors"
     }).then(async (response) => {
@@ -3101,8 +3103,8 @@ var import_jsx_runtime89 = require("react/jsx-runtime"), DisplayPodcastComments 
 }) : null, DisplayPodcastComments_default = DisplayPodcastComments;
 
 // app/components/organisms/PodcastDisplay/PodcastDisplay.tsx
-var import_react52 = require("react"), import_jsx_runtime90 = require("react/jsx-runtime"), PodcastDisplay = ({ podcast }) => {
-  let { title, description, tracklist, likes, comments, taglist } = podcast, tags = (0, import_react52.useMemo)(
+var import_react51 = require("react"), import_jsx_runtime90 = require("react/jsx-runtime"), PodcastDisplay = ({ podcast }) => {
+  let { title, description, tracklist, likes, comments, taglist } = podcast, tags = (0, import_react51.useMemo)(
     () => (taglist || []).map((tag) => ({
       value: tag,
       href: `https://soundcloud.com/tags/${tag}`
@@ -3193,7 +3195,7 @@ var import_jsx_runtime92 = require("react/jsx-runtime"), PodcastPage = ({ id }) 
 // app/routes/podcasts/$id.tsx
 var import_jsx_runtime93 = require("react/jsx-runtime");
 function Podcast2() {
-  let { id } = (0, import_react53.useParams)();
+  let { id } = (0, import_react52.useParams)();
   return id ? /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(PodcastPage_default, {
     id
   }) : /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(PodcastsPage_default, {});
@@ -3204,7 +3206,7 @@ var id_exports2 = {};
 __export(id_exports2, {
   default: () => Release
 });
-var import_react54 = require("@remix-run/react");
+var import_react53 = require("@remix-run/react");
 
 // app/hooks/queries/useReleaseQuery.ts
 var import_client13 = require("@apollo/client");
@@ -3336,7 +3338,6 @@ var import_jsx_runtime96 = require("react/jsx-runtime"), PlayerReleaseTrackConta
   track,
   id
 }) => {
-  console.log(track);
   let { waveform } = track, { seek, load, setSeek: setSeek2, isPlaying } = useReleaseTrackPlayer(track, id), handleSeekChange = (seek2) => {
     setSeek2(seek2, !0);
   };
@@ -3450,7 +3451,7 @@ var import_jsx_runtime100 = require("react/jsx-runtime"), ReleasePage = ({ id })
 // app/routes/releases/$id.tsx
 var import_jsx_runtime101 = require("react/jsx-runtime");
 function Release() {
-  let { id } = (0, import_react54.useParams)();
+  let { id } = (0, import_react53.useParams)();
   return id ? /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(ReleasePage_default, {
     id
   }) : /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(ReleasesPage_default, {});
@@ -3499,7 +3500,7 @@ var import_jsx_runtime102 = require("react/jsx-runtime"), ListEventsItem = ({ ev
 }, ListEventsItem_default = ListEventsItem;
 
 // app/components/organisms/ListEventsEmpty/ListEventsEmpty.tsx
-var import_react55 = require("@remix-run/react"), import_jsx_runtime103 = require("react/jsx-runtime"), ListEventsEmpty = ({ ...props }) => /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)("div", {
+var import_react54 = require("@remix-run/react"), import_jsx_runtime103 = require("react/jsx-runtime"), ListEventsEmpty = ({ ...props }) => /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)("div", {
   className: "flex gap-8 py-2 md:py-8",
   children: [
     /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)("div", {
@@ -3514,7 +3515,7 @@ var import_react55 = require("@remix-run/react"), import_jsx_runtime103 = requir
           children: [
             "contact / booking :",
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_react55.Link, {
+            /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_react54.Link, {
               to: "/contact",
               className: "underline",
               children: "booking@cyberlife-music.com"
@@ -3629,7 +3630,7 @@ var id_exports3 = {};
 __export(id_exports3, {
   default: () => Release2
 });
-var import_react62 = require("@remix-run/react");
+var import_react61 = require("@remix-run/react");
 
 // app/components/atoms/Icon/Icon.tsx
 var import_clsx21 = __toESM(require("clsx")), import_jsx_runtime108 = require("react/jsx-runtime"), Icon = ({ icon, size, className }) => /* @__PURE__ */ (0, import_jsx_runtime108.jsx)("span", {
@@ -3639,7 +3640,7 @@ var import_clsx21 = __toESM(require("clsx")), import_jsx_runtime108 = require("r
 }), Icon_default = Icon;
 
 // app/components/atoms/Mapbox/Mapbox.component.tsx
-var import_react_map_gl = __toESM(require("react-map-gl")), import_react56 = require("react");
+var import_react_map_gl = __toESM(require("react-map-gl")), import_react55 = require("react");
 var import_jsx_runtime109 = require("react/jsx-runtime"), Mapbox = ({
   children,
   width,
@@ -3656,12 +3657,12 @@ var import_jsx_runtime109 = require("react/jsx-runtime"), Mapbox = ({
     config: {
       mapbox: { accessToken, style }
     }
-  } = useConfigContext(), onZoom = (0, import_react56.useCallback)(
+  } = useConfigContext(), onZoom = (0, import_react55.useCallback)(
     (event) => {
       onZoomChanged == null || onZoomChanged(event.target.getZoom());
     },
     [onZoomChanged]
-  ), onDragEnd = (0, import_react56.useCallback)(
+  ), onDragEnd = (0, import_react55.useCallback)(
     (event) => {
       let center = event.target.getCenter(), coordinates = [center.lng, center.lat];
       onCenterChanged == null || onCenterChanged(coordinates);
@@ -3703,9 +3704,9 @@ var import_react_map_gl2 = require("react-map-gl"), import_jsx_runtime110 = requ
 });
 
 // app/components/molecules/EventMap/EventMap.tsx
-var import_tfi = require("react-icons/tfi"), import_react57 = require("react"), import_jsx_runtime111 = require("react/jsx-runtime"), EventMap = ({ location }) => {
+var import_tfi = require("react-icons/tfi"), import_react56 = require("react"), import_jsx_runtime111 = require("react/jsx-runtime"), EventMap = ({ location }) => {
   var _a, _b;
-  let [longitude, latitude] = location.position, ref = (0, import_react57.useRef)(null), width = ((_b = (_a = ref.current) == null ? void 0 : _a.parentElement) == null ? void 0 : _b.clientWidth) || "48rem";
+  let [longitude, latitude] = location.position, ref = (0, import_react56.useRef)(null), width = ((_b = (_a = ref.current) == null ? void 0 : _a.parentElement) == null ? void 0 : _b.clientWidth) || "48rem";
   return /* @__PURE__ */ (0, import_jsx_runtime111.jsx)("div", {
     className: "w-full",
     ref,
@@ -3730,21 +3731,18 @@ var import_tfi = require("react-icons/tfi"), import_react57 = require("react"), 
 }, EventMap_default = EventMap;
 
 // app/components/organisms/CarouselContainer/CarouselContainer.tsx
-var import_react60 = require("react");
+var import_react59 = require("react");
 
 // app/components/atoms/Carousel/Carousel.tsx
-var import_react58 = require("react"), import_framer_motion5 = require("framer-motion"), import_jsx_runtime112 = require("react/jsx-runtime"), transition = {
+var import_react57 = require("react"), import_framer_motion5 = require("framer-motion"), import_jsx_runtime112 = require("react/jsx-runtime"), transition = {
   type: "spring",
   bounce: 0
 }, Carousel = ({ index, children }) => {
   var _a;
-  console.log("INDEX >>>> ", index);
-  let childrens = (0, import_react58.useMemo)(() => import_react58.Children.toArray(children), [children]);
-  console.log(childrens);
-  let containerRef = (0, import_react58.useRef)(null), itemSize = ((_a = containerRef.current) == null ? void 0 : _a.clientWidth) || 0, width = (0, import_react58.useMemo)(
+  let childrens = (0, import_react57.useMemo)(() => import_react57.Children.toArray(children), [children]), containerRef = (0, import_react57.useRef)(null), itemSize = ((_a = containerRef.current) == null ? void 0 : _a.clientWidth) || 0, width = (0, import_react57.useMemo)(
     () => itemSize * childrens.length,
     [childrens, itemSize]
-  ), currentX = (0, import_react58.useMemo)(() => (-index + 0) * itemSize, [index, itemSize]), x = (0, import_framer_motion5.useMotionValue)(currentX);
+  ), currentX = (0, import_react57.useMemo)(() => (-index + 0) * itemSize, [index, itemSize]), x = (0, import_framer_motion5.useMotionValue)(currentX);
   return (0, import_framer_motion5.animate)(x, currentX, transition), /* @__PURE__ */ (0, import_jsx_runtime112.jsxs)("div", {
     className: "relative w-full h-full overflow-hidden",
     ref: containerRef,
@@ -3768,12 +3766,12 @@ var import_react58 = require("react"), import_framer_motion5 = require("framer-m
 }, Carousel_default = Carousel;
 
 // app/components/atoms/CarouselControl/CarouselControl.tsx
-var import_react59 = require("react"), import_clsx22 = require("clsx"), import_jsx_runtime113 = require("react/jsx-runtime"), CarouselControl = ({
+var import_react58 = require("react"), import_clsx22 = require("clsx"), import_jsx_runtime113 = require("react/jsx-runtime"), CarouselControl = ({
   index,
   isActive,
   onChange
 }) => {
-  let handleChange = (0, import_react59.useCallback)(() => onChange == null ? void 0 : onChange(index), [onChange, index]), className = (0, import_clsx22.clsx)({
+  let handleChange = (0, import_react58.useCallback)(() => onChange == null ? void 0 : onChange(index), [onChange, index]), className = (0, import_clsx22.clsx)({
     "w-8 h-8 rounded-full bg-gray-500 cursor-pointer transition-all duration-150": !0,
     "bg-opacity-50": !isActive
   });
@@ -3802,7 +3800,7 @@ var import_jsx_runtime114 = require("react/jsx-runtime"), CarouselController = (
 
 // app/components/organisms/CarouselContainer/CarouselContainer.tsx
 var import_jsx_runtime115 = require("react/jsx-runtime"), CarouselContainer = ({ children }) => {
-  let [currentIndex, setCurrentIndex] = (0, import_react60.useState)(0), nbItems = import_react60.Children.toArray(children).length;
+  let [currentIndex, setCurrentIndex] = (0, import_react59.useState)(0), nbItems = import_react59.Children.toArray(children).length;
   return /* @__PURE__ */ (0, import_jsx_runtime115.jsxs)("div", {
     className: "flex flex-col items-end justify-end w-full h-80 o-4",
     children: [
@@ -3821,9 +3819,9 @@ var import_jsx_runtime115 = require("react/jsx-runtime"), CarouselContainer = ({
 }, CarouselContainer_default = CarouselContainer;
 
 // app/components/organisms/CarouselEvent/CarouselEvent.tsx
-var import_react61 = require("react"), import_jsx_runtime116 = require("react/jsx-runtime"), CarouselEvent = ({ event }) => {
-  let { flyer, location } = event, { front } = flyer, [map, setMap] = (0, import_react61.useState)();
-  return (0, import_react61.useEffect)(() => {
+var import_react60 = require("react"), import_jsx_runtime116 = require("react/jsx-runtime"), CarouselEvent = ({ event }) => {
+  let { flyer, location } = event, { front } = flyer, [map, setMap] = (0, import_react60.useState)();
+  return (0, import_react60.useEffect)(() => {
     setMap(location != null && location.position ? /* @__PURE__ */ (0, import_jsx_runtime116.jsx)(EventMap_default, {
       location
     }) : void 0);
@@ -4016,7 +4014,7 @@ var import_jsx_runtime118 = require("react/jsx-runtime"), EventPage = ({ id }) =
 // app/routes/gigs/$id.tsx
 var import_jsx_runtime119 = require("react/jsx-runtime");
 function Release2() {
-  let { id } = (0, import_react62.useParams)();
+  let { id } = (0, import_react61.useParams)();
   return id ? /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(EventPage_default, {
     id
   }) : /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(EventsPage_default, {});
@@ -4029,7 +4027,7 @@ __export(contact_exports, {
 });
 
 // app/components/pages/ContactPage/ContactPage.tsx
-var import_react71 = require("react");
+var import_react70 = require("react");
 
 // app/hooks/mutations/useContactMutation.ts
 var import_client18 = require("@apollo/client");
@@ -4083,16 +4081,16 @@ var refineEmail = (0, import_superstruct2.refine)((0, import_superstruct2.string
 var import_react_hook_form = require("react-hook-form");
 
 // app/components/atoms/Input/Input.tsx
-var import_react64 = require("react"), import_react65 = require("react");
+var import_react63 = require("react"), import_react64 = require("react");
 
 // app/hooks/useInputStyle.ts
 var import_clsx23 = __toESM(require("clsx"));
 
 // app/hooks/useToggleState.ts
-var import_react63 = require("react"), useToggleState = (defaultState = !1) => {
-  let [state, setState] = (0, import_react63.useState)(defaultState), setTrue = (0, import_react63.useCallback)(() => {
+var import_react62 = require("react"), useToggleState = (defaultState = !1) => {
+  let [state, setState] = (0, import_react62.useState)(defaultState), setTrue = (0, import_react62.useCallback)(() => {
     setState(!0);
-  }, []), setFalse = (0, import_react63.useCallback)(() => {
+  }, []), setFalse = (0, import_react62.useCallback)(() => {
     setState(!1);
   }, []);
   return [state, setTrue, setFalse];
@@ -4132,8 +4130,8 @@ var import_jsx_runtime120 = require("react/jsx-runtime"), Input = ({
   }, inputClassName = "h-10 leading-[3rem]", { className, onFocus, onBlur } = useInputStyle(
     hasError,
     inputClassName
-  ), ref = (0, import_react65.useRef)();
-  return (0, import_react64.useLayoutEffect)(() => {
+  ), ref = (0, import_react64.useRef)();
+  return (0, import_react63.useLayoutEffect)(() => {
     let current = ref.current;
     return current == null || current.addEventListener("blur", onUnfocus), () => {
       current == null || current.removeEventListener("blue", onUnfocus);
@@ -4172,9 +4170,9 @@ var import_jsx_runtime122 = require("react/jsx-runtime"), FieldWrapper = ({ chil
 }), FieldWrapper_default = FieldWrapper;
 
 // app/components/molecules/FieldInput/FieldInput.tsx
-var import_react66 = require("react"), import_react67 = require("react"), import_jsx_runtime123 = require("react/jsx-runtime"), FieldInput = ({ error, ...props }) => {
-  let [canShow, setShow] = (0, import_react66.useState)(!1);
-  return (0, import_react67.useEffect)(() => {
+var import_react65 = require("react"), import_react66 = require("react"), import_jsx_runtime123 = require("react/jsx-runtime"), FieldInput = ({ error, ...props }) => {
+  let [canShow, setShow] = (0, import_react65.useState)(!1);
+  return (0, import_react66.useEffect)(() => {
     setShow(!0);
   }, []), canShow ? /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(FieldWrapper_default, {
     error,
@@ -4207,7 +4205,7 @@ var import_jsx_runtime124 = require("react/jsx-runtime"), ControlledFieldInput =
 var import_react_hook_form2 = require("react-hook-form");
 
 // app/components/atoms/AutoComplete/AutoComplete.tsx
-var import_clsx24 = __toESM(require("clsx")), import_react68 = require("react"), import_jsx_runtime125 = require("react/jsx-runtime"), actionValues = {
+var import_clsx24 = __toESM(require("clsx")), import_react67 = require("react"), import_jsx_runtime125 = require("react/jsx-runtime"), actionValues = {
   ArrowUp: -1,
   ArrowDown: 1
 }, AutoComplete = ({
@@ -4217,18 +4215,18 @@ var import_clsx24 = __toESM(require("clsx")), import_react68 = require("react"),
   disabled,
   size = "w-full"
 }) => {
-  let [hover, setHover] = (0, import_react68.useState)(0), isOpen = !!values.length, moveTo = (0, import_react68.useCallback)(
+  let [hover, setHover] = (0, import_react67.useState)(0), isOpen = !!values.length, moveTo = (0, import_react67.useCallback)(
     (dy) => {
       setHover((hover2) => hover2 + dy === values.length ? 0 : hover2 + dy === -1 ? values.length - 1 : hover2 + dy);
     },
     [values.length]
-  ), handleKeyboard = (0, import_react68.useCallback)(
+  ), handleKeyboard = (0, import_react67.useCallback)(
     (e) => {
       disabled || (e.key === "Enter" && (e.preventDefault(), onSelect == null || onSelect(values[hover])), !(e.key !== "ArrowUp" && e.key !== "ArrowDown") && moveTo(actionValues[e.key]));
     },
     [disabled, hover, moveTo, onSelect, values]
   );
-  return (0, import_react68.useLayoutEffect)(() => (window.document.addEventListener("keydown", handleKeyboard), () => {
+  return (0, import_react67.useLayoutEffect)(() => (window.document.addEventListener("keydown", handleKeyboard), () => {
     window.document.removeEventListener("keydown", handleKeyboard);
   }), [handleKeyboard]), /* @__PURE__ */ (0, import_jsx_runtime125.jsx)("div", {
     className: (0, import_clsx24.default)("relative", size),
@@ -4297,8 +4295,8 @@ var import_jsx_runtime127 = require("react/jsx-runtime"), FieldInputAutoComplete
           size,
           disabled,
           onSelect: onChange,
-          autoCompleteItem: (xx) => /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(AutoCompleteItem_default, {
-            ...xx
+          autoCompleteItem: (props2) => /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(AutoCompleteItem_default, {
+            ...props2
           })
         })
       ]
@@ -4388,14 +4386,14 @@ var import_jsx_runtime131 = require("react/jsx-runtime"), ControlledFieldTextare
 var import_io = require("react-icons/io");
 
 // app/components/molecules/ButtonSubmit/ButtonSubmit.tsx
-var import_react69 = require("react");
+var import_react68 = require("react");
 var import_jsx_runtime132 = require("react/jsx-runtime"), ButtonSubmit = ({
   rightIcon,
   loading,
   disabled,
   children
 }) => {
-  let icon = (0, import_react69.useMemo)(() => loading ? /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(Spinner_default, {
+  let icon = (0, import_react68.useMemo)(() => loading ? /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(Spinner_default, {
     variant: "xs"
   }) : rightIcon, [rightIcon, loading]);
   return /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(Button_default, {
@@ -4407,13 +4405,13 @@ var import_jsx_runtime132 = require("react/jsx-runtime"), ButtonSubmit = ({
 }, ButtonSubmit_default = ButtonSubmit;
 
 // app/hooks/useMobileVibration.ts
-var import_react70 = require("react"), useMobileVibration = (canVibrate) => {
-  let [vibrated, setVibrated] = (0, import_react70.useState)(canVibrate), vibrate = (0, import_react70.useCallback)(() => {
+var import_react69 = require("react"), useMobileVibration = (canVibrate) => {
+  let [vibrated, setVibrated] = (0, import_react69.useState)(canVibrate), vibrate = (0, import_react69.useCallback)(() => {
     navigator.vibrate && !vibrated && (navigator.vibrate(300), setTimeout(() => {
       setVibrated(!0);
     }, 10));
   }, [vibrated]);
-  (0, import_react70.useEffect)(() => {
+  (0, import_react69.useEffect)(() => {
     canVibrate && vibrate();
   }, [canVibrate, vibrate]);
 };
@@ -4742,7 +4740,7 @@ var import_jsx_runtime136 = require("react/jsx-runtime"), getAnimation = (i) => 
 
 // app/components/pages/ContactPage/ContactPage.tsx
 var import_framer_motion11 = require("framer-motion"), import_jsx_runtime137 = require("react/jsx-runtime"), ContactPage = () => {
-  let [isSuccess, showSuccess, hideSuccess] = useToggleState(), currentPageElement = (0, import_react71.useMemo)(() => isSuccess ? /* @__PURE__ */ (0, import_jsx_runtime137.jsx)(FormContactSuccess_default, {
+  let [isSuccess, showSuccess, hideSuccess] = useToggleState(), currentPageElement = (0, import_react70.useMemo)(() => isSuccess ? /* @__PURE__ */ (0, import_jsx_runtime137.jsx)(FormContactSuccess_default, {
     onHide: hideSuccess
   }) : /* @__PURE__ */ (0, import_jsx_runtime137.jsx)(FormContactContainer_default, {
     onSuccess: showSuccess
@@ -4889,7 +4887,7 @@ function Podcast3() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "d3e97608", entry: { module: "/build/entry.client-JFVY55TZ.js", imports: ["/build/_shared/chunk-EZERII22.js", "/build/_shared/chunk-GV7OTXYF.js", "/build/_shared/chunk-WQKLTIMS.js", "/build/_shared/chunk-Z3BXMFQP.js", "/build/_shared/chunk-G5WX4PPA.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-B7MARLDS.js", imports: ["/build/_shared/chunk-2JOVULTK.js", "/build/_shared/chunk-QOBS6CNY.js", "/build/_shared/chunk-QIPI3AYZ.js", "/build/_shared/chunk-N3CVENXY.js", "/build/_shared/chunk-B463YVNK.js", "/build/_shared/chunk-7D2XQFPC.js", "/build/_shared/chunk-MG2O5THQ.js", "/build/_shared/chunk-SUGISYUT.js", "/build/_shared/chunk-7EC7B576.js", "/build/_shared/chunk-QWJ26ME5.js", "/build/_shared/chunk-GOZSCANA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-3DRQSWQM.js", imports: ["/build/_shared/chunk-5PQBKBYZ.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-5NB67F4F.js", imports: ["/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/gigs/$id": { id: "routes/gigs/$id", parentId: "root", path: "gigs/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/gigs/$id-DZWIUSQZ.js", imports: ["/build/_shared/chunk-BIMXNX43.js", "/build/_shared/chunk-SPXHTMZ5.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-5PQBKBYZ.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/gigs/index": { id: "routes/gigs/index", parentId: "root", path: "gigs", index: !0, caseSensitive: void 0, module: "/build/routes/gigs/index-Y7RC3EI3.js", imports: ["/build/_shared/chunk-BIMXNX43.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-7ACILMQC.js", imports: ["/build/_shared/chunk-IGIP3GTL.js", "/build/_shared/chunk-5TLWVSGV.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/podcasts/$id": { id: "routes/podcasts/$id", parentId: "root", path: "podcasts/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/podcasts/$id-6VZLM72U.js", imports: ["/build/_shared/chunk-EXRLDO2N.js", "/build/_shared/chunk-SPXHTMZ5.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-5PQBKBYZ.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-IGIP3GTL.js", "/build/_shared/chunk-5TLWVSGV.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/podcasts/index": { id: "routes/podcasts/index", parentId: "root", path: "podcasts", index: !0, caseSensitive: void 0, module: "/build/routes/podcasts/index-OIDVX24O.js", imports: ["/build/_shared/chunk-IGIP3GTL.js", "/build/_shared/chunk-5TLWVSGV.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/releases/$id": { id: "routes/releases/$id", parentId: "root", path: "releases/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/releases/$id-KPL327DR.js", imports: ["/build/_shared/chunk-ROBXEIYJ.js", "/build/_shared/chunk-EXRLDO2N.js", "/build/_shared/chunk-SPXHTMZ5.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-5PQBKBYZ.js", "/build/_shared/chunk-5TLWVSGV.js", "/build/_shared/chunk-ROSSWS2J.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/releases/index": { id: "routes/releases/index", parentId: "root", path: "releases", index: !0, caseSensitive: void 0, module: "/build/routes/releases/index-BQPOTMZE.js", imports: ["/build/_shared/chunk-ROBXEIYJ.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-SE7XISLQ.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/config": { id: "routes/resources/config", parentId: "root", path: "resources/config", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/config-2OQKHLZY.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/manifest[.]webmanifest": { id: "routes/resources/manifest[.]webmanifest", parentId: "root", path: "resources/manifest.webmanifest", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/manifest[.]webmanifest-AXTHET2K.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/subscribe": { id: "routes/resources/subscribe", parentId: "root", path: "resources/subscribe", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/subscribe-KSBR6SUS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/routes": { id: "routes/routes", parentId: "root", path: "routes", index: void 0, caseSensitive: void 0, module: "/build/routes/routes-LBE62GP4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-D3E97608.js" };
+var assets_manifest_default = { version: "2c5482b4", entry: { module: "/build/entry.client-6TIBMYP6.js", imports: ["/build/_shared/chunk-EZERII22.js", "/build/_shared/chunk-HXPUB2YB.js", "/build/_shared/chunk-HP2WEYW6.js", "/build/_shared/chunk-Z3BXMFQP.js", "/build/_shared/chunk-G5WX4PPA.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-2H3ZQ6TT.js", imports: ["/build/_shared/chunk-2JOVULTK.js", "/build/_shared/chunk-QOBS6CNY.js", "/build/_shared/chunk-FGMLR3X3.js", "/build/_shared/chunk-N3CVENXY.js", "/build/_shared/chunk-B463YVNK.js", "/build/_shared/chunk-EAXSFWXS.js", "/build/_shared/chunk-XEBJTL6A.js", "/build/_shared/chunk-SUGISYUT.js", "/build/_shared/chunk-7EC7B576.js", "/build/_shared/chunk-QWJ26ME5.js", "/build/_shared/chunk-GOZSCANA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/about": { id: "routes/about", parentId: "root", path: "about", index: void 0, caseSensitive: void 0, module: "/build/routes/about-KI65SK6X.js", imports: ["/build/_shared/chunk-AONVA3GR.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-5NB67F4F.js", imports: ["/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/gigs/$id": { id: "routes/gigs/$id", parentId: "root", path: "gigs/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/gigs/$id-ILISUYSD.js", imports: ["/build/_shared/chunk-4CGHNZTR.js", "/build/_shared/chunk-G4WYEMB4.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-AONVA3GR.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/gigs/index": { id: "routes/gigs/index", parentId: "root", path: "gigs", index: !0, caseSensitive: void 0, module: "/build/routes/gigs/index-32YVQSDJ.js", imports: ["/build/_shared/chunk-4CGHNZTR.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-T75AUVTS.js", imports: ["/build/_shared/chunk-VEBFSQIG.js", "/build/_shared/chunk-DSGOYOMS.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/podcasts/$id": { id: "routes/podcasts/$id", parentId: "root", path: "podcasts/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/podcasts/$id-B55WF65X.js", imports: ["/build/_shared/chunk-XVMICJSQ.js", "/build/_shared/chunk-G4WYEMB4.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-AONVA3GR.js", "/build/_shared/chunk-7EVALUXT.js", "/build/_shared/chunk-VEBFSQIG.js", "/build/_shared/chunk-DSGOYOMS.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/podcasts/index": { id: "routes/podcasts/index", parentId: "root", path: "podcasts", index: !0, caseSensitive: void 0, module: "/build/routes/podcasts/index-U6QAK5NS.js", imports: ["/build/_shared/chunk-VEBFSQIG.js", "/build/_shared/chunk-DSGOYOMS.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/releases/$id": { id: "routes/releases/$id", parentId: "root", path: "releases/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/releases/$id-R6DEL6KH.js", imports: ["/build/_shared/chunk-5UE6N34O.js", "/build/_shared/chunk-XVMICJSQ.js", "/build/_shared/chunk-G4WYEMB4.js", "/build/_shared/chunk-AZGMNLUQ.js", "/build/_shared/chunk-AONVA3GR.js", "/build/_shared/chunk-DSGOYOMS.js", "/build/_shared/chunk-EDQFRPE2.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/releases/index": { id: "routes/releases/index", parentId: "root", path: "releases", index: !0, caseSensitive: void 0, module: "/build/routes/releases/index-QWQBQV4P.js", imports: ["/build/_shared/chunk-5UE6N34O.js", "/build/_shared/chunk-Y2M5NPEP.js", "/build/_shared/chunk-BPYQT4DG.js", "/build/_shared/chunk-5YEVF4DR.js", "/build/_shared/chunk-VVGHUWIQ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/config": { id: "routes/resources/config", parentId: "root", path: "resources/config", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/config-2OQKHLZY.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/manifest[.]webmanifest": { id: "routes/resources/manifest[.]webmanifest", parentId: "root", path: "resources/manifest.webmanifest", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/manifest[.]webmanifest-AXTHET2K.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resources/subscribe": { id: "routes/resources/subscribe", parentId: "root", path: "resources/subscribe", index: void 0, caseSensitive: void 0, module: "/build/routes/resources/subscribe-KSBR6SUS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/routes": { id: "routes/routes", parentId: "root", path: "routes", index: void 0, caseSensitive: void 0, module: "/build/routes/routes-LBE62GP4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-2C5482B4.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes3 = {

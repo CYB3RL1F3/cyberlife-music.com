@@ -7,7 +7,6 @@ const PlayerReleaseTrackContainer = ({
   track,
   id
 }: PlayerReleaseTrackContainerProps) => {
-  console.log(track);
   const { waveform } = track;
   const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, id);
   const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {

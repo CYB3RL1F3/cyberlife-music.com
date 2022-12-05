@@ -38,7 +38,7 @@ const FieldInputAutoComplete = ({
             size={size}
             disabled={disabled}
             onSelect={onChange}
-            autoCompleteItem={(xx) => <AutoCompleteItem {...xx} />}
+            autoCompleteItem={(props) => <AutoCompleteItem {...props} />}
           />
         </div>
       )}

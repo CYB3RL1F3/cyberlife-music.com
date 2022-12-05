@@ -3,8 +3,9 @@ import type { ConfigContextValues } from "./ConfigContext.types";
 
 export const ConfigContext = createContext<ConfigContextValues>({
   config: {
-    API_URL: "",
-    NOTIFICATION_POOL_ID: "",
+    api: "",
+    apiEndpoint: "",
+    notificationPoolId: "",
     mapbox: {
       accessToken: "",
       style: ""
