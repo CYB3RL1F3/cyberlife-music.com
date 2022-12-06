@@ -6,6 +6,7 @@ const Button = ({
   type = "button",
   disabled,
   onClick,
+  title,
   rightIcon,
   className
 }: ButtonProps) => {
@@ -14,6 +15,7 @@ const Button = ({
     <button
       className={buttonClassName}
       type={type}
+      title={title}
       disabled={disabled}
       onClick={onClick}
     >

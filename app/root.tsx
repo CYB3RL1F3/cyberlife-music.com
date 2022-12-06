@@ -17,11 +17,12 @@ import { getConfig } from "./utils/config";
 
 let isMount = true;
 
+const title = "Cyberlife's music";
+const image =
+  "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
+
 export const meta: MetaFunction = ({ data }) => {
   const description = data?.description;
-  const title = "Cyberlife's music";
-  const image =
-    "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
   return {
     charset: "utf-8",
     description,
@@ -47,7 +48,14 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export const links = () => {
-  return [{ rel: "stylesheet", href: styles }];
+  return [
+    { rel: "stylesheet", href: styles },
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/icons/favicon.ico"
+    }
+  ];
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -65,7 +73,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export function CatchBoundary() {
   const { status } = useCatch();
-  if (typeof window !== "undefined") console.log(window);
   const code = status === 404 ? 404 : 500;
   const config = getConfig();
   const message =

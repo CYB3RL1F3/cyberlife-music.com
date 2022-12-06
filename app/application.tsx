@@ -21,6 +21,7 @@ import PwaContextProvider from "./components/contexts/PwaContext";
 import type { Config } from "./components/contexts/ConfigContext/ConfigContext.types";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
+import ModalPortal from "./components/molecules/ModalPortal";
 
 export type ApplicationProps = {
   config: Config;
@@ -80,7 +81,7 @@ const Application = ({ config, children }: ApplicationProps) => {
                 <PageDetailHeaderPortal.Container />
               </div>
               <ContainerScrollPage>
-                <AnimatePresence exitBeforeEnter initial={false}>
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     className="max-md:min-h-[calc(100vh_-_21rem)]"
                     key={useLocation().pathname}

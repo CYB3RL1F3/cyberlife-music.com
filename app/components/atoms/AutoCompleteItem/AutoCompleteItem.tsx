@@ -9,6 +9,7 @@ const AutoCompleteItem = ({
   return (
     <button
       type="button"
+      title={value}
       onClick={onClick}
       className={clsx(
         "w-full h-8 p-2 text-xs border-none outline-none transition-all duration-25",

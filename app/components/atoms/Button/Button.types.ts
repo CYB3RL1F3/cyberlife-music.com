@@ -6,5 +6,6 @@ export type ButtonProps = {
   children?: ReactNode;
   rightIcon?: ReactNode;
   disabled?: boolean;
+  title?: string;
   className?: string;
 };

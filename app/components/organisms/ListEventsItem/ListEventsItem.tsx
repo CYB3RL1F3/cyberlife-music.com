@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import ListItem from "~/components/molecules/ListItem";
 import ListItemSnippet from "~/components/molecules/ListItemSnippet";
-import Thumbnail from "~/components/molecules/Thumbnail";
+import Picture from "~/components/organisms/Picture";
 import type { ListEventsItemProps } from "./ListEventsItem.types";
 
 const ListEventsItem = ({ event }: ListEventsItemProps) => {
@@ -9,7 +9,9 @@ const ListEventsItem = ({ event }: ListEventsItemProps) => {
   if (!title) return null;
   return (
     <ListItem
-      thumbnail={<Thumbnail variant="large" src={flyer?.front || ""} />}
+      thumbnail={
+        <Picture alt={title} variant="large" src={flyer?.front || ""} />
+      }
     >
       <ListItemSnippet title={title} href={`${_id}`}>
         <div className="w-full h-14">

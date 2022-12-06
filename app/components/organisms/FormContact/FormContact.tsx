@@ -32,7 +32,7 @@ const FormContact = ({
   const submit = handleSubmit((values) => onSubmit(values));
   const transition = useFluidTransition();
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       <div className="flex flex-col items-end justify-end w-full">
         <div className="w-full h-28">
           <h1 className="mt-2 text-lg italic text-right">

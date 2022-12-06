@@ -5,6 +5,7 @@ import Footer from "~/components/organisms/Footer";
 import PageLayout from "../PageLayout/PageLayout";
 import ExtraContent from "~/components/organisms/ExtraContent";
 import { useResize } from "~/hooks/useResize";
+import ModalPortal from "~/components/molecules/ModalPortal";
 
 const Layout = ({ children }: ApplicationProps) => {
   useResize(() => {
@@ -18,6 +19,7 @@ const Layout = ({ children }: ApplicationProps) => {
         <Header />
         <PageLayout left={<ExtraContent />}>{children}</PageLayout>
         <Footer />
+        <ModalPortal.Container />
       </div>
     </Background>
   );

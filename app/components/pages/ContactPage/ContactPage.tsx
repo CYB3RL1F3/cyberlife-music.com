@@ -14,7 +14,7 @@ const ContactPage = () => {
   }, [hideSuccess, isSuccess, showSuccess]);
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={isSuccess ? "success" : "form"}
         initial={{ opacity: 0 }}

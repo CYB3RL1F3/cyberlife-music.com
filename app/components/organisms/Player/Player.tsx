@@ -8,6 +8,7 @@ const Player = ({
   setSeek,
   togglePlay,
   seek,
+  title,
   load,
   waveform
 }: PlayerProps) => {
@@ -20,7 +21,7 @@ const Player = ({
   return (
     <article className="flex w-full h-12">
       <div className="w-12 h-12">
-        <ActionPlay isPlaying={isPlaying} onChange={togglePlay} />
+        <ActionPlay title={title} isPlaying={isPlaying} onChange={togglePlay} />
       </div>
       <div className="flex items-center w-full ml-2">
         <PlayerTrack

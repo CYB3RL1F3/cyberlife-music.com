@@ -17,12 +17,14 @@ export const getTrackTobuffer = (
   contexts: TrackPlayerContext
 ) => {
   const apiUrl = getApiEndpoint();
+  const url = `${apiUrl}/cyberlife/playlists/${track.id}/stream`;
   const toBuffer: TrackToBuffer = {
-    id: track.id || 0,
-    waveform: track.waveform || "",
-    url: `${apiUrl}/cyberlife/playlists/${track.id}/stream`,
+    contexts,
     duration: track.duration || 0,
-    contexts
+    id: track.id || 0,
+    title: track.title || "",
+    url,
+    waveform: track.waveform || ""
   };
   return toBuffer;
 };

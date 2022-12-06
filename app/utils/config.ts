@@ -19,11 +19,9 @@ export const getServerConfig = (): Config | null => {
 };
 
 export const getConfig = (): Config | null => {
-  console.log(typeof process !== "undefined");
   if (typeof process !== "undefined" && process.env) {
     return getServerConfig();
   }
-  console.log(typeof window !== "undefined" ? window : "undefined window");
   if (typeof window !== "undefined" && window.ENV) {
     return window["ENV"];
   }

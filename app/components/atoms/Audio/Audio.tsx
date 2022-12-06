@@ -20,20 +20,11 @@ const Audio = ({
   }, [playerRef.current]);
 
   const onListen = (value: number) => {
-    if (!element?.current) return;
     if (!element?.current || !duration) return;
     const loaded =
       (element.current.buffered.end(element.current.buffered.length - 1) /
         element.current.duration) *
       100;
-    console.log(
-      "LOADED >>> ",
-      element.current.buffered.length,
-      element.current.buffered.end(element.current.buffered.length - 1),
-      duration,
-      element.current.duration,
-      loaded
-    );
     setLoad(loaded);
     if (jumping) {
       element.current.currentTime = ((seek / 100) * duration) / 1000;

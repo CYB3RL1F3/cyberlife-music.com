@@ -8,6 +8,7 @@ export type TrackPlayerContext = {
 export type TrackToBuffer = {
   id: number;
   url: string;
+  title: string;
   contexts: TrackPlayerContext;
   waveform: string;
   duration: number;

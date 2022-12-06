@@ -6,8 +6,14 @@ const ReleaseActionPlayContainer = ({
   track,
   id
 }: ReleaseActionPlayContainerProps) => {
-  const { isPlaying, togglePlay } = useReleaseTrackPlayer(track, id);
-  return <ActionPlay isPlaying={isPlaying} onChange={togglePlay} />;
+  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, id);
+  return (
+    <ActionPlay
+      title={`play release ${title}`}
+      isPlaying={isPlaying}
+      onChange={togglePlay}
+    />
+  );
 };
 
 export default ReleaseActionPlayContainer;

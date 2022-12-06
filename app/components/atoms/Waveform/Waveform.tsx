@@ -15,9 +15,6 @@ const Waveform = forwardRef<HTMLDivElement, WaveformProps>(
         style={{
           backgroundImage: `url("${src}")`,
           filter: "invert(1)"
-          // "-webkit-mask-image": `url("${src}")`,
-          // "-webkit-mask-size": "100% 1.5rem",
-          // "mask-type": "alpha"
         }}
       />
     );

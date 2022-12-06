@@ -4,4 +4,6 @@ export type ActionProps = {
   className?: string;
   style?: Object;
   onClick: ReactEventHandler<HTMLButtonElement>;
+  title?: string;
+  disabled?: boolean;
 };

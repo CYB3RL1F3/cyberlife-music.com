@@ -43,6 +43,7 @@ export const useTrackPlayer = (id: number) => {
     seek: currentTrack?.seek || 0,
     url: currentTrack?.url || undefined,
     waveform: currentTrack?.waveform,
+    title: currentTrack?.title,
     duration: currentTrack?.duration,
     isInCurrentContext,
     isPlaying,
