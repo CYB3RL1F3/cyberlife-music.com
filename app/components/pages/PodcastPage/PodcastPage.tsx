@@ -11,7 +11,9 @@ const PodcastPage = ({ id }: PodcastPageProps) => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={<Loader mention="Please wait while we're chasing podcast..." />}
+      loader={
+        <Loader notification="Please wait while we're chasing podcast..." />
+      }
     >
       {data?.playlistTrack ? (
         <PodcastDisplay podcast={data?.playlistTrack} />

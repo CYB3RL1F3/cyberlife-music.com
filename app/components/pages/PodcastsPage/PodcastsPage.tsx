@@ -9,7 +9,9 @@ const PodcastsPage = () => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={<Loader mention="Please wait while we're chasing podcasts..." />}
+      loader={
+        <Loader notification="Please wait while we're chasing podcasts..." />
+      }
     >
       <ListPodcasts
         artwork={data?.playlist?.artwork}

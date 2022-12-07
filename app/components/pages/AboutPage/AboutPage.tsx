@@ -11,7 +11,9 @@ const AboutPage = () => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={<Loader mention="Please wait while we're chasing content..." />}
+      loader={
+        <Loader notification="Please wait while we're chasing content..." />
+      }
     >
       {data?.post ? (
         <PostDisplay className="about" post={data?.post} />

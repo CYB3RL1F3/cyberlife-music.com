@@ -2,8 +2,9 @@ import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
 
-import { ApolloProvider } from "@apollo/client";
-import { getClient } from "./components/contexts/ApolloContext/ApolloContext";
+import ApolloContext, {
+  getClient
+} from "./components/contexts/ApolloContext/ApolloContext";
 import PlayerContextProvider from "./components/contexts/PlayerContext";
 
 function hydrate() {
@@ -13,11 +14,11 @@ function hydrate() {
     hydrateRoot(
       document,
       <StrictMode>
-        <ApolloProvider client={client}>
+        <ApolloContext client={client}>
           <PlayerContextProvider>
             <RemixBrowser />
           </PlayerContextProvider>
-        </ApolloProvider>
+        </ApolloContext>
       </StrictMode>
     );
   });

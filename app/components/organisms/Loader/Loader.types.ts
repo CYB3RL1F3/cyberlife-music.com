@@ -1,3 +1,3 @@
 export type LoaderProps = {
-  mention?: string;
+  notification?: string;
 };

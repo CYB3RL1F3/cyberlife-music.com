@@ -1,9 +1,8 @@
 import type { SwitchProps } from "./Switch.types";
 import { clsx } from "clsx";
 import type { ReactEventHandler } from "react";
-import { useId } from "react";
 
-const Switch = ({ value, onChange }: SwitchProps) => {
+const Switch = ({ value, onChange, id }: SwitchProps) => {
   const className = clsx({
     "cursor-pointer border-none inline-flex items-center w-10 rounded-full h-4 transition-all duration-50":
       true,
@@ -11,7 +10,6 @@ const Switch = ({ value, onChange }: SwitchProps) => {
     "bg-gray-500 bg-opacity-50 justify-start": !value
   });
   const textClassName = "flex items-center text-[8px] select-none";
-  const id = useId();
 
   const handleChange: ReactEventHandler<HTMLInputElement> = (e) => {
     const value = e.currentTarget.checked;

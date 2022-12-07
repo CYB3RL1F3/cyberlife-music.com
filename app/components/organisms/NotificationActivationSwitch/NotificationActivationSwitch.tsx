@@ -6,7 +6,12 @@ const NotificationActivationSwitch = () => {
   const adjective = isSubscribed ? "enabled" : "disabled";
   const label = `Notifications ${adjective} on my browser`;
   return (
-    <FieldSwitch label={label} value={isSubscribed} onChange={setSubscribed} />
+    <FieldSwitch
+      id="notificationActivtionSwitch"
+      label={label}
+      value={isSubscribed}
+      onChange={setSubscribed}
+    />
   );
 };
 

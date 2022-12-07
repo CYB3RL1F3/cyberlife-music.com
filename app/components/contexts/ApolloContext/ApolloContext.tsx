@@ -32,9 +32,14 @@ export const getClient = () => {
     uri
   });
 
+  const cache =
+    typeof window !== "undefined"
+      ? new InMemoryCache().restore(window.__APOLLO_STATE__)
+      : new InMemoryCache();
+
   const client = new ApolloClient({
     link: link.concat(cleanupLink).concat(httpLink),
-    cache: new InMemoryCache(),
+    cache,
     defaultOptions: {
       watchQuery: {
         fetchPolicy: "cache-and-network"

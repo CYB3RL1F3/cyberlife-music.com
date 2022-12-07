@@ -1,5 +1,5 @@
 import reactHtmlParser from "html-react-parser";
-import { sanitize } from "dompurify";
+import { sanitize } from "isomorphic-dompurify";
 
 export const getSanitizedHtml = (
   html: string,
