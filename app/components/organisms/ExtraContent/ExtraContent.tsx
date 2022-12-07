@@ -8,7 +8,7 @@ const ExtraContent = () => {
         <PlayerWidget />
       </div>
       <div className="flex justify-end w-full md:justify-start">
-        <NotificationActivationSwitch />
+        <NotificationActivationSwitch id="NotificationActivationSwitch" />
       </div>
     </div>
   );

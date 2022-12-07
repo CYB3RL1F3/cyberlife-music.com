@@ -6,7 +6,7 @@ const FooterMobile = () => {
   return (
     <div className="mt-4 md:hidden">
       <div className="mb-4">
-        <NotificationActivationSwitch />
+        <NotificationActivationSwitch id="NotificationActivationSwitch__mobile" />
       </div>
       <FooterAnchorsCopyrights />
       <FooterAnchorsInfosContainer />

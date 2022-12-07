@@ -1,6 +1,6 @@
 /// <reference types="@remix-run/node" />
 
-export interface Window {
+interface Window {
   __APOLLO_STATE__: any;
   ENV: {
     mapbox: {

@@ -1,3 +1,2 @@
 export { default } from "./NotificationActivationSwitch";
-  export type { NotificationActivationSwitchProps } from "./NotificationActivationSwitch.types";
-  
+export type { NotificationActivationSwitchProps } from "./NotificationActivationSwitch.types";
