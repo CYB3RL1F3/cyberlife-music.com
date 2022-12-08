@@ -1,4 +1,4 @@
-import { Children, useRef, useMemo } from "react";
+import { Children, useRef, useEffect, useMemo, useState } from "react";
 import type { CarouselProps } from "./Carousel.types";
 import type { AnimationOptions } from "framer-motion";
 import {
@@ -7,16 +7,35 @@ import {
   motion,
   animate
 } from "framer-motion";
+import { useResize } from "~/hooks/useResize";
 
 const transition: AnimationOptions<number> = {
-  type: "spring",
-  bounce: 0
+  type: "tween"
 };
 
-const Carousel = ({ index, children }: CarouselProps) => {
+const Carousel = ({
+  index,
+  canDrag = true,
+  children,
+  onDrag
+}: CarouselProps) => {
   const childrens = useMemo(() => Children.toArray(children), [children]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const itemSize = containerRef.current?.clientWidth || 0;
+  const [itemSize, setItemSize] = useState(
+    containerRef.current?.clientWidth || 0
+  );
+
+  useResize(() => {
+    setTimeout(() => {
+      setItemSize(containerRef.current?.clientWidth || 0);
+    }, 200);
+  });
+  useEffect(() => {
+    setTimeout(() => {
+      setItemSize(containerRef.current?.clientWidth || 0);
+    }, 200);
+  });
+
   const width = useMemo(
     () => itemSize * childrens.length,
     [childrens, itemSize]
@@ -32,10 +51,13 @@ const Carousel = ({ index, children }: CarouselProps) => {
         <motion.div
           className={`absolute w-fit flex`}
           dragElastic={0.3}
+          drag={canDrag ? "x" : undefined}
+          dragConstraints={{ left: -width, right: 0 }}
           style={{ x, width }}
+          onDragEnd={onDrag}
         >
-          {childrens.map((child) => (
-            <div key={child.toString()} style={{ width: `${itemSize}px` }}>
+          {childrens.map((child, index) => (
+            <div key={`carousel__${index}`} style={{ width: `${itemSize}px` }}>
               {child}
             </div>
           ))}

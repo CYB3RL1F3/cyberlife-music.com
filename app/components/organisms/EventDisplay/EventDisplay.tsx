@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 
 const EventDisplay = ({ event }: EventDisplayProps) => {
   const { title, date, time, address, cost, lineup } = event;
+  if (typeof window !== "undefined") console.log(window.__APOLLO_STATE__);
   return (
     <div className="o-8">
       <PageDetailHeaderPortal>

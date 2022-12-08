@@ -133,8 +133,6 @@ export default function App() {
     }
   }, [location, matches]);
 
-  console.log(data.url);
-
   return (
     <html lang="en">
       <head>

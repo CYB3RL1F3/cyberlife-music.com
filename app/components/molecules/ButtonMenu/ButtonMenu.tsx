@@ -7,6 +7,7 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
     "block w-6 h-1 transition-all duration-75 ease-in-out bg-gray-200";
   return (
     <Button
+      title="menu"
       onClick={onClick}
       className="bg-transparent absolute rounded-sm z-20 flex flex-col items-center justify-center w-8 h-[30px] gap-1 right-2 top-2 md:hidden"
     >

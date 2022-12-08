@@ -4,7 +4,8 @@ import type { CarouselControllerProps } from "./CarouselController.types";
 const CarouselController = ({
   nbItems,
   index,
-  onChange
+  onChange,
+  name
 }: CarouselControllerProps) => {
   return (
     <ul className="flex justify-end h-8 gap-2">
@@ -13,6 +14,7 @@ const CarouselController = ({
           <CarouselControl
             isActive={index === i}
             index={i}
+            name={name}
             onChange={onChange}
           />
         </li>

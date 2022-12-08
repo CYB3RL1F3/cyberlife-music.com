@@ -15,7 +15,7 @@ const EventPage = ({ id }: EventPageProps) => {
         <Loader notification="Please wait while we're chasing event..." />
       }
     >
-      {data?.event ? (
+      {data?.event?.title ? (
         <EventDisplay event={data?.event} />
       ) : (
         <ErrorPage
