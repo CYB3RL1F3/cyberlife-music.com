@@ -11,4 +11,5 @@ interface Window {
     apiEndpoint: string;
     notificationPoolId: string;
   };
+  chrome: any;
 }

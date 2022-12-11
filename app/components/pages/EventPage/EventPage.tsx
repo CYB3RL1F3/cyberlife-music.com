@@ -21,7 +21,7 @@ const EventPage = ({ id }: EventPageProps) => {
         <ErrorPage
           code={404}
           message="Gig not found"
-          extra={<ButtonLink href="/gigs">Check out gigs</ButtonLink>}
+          extra={<ButtonLink href="/events">Check out gigs</ButtonLink>}
         />
       )}
     </HandlerContent>

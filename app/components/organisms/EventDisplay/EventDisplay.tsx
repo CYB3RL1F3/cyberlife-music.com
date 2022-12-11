@@ -11,7 +11,7 @@ const EventDisplay = ({ event }: EventDisplayProps) => {
   return (
     <div className="o-8">
       <PageDetailHeaderPortal>
-        <PageDetailHeader title={title} url="/gigs" />
+        <PageDetailHeader title={title} url="/events" />
       </PageDetailHeaderPortal>
       <CarouselEvent event={event} />
       <div className="flex justify-end w-full">

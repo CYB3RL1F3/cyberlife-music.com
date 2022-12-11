@@ -330,6 +330,27 @@ li {
   background: transparent;
 }
 
+.scrollbar::scrollbar {
+  width: 0.3rem !important;
+}
+
+.scrollbar::scrollbar-track {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.scrollbar::scrollbar-thumb {
+  border-radius: 4px;
+  cursor: pointer !important;
+}
+
+.scrollbar::scrollbar-thumb:hover {
+  cursor: pointer !important;
+}
+
+.scrollbar::scrollbar-corner {
+  background: transparent;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 

@@ -1,5 +1,5 @@
 import EventsPage from "~/components/pages/EventsPage";
 
-export default function Releases() {
+export default function EventsRoute() {
   return <EventsPage />;
 }

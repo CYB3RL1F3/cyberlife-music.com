@@ -3,8 +3,8 @@ export const routes = [
   "/podcasts/:id",
   "/releases",
   "/releases/:id",
-  "/gigs",
-  "/gigs/:id",
+  "/events",
+  "/events/:id",
   "/contact"
 ] as const;
 

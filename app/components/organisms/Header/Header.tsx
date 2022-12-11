@@ -13,7 +13,7 @@ const items: LinkNavItemProps[] = [
     label: "Podcasts"
   },
   {
-    href: "/gigs",
+    href: "/events",
     label: "Gigs"
   },
   {

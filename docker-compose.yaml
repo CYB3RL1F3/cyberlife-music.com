@@ -1,0 +1,14 @@
+version: "3.9"
+volumes:
+  cache:
+services:
+  app:
+    restart: always
+    build: 
+      context: ./
+    env_file: 
+      - ./.env
+    ports:
+      - "3000"
+
+  

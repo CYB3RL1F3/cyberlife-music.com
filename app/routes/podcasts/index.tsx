@@ -15,6 +15,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   };
 };
 
-export default function Podcast() {
+export default function PodcastRoute() {
   return <PodcastsPage />;
 }

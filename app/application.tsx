@@ -21,7 +21,8 @@ import PwaContextProvider from "./components/contexts/PwaContext";
 import type { Config } from "./components/contexts/ConfigContext/ConfigContext.types";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
-import ModalPortal from "./components/molecules/ModalPortal";
+import { isSupported } from "./utils/browser";
+import NotSupportedPage from "./components/pages/NotSupportedPage";
 
 export type ApplicationProps = {
   config: Config;
@@ -69,6 +70,12 @@ const Application = ({ config, children }: ApplicationProps) => {
       }
     }
   }, [location, matches]);
+
+  const isAppSupported = isSupported();
+
+  if (!isAppSupported && typeof window !== "undefined") {
+    return <NotSupportedPage />;
+  }
 
   return (
     <>

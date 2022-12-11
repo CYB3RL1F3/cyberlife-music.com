@@ -1,5 +1,5 @@
 import ReleasesPage from "~/components/pages/ReleasesPage";
 
-export default function Releases() {
+export default function ReleasesRoute() {
   return <ReleasesPage />;
 }
