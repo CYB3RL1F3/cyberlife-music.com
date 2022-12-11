@@ -15,6 +15,10 @@ const FooterAnchorsCopyrights = () => {
     {
       label: "About website",
       href: "/about"
+    },
+    {
+      label: "Download presskit",
+      href: "/presskit"
     }
   ];
   return <FooterAnchors anchors={anchors} />;
