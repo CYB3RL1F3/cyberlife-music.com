@@ -31,7 +31,12 @@ const CarouselEvent = ({ event }: CarouselEventProps) => {
           onDrag={handleDrag}
           name={`event ${title}`}
         >
-          {front ? <BackgroundImage className="w-full" src={front} /> : null}
+          {front ? (
+            <BackgroundImage
+              className="w-full h-[85%] bg-right bg-no-repeat bg-contain"
+              src={front}
+            />
+          ) : null}
           {map}
         </CarouselContainer>
       </div>
