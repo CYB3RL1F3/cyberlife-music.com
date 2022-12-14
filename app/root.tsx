@@ -1,4 +1,3 @@
-import React from "react";
 import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
@@ -14,37 +13,16 @@ import styles from "~/styles/styles.css";
 import ErrorPage from "./components/pages/ErrorPage";
 import { runInfosQuery } from "~/queries/infos";
 import { getConfig } from "./utils/config";
+import { getMeta } from "./utils/meta";
+import { useEffect } from "react";
 
 let isMount = true;
 
-const title = "Cyberlife's music";
-const image =
-  "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
-
 export const meta: MetaFunction = ({ data }) => {
   const description = data?.description;
-  return {
-    charset: "utf-8",
-    description,
-    expires: "0",
-    image,
-    "mobile-web-app-capable": "yes",
-    "og:description": description,
-    "og:image": image,
-    "og:image:secure_url": image,
-    "og:site_name": title,
-    "og:title": title,
-    "og:type": "website",
-    pragma: "no-cache",
-    robots: "all",
-    title,
-    "twitter:card": "summary",
-    "twitter:description": description,
-    "twitter:image": image,
-    "twitter:site_name": title,
-    "twitter:title": title,
-    viewport: "width=device-width,initial-scale=1"
-  };
+  return getMeta({
+    description
+  });
 };
 
 export const links = () => {
@@ -99,7 +77,7 @@ export default function App() {
   let location = useLocation();
   let matches = useMatches();
 
-  React.useEffect(() => {
+  useEffect(() => {
     let mounted = isMount;
     isMount = false;
     if ("serviceWorker" in navigator) {

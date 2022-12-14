@@ -1,6 +1,7 @@
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import PodcastsPage from "~/components/pages/PodcastsPage";
 import { runPlaylistQuery } from "~/queries/playlists";
+import { PlaylistQueryPlaylist } from "~/types/gql/PlaylistQuery";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const { data, error } = await runPlaylistQuery("dj-sets");

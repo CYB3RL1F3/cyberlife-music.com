@@ -56,6 +56,8 @@
     "react-player": "^2.11.0",
     "remix": "^1.9.0",
     "remix-auth": "^3.4.0",
+    "remix-utils": "^5.1.0",
+    "sitemap": "^7.1.1",
     "source-map-support": "^0.5.21",
     "superstruct": "^1.0.3",
     "tailwind-scrollbar": "^2.0.1",
@@ -63,6 +65,7 @@
     "tailwindcss-animation-delay": "^1.0.7",
     "tailwindcss-owl": "^2.0.0",
     "typescript": "^4.9.4",
+    "typings-for-css-modules-loader": "^1.7.0",
     "web-push": "^3.5.0",
     "xml-js": "^1.6.11"
   },
