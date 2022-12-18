@@ -1,4 +1,4 @@
-import { useParams } from "@remix-run/react";
+import { useParams, useTransition } from "@remix-run/react";
 import PodcastsPage from "~/components/pages/PodcastsPage";
 import PodcastPage from "~/components/pages/PodcastPage";
 
@@ -7,6 +7,7 @@ import { json } from "@remix-run/node";
 import { runPlaylistTrackQuery } from "~/queries/playlistTrack";
 import { PlaylistTrackQueryPlaylistTrack } from "~/types/gql/PlaylistTrackQuery";
 import { getMeta } from "~/utils/meta";
+import { useCacheableLoaderData } from '~/hooks/useCacheableLoaderData';
 
 export type Data = {
   data: {
@@ -39,6 +40,10 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function PodcastRoute() {
   const { id } = useParams();
+  const data = useCacheableLoaderData<typeof loader>();
+  const transition = useTransition();
+  const loading =
+    transition.state === "loading" || (transition.state === "idle" && !data);
   if (!id) return <PodcastsPage />;
-  return <PodcastPage id={id} />;
+  return <PodcastPage data={data} loading={loading} />;
 }

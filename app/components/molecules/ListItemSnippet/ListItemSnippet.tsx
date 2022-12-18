@@ -8,7 +8,11 @@ const ListItemSnippet = ({ children, title, href }: ListItemSnippetProps) => {
   return (
     <div className="flex flex-col w-full gap-2 py-2 flex-end">
       {href ? (
-        <Link className={clsx(cls, theme.linkHover)} to={href}>
+        <Link
+          prefetch="render"
+          className={clsx(cls, theme.linkHover)}
+          to={href}
+        >
           {title}
         </Link>
       ) : (

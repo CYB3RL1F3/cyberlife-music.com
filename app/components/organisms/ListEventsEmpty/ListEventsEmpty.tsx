@@ -9,7 +9,7 @@ const ListEventsEmpty = () => {
         </p>
         <p className="mt-4 text-sm text-white md:text-right max-md:absolute max-md:w-screen sm:text-md md:text-lg">
           contact / booking :{" "}
-          <Link to="/contact" className="underline">
+          <Link prefetch="render" to="/contact" className="underline">
             booking@cyberlife-music.com
           </Link>
         </p>

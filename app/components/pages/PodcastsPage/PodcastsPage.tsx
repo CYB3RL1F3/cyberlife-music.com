@@ -1,10 +1,10 @@
 import ListPodcasts from "~/components/organisms/ListPodcasts";
-import { usePlaylistQuery } from "~/hooks/queries/usePlaylistQuery";
 import HandlerContent from "~/components/molecules/HandlerContent";
 import Loader from "~/components/molecules/Loader";
+import type { PodcastsPageProps } from "./PodcastsPage.types";
 
-const PodcastsPage = () => {
-  const { data, loading } = usePlaylistQuery("dj-sets");
+const PodcastsPage = ({ data, loading }: PodcastsPageProps) => {
+  // const { data, loading } = usePlaylistQuery("dj-sets");
 
   return (
     <HandlerContent

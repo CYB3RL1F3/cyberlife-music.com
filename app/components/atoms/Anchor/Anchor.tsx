@@ -27,7 +27,7 @@ const Anchor = ({
   const internal = !href.includes("https://");
 
   return internal ? (
-    <Link to={href} prefetch="intent" className={cls}>
+    <Link to={href} prefetch="render" className={cls}>
       {children}
     </Link>
   ) : (

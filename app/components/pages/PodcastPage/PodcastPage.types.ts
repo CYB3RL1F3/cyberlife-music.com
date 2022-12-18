@@ -1,3 +1,6 @@
+import { PlaylistTrackQuery } from "~/types/gql/PlaylistTrackQuery";
+
 export type PodcastPageProps = {
-  id: string;
+  data?: PlaylistTrackQuery;
+  loading?: boolean;
 };

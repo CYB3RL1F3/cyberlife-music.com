@@ -2,6 +2,7 @@ import type { LoaderFunction } from "@remix-run/server-runtime";
 import PodcastsPage from "~/components/pages/PodcastsPage";
 import { runPlaylistQuery } from "~/queries/playlists";
 import { PlaylistQueryPlaylist } from "~/types/gql/PlaylistQuery";
+import { useLoaderData } from "@remix-run/react";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const { data, error } = await runPlaylistQuery("dj-sets");
@@ -17,5 +18,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function PodcastRoute() {
-  return <PodcastsPage />;
+  const data = useLoaderData();
+  return <PodcastsPage data={data} />;
 }

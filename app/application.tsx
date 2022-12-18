@@ -1,4 +1,4 @@
-import { useMatches, useOutlet } from "@remix-run/react";
+import { useMatches, useOutlet, useTransition } from "@remix-run/react";
 
 import {
   LiveReload,
@@ -23,6 +23,7 @@ import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { isSupported } from "./utils/browser";
 import NotSupportedPage from "./components/pages/NotSupportedPage";
+import Loader from "~/components/organisms/Loader";
 
 export type ApplicationProps = {
   config: Config;
@@ -72,6 +73,8 @@ const Application = ({ config, children }: ApplicationProps) => {
   }, [location, matches]);
 
   const isAppSupported = isSupported();
+
+  const transition = useTransition();
 
   if (!isAppSupported && typeof window !== "undefined") {
     return <NotSupportedPage />;

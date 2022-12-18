@@ -4,6 +4,9 @@ import { json } from "@remix-run/node";
 import { runInfosQuery } from "~/queries/infos";
 import { getConfig } from "~/utils/config";
 import { getMeta } from "~/utils/meta";
+import { useLoaderData, useTransition } from "@remix-run/react";
+import { runReleasesQuery } from "~/queries/releases";
+import { useCacheableLoaderData } from "~/hooks/useCacheableLoaderData";
 
 export const meta: MetaFunction = ({ data }) => {
   const description = data?.description;
@@ -15,16 +18,29 @@ export const meta: MetaFunction = ({ data }) => {
 };
 
 export const loader: LoaderFunction = async () => {
-  const res = await runInfosQuery();
-  const description = res?.data?.infos?.bio?.content;
+  const [infos, { data, error }] = await Promise.all([
+    await runInfosQuery(),
+    await runReleasesQuery()
+  ]);
+  const description = infos?.data?.infos?.bio?.content;
+  const releases = data?.releases;
   const config = getConfig();
-  const data = json({
+  if (!releases || error) {
+    throw new Response("Not Found", {
+      status: 404
+    });
+  }
+  return json({
     description,
+    releases,
     config
   });
-  return data;
 };
 
 export default function ReleasesRoute() {
-  return <ReleasesPage />;
+  const data = useCacheableLoaderData<typeof loader>();
+  const transition = useTransition();
+  const loading =
+    transition.state === "loading" || (transition.state === "idle" && !data);
+  return <ReleasesPage data={data} loading={loading} />;
 }

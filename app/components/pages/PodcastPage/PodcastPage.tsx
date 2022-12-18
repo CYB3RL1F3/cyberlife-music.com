@@ -6,8 +6,7 @@ import PodcastDisplay from "~/components/organisms/PodcastDisplay";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";
 
-const PodcastPage = ({ id }: PodcastPageProps) => {
-  const { data, loading } = usePlaylistTrackQuery(id);
+const PodcastPage = ({ data, loading }: PodcastPageProps) => {
   return (
     <HandlerContent
       loading={!data && loading}
