@@ -1,7 +1,6 @@
 import { Link } from "@remix-run/react";
-import type { ListEventsEmptyProps } from "./ListEventsEmpty.types";
 
-const ListEventsEmpty = ({ ...props }: ListEventsEmptyProps) => {
+const ListEventsEmpty = () => {
   return (
     <div className="flex gap-8 py-2 md:py-8">
       <div className="relative justify-end flex-auto h-24 mt-4">

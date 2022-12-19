@@ -758,6 +758,10 @@ video {
   height: 10rem;
 }
 
+.h-\[85\%\] {
+  height: 85%;
+}
+
 .h-\[calc\(100vh_-_6rem\)\] {
   height: calc(100vh - 6rem);
 }
@@ -781,10 +785,6 @@ video {
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
-}
-
-.h-\[85\%\] {
-  height: 85%;
 }
 
 .max-h-full {
@@ -1271,10 +1271,6 @@ video {
 
 .bg-contain {
   background-size: contain;
-}
-
-.bg-auto {
-  background-size: auto;
 }
 
 .bg-right {
