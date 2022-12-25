@@ -1,4 +1,4 @@
-import { ReleasesQueryReleases } from "~/types/gql/ReleasesQuery";
+import type { ReleasesQueryReleases } from "~/types/gql/ReleasesQuery";
 
 export type ListReleasesProps = {
   releases?: ReleasesQueryReleases[];

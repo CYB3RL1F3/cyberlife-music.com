@@ -1,0 +1,5 @@
+query VideosQuery($profile: String!) {
+  videos(author: $profile) {
+    ...VideoFragment
+  }
+}

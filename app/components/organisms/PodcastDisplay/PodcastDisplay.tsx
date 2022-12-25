@@ -11,6 +11,8 @@ import ListTag from "~/components/molecules/ListTag";
 import DisplayPodcastComments from "~/components/organisms/DisplayPodcastComments";
 import PlayerPodcastTrackContainer from "~/components/organisms/PlayerPodcastTrackContainer";
 import { useMemo } from "react";
+import { useFluidTransition } from "~/hooks/useFluidTransition";
+import { motion } from "framer-motion";
 
 const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
   const { title, description, tracklist, likes, comments, taglist } = podcast;
@@ -22,14 +24,28 @@ const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
       })),
     [taglist]
   );
+  const transition = useFluidTransition({
+    initial: {
+      x: 50,
+      opacity: 0
+    },
+    animate: {
+      x: 0,
+      opacity: 1
+    }
+  });
   return (
     <div className="o-4">
       <PageDetailHeaderPortal>
         <PageDetailHeader title={title} url="/" />
       </PageDetailHeaderPortal>
-      <PodcastDetails podcast={podcast} />
-      <PlayerPodcastTrackContainer track={podcast} />
-      <div className="pt-4 o-8">
+      <motion.div {...transition(0.1)}>
+        <PodcastDetails podcast={podcast} />
+      </motion.div>
+      <motion.div {...transition(0.2)}>
+        <PlayerPodcastTrackContainer track={podcast} />
+      </motion.div>
+      <motion.div {...transition(0.3)} className="pt-4 o-8">
         {description && (
           <Text>{parseHtml(toHtml(description, "underline"))}</Text>
         )}
@@ -37,7 +53,7 @@ const PodcastDisplay = ({ podcast }: PodcastDisplayProps) => {
         {!!tags.length && <ListTag tags={tags} />}
         {!!likes?.length && <DisplayPodcastLikes likes={likes} />}
         {!!comments?.length && <DisplayPodcastComments comments={comments} />}
-      </div>
+      </motion.div>
     </div>
   );
 };

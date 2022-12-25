@@ -11,9 +11,7 @@ const EventPage = ({ id }: EventPageProps) => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={
-        <Loader notification="Please wait while we're chasing event..." />
-      }
+      loader={<Loader message="Please wait while we're chasing event..." />}
     >
       {data?.event?.title ? (
         <EventDisplay event={data?.event} />
