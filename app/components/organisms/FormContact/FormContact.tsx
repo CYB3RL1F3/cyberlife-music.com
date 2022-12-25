@@ -62,7 +62,10 @@ const FormContact = ({
             />
           </motion.div>
 
-          <motion.div {...transition(0.2)} className="w-full md:w-[40vw]">
+          <motion.div
+            {...transition(0.2)}
+            className="relative z-20 w-full md:w-[40vw]"
+          >
             <ControlledFieldInputAutoComplete
               control={control}
               name="subject"

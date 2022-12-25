@@ -27,7 +27,7 @@ specifiers:
   esbuild: 0.16.3
   eslint: ^8.30.0
   framer-motion: ^8.0.2
-  html-react-parser: ^3.0.4
+  html-react-parser: ^3.0.6
   isbot: ^3.6.5
   isomorphic-dompurify: ^0.24.0
   mapbox-gl: ^2.11.1
@@ -76,7 +76,7 @@ dependencies:
   dotenv: 16.0.3
   esbuild: 0.16.3
   framer-motion: 8.0.2_biqbaboplfbrettd7655fr4n2y
-  html-react-parser: 3.0.4_react@18.2.0
+  html-react-parser: 3.0.6_react@18.2.0
   isbot: 3.6.5
   isomorphic-dompurify: 0.24.0
   mapbox-gl: 2.11.1
@@ -6086,8 +6086,8 @@ packages:
       whatwg-encoding: 2.0.0
     dev: false
 
-  /html-react-parser/3.0.4_react@18.2.0:
-    resolution: {integrity: sha512-va68PSmC7uA6PbOEc9yuw5Mu3OHPXmFKUpkLGvUPdTuNrZ0CJZk1s/8X/FaHjswK/6uZghu2U02tJjussT8+uw==}
+  /html-react-parser/3.0.6_react@18.2.0:
+    resolution: {integrity: sha512-kFh/qJkz4KJudCcILfI1hQKXTheRyMREXuL/WbWYUAsMsu0EOwV4nO5jA3ecu1LUNpCcebkNcBECxqpswBDlLw==}
     peerDependencies:
       react: 0.14 || 15 || 16 || 17 || 18
     dependencies:
@@ -6095,7 +6095,7 @@ packages:
       html-dom-parser: 3.1.2
       react: 18.2.0
       react-property: 2.0.0
-      style-to-js: 1.1.1
+      style-to-js: 1.1.2
     dev: false
 
   /htmlparser2/8.0.1:
@@ -9745,16 +9745,23 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /style-to-js/1.1.1:
-    resolution: {integrity: sha512-RJ18Z9t2B02sYhZtfWKQq5uplVctgvjTfLWT7+Eb1zjUjIrWzX5SdlkwLGQozrqarTmEzJJ/YmdNJCUNI47elg==}
+  /style-to-js/1.1.2:
+    resolution: {integrity: sha512-aMG8jJpEF0SCGbQFY8W8CT+EjQ9ubp35FOZG3prWkNjxW/a1bEeSod0tkWiP+6iiOCDIIrQykUDkPY5LbNF87g==}
     dependencies:
-      style-to-object: 0.3.0
+      style-to-object: 0.4.0
     dev: false
 
   /style-to-object/0.3.0:
     resolution: {integrity: sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==}
     dependencies:
       inline-style-parser: 0.1.1
+    dev: true
+
+  /style-to-object/0.4.0:
+    resolution: {integrity: sha512-dAjq2m87tPn/TcYTeqMhXJRhu96WYWcxMFQxs3Y9jfYpq2jG+38u4tj0Lst6DOiYXmDuNxVJ2b1Z2uPC6wTEeg==}
+    dependencies:
+      inline-style-parser: 0.1.1
+    dev: false
 
   /supercluster/7.1.5:
     resolution: {integrity: sha512-EulshI3pGUM66o6ZdH3ReiFcvHpM3vAigyK+vcxdjpJyEbIIrtbmBdY23mGgnI24uXiGFvrGq9Gkum/8U7vJWg==}

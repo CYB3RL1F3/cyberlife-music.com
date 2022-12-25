@@ -13,36 +13,41 @@ const FieldInputAutoComplete = ({
   ...props
 }: FieldInputAutoCompleteProps) => {
   const filteredValues = values.filter(
-    (item) => value && value !== item && item.includes(value)
+    (item) =>
+      value &&
+      value !== item &&
+      item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
   );
   const [disabled, disable, enable] = useToggleState();
 
   return (
-    <ClientOnly>
-      {() => (
-        <div className={size}>
-          <FieldInput
-            value={value}
-            onChange={onChange}
-            onFocus={enable}
-            onUnfocus={() => {
-              setTimeout(() => {
-                disable();
-              }, 100);
-            }}
-            {...props}
-            autoComplete="off"
-          />
+    <div className={size}>
+      <FieldInput
+        value={value}
+        onChange={onChange}
+        onFocus={enable}
+        onUnfocus={() => {
+          setTimeout(() => {
+            disable();
+          }, 100);
+        }}
+        {...props}
+        autoComplete="off"
+      />
+      <ClientOnly>
+        {() => (
           <AutoComplete
             values={filteredValues}
             size={size}
             disabled={disabled}
             onSelect={onChange}
-            autoCompleteItem={(props) => <AutoCompleteItem {...props} />}
+            autoCompleteItem={(props) => (
+              <AutoCompleteItem key={props.value} {...props} />
+            )}
           />
-        </div>
-      )}
-    </ClientOnly>
+        )}
+      </ClientOnly>
+    </div>
   );
 };
 

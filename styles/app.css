@@ -296,7 +296,7 @@ body * {
 
 @keyframes backgroundAppear {
   from {
-    mask-size: 0vw;
+    mask-size: 50vw;
   }
 
   to {
@@ -307,8 +307,7 @@ body * {
 .mask {
   mask-type: alpha;
   animation: backgroundAppear 0.5s ease-in-out forwards;
-  animation-delay: 0.5s;
-  mask-size: 0vw;
+  mask-size: 50vw;
   mask-repeat: no-repeat;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-image: linear-gradient(to right,rgb(0, 0, 0) 0%,rgb(0, 0, 0) 28.7%, transparent 75.3%, transparent 98.3%);
