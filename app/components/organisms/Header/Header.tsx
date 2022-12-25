@@ -21,6 +21,10 @@ const items: LinkNavItemProps[] = [
     label: "Releases"
   },
   {
+    href: "/videos",
+    label: "Videos"
+  },
+  {
     href: "/contact",
     label: "Contact"
   }

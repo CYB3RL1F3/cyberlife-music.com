@@ -1,4 +1,4 @@
-// node_modules/.pnpm/@remix-run+server-runtime@1.8.2_biqbaboplfbrettd7655fr4n2y/node_modules/@remix-run/server-runtime/dist/esm/responses.js
+// node_modules/.pnpm/@remix-run+server-runtime@1.9.0_biqbaboplfbrettd7655fr4n2y/node_modules/@remix-run/server-runtime/dist/esm/responses.js
 var json = (data, init = {}) => {
   let responseInit = typeof init === "number" ? {
     status: init

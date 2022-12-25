@@ -5,7 +5,7 @@ const ListPodcastCommentsItem = ({ comment }: ListPodcastCommentsItemProps) => {
   if (!comment.user?.soundcloud || !comment.user.userName) return null;
   return (
     <div className="flex p-1 bg-gray-600 bg-opacity-50 rounded">
-      <div className="flex items-center justify-center w-12 h-12">
+      <div className="flex items-center justify-center w-16 min-h-12">
         {comment.user.avatar && (
           <a target="_blank" href={comment.user.soundcloud} rel="noreferrer">
             <Avatar
@@ -15,7 +15,7 @@ const ListPodcastCommentsItem = ({ comment }: ListPodcastCommentsItemProps) => {
           </a>
         )}
       </div>
-      <div className="flex flex-col justify-center o-2">
+      <div className="flex flex-col justify-center w-full o-2">
         <a
           href={comment.user.soundcloud}
           target="_blank"
@@ -24,7 +24,7 @@ const ListPodcastCommentsItem = ({ comment }: ListPodcastCommentsItemProps) => {
         >
           {comment.user.userName}
         </a>
-        <p className="p-0 m-0 text-sm italic">{comment.body}</p>
+        <p className="w-full p-0 m-0 text-sm italic">{comment.body}</p>
       </div>
     </div>
   );

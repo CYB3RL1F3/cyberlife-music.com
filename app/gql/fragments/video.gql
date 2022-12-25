@@ -1,0 +1,8 @@
+fragment VideoFragment on Video {
+  url
+  title
+  description
+  type
+  illustration
+  _id
+}

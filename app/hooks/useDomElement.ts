@@ -10,7 +10,6 @@ export const useDomElement = (selector: string) => {
   );
   useEffect(() => {
     const asyncEffect = async () => {
-      if (element) return;
       const currentElement = await getDomElement(selector);
       setElement(currentElement);
     };

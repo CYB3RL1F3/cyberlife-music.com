@@ -25,7 +25,7 @@ const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
         {role} ({cat}) - {label}
       </Text.RightItalic>
       <br />
-      <Text.RightItalic>Published on {date}</Text.RightItalic>
+      <Text.RightItalic>Released on {date}</Text.RightItalic>
       <Text.RightItalic>{genre}</Text.RightItalic>
     </PageDetailLayout>
   );

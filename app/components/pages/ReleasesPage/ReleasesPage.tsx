@@ -8,9 +8,7 @@ const ReleasesPage = () => {
   return (
     <HandlerContent
       loading={!data && loading}
-      loader={
-        <Loader notification="Please wait while we're chasing releases..." />
-      }
+      loader={<Loader message="Please wait while we're chasing releases..." />}
     >
       <ListReleases releases={data?.releases} />
     </HandlerContent>

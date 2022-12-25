@@ -42,6 +42,7 @@ const Carousel = ({
   );
   const currentX = useMemo(() => (-index + 0) * itemSize, [index, itemSize]);
   const x = useMotionValue(currentX);
+  if (typeof window === "undefined") return null;
   animate(x, currentX, transition);
 
   return (

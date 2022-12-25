@@ -34,7 +34,7 @@ const FormContact = ({
   return (
     <AnimatePresence mode="wait">
       <div className="flex flex-col items-end justify-end w-full">
-        <div className="w-full h-28">
+        <motion.div {...transition(0)} className="w-full h-28">
           <h1 className="mt-2 text-lg italic text-right">
             Let's keep in touch!
           </h1>
@@ -44,7 +44,7 @@ const FormContact = ({
               contact<span>@</span>cyberlife-music.com
             </a>
           </p>
-        </div>
+        </motion.div>
         <form onSubmit={submit} className="w-full md:w-[40vw] o-4">
           <motion.div {...transition(0.1)} className="w-full">
             <ControlledFieldInput
@@ -62,7 +62,10 @@ const FormContact = ({
             />
           </motion.div>
 
-          <motion.div {...transition(0.2)} className="w-full md:w-[40vw]">
+          <motion.div
+            {...transition(0.2)}
+            className="relative z-20 w-full md:w-[40vw]"
+          >
             <ControlledFieldInputAutoComplete
               control={control}
               name="subject"

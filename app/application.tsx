@@ -84,24 +84,26 @@ const Application = ({ config, children }: ApplicationProps) => {
           <NotificationContextProvider>
             <Layout>
               <DisplayInfosContainer />
-              <div className="h-6">
-                <PageDetailHeaderPortal.Container />
+              <div className="relative">
+                <div className="absolute z-10 w-full">
+                  <PageDetailHeaderPortal.Container />
+                </div>
+                <ContainerScrollPage>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      className="max-md:min-h-[calc(100vh_-_21rem)]"
+                      key={location.pathname}
+                      initial={{ opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ opacity: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {children ?? outlet}
+                    </motion.div>
+                    <FooterMobile />
+                  </AnimatePresence>
+                </ContainerScrollPage>
               </div>
-              <ContainerScrollPage>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    className="max-md:min-h-[calc(100vh_-_21rem)]"
-                    key={useLocation().pathname}
-                    initial={{ opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ opacity: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {children ?? outlet}
-                  </motion.div>
-                  <FooterMobile />
-                </AnimatePresence>
-              </ContainerScrollPage>
               <ClientOnly>{() => <AudioContainer />}</ClientOnly>
             </Layout>
           </NotificationContextProvider>
