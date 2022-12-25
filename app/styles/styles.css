@@ -800,6 +800,10 @@ video {
   max-height: 100%;
 }
 
+.max-h-\[90vh\] {
+  max-height: 90vh;
+}
+
 .min-h-\[10rem\] {
   min-height: 10rem;
 }
@@ -2219,8 +2223,26 @@ body * {
   font-family: "myriad-pro";
 }
 
+@keyframes backgroundAppear {
+  from {
+    -webkit-mask-size: 0vw;
+            mask-size: 0vw;
+  }
+
+  to {
+    -webkit-mask-size: 100vw;
+            mask-size: 100vw;
+  }
+}
+
 .mask {
   mask-type: alpha;
+  animation: backgroundAppear 0.5s ease-in-out forwards;
+  animation-delay: 0.5s;
+  -webkit-mask-size: 0vw;
+          mask-size: 0vw;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   -webkit-mask-image: linear-gradient(to right,rgb(0, 0, 0) 0%,rgb(0, 0, 0) 28.7%, transparent 75.3%, transparent 98.3%);
   mask-image: linear-gradient(to right,rgb(0, 0, 0) 0%,rgb(0, 0, 0) 28.7%, transparent 75.3%, transparent 98.3%);
 }

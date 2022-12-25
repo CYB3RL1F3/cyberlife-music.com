@@ -32,14 +32,16 @@ const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
           className={className}
           transitionDuration={transitionDuration}
           containerClassName={clsx(
-            `flex desktop:items-center justify-center w-full min-h-[50vh] max-h-full transition-transform transform-gpu duration-${transitionDuration} ease-in-out pt-16 desktop:py-6 pointer-events-none`,
+            `flex desktop:items-center justify-center w-full h-full max-h-full transition-transform transform-gpu duration-${transitionDuration} ease-in-out desktop:py-6 pointer-events-none`,
             {
               "translate-y-0": isOpen,
               "translate-y-full": !isOpen
             }
           )}
         >
-          {children}
+          <div className="flex items-center justify-center w-full h-full">
+            {children}
+          </div>
         </Overlay>
       </Portal>
     );

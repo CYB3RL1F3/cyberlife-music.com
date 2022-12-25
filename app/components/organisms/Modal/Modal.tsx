@@ -35,7 +35,7 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
       >
         <div
           className={clsx(
-            `flex flex-col w-fit bg-white rounded-3xl desktop:rounded-3xl overflow-hidden pointer-events-auto`,
+            `flex flex-col w-fit bg-black rounded-3xl desktop:rounded-3xl overflow-hidden pointer-events-auto`,
             maxWidth
           )}
           style={{
@@ -58,7 +58,7 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
           </div>
           <div
             className={clsx(
-              "flex-1 min-w-[50vw] min-h-[40vh] flex justify-center items-center overflow-auto w-fit h-fit max-h-3xl",
+              "flex-1 bg-black flex justify-center items-center overflow-auto w-fit h-fit max-h-[90vh] max-w-[80vw]",
               maxWidth
             )}
           >
