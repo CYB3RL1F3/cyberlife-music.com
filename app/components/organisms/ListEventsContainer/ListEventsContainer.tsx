@@ -1,6 +1,6 @@
 import ListEvents from "~/components/organisms/ListEvents";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import { useEventsQuery } from "~/hooks/queries/useEventsQuery";
 
 const ListEventsContainer = () => {

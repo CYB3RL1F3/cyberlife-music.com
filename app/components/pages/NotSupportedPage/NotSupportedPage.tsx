@@ -1,5 +1,4 @@
 import type { NotSupportedPageProps } from "./NotSupportedPage.types";
-import { clsx } from "clsx";
 import NotSupportedIe from "~/components/organisms/NotSupportedIe";
 import NotSupportedTooOld from "~/components/organisms/NotSupportedTooOld";
 

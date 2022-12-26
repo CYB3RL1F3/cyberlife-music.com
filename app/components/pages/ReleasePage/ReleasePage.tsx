@@ -1,7 +1,7 @@
 import type { ReleasePageProps } from "./ReleasePage.types";
 import { useReleaseQuery } from "~/hooks/queries/useReleaseQuery";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import ReleaseDisplay from "~/components/organisms/ReleaseDisplay";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";

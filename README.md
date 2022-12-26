@@ -1,53 +1,35 @@
-# Welcome to Remix!
+# cyberlife-music.com
 
-- [Remix Docs](https://remix.run/docs)
+The source code of my website, created to expose all informations about my musical world (podcasts, releases, infos like gigs, videos...) is available on github as a demonstration of an application developed with Typescript + React Remix + Tailwind CSS.
+The website is now online and works with my profilart application for data provision.
 
-## Development
+## Technical stack
 
-From your terminal:
+- [Typescript](https://www.typescriptlang.org/) 4.9.4
+- [React](https://facebook.github.io/react/) 18.2.0
+- [React Remix](https://remix.run/) 1.9.0
+- [Tailwind CSS](https://tailwindcss.com/) 3.2.4
+- [Framer Motion](https://www.framer.com/motion/) 8.0.2
+- [GraphQL Apollo Client](https://www.apollographql.com/docs/react/) 2.34.0
+- [React Hooks Form](https://github.com/mobxjs/mobx-react) 2.0.1
+- [Superstruct](https://github.com/alisd23/mobx-react-router/) 1.0.3
+- [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/guides/) 2.11.1
 
-```sh
-npm run dev
-```
+## Architecture
 
-This starts your app in development mode, rebuilding assets on file changes.
+Application is based on [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) architecture. Each component is designed with a (very) fine granularity to be reusable and match with SOLID principles (single responsibility, closed to modifications / open to extension, dependencies inversions principle...).
 
-## Deployment
+Application is also based on [presentational/container design pattern](https://www.patterns.dev/posts/presentational-container-pattern/). Each view is separated from logic (API calls, interactions with contexts, with audio player, etc...).
 
-First, build your app for production:
+Almost every component is "home-made", even the carousel.
 
-```sh
-npm run build
-```
+Application is based on React Remix, a very innovative React-based SSR framework.
 
-Then run the app in production mode:
+A particular focus is constantly made on performance, SEO and good practices as well.
 
-```sh
-npm start
-```
+### Coming up next
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+- Set up some E2E tests
+- Replace IDs by slugs
+- A web radio project :)
+- A collective music art project :)
