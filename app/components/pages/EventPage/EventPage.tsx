@@ -1,7 +1,7 @@
 import ButtonLink from "~/components/atoms/ButtonLink";
 import EventDisplay from "~/components/organisms/EventDisplay";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import { useEventQuery } from "~/hooks/queries/useEventQuery";
 import ErrorPage from "../ErrorPage";
 import type { EventPageProps } from "./EventPage.types";

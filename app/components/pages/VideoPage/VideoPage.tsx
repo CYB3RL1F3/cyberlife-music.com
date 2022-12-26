@@ -1,7 +1,7 @@
 import type { VideoPageProps } from "./VideoPage.types";
 import { useVideoQuery } from "~/hooks/queries/useVideoQuery";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import VideoDisplay from "~/components/organisms/VideoDisplay";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";

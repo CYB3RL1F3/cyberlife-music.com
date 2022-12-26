@@ -1,7 +1,7 @@
 import { useVideosQuery } from "~/hooks/queries/useVideosQuery";
 import ListVideos from "~/components/organisms/ListVideos";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 
 const VideosPage = () => {
   const { data, loading } = useVideosQuery();

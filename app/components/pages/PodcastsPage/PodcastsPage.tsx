@@ -1,7 +1,7 @@
 import ListPodcasts from "~/components/organisms/ListPodcasts";
 import { usePlaylistQuery } from "~/hooks/queries/usePlaylistQuery";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 
 const PodcastsPage = () => {
   const { data, loading } = usePlaylistQuery("dj-sets");

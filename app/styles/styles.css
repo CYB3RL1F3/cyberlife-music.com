@@ -617,14 +617,14 @@ video {
   margin-right: 0.25rem;
 }
 
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ml-2 {
@@ -637,6 +637,10 @@ video {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .mr-6 {
@@ -751,6 +755,10 @@ video {
   height: 20rem;
 }
 
+.h-\[50vh\] {
+  height: 50vh;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -781,10 +789,6 @@ video {
 
 .h-14 {
   height: 3.5rem;
-}
-
-.h-\[50vh\] {
-  height: 50vh;
 }
 
 .h-fit {

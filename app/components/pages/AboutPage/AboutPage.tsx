@@ -1,6 +1,6 @@
 import ButtonLink from "~/components/atoms/ButtonLink";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import { usePostQuery } from "~/hooks/queries/usePostQuery";
 import ErrorPage from "../ErrorPage";
 import PostDisplay from "~/components/organisms/PostDisplay/PostDisplay";

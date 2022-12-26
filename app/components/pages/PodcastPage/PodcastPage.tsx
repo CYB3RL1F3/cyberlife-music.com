@@ -1,7 +1,7 @@
 import type { PodcastPageProps } from "./PodcastPage.types";
 import { usePlaylistTrackQuery } from "~/hooks/queries/usePlaylistTrackQuery";
-import HandlerContent from "~/components/organisms/HandlerContent";
-import Loader from "~/components/organisms/Loader";
+import HandlerContent from "~/components/molecules/HandlerContent";
+import Loader from "~/components/molecules/Loader";
 import PodcastDisplay from "~/components/organisms/PodcastDisplay";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";
