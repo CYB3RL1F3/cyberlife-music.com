@@ -1,5 +1,5 @@
 import { HiArrowLeft } from "react-icons/hi";
-import Title from "~/components/atoms/Title/Title";
+import Heading from "~/components/atoms/Heading";
 import type { PageDetailHeaderProps } from "./PageDetailHeader.types";
 import { Link } from "@remix-run/react";
 import { useFluidTransition } from "~/hooks/useFluidTransition";
@@ -25,7 +25,7 @@ const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
           <HiArrowLeft />
         </Link>
       )}
-      <Title align="right">{title}</Title>
+      <Heading align="right">{title}</Heading>
     </motion.div>
   );
 };

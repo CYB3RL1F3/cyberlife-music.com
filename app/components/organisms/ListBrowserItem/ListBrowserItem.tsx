@@ -13,6 +13,7 @@ const ListBrowserItem = ({
       href={href}
       target="_blank"
       className="flex flex-col items-center justify-center gap-5 text-gray-200 capitalize md:hover:text-white"
+      rel="noreferrer"
     >
       <img
         src={icon}

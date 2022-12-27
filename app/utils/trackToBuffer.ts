@@ -7,7 +7,7 @@ import type {
 } from "~/components/contexts/PlayerContext/PlayerContext.types";
 import { getApiEndpoint } from "./config";
 
-type TrackType =
+export type TrackType =
   | ReleaseFragmentTracklistStream
   | PlaylistQueryPlaylistTracks
   | PlaylistTrackQueryPlaylistTrack;

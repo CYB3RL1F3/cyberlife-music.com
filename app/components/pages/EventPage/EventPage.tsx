@@ -1,5 +1,5 @@
 import ButtonLink from "~/components/atoms/ButtonLink";
-import EventDisplay from "~/components/organisms/EventDisplay";
+import ViewEvent from "~/components/organisms/ViewEvent";
 import HandlerContent from "~/components/molecules/HandlerContent";
 import Loader from "~/components/molecules/Loader";
 import { useEventQuery } from "~/hooks/queries/useEventQuery";
@@ -14,7 +14,7 @@ const EventPage = ({ id }: EventPageProps) => {
       loader={<Loader message="Please wait while we're chasing event..." />}
     >
       {data?.event?.title ? (
-        <EventDisplay event={data?.event} />
+        <ViewEvent event={data?.event} />
       ) : (
         <ErrorPage
           code={404}

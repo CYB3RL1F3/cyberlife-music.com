@@ -26,7 +26,9 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     });
   };
 
-  const addTrack: PlayerContextValues["addTrack"] = (payload) => {
+  const addTrackToBuffer: PlayerContextValues["addTrackToBuffer"] = (
+    payload
+  ) => {
     dispatch({
       type: "ADD_TRACK",
       payload
@@ -106,7 +108,7 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
         currentContext,
         setVolume,
         playing,
-        addTrack,
+        addTrackToBuffer,
         setCurrentTrack,
         play,
         pause,

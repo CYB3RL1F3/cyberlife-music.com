@@ -1,13 +1,13 @@
 import LinkNavItemContainer from "~/components/molecules/LinkNavItemContainer";
 import type { LinkNavItemListProps } from "./LinkNavItemList.types";
 import clsx from "clsx";
-import ListItem from "~/components/atoms/ListItem/ListItem";
+import InlineListItem from "~/components/atoms/InlineListItem";
 
 const LinkNavItemList = ({ items, onChange }: LinkNavItemListProps) => {
   return (
     <ul className="flex flex-col p-0 m-0 md:flex-row md:flex-end">
       {items.map((item, index) => (
-        <ListItem
+        <InlineListItem
           index={index}
           key={`menuItem__${item.href}`}
           className={clsx(
@@ -15,7 +15,7 @@ const LinkNavItemList = ({ items, onChange }: LinkNavItemListProps) => {
           )}
         >
           <LinkNavItemContainer {...item} onChange={onChange} index={index} />
-        </ListItem>
+        </InlineListItem>
       ))}
     </ul>
   );

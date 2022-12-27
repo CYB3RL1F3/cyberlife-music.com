@@ -1,5 +1,8 @@
 import type { ButtonProps } from "./Button.types";
 import { useButtonStyle } from "~/hooks/styles/useButtonStyle";
+import { useLinkStyle } from "~/hooks/styles/useLinkStyle";
+import { clsx } from "clsx";
+import { useMemo } from "react";
 
 const Button = ({
   children,
@@ -8,12 +11,22 @@ const Button = ({
   onClick,
   title,
   rightIcon,
+  variant = "button",
   className
 }: ButtonProps) => {
-  const buttonClassName = useButtonStyle(className);
+  const buttonStyle = useButtonStyle(className);
+  const linkStyle = useLinkStyle(clsx("bg-none border-none", className));
+  const cls = useMemo(
+    () =>
+      clsx({
+        [linkStyle]: variant === "link",
+        [buttonStyle]: variant === "button"
+      }),
+    [buttonStyle, linkStyle, variant]
+  );
   return (
     <button
-      className={buttonClassName}
+      className={cls}
       type={type}
       title={title}
       disabled={disabled}

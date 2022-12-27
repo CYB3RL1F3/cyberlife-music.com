@@ -1,6 +1,6 @@
 import NavContextProvider from "~/components/contexts/NavContext";
 import type { NavProps } from "./Nav.types";
-import NavIndicatorContainer from "~/components/organisms/LinkNavIndicatorContainer";
+import NavIndicatorContainer from "~/components/organisms/NavIndicatorContainer";
 import clsx from "clsx";
 import ClientOnly from "~/components/atoms/ClientOnly";
 

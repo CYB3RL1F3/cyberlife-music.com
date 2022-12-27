@@ -1,11 +1,3 @@
-fragment SubscriptionFragment on Subscription {
-  endpoint
-  keys {
-    auth
-    p256dh
-  }
-}
-
 mutation SubscribeMutation(
   $notificationPoolId: String!
   $subscription: SubscriptionDto!

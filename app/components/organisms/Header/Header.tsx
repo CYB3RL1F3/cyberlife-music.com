@@ -3,7 +3,6 @@ import LinkNavItemList from "~/components/organisms/LinkNavItemList";
 import { Link } from "@remix-run/react";
 import type { LinkNavItemProps } from "~/components/atoms/LinkNavItem/LinkNavItem.types";
 import type { Routes } from "~/routes/routes";
-import { theme } from "~/theme";
 import { useState } from "react";
 import ButtonMenu from "~/components/molecules/ButtonMenu";
 
@@ -40,7 +39,10 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between w-screen h-12 text-sm md:px-6">
       <h1 className="p-0 m-1 mx-2 md:m-0 md:mx-0">
-        <Link to="/" className={theme.largeSemiBoldUppercase}>
+        <Link
+          to="/"
+          className="inline-flex items-center h-8 text-lg font-semibold uppercase"
+        >
           Cyberlife
         </Link>
         <ButtonMenu isOpen={isOpen} onClick={toggle} />

@@ -1,7 +1,6 @@
-import { useBufferTrackPlayer } from "./useBufferTrackPlayer";
+import { useTrackPlayer } from "./useTrackPlayer";
 import type { PlaylistTrackQueryPlaylistTrack } from "~/types/gql/PlaylistTrackQuery";
 import type { PlaylistQueryPlaylistTracks } from "~/types/gql/PlaylistQuery";
-import { getTrackTobuffer } from "~/utils/trackToBuffer";
 
 export const usePodcastTrackPlayer = (
   track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks
@@ -11,7 +10,6 @@ export const usePodcastTrackPlayer = (
     desktop: [`/`, url] as const,
     mobile: [url]
   };
-  const toBuffer = getTrackTobuffer(track, contexts);
-  const playerContext = useBufferTrackPlayer(toBuffer);
+  const playerContext = useTrackPlayer(track, contexts);
   return playerContext;
 };

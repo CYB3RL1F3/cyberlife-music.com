@@ -1,5 +1,5 @@
-import List from "~/components/molecules/List";
-import ListReleasesItem from "../ListReleasesItem";
+import List from "~/components/organisms/List";
+import ListReleasesItem from "~/components/organisms/ListReleasesItem";
 import type { ListReleasesProps } from "./ListReleases.types";
 
 const ListReleases = ({ releases }: ListReleasesProps) => {

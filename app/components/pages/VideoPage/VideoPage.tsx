@@ -2,7 +2,7 @@ import type { VideoPageProps } from "./VideoPage.types";
 import { useVideoQuery } from "~/hooks/queries/useVideoQuery";
 import HandlerContent from "~/components/molecules/HandlerContent";
 import Loader from "~/components/molecules/Loader";
-import VideoDisplay from "~/components/organisms/VideoDisplay";
+import ViewVideo from "~/components/organisms/ViewVideo";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";
 
@@ -14,7 +14,7 @@ const VideoPage = ({ id }: VideoPageProps) => {
       loader={<Loader message="Please wait while we're chasing video..." />}
     >
       {data?.video ? (
-        <VideoDisplay video={data.video} />
+        <ViewVideo video={data.video} />
       ) : (
         <ErrorPage
           code={404}

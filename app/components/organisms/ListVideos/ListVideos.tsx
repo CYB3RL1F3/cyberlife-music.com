@@ -1,4 +1,4 @@
-import List from "~/components/molecules/List";
+import List from "~/components/organisms/List";
 import ListVideosItem from "../ListVideosItem";
 import type { ListVideosProps } from "./ListVideos.types";
 

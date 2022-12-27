@@ -1,4 +1,4 @@
-import List from "~/components/molecules/List";
+import List from "~/components/organisms/List";
 import type { ListEventsProps, SplittedEvents } from "./ListEvents.types";
 import dayjs from "dayjs";
 import ListEventsItem from "../ListEventsItem";

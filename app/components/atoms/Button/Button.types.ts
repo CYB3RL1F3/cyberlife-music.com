@@ -8,4 +8,5 @@ export type ButtonProps = {
   disabled?: boolean;
   title?: string;
   className?: string;
+  variant?: "button" | "link";
 };
