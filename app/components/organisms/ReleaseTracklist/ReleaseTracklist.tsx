@@ -1,4 +1,4 @@
-import List from "~/components/molecules/List";
+import List from "~/components/organisms/List";
 import { getCyberlifeReleaseTracks } from "~/utils/business/filters";
 import ReleaseTracklistItem from "~/components/organisms/ReleaseTracklistItem";
 import type { ReleaseTracklistProps } from "./ReleaseTracklist.types";

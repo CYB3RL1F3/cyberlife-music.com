@@ -2,7 +2,7 @@ import type { ReleasePageProps } from "./ReleasePage.types";
 import { useReleaseQuery } from "~/hooks/queries/useReleaseQuery";
 import HandlerContent from "~/components/molecules/HandlerContent";
 import Loader from "~/components/molecules/Loader";
-import ReleaseDisplay from "~/components/organisms/ReleaseDisplay";
+import ViewRelease from "~/components/organisms/ViewRelease";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";
 
@@ -14,7 +14,7 @@ const ReleasePage = ({ id }: ReleasePageProps) => {
       loader={<Loader message="Please wait while we're chasing release..." />}
     >
       {data?.release ? (
-        <ReleaseDisplay release={data.release} />
+        <ViewRelease release={data.release} />
       ) : (
         <ErrorPage
           code={404}

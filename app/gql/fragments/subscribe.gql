@@ -1,0 +1,7 @@
+fragment SubscriptionFragment on Subscription {
+  endpoint
+  keys {
+    auth
+    p256dh
+  }
+}

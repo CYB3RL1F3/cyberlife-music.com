@@ -3,7 +3,7 @@ import type { PlayerContextValues } from "./PlayerContext.types";
 
 export const PlayerContext = createContext<PlayerContextValues>({
   playing: false,
-  addTrack: () => undefined,
+  addTrackToBuffer: () => undefined,
   volume: 100,
   jumping: false,
   setVolume: () => undefined,

@@ -8,11 +8,13 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
     const i = index > 10 ? 10 : index;
     return 0.025 * i + 0.05;
   }, [index]);
+
   const opacityDelay = useMemo(() => 0.05 + delay, [delay]);
 
   const className = clsx("flex justify-end border-gray-gray-400", {
     "border-t pt-4": index > 0
   });
+
   return (
     <motion.li
       className={className}

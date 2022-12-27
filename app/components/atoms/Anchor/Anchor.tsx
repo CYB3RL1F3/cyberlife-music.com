@@ -1,9 +1,9 @@
 import type { AnchorProps } from "./Anchor.types";
 import { clsx } from "clsx";
-import { theme } from "~/theme";
 import { Link } from "@remix-run/react";
 import { useMemo } from "react";
 import { useButtonStyle } from "~/hooks/styles/useButtonStyle";
+import { useLinkStyle } from "~/hooks/styles/useLinkStyle";
 
 const Anchor = ({
   children,
@@ -13,14 +13,14 @@ const Anchor = ({
   variant = "link"
 }: AnchorProps) => {
   const buttonStyle = useButtonStyle(className);
+  const linkStyle = useLinkStyle(className);
   const cls = useMemo(
     () =>
       clsx({
-        [clsx("font-semibold leading-6", theme.linkHover, className)]:
-          variant === "link",
+        [linkStyle]: variant === "link",
         [buttonStyle]: variant === "button"
       }),
-    [buttonStyle, className, variant]
+    [buttonStyle, linkStyle, variant]
   );
 
   if (!href) return null;

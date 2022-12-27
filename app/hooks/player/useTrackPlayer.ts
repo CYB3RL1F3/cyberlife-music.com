@@ -1,57 +1,22 @@
+import { useEffect } from "react";
 import { usePlayerContext } from "~/components/contexts/PlayerContext";
-import { useMemo } from "react";
+import type { TrackPlayerContext } from "~/components/contexts/PlayerContext/PlayerContext.types";
+import type { TrackType } from "~/utils/trackToBuffer";
+import { getTrackTobuffer } from "~/utils/trackToBuffer";
+import { useTrackContext } from "./useTrackContext";
 
-export const useTrackPlayer = (id: number) => {
-  const {
-    buffer,
-    currentTrackId,
-    volume,
-    jumping,
-    currentContext,
-    playing,
-    ...playerContext
-  } = usePlayerContext();
+export const useTrackPlayer = (
+  track: TrackType,
+  contexts: TrackPlayerContext
+) => {
+  const playerContext = usePlayerContext();
+  const bufferTrack = getTrackTobuffer(track, contexts);
 
-  const currentTrack = useMemo(() => buffer[id], [buffer, id]);
+  useEffect(() => {
+    playerContext.addTrackToBuffer(bufferTrack);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const isCurrentTrack = currentTrackId === id;
-
-  const isPlaying = useMemo(
-    () => isCurrentTrack && playing,
-    [isCurrentTrack, playing]
-  );
-
-  const togglePlay = () => {
-    if (!isPlaying || !isCurrentTrack) {
-      playerContext.play(id);
-      return;
-    }
-    playerContext.pause(id);
-  };
-
-  const setLoad = (value: number) => playerContext.setLoad(id, value);
-  const setSeek = (value: number, jumping?: boolean) =>
-    playerContext.setSeek(id, value, jumping);
-
-  const isInCurrentContext =
-    currentContext &&
-    currentTrack?.contexts?.desktop &&
-    currentTrack.contexts.desktop.includes(currentContext);
-
-  return {
-    load: currentTrack?.load || 0,
-    seek: currentTrack?.seek || 0,
-    url: currentTrack?.url || undefined,
-    waveform: currentTrack?.waveform,
-    title: currentTrack?.title,
-    duration: currentTrack?.duration,
-    isInCurrentContext,
-    isPlaying,
-    isCurrentTrack,
-    volume,
-    jumping,
-    togglePlay,
-    setLoad,
-    setSeek
-  };
+  const trackPlayer = useTrackContext(bufferTrack.id);
+  return trackPlayer;
 };

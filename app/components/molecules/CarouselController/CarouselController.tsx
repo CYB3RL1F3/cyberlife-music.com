@@ -14,7 +14,7 @@ const CarouselController = ({
           <CarouselControl
             isActive={index === i}
             index={i}
-            name={name}
+            title={`carousel control ${name} button ${index}`}
             onChange={onChange}
           />
         </li>

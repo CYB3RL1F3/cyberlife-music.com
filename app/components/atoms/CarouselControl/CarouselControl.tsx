@@ -6,7 +6,7 @@ const CarouselControl = ({
   index,
   isActive,
   onChange,
-  name = "carousel"
+  title = `carousel button ${index}`
 }: CarouselControlProps) => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
     onChange?.(index);
@@ -17,13 +17,7 @@ const CarouselControl = ({
       true,
     "bg-opacity-50": !isActive
   });
-  return (
-    <button
-      title={`carousel control ${name} button ${index}`}
-      onClick={handleClick}
-      className={className}
-    />
-  );
+  return <button title={title} onClick={handleClick} className={className} />;
 };
 
 export default CarouselControl;

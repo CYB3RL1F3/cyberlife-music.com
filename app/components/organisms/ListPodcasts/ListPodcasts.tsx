@@ -1,4 +1,4 @@
-import List from "~/components/molecules/List";
+import List from "~/components/organisms/List";
 import ListPodcastsItem from "../ListPodcastsItem";
 import type { ListPodcastsProps } from "./ListPodcasts.types";
 

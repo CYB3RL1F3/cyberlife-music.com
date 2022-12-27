@@ -2,7 +2,7 @@ import type { PodcastPageProps } from "./PodcastPage.types";
 import { usePlaylistTrackQuery } from "~/hooks/queries/usePlaylistTrackQuery";
 import HandlerContent from "~/components/molecules/HandlerContent";
 import Loader from "~/components/molecules/Loader";
-import PodcastDisplay from "~/components/organisms/PodcastDisplay";
+import ViewPodcast from "~/components/organisms/ViewPodcast";
 import ErrorPage from "../ErrorPage";
 import ButtonLink from "~/components/atoms/ButtonLink";
 
@@ -14,7 +14,7 @@ const PodcastPage = ({ id }: PodcastPageProps) => {
       loader={<Loader message="Please wait while we're chasing podcast..." />}
     >
       {data?.playlistTrack ? (
-        <PodcastDisplay podcast={data?.playlistTrack} />
+        <ViewPodcast podcast={data?.playlistTrack} />
       ) : (
         <ErrorPage
           code={404}

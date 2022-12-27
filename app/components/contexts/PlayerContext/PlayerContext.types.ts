@@ -29,7 +29,7 @@ export type PlayerContextValues = {
   buffer: Buffer;
   playing?: boolean;
   setVolume: (value: number) => void;
-  addTrack: (track: TrackToBuffer) => void;
+  addTrackToBuffer: (track: TrackToBuffer) => void;
   setCurrentTrack: (id: number) => void;
   play: (id: number) => void;
   pause: (id: number) => void;
