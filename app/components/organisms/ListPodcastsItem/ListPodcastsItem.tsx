@@ -5,6 +5,7 @@ import ListItemSnippet from "~/components/molecules/ListItemSnippet";
 import Thumbnail from "~/components/molecules/Thumbnail";
 import PlayerPodcastTrackContainer from "~/components/organisms/PlayerPodcastTrackContainer";
 import type { ListPodcastsItemProps } from "./ListPodcastsItem.types";
+import ToggleIconLikeContainer from "../ToggleIconLikeContainer";
 
 const ListPodcastsItem = ({
   podcast,
@@ -21,10 +22,13 @@ const ListPodcastsItem = ({
       }
     >
       <ListItemSnippet title={title} href={`podcasts/${id}`}>
-        <div className="w-full h-16">
+        <div className="flex flex-col justify-between w-full h-16">
           <Ellipsis className="pr-2 text-xs italic text-right md:text-sm">
             {description}
           </Ellipsis>
+          <div className="flex justify-end w-full mb-2">
+            <ToggleIconLikeContainer id={`podcasts/${id}`} />
+          </div>
         </div>
         <div className="hidden md:block">
           <PlayerPodcastTrackContainer track={podcast} />
