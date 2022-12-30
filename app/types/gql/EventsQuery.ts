@@ -22,6 +22,10 @@ export interface EventsQueryEvents {
    */
   _id: string | null;
   /**
+   * event slug
+   */
+  slug: string | null;
+  /**
    * event date
    */
   date: any | null;

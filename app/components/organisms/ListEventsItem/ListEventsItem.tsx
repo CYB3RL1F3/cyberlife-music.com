@@ -5,7 +5,7 @@ import Picture from "~/components/organisms/Picture";
 import type { ListEventsItemProps } from "./ListEventsItem.types";
 
 const ListEventsItem = ({ event }: ListEventsItemProps) => {
-  const { _id, flyer, title, date, address, country } = event;
+  const { slug, flyer, title, date, address, country } = event;
   if (!title) return null;
   return (
     <ListItem
@@ -13,7 +13,7 @@ const ListEventsItem = ({ event }: ListEventsItemProps) => {
         <Picture alt={title} variant="large" src={flyer?.front || ""} />
       }
     >
-      <ListItemSnippet title={title} href={`${_id}`}>
+      <ListItemSnippet title={title} href={`${slug}`}>
         <div className="w-full h-14">
           <p className="text-sm italic text-right">
             {date && dayjs(date).format("DD MMMM YYYY")}

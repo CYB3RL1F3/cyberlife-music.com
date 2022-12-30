@@ -58,6 +58,10 @@ export interface EventQueryEvent {
    */
   _id: string | null;
   /**
+   * event slug
+   */
+  slug: string | null;
+  /**
    * event date
    */
   date: any | null;
@@ -114,4 +118,5 @@ export interface EventQuery {
 export interface EventQueryVariables {
   profile: string;
   id: string;
+  keyType?: string | null;
 }

@@ -1,5 +1,5 @@
-query ReleaseQuery($profile: String!, $id: String!) {
-  release(profile: $profile, id: $id) {
+query ReleaseQuery($profile: String!, $id: String!, $keyType: String) {
+  release(profile: $profile, id: $id, keyType: $keyType) {
     ...ReleaseFragment
   }
 }

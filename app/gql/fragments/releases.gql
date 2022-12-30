@@ -1,5 +1,6 @@
 fragment ReleaseSnippetFragment on Release {
   _id
+  slug
   title
   releaseDate
   role

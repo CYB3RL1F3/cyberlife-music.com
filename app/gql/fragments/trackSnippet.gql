@@ -1,5 +1,6 @@
 fragment TrackSnippetFragment on Track {
   id
+  slug
   title
   genre
   description

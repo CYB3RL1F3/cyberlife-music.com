@@ -30,6 +30,10 @@ export interface VideoFragment {
    */
   illustration: string | null;
   /**
+   * Video slug
+   */
+  slug: string | null;
+  /**
    * post ID
    */
   _id: string | null;

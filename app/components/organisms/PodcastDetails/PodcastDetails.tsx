@@ -8,6 +8,7 @@ import { BsDownload } from "react-icons/bs";
 import dayjs from "dayjs";
 import PodcastActionPlayContainer from "../PodcastActionPlayContainer";
 import { useConfigContext } from "~/components/contexts/ConfigContext";
+import ToggleIconLikeContainer from "~/components/organisms/ToggleIconLikeContainer";
 
 const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
   const {
@@ -25,6 +26,9 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
   const apiUrl = config?.apiEndpoint || "";
 
   const linkIcons = [
+    {
+      icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />
+    },
     {
       icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
       url: soundcloud || ""

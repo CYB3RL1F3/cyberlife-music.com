@@ -22,6 +22,10 @@ export interface ReleasesQueryReleases {
    */
   _id: string | null;
   /**
+   * Release slug
+   */
+  slug: string | null;
+  /**
    * Release title
    */
   title: string | null;

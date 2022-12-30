@@ -1,5 +1,9 @@
-query PlaylistTrackQuery($profile: String!, $trackId: String!) {
-  playlistTrack(profile: $profile, trackId: $trackId) {
+query PlaylistTrackQuery(
+  $profile: String!
+  $trackId: String!
+  $keyType: String
+) {
+  playlistTrack(profile: $profile, trackId: $trackId, keyType: $keyType) {
     ...TrackFragment
   }
 }

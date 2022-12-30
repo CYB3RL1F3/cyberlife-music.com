@@ -6,12 +6,12 @@ import dayjs from "dayjs";
 import Picture from "../Picture";
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
-  const { title, _id, releaseDate, role, thumb, label, discogs } = release;
+  const { title, slug, releaseDate, role, thumb, label, discogs } = release;
   const artwork = thumb || "";
   if (!title) return null;
   return (
     <ListItem thumbnail={<Picture alt={title} src={artwork} />}>
-      <ListItemSnippet title={title} href={`${_id}`}>
+      <ListItemSnippet title={title} href={`${slug}`}>
         <div className="w-full h-14">
           <p className="text-sm italic text-right">{label}</p>
           <p className="text-sm italic text-right">

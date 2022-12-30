@@ -30,6 +30,10 @@ export interface VideoQueryVideo {
    */
   illustration: string | null;
   /**
+   * Video slug
+   */
+  slug: string | null;
+  /**
    * post ID
    */
   _id: string | null;
@@ -42,4 +46,5 @@ export interface VideoQuery {
 export interface VideoQueryVariables {
   profile: string;
   id: string;
+  keyType?: string | null;
 }

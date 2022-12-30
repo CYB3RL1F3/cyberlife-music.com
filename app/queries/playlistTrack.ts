@@ -18,13 +18,15 @@ export const playlistTrackGqlQuery = gql`
 `;
 
 export const runPlaylistTrackQuery = async (
-  trackId: PlaylistTrackQueryVariables["trackId"]
+  trackId: PlaylistTrackQueryVariables["trackId"],
+  keyType: PlaylistTrackQueryVariables["keyType"]
 ) => {
   return await runQuery<PlaylistTrackQuery, PlaylistTrackQueryVariables>(
     playlistTrackGqlQuery,
     {
       profile,
-      trackId
+      trackId,
+      keyType
     }
   );
 };
