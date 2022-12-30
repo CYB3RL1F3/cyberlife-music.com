@@ -10,4 +10,7 @@ fragment TrackSnippetFragment on Track {
   url
   duration
   waveform
+  downloadable
+  download
+  soundcloud
 }

@@ -1,8 +1,5 @@
 fragment TrackFragment on Track {
   ...TrackSnippetFragment
-  soundcloud
-  download
-  downloadable
   license
   stats {
     count

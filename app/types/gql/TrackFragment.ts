@@ -130,17 +130,17 @@ export interface TrackFragment {
    */
   waveform: string | null;
   /**
-   * track soundcloud
+   * track downloadable
    */
-  soundcloud: string | null;
+  downloadable: boolean | null;
   /**
    * track download
    */
   download: string | null;
   /**
-   * track downloadable
+   * track soundcloud
    */
-  downloadable: boolean | null;
+  soundcloud: string | null;
   /**
    * track license
    */

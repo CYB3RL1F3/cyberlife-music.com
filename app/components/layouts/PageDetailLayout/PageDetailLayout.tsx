@@ -1,5 +1,4 @@
 import ListItem from "~/components/molecules/ListItem/ListItem";
-import ListLinkIcons from "~/components/molecules/ListLinkIcons/ListLinkIcons";
 import type { PageDetailLayoutProps } from "./PageDetailLayout.types";
 
 const PageDetailLayout = ({
@@ -11,7 +10,7 @@ const PageDetailLayout = ({
     <ListItem thumbnail={thumbnail}>
       <div className="flex flex-col justify-between flex-auto">
         <div className="mb-2">{children}</div>
-        <ListLinkIcons linkIcons={linkIcons} />
+        {linkIcons}
       </div>
     </ListItem>
   );

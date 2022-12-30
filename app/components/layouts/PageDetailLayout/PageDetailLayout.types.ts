@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { ListItemProps } from "~/components/molecules/ListItem/ListItem.types";
-import type { ListLinkIconsProps } from "~/components/molecules/ListLinkIcons/ListLinkIcons.types";
 
 export type IconLink = {
   url: string;
@@ -8,7 +7,7 @@ export type IconLink = {
 };
 
 export type PageDetailLayoutProps = {
-  linkIcons: ListLinkIconsProps["linkIcons"];
+  linkIcons: ReactNode;
   children?: ReactNode;
   thumbnail: ListItemProps["thumbnail"];
 };
