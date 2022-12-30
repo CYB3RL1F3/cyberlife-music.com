@@ -4,5 +4,6 @@ fragment VideoFragment on Video {
   description
   type
   illustration
+  slug
   _id
 }

@@ -4,8 +4,6 @@ import Dexie from "dexie";
 import type { Like } from "./db.types";
 
 export class Db extends Dexie {
-  // 'friends' is added by dexie when declaring the stores()
-  // We just tell the typing system this is the case
   likes!: Table<Like>;
 
   constructor() {

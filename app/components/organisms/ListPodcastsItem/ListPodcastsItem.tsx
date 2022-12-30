@@ -4,14 +4,14 @@ import ListItem from "~/components/molecules/ListItem";
 import ListItemSnippet from "~/components/molecules/ListItemSnippet";
 import Thumbnail from "~/components/molecules/Thumbnail";
 import PlayerPodcastTrackContainer from "~/components/organisms/PlayerPodcastTrackContainer";
+import ToggleIconLikeContainer from "~/components/organisms/ToggleIconLikeContainer";
 import type { ListPodcastsItemProps } from "./ListPodcastsItem.types";
-import ToggleIconLikeContainer from "../ToggleIconLikeContainer";
 
 const ListPodcastsItem = ({
   podcast,
   artworkFallback
 }: ListPodcastsItemProps) => {
-  const { artwork, title, id, description, waveform } = podcast;
+  const { artwork, title, id, slug, description, waveform } = podcast;
   if (!title || !waveform) return null;
   return (
     <ListItem
@@ -21,7 +21,7 @@ const ListPodcastsItem = ({
         </Thumbnail>
       }
     >
-      <ListItemSnippet title={title} href={`podcasts/${id}`}>
+      <ListItemSnippet title={title} href={`podcasts/${slug}`}>
         <div className="flex flex-col justify-between w-full h-16">
           <Ellipsis className="pr-2 text-xs italic text-right md:text-sm">
             {description}

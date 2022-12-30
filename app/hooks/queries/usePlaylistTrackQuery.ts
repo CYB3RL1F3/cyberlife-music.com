@@ -8,14 +8,16 @@ import type {
 import { playlistTrackGqlQuery } from "~/queries/playlistTrack";
 
 export const usePlaylistTrackQuery = (
-  trackId: PlaylistTrackQueryVariables["trackId"]
+  trackId: PlaylistTrackQueryVariables["trackId"],
+  keyType: PlaylistTrackQueryVariables["keyType"] = "slug"
 ) => {
   return useQuery<PlaylistTrackQuery, PlaylistTrackQueryVariables>(
     playlistTrackGqlQuery,
     {
       variables: {
         profile,
-        trackId
+        trackId,
+        keyType
       }
     }
   );

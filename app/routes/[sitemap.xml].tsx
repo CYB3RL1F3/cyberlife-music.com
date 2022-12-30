@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 
 const getPath = (
   loc: string,
-  priority: number = 1,
+  priority = 1,
   changeFreq: Path["changeFreq"] = "daily"
 ) => ({
   loc,
@@ -27,16 +27,17 @@ const getPaths = async (): Promise<Path[]> => {
     getPath("/podcasts"),
     getPath("/events"),
     getPath("/releases", 0.8),
-    getPath("/contact", 0.5, "monthly")
+    getPath("/contact", 0.5, "monthly"),
+    getPath("/about", 0.5, "monthly")
   ];
   const eventsPaths = (events.data.events || []).map((event) =>
-    getPath(`/events/${event._id}`)
+    getPath(`/events/${event.slug}`)
   );
   const podcastsPaths = (podcasts.data.playlist.tracks || []).map((podcast) =>
-    getPath(`/podcasts/${podcast.id}`)
+    getPath(`/podcasts/${podcast.slug}`)
   );
   const releasesPaths = (releases.data.releases || []).map((release) =>
-    getPath(`/releases/${release._id}`)
+    getPath(`/releases/${release.slug}`)
   );
   return [...paths, ...podcastsPaths, ...releasesPaths, ...eventsPaths];
 };

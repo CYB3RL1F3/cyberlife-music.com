@@ -6,11 +6,15 @@ import type {
   ReleaseQueryVariables
 } from "~/types/gql/ReleaseQuery";
 
-export const useReleaseQuery = (id: string) => {
+export const useReleaseQuery = (
+  id: ReleaseQueryVariables["id"],
+  keyType: ReleaseQueryVariables["keyType"] = "slug"
+) => {
   return useQuery<ReleaseQuery, ReleaseQueryVariables>(releaseGqlQuery, {
     variables: {
       profile,
-      id
+      id,
+      keyType
     }
   });
 };

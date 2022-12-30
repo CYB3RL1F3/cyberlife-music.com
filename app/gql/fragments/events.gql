@@ -1,5 +1,6 @@
 fragment EventSnippetFragment on Event {
   _id
+  slug
   date
   title
   date

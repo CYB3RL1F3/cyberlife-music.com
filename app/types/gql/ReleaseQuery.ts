@@ -82,6 +82,10 @@ export interface ReleaseQueryRelease {
    */
   _id: string | null;
   /**
+   * Release slug
+   */
+  slug: string | null;
+  /**
    * Release title
    */
   title: string | null;
@@ -138,4 +142,5 @@ export interface ReleaseQuery {
 export interface ReleaseQueryVariables {
   profile: string;
   id: string;
+  keyType?: string | null;
 }

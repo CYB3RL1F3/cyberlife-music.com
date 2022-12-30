@@ -10,7 +10,7 @@ const ToggleIconLike = ({ value, active, setActive }: ToggleIconLikeProps) => {
       activeIcon={<IoIosHeart />}
       inactiveIcon={<IoIosHeartEmpty />}
       value={value}
-      className="hover:white"
+      className="hover:text-white"
     />
   );
 };

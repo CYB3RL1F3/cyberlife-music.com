@@ -22,6 +22,10 @@ export interface EventSnippetFragment {
    */
   _id: string | null;
   /**
+   * event slug
+   */
+  slug: string | null;
+  /**
    * event date
    */
   date: any | null;

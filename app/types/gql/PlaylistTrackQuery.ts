@@ -90,6 +90,10 @@ export interface PlaylistTrackQueryPlaylistTrack {
    */
   id: number | null;
   /**
+   * track slug
+   */
+  slug: string | null;
+  /**
    * track title
    */
   title: string | null;
@@ -170,4 +174,5 @@ export interface PlaylistTrackQuery {
 export interface PlaylistTrackQueryVariables {
   profile: string;
   trackId: string;
+  keyType?: string | null;
 }

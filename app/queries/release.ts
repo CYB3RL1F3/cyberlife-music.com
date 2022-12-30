@@ -15,9 +15,13 @@ export const releaseGqlQuery = gql`
   ${releaseQuery}
 `;
 
-export const runReleaseQuery = (id: string) => {
+export const runReleaseQuery = (
+  id: ReleaseQueryVariables["id"],
+  keyType: ReleaseQueryVariables["keyType"] = "slug"
+) => {
   return runQuery<ReleaseQuery, ReleaseQueryVariables>(releaseGqlQuery, {
     profile,
-    id
+    id,
+    keyType
   });
 };

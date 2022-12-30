@@ -14,6 +14,10 @@ export interface TrackSnippetFragment {
    */
   id: number | null;
   /**
+   * track slug
+   */
+  slug: string | null;
+  /**
    * track title
    */
   title: string | null;

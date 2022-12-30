@@ -10,9 +10,13 @@ export const videoGqlQuery = gql`
   ${videoQuery}
 `;
 
-export const runVideoQuery = (id: string) => {
+export const runVideoQuery = (
+  id: VideoQueryVariables["id"],
+  keyType: VideoQueryVariables["keyType"] = "slug"
+) => {
   return runQuery<VideoQuery, VideoQueryVariables>(videoGqlQuery, {
     profile,
-    id
+    id,
+    keyType
   });
 };
