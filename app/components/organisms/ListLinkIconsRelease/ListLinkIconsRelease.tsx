@@ -10,7 +10,8 @@ const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
   if (!_id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {
-      icon: <ToggleIconLikeContainer id={`releases/${_id}`} />
+      icon: <ToggleIconLikeContainer id={`releases/${_id}`} />,
+      id: `toggleLikeRelease__${_id}`
     }
   ];
   if (discogs) {
@@ -18,7 +19,8 @@ const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
       icon: (
         <ImgIcon size={20} icon={DiscogsIcon} alt="Discogs Icon" isInverted />
       ),
-      url: discogs
+      url: discogs,
+      id: `discogs__${_id}`
     });
   }
   return <ListLinkIcons linkIcons={linkIcons.reverse()} />;

@@ -14,13 +14,15 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
   if (!id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {
-      icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />
+      icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />,
+      id: `toggleLikePodcast__${id}`
     }
   ];
   if (soundcloud) {
     linkIcons.push({
       icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
-      url: soundcloud
+      url: soundcloud,
+      id: `linkSoundcloud__${id}`
     });
   }
   if (downloadable && download && apiUrl) {
@@ -31,7 +33,8 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
           <BsDownload />
         </span>
       ),
-      url
+      url,
+      id: `download__${id}`
     });
   }
   return <ListLinkIcons linkIcons={linkIcons.reverse()} />;
