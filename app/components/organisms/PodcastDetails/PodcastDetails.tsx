@@ -1,46 +1,14 @@
-import ImgIcon from "~/components/atoms/ImgIcon";
 import PageDetailLayout from "~/components/layouts/PageDetailLayout";
 import Thumbnail from "~/components/molecules/Thumbnail";
 import type { PodcastDetailsProps } from "./PodcastDetails.types";
-import SoundcloudIcon from "~/icons/soundcloud.svg";
 import Text from "~/components/atoms/Text";
-import { BsDownload } from "react-icons/bs";
 import dayjs from "dayjs";
 import PodcastActionPlayContainer from "../PodcastActionPlayContainer";
-import { useConfigContext } from "~/components/contexts/ConfigContext";
-import ToggleIconLikeContainer from "~/components/organisms/ToggleIconLikeContainer";
+import ListLinkIconsPodcast from "~/components/organisms/ListLinkIconsPodcast";
 
 const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
-  const {
-    id,
-    artwork,
-    soundcloud,
-    date,
-    duration,
-    license,
-    downloadable,
-    download
-  } = podcast;
+  const { artwork, date, duration, license } = podcast;
 
-  const { config } = useConfigContext();
-  const apiUrl = config?.apiEndpoint || "";
-
-  const linkIcons = [
-    {
-      icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />
-    },
-    {
-      icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
-      url: soundcloud || ""
-    }
-  ];
-  if (downloadable && download) {
-    const url = `${apiUrl}/cyberlife/playlists/${id}/download`;
-    linkIcons.push({
-      icon: <BsDownload />,
-      url
-    });
-  }
   return (
     <PageDetailLayout
       thumbnail={
@@ -48,7 +16,7 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
           <PodcastActionPlayContainer track={podcast} />
         </Thumbnail>
       }
-      linkIcons={linkIcons.reverse()}
+      linkIcons={<ListLinkIconsPodcast podcast={podcast} />}
     >
       <Text.RightItalic>
         Published on {date ? dayjs(date).format("DD/MM/YYYY") : "Soundcloud"}

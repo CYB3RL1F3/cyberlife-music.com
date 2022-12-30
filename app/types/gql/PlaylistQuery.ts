@@ -53,6 +53,18 @@ export interface PlaylistQueryPlaylistTracks {
    * track waveform
    */
   waveform: string | null;
+  /**
+   * track downloadable
+   */
+  downloadable: boolean | null;
+  /**
+   * track download
+   */
+  download: string | null;
+  /**
+   * track soundcloud
+   */
+  soundcloud: string | null;
 }
 
 export interface PlaylistQueryPlaylist {
