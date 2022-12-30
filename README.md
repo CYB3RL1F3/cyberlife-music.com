@@ -30,6 +30,5 @@ A particular focus is constantly made on performance, SEO and good practices as 
 ### Coming up next
 
 - Set up some E2E tests
-- Replace IDs by slugs
 - A web radio project :)
 - A collective music art project :)
