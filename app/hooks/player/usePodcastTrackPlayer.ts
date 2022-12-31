@@ -5,7 +5,7 @@ import type { PlaylistQueryPlaylistTracks } from "~/types/gql/PlaylistQuery";
 export const usePodcastTrackPlayer = (
   track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks
 ) => {
-  const url = `/podcasts/${track.id || 0}`;
+  const url = `/podcasts/${track.slug}`;
   const contexts = {
     desktop: [`/`, url] as const,
     mobile: [url]

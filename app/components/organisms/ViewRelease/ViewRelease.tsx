@@ -31,7 +31,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       </motion.article>
       {release.tracklist && (
         <ReleaseTracklist
-          id={release._id}
+          id={release.slug}
           tracks={release.tracklist}
           thumb={release.thumb}
         />

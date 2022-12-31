@@ -29,10 +29,6 @@ const FooterAnchorsInfos = ({ infos }: FooterAnchorsInfosProps) => {
       {
         label: "Resident Advisor",
         href: infos.RA
-      },
-      {
-        label: "Mastodon",
-        href: `https://mastodon.social/@cyberlife`
       }
     ],
     [infos]

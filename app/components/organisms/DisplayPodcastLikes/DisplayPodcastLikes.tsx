@@ -8,9 +8,11 @@ const DisplayPodcastLikes = ({ likes }: DisplayPodcastLikesProps) => {
   const filteredLikes = likes.filter(
     (like) => like?.userName && !isCyberlife(like.userName)
   );
+  const nbComments = filteredLikes.length;
+  const likeWord = nbComments > 1 ? "likes" : "like";
   return (
     <WrapperListings
-      title={`Supported by ${filteredLikes.length} music lovers:`}
+      title={`${filteredLikes.length} ${likeWord} on soundcloud:`}
     >
       <ListPodcastLikes likes={filteredLikes} />
     </WrapperListings>
