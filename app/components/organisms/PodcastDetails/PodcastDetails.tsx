@@ -5,10 +5,14 @@ import Text from "~/components/atoms/Text";
 import dayjs from "dayjs";
 import PodcastActionPlayContainer from "../PodcastActionPlayContainer";
 import ListLinkIconsPodcast from "~/components/organisms/ListLinkIconsPodcast";
+import { getMappedLicenseLabel } from "~/utils/business/labels";
+import { getFormattedDuration } from "~/utils/duration";
 
 const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
   const { artwork, date, duration, license } = podcast;
-
+  const licenseLabel = getMappedLicenseLabel(license);
+  console.log("XOOXXOOXO");
+  console.log(license, licenseLabel);
   return (
     <PageDetailLayout
       thumbnail={
@@ -22,12 +26,9 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
         Published on {date ? dayjs(date).format("DD/MM/YYYY") : "Soundcloud"}
       </Text.RightItalic>
       <Text.RightItalic>
-        {duration &&
-          ` Duration: ${new Date(duration)
-            .toISOString()
-            .substring(11, 11 + 8)}`}
+        {duration && ` Duration: ${getFormattedDuration(duration)}`}
       </Text.RightItalic>
-      <Text.RightItalic>{license}</Text.RightItalic>
+      {licenseLabel && <Text.RightItalic>{licenseLabel}</Text.RightItalic>}
     </PageDetailLayout>
   );
 };

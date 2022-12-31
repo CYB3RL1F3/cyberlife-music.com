@@ -10,7 +10,7 @@ const InlineListItem = ({
     <li
       className={clsx(
         {
-          "inline-flex md:before:content-['-'] md:before:w-4 before:text-center":
+          "inline-flex before:content-['-'] before:w-4 before:text-center":
             index > 0
         },
         className

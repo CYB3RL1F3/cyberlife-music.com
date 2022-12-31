@@ -27,6 +27,6 @@ export const skippedKeys = <T extends {}>(
   return keys(value).filter((item) => !toSkip.includes(item as string));
 };
 
-export const keysNoTimeName = <T extends {}>(value: T) => {
+export const keysNoTypeName = <T extends {}>(value: T) => {
   return skippedKeys(value, "__typename");
 };

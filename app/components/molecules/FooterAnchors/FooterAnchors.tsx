@@ -4,15 +4,21 @@ import InlineListItem from "~/components/atoms/InlineListItem";
 
 const FooterAnchors = ({ anchors }: FooterAnchorsProps) => {
   return (
-    <ul className="flex flex-row items-center justify-center md:h-12 md:justify-end max-md:gap-x-4 max-md:flex-wrap">
+    <ul className="flex flex-row items-center justify-center md:h-12 md:justify-end max-md:flex-wrap">
       {anchors.map(({ href, label }, index) => (
         <InlineListItem index={index} key={`FooterAnchors__${href}`}>
           {href ? (
-            <Anchor className="text-sm" href={href} target="_blank">
+            <Anchor
+              className="text-sm whitespace-nowrap"
+              href={href}
+              target="_blank"
+            >
               {label}
             </Anchor>
           ) : (
-            <span className="text-sm font-semibold leading-6">{label}</span>
+            <span className="text-sm font-semibold leading-6 whitespace-nowrap">
+              {label}
+            </span>
           )}
         </InlineListItem>
       ))}
