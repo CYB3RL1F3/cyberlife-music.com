@@ -20,12 +20,12 @@ const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
       {url && (
         <Link
           to={url}
-          className="flex items-center justify-center w-4 h-8 text-lg font-semibold text-white cursor-pointer md:text-md md:w-16 md:ml-40"
+          className="flex items-center justify-center w-4 h-5 text-lg font-semibold text-white cursor-pointer md:h-6 md:text-md md:w-16"
         >
           <HiArrowLeft />
         </Link>
       )}
-      <Heading align="right">{title}</Heading>
+      <Heading>{title}</Heading>
     </motion.div>
   );
 };

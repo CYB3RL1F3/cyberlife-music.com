@@ -5,10 +5,11 @@ const ImgIcon = ({ icon, alt, size = 30, isInverted }: ImgIconProps) => {
     <img
       src={icon}
       alt={alt}
-      width={size}
+      width={`${size}px`}
+      height="auto"
       style={{
         filter: isInverted ? "invert(1)" : "invert(0)",
-        width: size,
+        width: `${size}px`,
         height: "auto"
       }}
     />

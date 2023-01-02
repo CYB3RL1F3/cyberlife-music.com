@@ -808,6 +808,10 @@ video {
   height: 24rem;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .max-h-\[90vh\] {
   max-height: 90vh;
 }
@@ -2532,6 +2536,10 @@ input:-webkit-autofill:active{
 
   .md\:h-auto {
     height: auto;
+  }
+
+  .md\:h-6 {
+    height: 1.5rem;
   }
 
   .md\:w-16 {

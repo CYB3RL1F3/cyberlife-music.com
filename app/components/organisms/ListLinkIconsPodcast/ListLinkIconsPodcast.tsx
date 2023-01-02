@@ -8,21 +8,23 @@ import { BsDownload } from "react-icons/bs";
 import ListLinkIcons from "~/components/molecules/ListLinkIcons/ListLinkIcons";
 
 const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
-  const { id, downloadable, download, soundcloud } = podcast;
+  const { id, downloadable, download, soundcloud, title } = podcast;
   const { config } = useConfigContext();
   const apiUrl = config?.apiEndpoint || "";
   if (!id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {
       icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />,
-      id: `toggleLikePodcast__${id}`
+      id: `toggleLikePodcast__${id}`,
+      title: `like podcast ${title}`
     }
   ];
   if (soundcloud) {
     linkIcons.push({
       icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
       url: soundcloud,
-      id: `linkSoundcloud__${id}`
+      id: `linkSoundcloud__${id}`,
+      title: `Soundcloud link ${title || ""}`
     });
   }
   if (downloadable && download && apiUrl) {
@@ -34,6 +36,7 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
         </span>
       ),
       url,
+      title: `Download podcast ${title || ""}`,
       id: `download__${id}`
     });
   }
