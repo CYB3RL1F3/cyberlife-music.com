@@ -5,7 +5,6 @@ import { hydrateRoot } from "react-dom/client";
 import ApolloContext, {
   getClient
 } from "./components/contexts/ApolloContext/ApolloContext";
-import PlayerContextProvider from "./components/contexts/PlayerContext";
 
 function hydrate() {
   const client = getClient();
@@ -15,9 +14,7 @@ function hydrate() {
       document,
       <StrictMode>
         <ApolloContext client={client}>
-          <PlayerContextProvider>
-            <RemixBrowser />
-          </PlayerContextProvider>
+          <RemixBrowser />
         </ApolloContext>
       </StrictMode>
     );

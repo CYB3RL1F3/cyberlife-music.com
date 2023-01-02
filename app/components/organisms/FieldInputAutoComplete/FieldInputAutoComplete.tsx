@@ -4,14 +4,12 @@ import ClientOnly from "~/components/atoms/ClientOnly";
 import FieldInput from "~/components/molecules/FieldInput";
 import { useToggleState } from "~/hooks/useToggleState";
 import type { FieldInputAutoCompleteProps } from "./FieldInputAutoComplete.types";
+import { forwardRef } from "react";
 
-const FieldInputAutoComplete = ({
-  size,
-  values,
-  value,
-  onChange,
-  ...props
-}: FieldInputAutoCompleteProps) => {
+const FieldInputAutoComplete = forwardRef<
+  HTMLInputElement,
+  FieldInputAutoCompleteProps
+>(({ size, values, value, onChange, ...props }, ref) => {
   const filteredValues = values.filter(
     (item) =>
       value &&
@@ -31,6 +29,7 @@ const FieldInputAutoComplete = ({
             disable();
           }, 100);
         }}
+        ref={ref}
         {...props}
         autoComplete="off"
       />
@@ -49,6 +48,8 @@ const FieldInputAutoComplete = ({
       </ClientOnly>
     </div>
   );
-};
+});
+
+FieldInputAutoComplete.displayName = "FieldInputAutoComplete";
 
 export default FieldInputAutoComplete;

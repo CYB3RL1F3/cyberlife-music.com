@@ -23,6 +23,7 @@ import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { isSupported } from "./utils/browser";
 import NotSupportedPage from "./components/pages/NotSupportedPage";
+import PlayerContextProvider from "./components/contexts/PlayerContext";
 
 export type ApplicationProps = {
   config: Config;
@@ -80,34 +81,36 @@ const Application = ({ config, children }: ApplicationProps) => {
   return (
     <>
       <ConfigContextProvider config={config}>
-        <PwaContextProvider>
-          <NotificationContextProvider>
-            <Layout>
-              <DisplayInfosContainer />
-              <div className="relative">
-                <div className="absolute z-10 w-full">
-                  <PageDetailHeaderPortal.Container />
+        <PlayerContextProvider>
+          <PwaContextProvider>
+            <NotificationContextProvider>
+              <Layout>
+                <DisplayInfosContainer />
+                <div className="relative">
+                  <div className="absolute z-10 w-full">
+                    <PageDetailHeaderPortal.Container />
+                  </div>
+                  <ContainerScrollPage>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        className="max-md:min-h-[calc(100vh_-_21rem)]"
+                        key={location.pathname}
+                        initial={{ opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ opacity: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {children ?? outlet}
+                      </motion.div>
+                      <FooterMobile />
+                    </AnimatePresence>
+                  </ContainerScrollPage>
                 </div>
-                <ContainerScrollPage>
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      className="max-md:min-h-[calc(100vh_-_21rem)]"
-                      key={location.pathname}
-                      initial={{ opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ opacity: 0.8 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {children ?? outlet}
-                    </motion.div>
-                    <FooterMobile />
-                  </AnimatePresence>
-                </ContainerScrollPage>
-              </div>
-              <ClientOnly>{() => <AudioContainer />}</ClientOnly>
-            </Layout>
-          </NotificationContextProvider>
-        </PwaContextProvider>
+                <ClientOnly>{() => <AudioContainer />}</ClientOnly>
+              </Layout>
+            </NotificationContextProvider>
+          </PwaContextProvider>
+        </PlayerContextProvider>
       </ConfigContextProvider>
       <ScrollRestoration /> <Scripts />
       <script

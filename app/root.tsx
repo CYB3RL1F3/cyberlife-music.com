@@ -78,7 +78,6 @@ export function CatchBoundary() {
   const message =
     status === 404 ? "Nothing here!" : "A technical error occured!";
 
-  if (!config) return null;
   return (
     <html lang="en">
       <head>
@@ -86,9 +85,11 @@ export function CatchBoundary() {
         <link rel="manifest" href="/resources/manifest.webmanifest" />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
-        <Application config={config}>
-          <ErrorPage code={code} message={message} />
-        </Application>
+        {config && (
+          <Application config={config}>
+            <ErrorPage code={code} message={message} />
+          </Application>
+        )}
       </body>
     </html>
   );
@@ -96,6 +97,7 @@ export function CatchBoundary() {
 
 export default function App() {
   const data = useLoaderData();
+  console.log("DATA >> ", data);
   let location = useLocation();
   let matches = useMatches();
 

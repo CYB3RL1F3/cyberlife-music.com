@@ -11,7 +11,7 @@ const LinkNavItemList = ({ items, onChange }: LinkNavItemListProps) => {
           index={index}
           key={`menuItem__${item.href}`}
           className={clsx(
-            "list-none text-right w-full md:w-auto md:text-left h-24 md:h-8 flex justify-end md:justify-start items-center uppercase text-lg font-semibold"
+            "list-none max-md:before:content-[''] max-md:before:w-0 text-right w-full md:w-auto md:text-left h-24 md:h-8 flex justify-end md:justify-start items-center uppercase text-lg font-semibold"
           )}
         >
           <LinkNavItemContainer {...item} onChange={onChange} index={index} />
