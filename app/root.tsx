@@ -15,6 +15,7 @@ import {
 } from "@remix-run/react";
 import Application from "./application";
 import styles from "~/styles/styles.css";
+import reactToastifyStyles from "react-toastify/dist/ReactToastify.css";
 import ErrorPage from "./components/pages/ErrorPage";
 import { runInfosQuery } from "~/queries/infos";
 import { getConfig } from "./utils/config";
@@ -54,6 +55,7 @@ export const meta: MetaFunction = ({ data }) => {
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },
+    { rel: "stylesheet", href: reactToastifyStyles },
     {
       rel: "icon",
       type: "image/x-icon",

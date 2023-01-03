@@ -11,8 +11,6 @@ import { getFormattedDuration } from "~/utils/duration";
 const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
   const { artwork, date, duration, license } = podcast;
   const licenseLabel = getMappedLicenseLabel(license);
-  console.log("XOOXXOOXO");
-  console.log(license, licenseLabel);
   return (
     <PageDetailLayout
       thumbnail={

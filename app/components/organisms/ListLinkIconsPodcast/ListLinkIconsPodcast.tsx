@@ -14,7 +14,12 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
   if (!id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {
-      icon: <ToggleIconLikeContainer id={`podcasts/${id}`} />,
+      icon: (
+        <ToggleIconLikeContainer
+          title={title || "This podcast"}
+          id={`podcasts/${id}`}
+        />
+      ),
       id: `toggleLikePodcast__${id}`,
       title: `like podcast ${title}`
     }

@@ -394,3 +394,8 @@ input:-webkit-autofill:active{
   width: var(--iconSize);
   height: var(--iconSize);
 }
+
+:root body {
+  --toastify-color-success: #107a13;
+  --toastify-color-info: #3f6177;
+}
