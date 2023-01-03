@@ -5,7 +5,10 @@ type TextareaBaseProps = Omit<
   "value" | "onChange"
 >;
 
-export type TextareaProps<T extends string = string> = TextareaBaseProps & {
+export type TextareaProps<T extends string = string> = Omit<
+  TextareaBaseProps,
+  "ref"
+> & {
   value?: T;
   onChange?: (value: T) => void;
   hasError?: boolean;

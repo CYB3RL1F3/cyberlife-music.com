@@ -1,5 +1,9 @@
 import React from "react";
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
   Links,
@@ -47,13 +51,17 @@ export const meta: MetaFunction = ({ data }) => {
   };
 };
 
-export const links = () => {
+export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },
     {
       rel: "icon",
       type: "image/x-icon",
       href: "/icons/favicon.ico"
+    },
+    {
+      rel: "manifest",
+      href: "/resources/manifest.webmanifest"
     }
   ];
 };
@@ -78,17 +86,18 @@ export function CatchBoundary() {
   const message =
     status === 404 ? "Nothing here!" : "A technical error occured!";
 
-  if (!config) return null;
   return (
     <html lang="en">
       <head>
-        <Meta /> <Links />
-        <link rel="manifest" href="/resources/manifest.webmanifest" />
+        <Meta />
+        <Links />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
-        <Application config={config}>
-          <ErrorPage code={code} message={message} />
-        </Application>
+        {config && (
+          <Application config={config}>
+            <ErrorPage code={code} message={message} />
+          </Application>
+        )}
       </body>
     </html>
   );
@@ -136,8 +145,8 @@ export default function App() {
   return (
     <html lang="en">
       <head>
-        <Meta /> <Links />
-        <link rel="manifest" href="/resources/manifest.webmanifest" />
+        <Meta />
+        <Links />
         <link rel="canonical" href={data.url} />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">

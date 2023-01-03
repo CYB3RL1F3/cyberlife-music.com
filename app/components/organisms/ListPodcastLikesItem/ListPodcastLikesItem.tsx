@@ -1,15 +1,13 @@
-import Avatar from "~/components/atoms/Avatar";
 import type { ListPodcastLikesItemProps } from "./ListPodcastLikesItem.types";
-import IconAvatar from "~/icons/avatar.png";
+import AvatarUser from "~/components/molecules/AvatarUser";
 
 const ListPodcastLikesItem = ({ like }: ListPodcastLikesItemProps) => {
   return (
-    <a target="_blank" href={like.soundcloud || "#"} rel="noreferrer">
-      <Avatar
-        src={like.avatar || IconAvatar}
-        alt={like.userName || "Soundcloud user"}
-      />
-    </a>
+    <AvatarUser
+      url={like.soundcloud || "#"}
+      avatar={like.avatar}
+      userName={like.userName}
+    />
   );
 };
 

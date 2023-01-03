@@ -1,11 +1,11 @@
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
+import AnimationContextProvider from "./components/contexts/AnimationContext/AnimationContext.provider";
 
 import ApolloContext, {
   getClient
 } from "./components/contexts/ApolloContext/ApolloContext";
-import PlayerContextProvider from "./components/contexts/PlayerContext";
 
 function hydrate() {
   const client = getClient();
@@ -15,9 +15,9 @@ function hydrate() {
       document,
       <StrictMode>
         <ApolloContext client={client}>
-          <PlayerContextProvider>
+          <AnimationContextProvider canAnimate>
             <RemixBrowser />
-          </PlayerContextProvider>
+          </AnimationContextProvider>
         </ApolloContext>
       </StrictMode>
     );

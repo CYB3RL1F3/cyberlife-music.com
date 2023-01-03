@@ -7,8 +7,8 @@ import { renderToPipeableStream } from "react-dom/server";
 import { getDataFromTree } from "@apollo/client/react/ssr";
 import ApolloContext from "./components/contexts/ApolloContext";
 import { getClient } from "./components/contexts/ApolloContext/ApolloContext";
-import PlayerContextProvider from "./components/contexts/PlayerContext";
 import { StrictMode } from "react";
+import AnimationContextProvider from "./components/contexts/AnimationContext/AnimationContext.provider";
 
 const ABORT_DELAY = 5000;
 
@@ -43,9 +43,9 @@ function handleBotRequest(
   const App = (
     <StrictMode>
       <ApolloContext client={client}>
-        <PlayerContextProvider>
-          <RemixServer context={remixContext} url={request.url} />,
-        </PlayerContextProvider>
+        <AnimationContextProvider>
+          <RemixServer context={remixContext} url={request.url} />
+        </AnimationContextProvider>
       </ApolloContext>
     </StrictMode>
   );
@@ -104,9 +104,9 @@ function handleBrowserRequest(
   const App = (
     <StrictMode>
       <ApolloContext client={client}>
-        <PlayerContextProvider>
+        <AnimationContextProvider canAnimate>
           <RemixServer context={remixContext} url={request.url} />
-        </PlayerContextProvider>
+        </AnimationContextProvider>
       </ApolloContext>
     </StrictMode>
   );

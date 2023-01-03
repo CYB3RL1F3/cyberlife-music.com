@@ -4,4 +4,5 @@ export type LinkIconProps = {
   url?: string;
   icon: ReactNode;
   id: string;
+  title?: string;
 };
