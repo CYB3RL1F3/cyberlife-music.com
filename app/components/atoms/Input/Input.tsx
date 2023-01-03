@@ -20,8 +20,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       inputClassName
     );
 
-    // const ref = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
-
     useLayoutEffect(() => {
       const current = (ref as MutableRefObject<HTMLInputElement | null>)
         ?.current;

@@ -9,10 +9,10 @@ The website is now online and works with my profilart application for data provi
 - [React](https://facebook.github.io/react/) 18.2.0
 - [React Remix](https://remix.run/) 1.9.0
 - [Tailwind CSS](https://tailwindcss.com/) 3.2.4
-- [Framer Motion](https://www.framer.com/motion/) 8.0.2
+- [Framer Motion](https://www.framer.com/motion/) 8.1.3
 - [GraphQL Apollo Client](https://www.apollographql.com/docs/react/) 2.34.0
-- [React Hooks Form](https://github.com/mobxjs/mobx-react) 2.0.1
-- [Superstruct](https://github.com/alisd23/mobx-react-router/) 1.0.3
+- [React Hook Form](https://github.com/mobxjs/mobx-react) 7.41.3
+- [Superstruct](https://docs.superstructjs.org/) 1.0.3
 - [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/guides/) 2.11.1
 
 ## Architecture

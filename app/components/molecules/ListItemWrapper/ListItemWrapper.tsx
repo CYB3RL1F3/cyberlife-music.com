@@ -9,7 +9,7 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
     return 0.03 * i + 0.06;
   }, [index]);
 
-  const opacityDelay = useMemo(() => 0.04 + delay, [delay]);
+  const opacityDelay = useMemo(() => 0.06 + delay, [delay]);
 
   const className = clsx("flex justify-end border-gray-400", {
     "border-t pt-4": index > 0
@@ -30,8 +30,8 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        style={{ willChange }}
         transition={{ duration: 0.4, delay: opacityDelay, ease: "easeInOut" }}
+        style={{ willChange }}
       >
         {children}
       </motion.div>
