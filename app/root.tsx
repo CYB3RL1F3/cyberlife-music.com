@@ -1,5 +1,9 @@
 import React from "react";
-import type { LoaderFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
   Links,
@@ -47,13 +51,17 @@ export const meta: MetaFunction = ({ data }) => {
   };
 };
 
-export const links = () => {
+export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: styles },
     {
       rel: "icon",
       type: "image/x-icon",
       href: "/icons/favicon.ico"
+    },
+    {
+      rel: "manifest",
+      href: "/resources/manifest.webmanifest"
     }
   ];
 };
@@ -81,8 +89,8 @@ export function CatchBoundary() {
   return (
     <html lang="en">
       <head>
-        <Meta /> <Links />
-        <link rel="manifest" href="/resources/manifest.webmanifest" />
+        <Meta />
+        <Links />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
         {config && (
@@ -97,7 +105,6 @@ export function CatchBoundary() {
 
 export default function App() {
   const data = useLoaderData();
-  console.log("DATA >> ", data);
   let location = useLocation();
   let matches = useMatches();
 
@@ -138,8 +145,8 @@ export default function App() {
   return (
     <html lang="en">
       <head>
-        <Meta /> <Links />
-        <link rel="manifest" href="/resources/manifest.webmanifest" />
+        <Meta />
+        <Links />
         <link rel="canonical" href={data.url} />
       </head>
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
