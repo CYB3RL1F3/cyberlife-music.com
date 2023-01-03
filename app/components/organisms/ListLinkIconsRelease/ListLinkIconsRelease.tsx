@@ -6,11 +6,16 @@ import DiscogsIcon from "~/icons/discogs.svg";
 import ListLinkIcons from "~/components/molecules/ListLinkIcons";
 
 const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
-  const { _id, discogs } = release;
+  const { _id, discogs, title } = release;
   if (!_id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {
-      icon: <ToggleIconLikeContainer id={`releases/${_id}`} />,
+      icon: (
+        <ToggleIconLikeContainer
+          title={title || "This release"}
+          id={`releases/${_id}`}
+        />
+      ),
       id: `toggleLikeRelease__${_id}`
     }
   ];

@@ -10,6 +10,7 @@ import {
 import { usePwaContext } from "../PwaContext/PwaContext.hook";
 import { useUnSubscribeMutation } from "~/hooks/mutations/useUnsubscribeMutation";
 import { useLocalStorage } from "~/hooks/useLocaleStorage";
+import { toast } from "react-toastify";
 
 const NotificationContextProvider = ({
   children
@@ -44,6 +45,7 @@ const NotificationContextProvider = ({
     const subscriptionParameters = getSubscriptionParameters(subscription);
     await subscribe(config.notificationPoolId, subscriptionParameters);
     setStoredSubscribeState(true);
+    return true;
   }, [
     config.notificationPoolId,
     isSubscribed,
@@ -58,13 +60,24 @@ const NotificationContextProvider = ({
     if (!subscription?.endpoint) return;
     await unsubscribe(config.notificationPoolId, subscription.endpoint);
     setStoredSubscribeState(false);
+    return true;
   };
 
   const setSubscribed = async (value: boolean) => {
     if (value) {
-      await doSubscribe();
+      const subscribed = await doSubscribe();
+      if (subscribed) {
+        toast.success("You're now subscribed to notifications!", {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      }
     } else {
-      doUnsubscribe();
+      const unsubscribed = await doUnsubscribe();
+      if (unsubscribed) {
+        toast.info("You're now unsubscribed to notifications.", {
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      }
     }
     setVerified(true);
   };

@@ -29,6 +29,7 @@ import { useEffect } from "react";
 import { isSupported } from "./utils/browser";
 import NotSupportedPage from "./components/pages/NotSupportedPage";
 import PlayerContextProvider from "./components/contexts/PlayerContext";
+import { ToastContainer } from "react-toastify";
 
 export type ApplicationProps = {
   config: Config;
@@ -114,6 +115,18 @@ const Application = ({ config, children }: ApplicationProps) => {
                   </div>
                   <ClientOnly>{() => <AudioContainer />}</ClientOnly>
                 </Layout>
+                <ToastContainer
+                  role="alert"
+                  position="bottom-left"
+                  theme="colored"
+                  autoClose={6000}
+                  hideProgressBar={false}
+                  newestOnTop
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  pauseOnHover
+                />
               </NotificationContextProvider>
             </PwaContextProvider>
           </PlayerContextProvider>

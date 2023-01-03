@@ -48,10 +48,3 @@ export const getSubscriptionParameters: (
     }
   };
 };
-
-export const disableSubscription = async (
-  registration: ServiceWorkerRegistration
-) => {
-  const permission = window.Notification.permission;
-  registration.pushManager.permissionState;
-};
