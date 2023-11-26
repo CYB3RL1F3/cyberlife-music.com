@@ -4,17 +4,17 @@
   "scripts": {
     "build": "pnpm build:css && pnpm build:worker && pnpm build:remix",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/styles.css",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "build:remix": "pnpm remix build",
     "build:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --minify --bundle --format=esm --define:process.env.NODE_ENV='\"production\"'",
-    "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
-    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql",
     "dev": "npm-run-all -p dev:*",
-    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "download:schema": "apollo service:download --endpoint=http://localhost:8888/v2/graphql ./graphql-schema.json",
+    "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",
+    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql",
     "start": "pnpm build && cross-env NODE_ENV=production pnpm remix-serve build"
   },
   "dependencies": {

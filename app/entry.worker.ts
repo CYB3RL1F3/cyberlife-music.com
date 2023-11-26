@@ -149,15 +149,17 @@ async function handleFetch(event: FetchEvent): Promise<Response> {
 
 const handlePush = async (event: PushEvent): Promise<void> => {
   const data = JSON.parse(event?.data!.text());
-  const title = data.title ? data.title : "Remix PWA";
+  const title = data.title ? data.title : "Cyberlife Music";
 
   const options = {
-    body: data.body ? data.body : "Notification Body Text",
-    icon: data.icon ? data.icon : "/icons/android-icon-192x192.png",
-    badge: data.badge ? data.badge : "/icons/android-icon-48x48.png",
-    dir: data.dir ? data.dir : "auto",
-    image: data.image ? data.image : undefined,
-    silent: data.silent ? data.silent : false
+    body: data.body ?? "Notification Body Text",
+    icon: data.icon ?? "/icons/android-icon-192x192.png",
+    badge: data.badge ?? "/icons/android-icon-48x48.png",
+    dir: data.dir ?? "auto",
+    image: data.image ?? undefined,
+    silent: data.silent ?? false,
+    tag: data.tag ?? "#cyberlife",
+    vibrate: [300, 100, 200]
   };
 
   await self.registration.showNotification(title, {
@@ -205,6 +207,15 @@ self.addEventListener("push", (event) => {
   //   console.log("Application is already open!");
   // }
   // });
+});
+
+self.addEventListener("notificationclick", function (event) {
+  const { notification } = event;
+  const url = notification.data.action;
+
+  event.waitUntil(self.clients.openWindow(url));
+
+  event.notification.close();
 });
 
 self.addEventListener("fetch", (event) => {

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface EventSnippetFragmentFlyer {
-  _typename: "flyer";
+  __typename: "flyer";
   /**
    * front image source
    */
@@ -16,7 +16,7 @@ export interface EventSnippetFragmentFlyer {
 }
 
 export interface EventSnippetFragment {
-  _typename: "Event";
+  __typename: "Event";
   /**
    * event ID
    */
@@ -28,7 +28,7 @@ export interface EventSnippetFragment {
   /**
    * event date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * title
    */

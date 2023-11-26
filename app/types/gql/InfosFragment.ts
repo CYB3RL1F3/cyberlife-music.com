@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface InfosFragmentBio {
-  _typename: "bio";
+  __typename: "bio";
   /**
    * Artist content
    */
@@ -16,7 +16,7 @@ export interface InfosFragmentBio {
 }
 
 export interface InfosFragment {
-  _typename: "Infos";
+  __typename: "Infos";
   /**
    * Artist bio
    */

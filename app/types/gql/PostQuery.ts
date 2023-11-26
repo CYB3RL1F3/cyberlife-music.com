@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface PostQueryPost {
-  _typename: "Post";
+  __typename: "Post";
   /**
    * Post content
    */

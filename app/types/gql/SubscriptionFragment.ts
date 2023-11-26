@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface SubscriptionFragmentKeys {
-  _typename: "SubscriptionKey";
+  __typename: "SubscriptionKey";
   /**
    * Notification Pool's Subscription notification auth key
    */
@@ -20,7 +20,7 @@ export interface SubscriptionFragmentKeys {
 }
 
 export interface SubscriptionFragment {
-  _typename: "Subscription";
+  __typename: "Subscription";
   /**
    * Notification Pool's Subscription endpoint
    */

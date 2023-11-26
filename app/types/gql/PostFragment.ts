@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface PostFragment {
-  _typename: "Post";
+  __typename: "Post";
   /**
    * Post content
    */

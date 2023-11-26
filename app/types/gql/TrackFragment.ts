@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface TrackFragmentStats {
-  _typename: "stats";
+  __typename: "stats";
   /**
    * nb listens
    */
@@ -20,7 +20,7 @@ export interface TrackFragmentStats {
 }
 
 export interface TrackFragmentLikes {
-  _typename: "Like";
+  __typename: "Like";
   /**
    * user ID
    */
@@ -44,7 +44,7 @@ export interface TrackFragmentLikes {
 }
 
 export interface TrackFragmentCommentsUser {
-  _typename: "User";
+  __typename: "User";
   /**
    * user avatar
    */
@@ -64,7 +64,7 @@ export interface TrackFragmentCommentsUser {
 }
 
 export interface TrackFragmentComments {
-  _typename: "Comment";
+  __typename: "Comment";
   /**
    * comment ID
    */
@@ -84,7 +84,7 @@ export interface TrackFragmentComments {
 }
 
 export interface TrackFragment {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -112,7 +112,7 @@ export interface TrackFragment {
   /**
    * track date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * track uri
    */

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface PlaylistQueryPlaylistTracks {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -36,7 +36,7 @@ export interface PlaylistQueryPlaylistTracks {
   /**
    * track date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * track uri
    */
@@ -68,7 +68,7 @@ export interface PlaylistQueryPlaylistTracks {
 }
 
 export interface PlaylistQueryPlaylist {
-  _typename: "Playlist";
+  __typename: "Playlist";
   /**
    * playlist ID
    */

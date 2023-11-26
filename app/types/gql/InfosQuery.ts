@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface InfosQueryInfosBio {
-  _typename: "bio";
+  __typename: "bio";
   /**
    * Artist content
    */
@@ -16,7 +16,7 @@ export interface InfosQueryInfosBio {
 }
 
 export interface InfosQueryInfos {
-  _typename: "Infos";
+  __typename: "Infos";
   /**
    * Artist bio
    */

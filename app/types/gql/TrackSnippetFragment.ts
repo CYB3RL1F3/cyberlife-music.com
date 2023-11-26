@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface TrackSnippetFragment {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -36,7 +36,7 @@ export interface TrackSnippetFragment {
   /**
    * track date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * track uri
    */

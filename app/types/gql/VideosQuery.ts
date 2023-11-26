@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface VideosQueryVideos {
-  _typename: "Video";
+  __typename: "Video";
   /**
    * Video url
    */
