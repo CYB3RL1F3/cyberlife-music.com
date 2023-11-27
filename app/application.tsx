@@ -30,6 +30,7 @@ import { isSupported } from "./utils/browser";
 import NotSupportedPage from "./components/pages/NotSupportedPage";
 import PlayerContextProvider from "./components/contexts/PlayerContext";
 import { ToastContainer } from "react-toastify";
+import NoScript from "./components/organisms/NoScript";
 
 export type ApplicationProps = {
   config: Config;
@@ -98,6 +99,7 @@ const Application = ({ config, children }: ApplicationProps) => {
                       <PageDetailHeaderPortal.Container />
                     </div>
                     <ContainerScrollPage>
+                      <NoScript />
                       <AnimatePresence mode="wait">
                         <motion.div
                           className="max-md:min-h-[calc(100vh_-_21rem)]"

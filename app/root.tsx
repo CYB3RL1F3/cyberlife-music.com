@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import type {
   LinksFunction,
   LoaderFunction,
@@ -123,7 +123,7 @@ export default function App() {
   let location = useLocation();
   let matches = useMatches();
 
-  React.useEffect(() => {
+  useEffect(() => {
     let mounted = isMount;
     isMount = false;
     if ("serviceWorker" in navigator) {

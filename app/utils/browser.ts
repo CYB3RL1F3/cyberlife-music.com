@@ -1,9 +1,9 @@
 export const isIe = (): boolean => {
   if (typeof window === "undefined") return false;
-  var sAgent = window.navigator.userAgent;
-  var Idx = sAgent.indexOf("MSIE");
+  const sAgent = window.navigator.userAgent;
+  const idx = sAgent.indexOf("MSIE");
 
-  if (Idx > 0) return true;
+  if (idx > 0) return true;
   else if (!!navigator.userAgent.match(/Trident\/7\./)) return true;
   else return false;
 };

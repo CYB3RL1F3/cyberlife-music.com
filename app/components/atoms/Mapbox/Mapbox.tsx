@@ -1,4 +1,3 @@
-import React from "react";
 import ClientOnly from "../ClientOnly";
 import MapboxComponent from "./Mapbox.component";
 import type { MapboxProps } from "./Mapbox.types";
