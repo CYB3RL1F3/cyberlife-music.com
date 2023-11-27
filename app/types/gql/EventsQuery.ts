@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface EventsQueryEventsFlyer {
-  _typename: "flyer";
+  __typename: "flyer";
   /**
    * front image source
    */
@@ -16,7 +16,7 @@ export interface EventsQueryEventsFlyer {
 }
 
 export interface EventsQueryEvents {
-  _typename: "Event";
+  __typename: "Event";
   /**
    * event ID
    */
@@ -28,7 +28,7 @@ export interface EventsQueryEvents {
   /**
    * event date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * title
    */

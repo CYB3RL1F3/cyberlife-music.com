@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface EventQueryEventFlyer {
-  _typename: "flyer";
+  __typename: "flyer";
   /**
    * front image source
    */
@@ -20,7 +20,7 @@ export interface EventQueryEventFlyer {
 }
 
 export interface EventQueryEventTime {
-  _typename: "time";
+  __typename: "time";
   /**
    * time start
    */
@@ -32,7 +32,7 @@ export interface EventQueryEventTime {
 }
 
 export interface EventQueryEventLocation {
-  _typename: "location";
+  __typename: "location";
   /**
    * position
    */
@@ -40,7 +40,7 @@ export interface EventQueryEventLocation {
 }
 
 export interface EventQueryEventLinks {
-  _typename: "links";
+  __typename: "links";
   /**
    * event
    */
@@ -52,7 +52,7 @@ export interface EventQueryEventLinks {
 }
 
 export interface EventQueryEvent {
-  _typename: "Event";
+  __typename: "Event";
   /**
    * event ID
    */
@@ -64,7 +64,7 @@ export interface EventQueryEvent {
   /**
    * event date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * title
    */
@@ -93,6 +93,10 @@ export interface EventQueryEvent {
    * promoter name
    */
   promoter: string | null;
+  /**
+   * description
+   */
+  description: string | null;
   /**
    * event Id
    */

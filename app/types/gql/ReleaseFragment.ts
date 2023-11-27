@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface ReleaseFragmentTracklistArtists {
-  _typename: "artist";
+  __typename: "artist";
   /**
    * Artist Name
    */
@@ -20,7 +20,7 @@ export interface ReleaseFragmentTracklistArtists {
 }
 
 export interface ReleaseFragmentTracklistStream {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -52,7 +52,7 @@ export interface ReleaseFragmentTracklistStream {
 }
 
 export interface ReleaseFragmentTracklist {
-  _typename: "ReleaseTrack";
+  __typename: "ReleaseTrack";
   /**
    * Release's Track title
    */
@@ -76,7 +76,7 @@ export interface ReleaseFragmentTracklist {
 }
 
 export interface ReleaseFragment {
-  _typename: "Release";
+  __typename: "Release";
   /**
    * release ID
    */
@@ -92,7 +92,7 @@ export interface ReleaseFragment {
   /**
    * Release date
    */
-  releaseDate: any | null;
+  releaseDate: Any | null;
   /**
    * Release role
    */

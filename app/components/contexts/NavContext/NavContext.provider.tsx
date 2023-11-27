@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useReducer } from "react";
+import { useEffect, useCallback, useReducer } from "react";
 import { NavContext } from "./NavContext";
 import { navContextReducer } from "./NavContext.reducer";
 import { useLocation } from "@remix-run/react";

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface EventFragmentFlyer {
-  _typename: "flyer";
+  __typename: "flyer";
   /**
    * front image source
    */
@@ -20,7 +20,7 @@ export interface EventFragmentFlyer {
 }
 
 export interface EventFragmentTime {
-  _typename: "time";
+  __typename: "time";
   /**
    * time start
    */
@@ -32,7 +32,7 @@ export interface EventFragmentTime {
 }
 
 export interface EventFragmentLocation {
-  _typename: "location";
+  __typename: "location";
   /**
    * position
    */
@@ -40,7 +40,7 @@ export interface EventFragmentLocation {
 }
 
 export interface EventFragmentLinks {
-  _typename: "links";
+  __typename: "links";
   /**
    * event
    */
@@ -52,7 +52,7 @@ export interface EventFragmentLinks {
 }
 
 export interface EventFragment {
-  _typename: "Event";
+  __typename: "Event";
   /**
    * event ID
    */
@@ -64,7 +64,7 @@ export interface EventFragment {
   /**
    * event date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * title
    */
@@ -93,6 +93,10 @@ export interface EventFragment {
    * promoter name
    */
   promoter: string | null;
+  /**
+   * description
+   */
+  description: string | null;
   /**
    * event Id
    */

@@ -1,5 +1,5 @@
 import type { Struct } from "superstruct";
-import { refine, string, is, define } from "superstruct";
+import { is, define } from "superstruct";
 import { getSanitizedHtml } from "./html";
 
 export const rule = <T>(
@@ -17,7 +17,7 @@ export const hasXss = (value: string): boolean =>
   value !== getSanitizedHtml(value, true);
 
 export const hasInsults = (value: string): boolean =>
-  /(.*)(f[i]+ls de p[u, \*]+te|n[i, \*]+qu[e, é]+[r\s, \s]+t[a, on]+ [m, p]+[è, e, \*]+[re]+|c[o, \*]+nn[a, \*]+[r]+[d]+|e[m]+[e]+[r]+[d]+e|pet[i]+te m[e, é, \*]+rde|gr[o]+sse m[e, è, \*]+[r]+[d]+[e]+|\schi[a]+sse\s|\sf[u]+ck yo|[\s]h[i, \*]+jo de p[u]+t[a]+|\ss[a]+l[o]+[p]+e|\sp[u, \*]+te|enc[u, \*]+l|[\s, em]+m[e, \*]+[r, \*]+[d, \*]+[e]+\s|\ss[a]+l[a]+[u]+d\s|m[e]+rd[a]+sse|t[a]+p[e]+[t]+e|t[a]+fi[o]+[l]+e|\sd[u]+[m]+[b]+|st[u]+p[i]+d|cr[é, e]+t[i]+n|l[o]+ser|b[a]+bt[o]+u|\sn[é, e]+gro|\sj[e]+rk\s|\sc[a, \*]+[z, \*]+[o, \*]+\s|enf[a]+nt de p[u]+tain|nig[g]+a|\sc[u]+nt\s|\sdumbass\s|\ssc[u]+[m]+\s|\sp[u, \*]+ssy\s|\sf[a]+g\s|[\s]w[a]+nk[e]+r|b[o+]ugn[o]+ule|d[i]+ckh[e, \*]+[a, \*]+d|\spr[i, \*]+ck|b[a, \*, â]+t[a, \*]+rd|\sPD\s|e[m]+[e, \*]rde)/gim.test(
+  /(.*)(f[i]+ls de p[u, \*]+te|n[i, \*]+qu[e, é]+[r\s, \s]+t[a, on]+ [m, p]+[è, e, \*]+[re]+|c[o, \*]+nn[a, \*]+[r]+[d]+|e[m]+[e]+[r]+[d]+e|pet[i]+te m[e, è, é, \*]+rde|gr[o]+sse m[e, é, è, \*]+[r]+[d]+[e]+|\schi[a]+sse\s|\sf[u]+ck yo|[\s]h[i, \*]+jo de p[u]+t[a]+|\ss[a]+l[o]+[p]+e|\sp[u, \*]+te|enc[u, \*]+l|[\s, em]+m[e, \*]+[r, \*]+[d, \*]+[e]+\s|\ss[a]+l[a]+[u]+d\s|m[e]+rd[a]+sse|t[a]+p[e]+[t]+e|t[a]+fi[o]+[l]+e|\sd[u]+[m]+[b]+|st[u]+p[i]+d|cr[é, e]+t[i]+n|l[o]+ser|b[a]+bt[o]+u|\sn[é, e]+gro|\sj[e]+rk\s|\sc[a, \*]+[z, \*]+[o, \*]+\s|enf[a]+nt de p[u]+tain|nig[g]+a|\sc[u]+nt\s|\sdumbass\s|\ssc[u]+[m]+\s|\sp[u, \*]+ssy\s|\sf[a]+g\s|[\s]w[a]+nk[e]+r|b[o+]ugn[o]+ule|d[i]+ckh[e, \*]+[a, \*]+d|\spr[i, \*]+ck|b[a, \*, â]+t[a, \*]+rd|\sPD\s|e[m]+[e, \*]rde)/gim.test(
     value
   );
 

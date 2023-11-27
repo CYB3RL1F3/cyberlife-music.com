@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface PlaylistTrackQueryPlaylistTrackStats {
-  _typename: "stats";
+  __typename: "stats";
   /**
    * nb listens
    */
@@ -20,7 +20,7 @@ export interface PlaylistTrackQueryPlaylistTrackStats {
 }
 
 export interface PlaylistTrackQueryPlaylistTrackLikes {
-  _typename: "Like";
+  __typename: "Like";
   /**
    * user ID
    */
@@ -44,7 +44,7 @@ export interface PlaylistTrackQueryPlaylistTrackLikes {
 }
 
 export interface PlaylistTrackQueryPlaylistTrackCommentsUser {
-  _typename: "User";
+  __typename: "User";
   /**
    * user avatar
    */
@@ -64,7 +64,7 @@ export interface PlaylistTrackQueryPlaylistTrackCommentsUser {
 }
 
 export interface PlaylistTrackQueryPlaylistTrackComments {
-  _typename: "Comment";
+  __typename: "Comment";
   /**
    * comment ID
    */
@@ -84,7 +84,7 @@ export interface PlaylistTrackQueryPlaylistTrackComments {
 }
 
 export interface PlaylistTrackQueryPlaylistTrack {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -112,7 +112,7 @@ export interface PlaylistTrackQueryPlaylistTrack {
   /**
    * track date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * track uri
    */

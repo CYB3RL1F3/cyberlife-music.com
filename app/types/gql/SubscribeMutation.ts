@@ -10,7 +10,7 @@ import { SubscriptionDto } from "./globalTypes";
 // ====================================================
 
 export interface SubscribeMutationSubscribeKeys {
-  _typename: "SubscriptionKey";
+  __typename: "SubscriptionKey";
   /**
    * Notification Pool's Subscription notification auth key
    */
@@ -22,7 +22,7 @@ export interface SubscribeMutationSubscribeKeys {
 }
 
 export interface SubscribeMutationSubscribe {
-  _typename: "Subscription";
+  __typename: "Subscription";
   /**
    * Notification Pool's Subscription endpoint
    */

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface ReleaseSnippetFragmentTracklist {
-  _typename: "ReleaseTrack";
+  __typename: "ReleaseTrack";
   /**
    * Release's Track title
    */
@@ -16,7 +16,7 @@ export interface ReleaseSnippetFragmentTracklist {
 }
 
 export interface ReleaseSnippetFragment {
-  _typename: "Release";
+  __typename: "Release";
   /**
    * release ID
    */
@@ -32,7 +32,7 @@ export interface ReleaseSnippetFragment {
   /**
    * Release date
    */
-  releaseDate: any | null;
+  releaseDate: Any | null;
   /**
    * Release role
    */

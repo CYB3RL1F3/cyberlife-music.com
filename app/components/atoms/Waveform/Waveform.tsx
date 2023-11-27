@@ -14,7 +14,8 @@ const Waveform = forwardRef<HTMLDivElement, WaveformProps>(
         )}
         style={{
           backgroundImage: `url("${src}")`,
-          filter: "invert(1)"
+          filter: "invert(1)",
+          backgroundSize: "100% 100%"
         }}
       />
     );

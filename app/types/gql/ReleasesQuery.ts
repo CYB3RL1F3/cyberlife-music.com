@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface ReleasesQueryReleasesTracklist {
-  _typename: "ReleaseTrack";
+  __typename: "ReleaseTrack";
   /**
    * Release's Track title
    */
@@ -16,7 +16,7 @@ export interface ReleasesQueryReleasesTracklist {
 }
 
 export interface ReleasesQueryReleases {
-  _typename: "Release";
+  __typename: "Release";
   /**
    * release ID
    */
@@ -32,7 +32,7 @@ export interface ReleasesQueryReleases {
   /**
    * Release date
    */
-  releaseDate: any | null;
+  releaseDate: Any | null;
   /**
    * Release role
    */

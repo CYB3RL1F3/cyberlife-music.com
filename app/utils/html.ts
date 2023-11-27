@@ -71,14 +71,22 @@ export const parseHtml = (html: string) =>
   reactHtmlParser(getSanitizedHtml(html));
 
 export const toHtml = (html: string, className?: string) => {
+  const urlRegex = /(?:https?:\/\/)?[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]*\/?/gim;
+
   return html
-    .replace(
-      /(https?:\/\/(?:www\.|(?!www) | (bit.ly))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gim,
-      `<a ${
+    .replace(urlRegex, (match) => {
+      let url = match;
+
+      if (
+        match.startsWith("http://") ||
+        (!match.startsWith("http") && !match.startsWith("ftp"))
+      ) {
+        url = "https://" + match.replace("http://", "");
+      }
+
+      return `<a ${
         className ? `class="${className}"` : ""
-      } rel="external nofollow" target="_blank" href="$1">$1</a>`
-    )
-    .replace('href="www', 'href="https://www')
-    .replace('href="bit.ly', 'href="https://bit.ly')
-    .replace(/(\n)/g, "<br />");
+      } rel="external nofollow" target="_blank" href="${url}">${url}</a>`;
+    })
+    .replace(/\n/gim, "<br />");
 };

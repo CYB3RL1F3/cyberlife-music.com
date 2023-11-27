@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface PlaylistFragmentTracks {
-  _typename: "Track";
+  __typename: "Track";
   /**
    * track ID
    */
@@ -36,7 +36,7 @@ export interface PlaylistFragmentTracks {
   /**
    * track date
    */
-  date: any | null;
+  date: Any | null;
   /**
    * track uri
    */
@@ -68,7 +68,7 @@ export interface PlaylistFragmentTracks {
 }
 
 export interface PlaylistFragment {
-  _typename: "Playlist";
+  __typename: "Playlist";
   /**
    * playlist ID
    */

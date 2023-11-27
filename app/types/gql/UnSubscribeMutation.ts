@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface UnSubscribeMutationUnsubscribe {
-  _typename: "deleted";
+  __typename: "deleted";
   /**
    * deleted
    */

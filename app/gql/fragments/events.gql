@@ -1,21 +1,9 @@
-fragment EventSnippetFragment on Event {
-  _id
-  slug
-  date
-  title
-  date
-  country
-  address
-  flyer {
-    front
-  }
-}
-
 fragment EventFragment on Event {
   ...EventSnippetFragment
   cost
   lineup
   promoter
+  description
   venue
   time {
     begin

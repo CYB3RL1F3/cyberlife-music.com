@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface VideoFragment {
-  _typename: "Video";
+  __typename: "Video";
   /**
    * Video url
    */

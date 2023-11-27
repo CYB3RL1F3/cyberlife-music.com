@@ -1,4 +1,3 @@
-import React from "react";
 import { AnimationContext } from "./AnimationContext";
 import type { AnimationContextProviderProps } from "./AnimationContext.types";
 
