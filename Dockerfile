@@ -1,17 +1,12 @@
 # Filename: Dockerfile
 
-FROM node:16.13.2-stretch
+FROM node:21-alpine
 
-ENV NODE_VERSION 16.13.2
+ENV NODE_VERSION 21.2.0
 
 RUN npm install -g pnpm
 RUN npm install typescript -g
 RUN npm install -g remix
-
-RUN apt install make gcc g++
-
-RUN apt install python3 && ln -sf python3 /usr/bin/python
-
 
 WORKDIR /usr/src/app
 
