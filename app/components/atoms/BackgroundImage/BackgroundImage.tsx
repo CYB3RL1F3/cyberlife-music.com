@@ -4,11 +4,12 @@ import { clsx } from "clsx";
 const BackgroundImage = ({
   src,
   children,
-  className
+  className,
+  backgroundType = "bg-cover"
 }: BackgroundImageProps) => {
   return (
     <div
-      className={clsx("flex bg-cover h-full", className)}
+      className={clsx("flex h-full", backgroundType, className)}
       style={{
         backgroundImage: `url("${src}")`
       }}

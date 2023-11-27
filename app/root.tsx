@@ -8,11 +8,13 @@ import { json } from "@remix-run/node";
 import {
   Links,
   Meta,
-  useCatch,
+  useRouteError,
   useLoaderData,
   useLocation,
-  useMatches
+  useMatches,
+  isRouteErrorResponse
 } from "@remix-run/react";
+
 import Application from "./application";
 import styles from "~/styles/styles.css";
 import reactToastifyStyles from "react-toastify/dist/ReactToastify.css";
@@ -26,9 +28,9 @@ const title = "Cyberlife's music";
 const image =
   "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
 
-export const meta: MetaFunction = ({ data }) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const description = data?.description;
-  return {
+  const metadata = {
     charset: "utf-8",
     description,
     expires: "0",
@@ -50,6 +52,13 @@ export const meta: MetaFunction = ({ data }) => {
     "twitter:title": title,
     viewport: "width=device-width,initial-scale=1"
   };
+  const metadataArray = Object.entries(metadata).map(([name, content]) => {
+    return {
+      name,
+      content
+    };
+  });
+  return metadataArray;
 };
 
 export const links: LinksFunction = () => {
@@ -81,12 +90,16 @@ export const loader: LoaderFunction = async ({ request }) => {
   return data;
 };
 
-export function CatchBoundary() {
-  const { status } = useCatch();
-  const code = status === 404 ? 404 : 500;
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const code = isRouteErrorResponse(error)
+    ? error.status === 404
+      ? 404
+      : 500
+    : 500;
   const config = getConfig();
   const message =
-    status === 404 ? "Nothing here!" : "A technical error occured!";
+    code === 404 ? "Nothing here!" : "A technical error occurred!";
 
   return (
     <html lang="en">
@@ -106,7 +119,7 @@ export function CatchBoundary() {
 }
 
 export default function App() {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   let location = useLocation();
   let matches = useMatches();
 

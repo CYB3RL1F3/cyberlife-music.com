@@ -33,7 +33,8 @@ const CarouselEvent = ({ event }: CarouselEventProps) => {
         >
           {front ? (
             <BackgroundImage
-              className="w-full h-[85%] bg-right bg-no-repeat bg-contain"
+              className="w-full h-[85%] bg-right bg-no-repeat"
+              backgroundType="bg-contain"
               src={front}
             />
           ) : null}
