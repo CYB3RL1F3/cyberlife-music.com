@@ -47,7 +47,7 @@
     "graphql-tag": "^2.12.6",
     "html-react-parser": "^5.0.6",
     "isbot": "^3.7.1",
-    "isomorphic-dompurify": "^1.9.0",
+    "isomorphic-dompurify": "1.9.0",
     "mapbox-gl": "^2.15.0",
     "node-fetch": "^3.3.2",
     "node-persist": "^3.1.3",
