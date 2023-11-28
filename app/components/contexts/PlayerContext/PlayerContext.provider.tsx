@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { PlayerContext } from "./PlayerContext";
 import playerContextReducer, { initialState } from "./PlayerContext.reducer";
 import type {
@@ -12,10 +12,13 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     initialState
   );
 
-  const setPlaying = (isPlaying: boolean) => {
+  const setPlaying = (playing: boolean, jumping = true) => {
     dispatch({
       type: "SET_PLAYING_STATE",
-      payload: isPlaying
+      payload: {
+        playing,
+        jumping
+      }
     });
   };
 
@@ -79,9 +82,10 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
   const { currentTrackId, currentContext, playing, buffer, volume, jumping } =
     playerContextState;
 
-  const play: PlayerContextValues["play"] = (id) => {
+  const play: PlayerContextValues["play"] = (id, forceJump) => {
     setCurrentTrack(id);
-    setPlaying(true);
+    const jump = forceJump || buffer[id].seek > 0.1;
+    setPlaying(true, jump);
   };
 
   const pause: PlayerContextValues["pause"] = (id) => {
@@ -90,7 +94,9 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
   };
 
   const toggle: PlayerContextValues["toggle"] = () => {
-    setPlaying(!playing);
+    if (!currentTrackId) return;
+    const jump = buffer[currentTrackId].seek > 0.1;
+    setPlaying(!playing, jump);
   };
 
   const currentTrack = currentTrackId ? buffer[currentTrackId] : null;
@@ -98,6 +104,87 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
   const isPlaying: PlayerContextValues["isPlaying"] = (id) => {
     return playing && currentTrackId === id;
   };
+
+  /* MEDIA SESSION CONTROLS */
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
+    const id = currentTrack?.id;
+    if (id && isPlaying(id)) {
+      const metadata = {
+        title: currentTrack?.title,
+        artist: "Cyberlife",
+        album: currentTrack?.album || "",
+        artwork: currentTrack?.artwork
+          ? [
+              {
+                src: currentTrack?.artwork,
+                sizes: "96x96",
+                type: "image/png"
+              },
+              {
+                src: currentTrack?.artwork,
+                sizes: "128x128",
+                type: "image/png"
+              },
+              {
+                src: currentTrack?.artwork,
+                sizes: "192x192",
+                type: "image/png"
+              },
+              {
+                src: currentTrack?.artwork,
+                sizes: "256x256",
+                type: "image/png"
+              },
+              {
+                src: currentTrack?.artwork,
+                sizes: "384x384",
+                type: "image/png"
+              },
+              {
+                src: currentTrack?.artwork,
+                sizes: "512x512",
+                type: "image/png"
+              }
+            ]
+          : []
+      };
+      navigator.mediaSession.metadata = new MediaMetadata(metadata);
+    }
+  }, [
+    currentTrack?.id,
+    currentTrack?.title,
+    currentTrack?.album,
+    currentTrack?.artist
+  ]);
+
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
+    const id = currentTrack?.id;
+    navigator.mediaSession.setActionHandler("play", () => {
+      if (!id) return;
+      play(id, true);
+    });
+    navigator.mediaSession.setActionHandler("pause", () => {
+      if (!id) return;
+      pause(id);
+    });
+  }, [currentTrack?.id]);
+
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+      if (!currentTrack?.prevId) return;
+      pause(currentTrack.id);
+      play(currentTrack.prevId);
+    });
+    navigator.mediaSession.setActionHandler("nexttrack", () => {
+      if (!currentTrack?.nextId) return;
+      pause(currentTrack.id);
+      play(currentTrack.nextId);
+    });
+  }, [currentTrack?.prevId, currentTrack?.nextId, currentTrack?.id]);
+  /* END MEDIA SESSION CONTROL */
 
   return (
     <PlayerContext.Provider

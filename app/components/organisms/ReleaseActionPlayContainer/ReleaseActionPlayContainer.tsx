@@ -4,9 +4,18 @@ import { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
 
 const ReleaseActionPlayContainer = ({
   track,
-  id
+  id,
+  album,
+  artist,
+  nextId,
+  prevId
 }: ReleaseActionPlayContainerProps) => {
-  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, id);
+  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, id, {
+    album,
+    artist,
+    nextId,
+    prevId
+  });
   return (
     <ActionPlay
       title={`play release ${title}`}

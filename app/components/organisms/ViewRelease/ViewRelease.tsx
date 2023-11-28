@@ -34,6 +34,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
           id={release.slug}
           tracks={release.tracklist}
           thumb={release.thumb}
+          album={release.title}
         />
       )}
     </article>

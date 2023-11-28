@@ -4,4 +4,5 @@ export type ReleaseTracklistProps = {
   tracks: NonNullable<ReleaseQueryRelease["tracklist"]>;
   thumb: ReleaseQueryRelease["thumb"];
   id: ReleaseQueryRelease["_id"];
+  album: ReleaseQueryRelease["title"];
 };

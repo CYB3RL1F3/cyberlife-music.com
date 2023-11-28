@@ -9,9 +9,14 @@ export type TrackToBuffer = {
   id: number;
   url: string;
   title: string;
+  artist?: string;
+  album?: string | null;
+  artwork?: string | null;
   contexts: TrackPlayerContext;
   waveform: string;
   duration: number;
+  nextId?: number | null;
+  prevId?: number | null;
 };
 
 export type BufferedTrack = TrackToBuffer & {
@@ -31,7 +36,7 @@ export type PlayerContextValues = {
   setVolume: (value: number) => void;
   addTrackToBuffer: (track: TrackToBuffer) => void;
   setCurrentTrack: (id: number) => void;
-  play: (id: number) => void;
+  play: (id: number, forceJump?: boolean) => void;
   pause: (id: number) => void;
   toggle: () => void;
   setLoad: (id: number, value: number) => void;
@@ -71,7 +76,10 @@ export type PlayerContextAction =
     }
   | {
       type: "SET_PLAYING_STATE";
-      payload: boolean;
+      payload: {
+        playing: boolean;
+        jumping: boolean;
+      };
     }
   | {
       type: "SET_LOAD";

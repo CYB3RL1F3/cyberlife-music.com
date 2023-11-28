@@ -12,9 +12,17 @@ export type TrackType =
   | PlaylistQueryPlaylistTracks
   | PlaylistTrackQueryPlaylistTrack;
 
-export const getTrackTobuffer = (
+export type Extra = {
+  artist?: string | null;
+  album?: string | null;
+  nextId?: number | null;
+  prevId?: number | null;
+};
+
+export const getTrackToBuffer = (
   track: TrackType,
-  contexts: TrackPlayerContext
+  contexts: TrackPlayerContext,
+  extra?: Extra
 ) => {
   const apiUrl = getApiEndpoint();
   const url = `${apiUrl}/cyberlife/playlists/${track.id}/stream`;
@@ -24,7 +32,12 @@ export const getTrackTobuffer = (
     id: track.id || 0,
     title: track.title || "",
     url,
-    waveform: track.waveform || ""
+    waveform: track.waveform || "",
+    artist: extra?.artist || "",
+    album: extra?.album || "",
+    artwork: track.artwork,
+    nextId: extra?.nextId,
+    prevId: extra?.prevId
   };
   return toBuffer;
 };
