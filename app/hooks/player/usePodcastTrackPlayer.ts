@@ -1,6 +1,8 @@
 import { useTrackPlayer } from "./useTrackPlayer";
 import type { PlaylistTrackQueryPlaylistTrack } from "~/types/gql/PlaylistTrackQuery";
 import type { PlaylistQueryPlaylistTracks } from "~/types/gql/PlaylistQuery";
+import { usePlaylistQuery } from "../queries/usePlaylistQuery";
+import { usePodcastTrackPosition } from "./usePodcastTrackPosition";
 
 export const usePodcastTrackPlayer = (
   track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks
@@ -10,6 +12,12 @@ export const usePodcastTrackPlayer = (
     desktop: [`/`, url] as const,
     mobile: [url]
   };
-  const playerContext = useTrackPlayer(track, contexts);
+  const { prevId, nextId } = usePodcastTrackPosition(track.id);
+  const playerContext = useTrackPlayer(track, contexts, {
+    artist: "Cyberlife",
+    album: "Podcasts",
+    nextId,
+    prevId
+  });
   return playerContext;
 };

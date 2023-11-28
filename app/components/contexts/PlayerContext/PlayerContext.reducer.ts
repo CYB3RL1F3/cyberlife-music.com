@@ -79,8 +79,8 @@ const playerContextReducer = (
     case "SET_PLAYING_STATE": {
       return {
         ...state,
-        playing: payload,
-        jumping: true
+        playing: payload.playing,
+        jumping: payload.jumping
       };
     }
     case "SET_LOAD": {

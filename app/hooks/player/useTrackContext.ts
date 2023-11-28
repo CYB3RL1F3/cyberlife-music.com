@@ -30,8 +30,9 @@ export const useTrackContext = (id: number) => {
   };
 
   const setLoad = (value: number) => playerContext.setLoad(id, value);
-  const setSeek = (value: number, jumping?: boolean) =>
+  const setSeek = (value: number, jumping?: boolean) => {
     playerContext.setSeek(id, value, jumping);
+  };
 
   const isInCurrentContext =
     currentContext &&
