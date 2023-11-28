@@ -175,12 +175,10 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     if (!("mediaSession" in navigator)) return;
     navigator.mediaSession.setActionHandler("previoustrack", () => {
       if (!currentTrack?.prevId) return;
-      pause(currentTrack.id);
       play(currentTrack.prevId);
     });
     navigator.mediaSession.setActionHandler("nexttrack", () => {
       if (!currentTrack?.nextId) return;
-      pause(currentTrack.id);
       play(currentTrack.nextId);
     });
   }, [currentTrack?.prevId, currentTrack?.nextId, currentTrack?.id]);
