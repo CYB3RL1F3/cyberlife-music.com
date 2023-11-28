@@ -3,7 +3,7 @@ module.exports = {
   ignoredRouteFiles: ["**/.*"],
   serverModuleFormat: "cjs",
   browserNodeBuiltinsPolyfill: {
-    modules: { path: true, os: true, crypto: true }
+    modules: { path: "empty", os: "empty", crypto: "empty" }
   },
   future: {
     v2_dev: true
