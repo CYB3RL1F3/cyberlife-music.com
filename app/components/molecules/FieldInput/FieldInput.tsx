@@ -1,8 +1,7 @@
 import Input from "~/components/atoms/Input";
 import FieldWrapper from "../FieldWrapper";
 import type { FieldInputProps } from "./FieldInput.types";
-import { forwardRef, useState } from "react";
-import { useEffect } from "react";
+import { forwardRef, useState, useEffect } from "react";
 
 const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(
   ({ error, ...props }, ref) => {

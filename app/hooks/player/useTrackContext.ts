@@ -53,6 +53,7 @@ export const useTrackContext = (id: number) => {
     jumping,
     togglePlay,
     setLoad,
-    setSeek
+    setSeek,
+    id
   };
 };

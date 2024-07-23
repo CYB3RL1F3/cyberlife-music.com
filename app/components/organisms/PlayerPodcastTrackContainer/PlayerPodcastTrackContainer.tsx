@@ -6,14 +6,19 @@ import type { PlayerPodcastTrackContainerProps } from "./PlayerPodcastTrackConta
 const PlayerPodcastTrackContainer = ({
   track
 }: PlayerPodcastTrackContainerProps) => {
-  const { waveform } = track;
+  const { waveform, id } = track;
+
   const { seek, load, setSeek, isPlaying } = usePodcastTrackPlayer(track);
+
   const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
     setSeek(seek, true);
   };
-  if (!waveform) return null;
+
+  if (!waveform || !id) return null;
+
   return (
     <PlayerTrack
+      id={id}
       waveform={waveform}
       load={load}
       seek={seek}

@@ -62,12 +62,6 @@ function debug(...messages) {
     console.debug(...messages);
   }
 }
-async function handleInstall(event) {
-  debug("Service worker installed");
-}
-async function handleActivate(event) {
-  debug("Service worker activated");
-}
 async function handleMessage(event) {
   const cachePromises = /* @__PURE__ */ new Map();
   if (event.data.type === "REMIX_NAVIGATION") {
@@ -208,10 +202,10 @@ function isDocumentGetRequest(request) {
   return isMethod(request, ["get"]) && request.mode === "navigate";
 }
 self.addEventListener("install", (event) => {
-  event.waitUntil(handleInstall(event).then(() => self.skipWaiting()));
+  event.waitUntil(self.skipWaiting());
 });
 self.addEventListener("activate", (event) => {
-  event.waitUntil(handleActivate(event).then(() => self.clients.claim()));
+  event.waitUntil(self.clients.claim());
 });
 self.addEventListener("message", (event) => {
   event.waitUntil(handleMessage(event));

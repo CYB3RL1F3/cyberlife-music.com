@@ -3,6 +3,7 @@ import type { ListEventsProps, SplittedEvents } from "./ListEvents.types";
 import dayjs from "dayjs";
 import ListEventsItem from "../ListEventsItem";
 import ListEventsEmpty from "../ListEventsEmpty";
+import ListSeparator from "~/components/molecules/ListSeparator";
 
 const ListEvents = ({ events }: ListEventsProps) => {
   const { forthcomingEvents, pastEvents } = (
@@ -25,13 +26,26 @@ const ListEvents = ({ events }: ListEventsProps) => {
   );
 
   return (
-    <List>
+    <List
+      noBorder={(index) =>
+        index === 0 || index === forthcomingEvents.length + 1
+      }
+    >
       {forthcomingEvents.length === 0 ? (
         <ListEventsEmpty />
       ) : (
-        forthcomingEvents.map((event) =>
-          event.title ? <ListEventsItem key={event._id} event={event} /> : null
-        )
+        forthcomingEvents
+          .reverse()
+          .map((event) =>
+            event.title ? (
+              <ListEventsItem key={event._id} event={event} />
+            ) : null
+          )
+      )}
+      {pastEvents.length > 0 && (
+        <ListSeparator>
+          <u>Past events</u>
+        </ListSeparator>
       )}
       {pastEvents?.map((event) =>
         event.title ? <ListEventsItem key={event._id} event={event} /> : null

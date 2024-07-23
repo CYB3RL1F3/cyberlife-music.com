@@ -5,6 +5,7 @@ fragment InfosFragment on Infos {
   instagram
   RA
   facebook
+  bandcamp
   twitter
   soundcloud
   discogs

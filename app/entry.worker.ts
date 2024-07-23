@@ -17,14 +17,6 @@ function debug(...messages: any[]) {
   }
 }
 
-async function handleInstall(event: ExtendableEvent) {
-  debug("Service worker installed");
-}
-
-async function handleActivate(event: ExtendableEvent) {
-  debug("Service worker activated");
-}
-
 async function handleMessage(event: ExtendableMessageEvent) {
   const cachePromises: Map<string, Promise<void>> = new Map();
 
@@ -188,11 +180,11 @@ function isDocumentGetRequest(request: Request) {
 }
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(handleInstall(event).then(() => self.skipWaiting()));
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(handleActivate(event).then(() => self.clients.claim()));
+  event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("message", (event) => {

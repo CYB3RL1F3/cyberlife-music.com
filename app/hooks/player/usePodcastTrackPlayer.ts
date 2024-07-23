@@ -1,7 +1,6 @@
 import { useTrackPlayer } from "./useTrackPlayer";
 import type { PlaylistTrackQueryPlaylistTrack } from "~/types/gql/PlaylistTrackQuery";
 import type { PlaylistQueryPlaylistTracks } from "~/types/gql/PlaylistQuery";
-import { usePlaylistQuery } from "../queries/usePlaylistQuery";
 import { usePodcastTrackPosition } from "./usePodcastTrackPosition";
 
 export const usePodcastTrackPlayer = (

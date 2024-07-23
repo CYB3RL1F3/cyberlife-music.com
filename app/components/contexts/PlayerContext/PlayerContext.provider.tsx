@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import { PlayerContext } from "./PlayerContext";
 import playerContextReducer, { initialState } from "./PlayerContext.reducer";
 import type {
@@ -79,19 +79,37 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     });
   };
 
-  const { currentTrackId, currentContext, playing, buffer, volume, jumping } =
-    playerContextState;
+  const setShowExternalPlayer: PlayerContextValues["setExternalPlayerVisible"] =
+    (payload) => {
+      dispatch({
+        type: "SET_SHOW_EXTERNAL_PLAYER",
+        payload
+      });
+    };
 
-  const play: PlayerContextValues["play"] = (id, forceJump) => {
-    setCurrentTrack(id);
-    const jump = forceJump || buffer[id].seek > 0.1;
-    setPlaying(true, jump);
-  };
+  const {
+    currentTrackId,
+    currentContext,
+    playing,
+    buffer,
+    volume,
+    jumping,
+    showExternalPlayer
+  } = playerContextState;
 
-  const pause: PlayerContextValues["pause"] = (id) => {
+  const play: PlayerContextValues["play"] = useCallback(
+    (id, forceJump) => {
+      setCurrentTrack(id);
+      const jump = forceJump || buffer[id].seek > 0.1;
+      setPlaying(true, jump);
+    },
+    [buffer]
+  );
+
+  const pause: PlayerContextValues["pause"] = useCallback((id) => {
     setCurrentTrack(id);
     setPlaying(false);
-  };
+  }, []);
 
   const toggle: PlayerContextValues["toggle"] = () => {
     if (!currentTrackId) return;
@@ -101,9 +119,12 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
 
   const currentTrack = currentTrackId ? buffer[currentTrackId] : null;
 
-  const isPlaying: PlayerContextValues["isPlaying"] = (id) => {
-    return playing && currentTrackId === id;
-  };
+  const isPlaying: PlayerContextValues["isPlaying"] = useCallback(
+    (id) => {
+      return playing && currentTrackId === id;
+    },
+    [currentTrackId, playing]
+  );
 
   /* MEDIA SESSION CONTROLS */
   useEffect(() => {
@@ -155,7 +176,9 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     currentTrack?.id,
     currentTrack?.title,
     currentTrack?.album,
-    currentTrack?.artist
+    currentTrack?.artist,
+    currentTrack?.artwork,
+    isPlaying
   ]);
 
   useEffect(() => {
@@ -169,7 +192,7 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
       if (!id) return;
       pause(id);
     });
-  }, [currentTrack?.id]);
+  }, [currentTrack?.id, pause, play]);
 
   useEffect(() => {
     if (!("mediaSession" in navigator)) return;
@@ -181,7 +204,7 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
       if (!currentTrack?.nextId) return;
       play(currentTrack.nextId);
     });
-  }, [currentTrack?.prevId, currentTrack?.nextId, currentTrack?.id]);
+  }, [currentTrack?.prevId, currentTrack?.nextId, currentTrack?.id, play]);
   /* END MEDIA SESSION CONTROL */
 
   return (
@@ -203,7 +226,9 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
         setSeek,
         setCurrentTrackContext,
         buffer,
-        currentTrack
+        currentTrack,
+        isExternalPlayerVisible: showExternalPlayer,
+        setExternalPlayerVisible: setShowExternalPlayer
       }}
     >
       {children}

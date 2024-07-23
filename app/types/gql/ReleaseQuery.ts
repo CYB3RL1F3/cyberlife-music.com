@@ -142,5 +142,4 @@ export interface ReleaseQuery {
 export interface ReleaseQueryVariables {
   profile: string;
   id: string;
-  keyType?: string | null;
 }

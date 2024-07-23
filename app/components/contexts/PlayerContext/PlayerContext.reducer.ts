@@ -10,7 +10,8 @@ export const initialState: PlayerContextState = {
   buffer: {},
   playing: false,
   volume: 100,
-  jumping: false
+  jumping: false,
+  showExternalPlayer: true
 };
 
 const addTrack = (state: PlayerContextState, value: TrackToBuffer) => {
@@ -101,6 +102,12 @@ const playerContextReducer = (
       return {
         ...state,
         volume: payload
+      };
+    }
+    case "SET_SHOW_EXTERNAL_PLAYER": {
+      return {
+        ...state,
+        showExternalPlayer: payload
       };
     }
     default:

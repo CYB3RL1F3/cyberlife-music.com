@@ -7,6 +7,7 @@ import {
   getSubscription,
   getSubscriptionParameters
 } from "./NotificationContext.utils";
+
 import { usePwaContext } from "../PwaContext/PwaContext.hook";
 import { useUnSubscribeMutation } from "~/hooks/mutations/useUnsubscribeMutation";
 import { useLocalStorage } from "~/hooks/useLocaleStorage";
@@ -38,10 +39,10 @@ const NotificationContextProvider = ({
 
   const doSubscribe = useCallback(async () => {
     if (!registration || isSubscribed) {
-      return;
+      return false;
     }
     const subscription = await getSubscription(registration);
-    if (!subscription?.endpoint) return null;
+    if (!subscription?.endpoint) return false;
     const subscriptionParameters = getSubscriptionParameters(subscription);
     await subscribe(config.notificationPoolId, subscriptionParameters);
     setStoredSubscribeState(true);
@@ -55,9 +56,11 @@ const NotificationContextProvider = ({
   ]);
 
   const doUnsubscribe = async () => {
-    if (!registration || !isSubscribed) return;
+    if (!registration || !isSubscribed) return false;
     const subscription = await getSubscription(registration);
-    if (!subscription?.endpoint) return;
+
+    if (!subscription?.endpoint) return false;
+
     await unsubscribe(config.notificationPoolId, subscription.endpoint);
     setStoredSubscribeState(false);
     return true;
@@ -66,6 +69,7 @@ const NotificationContextProvider = ({
   const setSubscribed = async (value: boolean) => {
     if (value) {
       const subscribed = await doSubscribe();
+
       if (subscribed) {
         toast.success("You're now subscribed to notifications!", {
           position: toast.POSITION.BOTTOM_RIGHT
@@ -73,6 +77,7 @@ const NotificationContextProvider = ({
       }
     } else {
       const unsubscribed = await doUnsubscribe();
+
       if (unsubscribed) {
         toast.info("You're now unsubscribed to notifications.", {
           position: toast.POSITION.BOTTOM_RIGHT
@@ -87,6 +92,7 @@ const NotificationContextProvider = ({
       await doSubscribe();
     };
     if (typeof Notification === "undefined") return;
+
     if (
       Notification.permission === "granted" &&
       registration &&

@@ -1,5 +1,5 @@
-query EventQuery($profile: String!, $id: String!, $keyType: String) {
-  event(profile: $profile, eventId: $id, keyType: $keyType) {
+query EventQuery($profile: String!, $id: String!) {
+  event(profile: $profile, eventId: $id) {
     ...EventFragment
   }
 }

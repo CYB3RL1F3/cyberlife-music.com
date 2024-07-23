@@ -11,6 +11,10 @@ const FooterAnchorsInfos = ({ infos }: FooterAnchorsInfosProps) => {
         href: infos.soundcloud
       },
       {
+        label: "Bandcamp",
+        href: infos.bandcamp
+      },
+      {
         label: "Discogs",
         href: infos.discogs
       },

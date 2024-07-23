@@ -9,7 +9,8 @@ const PlayerTrack = ({
   seek,
   load,
   isPlaying,
-  onSeekChange
+  onSeekChange,
+  id
 }: PlayerTrackProps) => {
   const waveformRef =
     useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
@@ -34,6 +35,7 @@ const PlayerTrack = ({
 
   return (
     <div
+      id={id ? `player__${id}` : undefined}
       ref={playerRef}
       onClick={moveSeek}
       className={clsx("relative w-full h-6 cursor-pointer opacity-80", {
