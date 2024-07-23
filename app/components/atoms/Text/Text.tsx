@@ -15,7 +15,8 @@ const Text = ({
   size = "md",
   align = "left",
   weight = "normal",
-  isUppercase
+  isUppercase,
+  className
 }: TextProps) => {
   return (
     <p
@@ -23,7 +24,7 @@ const Text = ({
         isUppercase ? "uppercase" : ""
       } text-${size} ${
         leadings[size]
-      } ${fontStyle} text-${align} text-gray-400 p-O`}
+      } ${fontStyle} text-${align} text-gray-400 p-O ${className}`}
     >
       {children}
     </p>
@@ -74,8 +75,8 @@ const TextSmSemiBold = ({ children }: FormattedTextProps) => (
   </Text>
 );
 
-const TextRightMdSemiBold = ({ children }: FormattedTextProps) => (
-  <Text align="right" size="md" weight="semibold">
+const TextRightMdSemiBold = ({ children, className }: FormattedTextProps) => (
+  <Text align="right" size="md" weight="semibold" className={className}>
     {children}
   </Text>
 );

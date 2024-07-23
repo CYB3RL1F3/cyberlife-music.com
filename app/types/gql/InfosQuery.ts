@@ -34,6 +34,10 @@ export interface InfosQueryInfos {
    */
   facebook: string | null;
   /**
+   * Artist bandcamp
+   */
+  bandcamp: string | null;
+  /**
    * Artist Twitter
    */
   twitter: string | null;

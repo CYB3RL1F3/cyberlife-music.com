@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { usePlayerTrackContext } from "~/hooks/player/usePlayerTrackContext";
+import { usePlayerTrackVisibility } from "~/hooks/player/usePlayerTrackVisibility";
 import PlayerCurrentTrackContainer from "~/components/organisms/PlayerCurrentTrackContainer";
 
 const variants = {
@@ -8,7 +8,7 @@ const variants = {
 };
 
 const PlayerWidgetMobile = () => {
-  const { showExternalPlayer } = usePlayerTrackContext(true);
+  const { showExternalPlayer } = usePlayerTrackVisibility(true);
   return (
     <motion.div
       className="absolute bottom-0 z-10 flex w-screen h-12"

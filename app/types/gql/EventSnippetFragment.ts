@@ -26,13 +26,17 @@ export interface EventSnippetFragment {
    */
   slug: string | null;
   /**
+   * title
+   */
+  title: string | null;
+  /**
    * event date
    */
   date: Any | null;
   /**
-   * title
+   * event end date
    */
-  title: string | null;
+  endDate: Any | null;
   /**
    * country name
    */

@@ -3,22 +3,13 @@ import PageDetailHeaderPortal from "~/components/molecules/PageDetailHeaderPorta
 import CarouselEvent from "../CarouselEvent";
 import type { ViewEventProps } from "./ViewEvent.types";
 import Text from "~/components/atoms/Text";
-import dayjs from "dayjs";
 import Anchor from "~/components/atoms/Anchor";
 import { parseHtml, toHtml } from "~/utils/html";
+import { getEventDateDisplay } from "~/utils/date";
 
 const ViewEvent = ({ event }: ViewEventProps) => {
-  const {
-    title,
-    date,
-    time,
-    address,
-    country,
-    cost,
-    lineup,
-    description,
-    links
-  } = event;
+  const { title, address, country, cost, lineup, description, links } = event;
+
   return (
     <article className="o-8">
       <PageDetailHeaderPortal>
@@ -33,8 +24,8 @@ const ViewEvent = ({ event }: ViewEventProps) => {
       <div className="flex justify-end w-full">
         <div className="flex justify-center gap-4 w-[48rem]">
           <div className="w-1/2 o-4">
-            <Text.RightMdSemiBold>
-              {date ? dayjs(date).format("DD/MM/YYYY") : ""} - {time?.begin}
+            <Text.RightMdSemiBold className="whitespace-pre-line">
+              {getEventDateDisplay(event, "Do MMMM YYYY")}
             </Text.RightMdSemiBold>
             <Text.Right>{address}</Text.Right>
             <Text.Right>{country}</Text.Right>

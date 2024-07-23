@@ -62,13 +62,17 @@ export interface EventQueryEvent {
    */
   slug: string | null;
   /**
+   * title
+   */
+  title: string | null;
+  /**
    * event date
    */
   date: Any | null;
   /**
-   * title
+   * event end date
    */
-  title: string | null;
+  endDate: Any | null;
   /**
    * country name
    */
@@ -122,5 +126,4 @@ export interface EventQuery {
 export interface EventQueryVariables {
   profile: string;
   id: string;
-  keyType?: string | null;
 }

@@ -11,7 +11,7 @@ const PlayerReleaseTrackContainer = ({
   prevId,
   nextId
 }: PlayerReleaseTrackContainerProps) => {
-  const { waveform } = track;
+  const { waveform, id: trackId } = track;
   const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, id, {
     artist: artists?.map(({ name }) => name).join(", "),
     album,
@@ -21,11 +21,12 @@ const PlayerReleaseTrackContainer = ({
   const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
     setSeek(seek, true);
   };
-  if (!waveform) return null;
+  if (!waveform || !trackId) return null;
   return (
     <PlayerTrack
       waveform={waveform}
       load={load}
+      id={trackId}
       seek={seek}
       isPlaying={isPlaying}
       onSeekChange={handleSeekChange}

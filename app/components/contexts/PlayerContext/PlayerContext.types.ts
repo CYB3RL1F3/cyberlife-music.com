@@ -54,6 +54,7 @@ export type PlayerContextState = {
   playing: boolean;
   volume: number;
   jumping: boolean;
+  showExternalPlayer: boolean;
 };
 
 export type BufferPayload = {
@@ -96,6 +97,10 @@ export type PlayerContextAction =
   | {
       type: "SET_VOLUME";
       payload: number;
+    }
+  | {
+      type: "SET_SHOW_EXTERNAL_PLAYER";
+      payload: boolean;
     };
 
 export type PlayerContextProviderProps = {

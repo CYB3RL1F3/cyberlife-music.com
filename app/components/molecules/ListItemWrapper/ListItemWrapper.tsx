@@ -3,7 +3,11 @@ import { useMemo } from "react";
 import { motion, useWillChange } from "framer-motion";
 import clsx from "clsx";
 
-const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
+const ListItemWrapper = ({
+  children,
+  noBorder = false,
+  index
+}: ListItemWrapperProps) => {
   const delay = useMemo(() => {
     const i = index > 10 ? 10 : index;
     return 0.03 * i + 0.06;
@@ -12,7 +16,7 @@ const ListItemWrapper = ({ children, index }: ListItemWrapperProps) => {
   const opacityDelay = useMemo(() => 0.06 + delay, [delay]);
 
   const className = clsx("flex justify-end border-gray-400", {
-    "border-t pt-4": index > 0
+    "border-t pt-4": !noBorder
   });
   const willChange = useWillChange();
 

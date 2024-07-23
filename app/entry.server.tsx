@@ -1,5 +1,6 @@
 import { PassThrough } from "stream";
-import isbot from "isbot";
+// @ts-expect-error isbot
+import { isbot } from "isbot";
 import type { EntryContext } from "@remix-run/node";
 import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";

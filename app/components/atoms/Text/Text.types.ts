@@ -7,6 +7,7 @@ export type TextProps = {
   fontStyle?: "italic" | "normal";
   weight?: "semibold" | "normal";
   isUppercase?: boolean;
+  className?: string;
 };
 
-export type FormattedTextProps = Pick<TextProps, "children">;
+export type FormattedTextProps = Pick<TextProps, "children" | "className">;
