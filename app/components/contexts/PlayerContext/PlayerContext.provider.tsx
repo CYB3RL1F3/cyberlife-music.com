@@ -79,23 +79,8 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
     });
   };
 
-  const setShowExternalPlayer: PlayerContextValues["setExternalPlayerVisible"] =
-    (payload) => {
-      dispatch({
-        type: "SET_SHOW_EXTERNAL_PLAYER",
-        payload
-      });
-    };
-
-  const {
-    currentTrackId,
-    currentContext,
-    playing,
-    buffer,
-    volume,
-    jumping,
-    showExternalPlayer
-  } = playerContextState;
+  const { currentTrackId, currentContext, playing, buffer, volume, jumping } =
+    playerContextState;
 
   const play: PlayerContextValues["play"] = useCallback(
     (id, forceJump) => {
@@ -226,9 +211,7 @@ const PlayerContextProvider = ({ children }: PlayerContextProviderProps) => {
         setSeek,
         setCurrentTrackContext,
         buffer,
-        currentTrack,
-        isExternalPlayerVisible: showExternalPlayer,
-        setExternalPlayerVisible: setShowExternalPlayer
+        currentTrack
       }}
     >
       {children}

@@ -43,8 +43,6 @@ export type PlayerContextValues = {
   setSeek: (id: number, value: number, jumping?: boolean) => void;
   isPlaying: (id: number) => boolean;
   setCurrentTrackContext: (trackContext: string) => void;
-  isExternalPlayerVisible: boolean;
-  setExternalPlayerVisible: (showExternalPlayer: boolean) => void;
 };
 
 export type Buffer = Record<string, BufferedTrack>;

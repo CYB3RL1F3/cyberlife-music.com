@@ -15,7 +15,5 @@ export const PlayerContext = createContext<PlayerContextValues>({
   setLoad: () => undefined,
   setSeek: () => undefined,
   setCurrentTrackContext: () => undefined,
-  buffer: {},
-  isExternalPlayerVisible: true,
-  setExternalPlayerVisible: () => undefined
+  buffer: {}
 });

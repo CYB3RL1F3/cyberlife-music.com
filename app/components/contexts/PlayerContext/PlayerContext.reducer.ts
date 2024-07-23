@@ -104,12 +104,6 @@ const playerContextReducer = (
         volume: payload
       };
     }
-    case "SET_SHOW_EXTERNAL_PLAYER": {
-      return {
-        ...state,
-        showExternalPlayer: payload
-      };
-    }
     default:
       return state;
   }
