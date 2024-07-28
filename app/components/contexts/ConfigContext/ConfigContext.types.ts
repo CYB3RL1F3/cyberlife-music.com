@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Environment } from "~/types/gql/globalTypes";
 
 export type Config = {
   mapbox: {
@@ -8,6 +9,7 @@ export type Config = {
   api: string;
   apiEndpoint: string;
   notificationPoolId: string;
+  env: Environment;
 };
 
 export type ConfigContextValues = {

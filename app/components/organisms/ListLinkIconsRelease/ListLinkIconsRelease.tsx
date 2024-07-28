@@ -4,6 +4,8 @@ import type { ListLinkIconsProps } from "~/components/molecules/ListLinkIcons";
 import ToggleIconLikeContainer from "~/components/organisms/ToggleIconLikeContainer";
 import DiscogsIcon from "~/icons/discogs.svg";
 import ListLinkIcons from "~/components/molecules/ListLinkIcons";
+import BuyReleaseButton from "../BuyReleaseButton";
+import FeatureFlag from "~/components/molecules/FeatureFlag";
 
 const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
   const { _id, discogs, title } = release;
@@ -28,7 +30,14 @@ const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
       id: `discogs__${_id}`
     });
   }
-  return <ListLinkIcons linkIcons={linkIcons.reverse()} />;
+  return (
+    <div className="flex items-center justify-end gap-4">
+      <ListLinkIcons linkIcons={linkIcons.reverse()} />
+      <FeatureFlag id="purchase">
+        <BuyReleaseButton release={release} />
+      </FeatureFlag>
+    </div>
+  );
 };
 
 export default ListLinkIconsRelease;

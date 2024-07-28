@@ -1,0 +1,4 @@
+fragment FeatureFlagFragment on FeatureFlag {
+  flag
+  isActive
+}

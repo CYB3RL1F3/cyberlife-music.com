@@ -1,0 +1,9 @@
+query FeatureFlagQuery(
+  $profile: String!
+  $environment: Environment!
+  $id: String!
+) {
+  featureFlag(profile: $profile, environment: $environment, id: $id) {
+    ...FeatureFlagFragment
+  }
+}

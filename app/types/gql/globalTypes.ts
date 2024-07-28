@@ -7,6 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum Environment {
+  dev = "dev",
+  prod = "prod",
+  staging = "staging",
+}
+
 export interface ContactDto {
   name: string;
   email: string;
