@@ -10,7 +10,7 @@ const ReleasesPage = () => {
       loading={!data && loading}
       loader={<Loader message="Please wait while we're chasing releases..." />}
     >
-      <ListReleases releases={data?.releases} />
+      <ListReleases releases={data?.releaseItems} />
     </HandlerContent>
   );
 };

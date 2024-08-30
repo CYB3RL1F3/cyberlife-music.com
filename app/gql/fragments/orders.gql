@@ -1,0 +1,112 @@
+fragment PaypalLinkFragment on PaypalLink {
+  href
+  rel
+  method
+}
+
+fragment PaypalIntentFragment on PaypalIntent {
+  status
+  id
+  links {
+    ...PaypalLinkFragment
+  }
+}
+
+fragment PaypalResponseFragment on PaypalResponse {
+  intent {
+    ...PaypalIntentFragment
+  }
+  status
+}
+
+fragment OrderPaypalResponseFragment on OrderPaypalResponse {
+  order {
+    ...OrderFragment
+  }
+  paymentIntent {
+    ...PaypalResponseFragment
+  }
+}
+
+fragment StripeIntentFragment on StripeResponse {
+  status
+  intent
+}
+
+fragment OrderStripeResponseFragment on OrderStripeResponse {
+  order {
+    ...OrderFragment
+  }
+  paymentIntent {
+    ...StripeIntentFragment
+  }
+}
+
+fragment PaymentFragment on Payment {
+  id
+  transactionId
+  paymentMethod
+  transactionDate
+}
+
+fragment CartItemFragment on CartItem {
+  id
+  quantity
+  amount
+  productId
+}
+
+fragment CartFragment on Cart {
+  items {
+    ...CartItemFragment
+  }
+  amount
+  amountWithTax
+  vat
+  redeem
+}
+
+fragment AddressFragment on Address {
+  name
+  address
+  zipCode
+  city
+  country
+  extra
+}
+
+fragment ExpeditionFragment on Expedition {
+  trackingNumber
+  service
+  status
+  address {
+    ...AddressFragment
+  }
+  email
+  phone
+  amountWithTax
+  vat
+}
+
+fragment OrderFragment on Order {
+  cart {
+    ...CartFragment
+  }
+  customerId
+  orderAt
+  updatedAt
+  expedition {
+    ...ExpeditionFragment
+  }
+  query
+  webshopId
+  customer {
+    ...CustomerEntityFragment
+  }
+  _id
+  payment {
+    ...PaymentFragment
+  }
+  paid
+  status
+}

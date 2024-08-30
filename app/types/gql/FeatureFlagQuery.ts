@@ -10,7 +10,7 @@ import { Environment } from "./globalTypes";
 // ====================================================
 
 export interface FeatureFlagQueryFeatureFlag {
-  __typename: "FeatureFlag";
+  __typename: "FeatureFlagActive";
   /**
    * Feature flag name
    */

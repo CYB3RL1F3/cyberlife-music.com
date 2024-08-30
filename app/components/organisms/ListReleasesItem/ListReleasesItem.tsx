@@ -6,7 +6,9 @@ import Picture from "../Picture";
 import ListLinkIconsRelease from "~/components/organisms/ListLinkIconsRelease";
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
-  const { title, slug, releaseDate, role, thumb, label } = release;
+  if (!release.release) return null;
+
+  const { title, slug, releaseDate, role, thumb, label } = release.release;
 
   const defaultThumb =
     "https://media.istockphoto.com/id/134119615/photo/vinyl-record.jpg";

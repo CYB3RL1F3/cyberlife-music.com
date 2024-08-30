@@ -8,7 +8,8 @@ import BuyReleaseButton from "../BuyReleaseButton";
 import FeatureFlag from "~/components/molecules/FeatureFlag";
 
 const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
-  const { _id, discogs, title } = release;
+  if (!release.release) return null;
+  const { _id, discogs, title } = release.release;
   if (!_id) return null;
   const linkIcons: ListLinkIconsProps["linkIcons"] = [
     {

@@ -10,8 +10,8 @@ const ListReleases = ({ releases }: ListReleasesProps) => {
   return (
     <List>
       {releases.map((release) =>
-        release.title ? (
-          <ListReleasesItem key={release._id} release={release} />
+        release.release?.title ? (
+          <ListReleasesItem key={release.id} release={release} />
         ) : null
       )}
     </List>

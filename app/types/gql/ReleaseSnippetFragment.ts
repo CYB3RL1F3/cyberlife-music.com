@@ -16,7 +16,7 @@ export interface ReleaseSnippetFragmentTracklist {
 }
 
 export interface ReleaseSnippetFragment {
-  __typename: "Release";
+  __typename: "ReleaseDtoOutput";
   /**
    * release ID
    */

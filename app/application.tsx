@@ -1,10 +1,10 @@
-import { useMatches, useOutlet } from "@remix-run/react";
-
 import {
   LiveReload,
   Scripts,
   ScrollRestoration,
-  useLocation
+  useLocation,
+  useMatches,
+  useOutlet
 } from "@remix-run/react";
 
 import Layout from "./components/layouts/Layout";

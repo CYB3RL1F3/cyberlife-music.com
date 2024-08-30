@@ -4,14 +4,21 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: FeatureFlagFragment
+// GraphQL fragment: PaypalLinkFragment
 // ====================================================
 
-export interface FeatureFlagFragment {
-  __typename: "FeatureFlagActive";
+export interface PaypalLinkFragment {
+  __typename: "PaypalLink";
   /**
-   * Feature flag name
+   * Link URL
    */
-  flag: string | null;
-  isActive: boolean;
+  href: string;
+  /**
+   * Link URL
+   */
+  rel: string;
+  /**
+   * Method
+   */
+  method: string;
 }

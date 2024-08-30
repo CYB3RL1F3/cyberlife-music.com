@@ -1,8 +1,10 @@
-import type { ReleaseQueryRelease } from "~/types/gql/ReleaseQuery";
+import type { ReleaseItemFragment } from "~/types/gql/ReleaseItemFragment";
+
+type Release = NonNullable<ReleaseItemFragment["release"]>;
 
 export type ReleaseTracklistProps = {
-  tracks: NonNullable<ReleaseQueryRelease["tracklist"]>;
-  thumb: ReleaseQueryRelease["thumb"];
-  id: ReleaseQueryRelease["_id"];
-  album: ReleaseQueryRelease["title"];
+  tracks: NonNullable<Release["tracklist"]>;
+  thumb: Release["thumb"];
+  id: Release["_id"];
+  album: Release["title"];
 };

@@ -7,7 +7,7 @@
 // GraphQL query operation: ReleaseQuery
 // ====================================================
 
-export interface ReleaseQueryReleaseTracklistArtists {
+export interface ReleaseQueryReleaseItemReleaseTracklistArtists {
   __typename: "artist";
   /**
    * Artist Name
@@ -19,7 +19,7 @@ export interface ReleaseQueryReleaseTracklistArtists {
   role: string | null;
 }
 
-export interface ReleaseQueryReleaseTracklistStream {
+export interface ReleaseQueryReleaseItemReleaseTracklistStream {
   __typename: "Track";
   /**
    * track ID
@@ -51,7 +51,7 @@ export interface ReleaseQueryReleaseTracklistStream {
   duration: number | null;
 }
 
-export interface ReleaseQueryReleaseTracklist {
+export interface ReleaseQueryReleaseItemReleaseTracklist {
   __typename: "ReleaseTrack";
   /**
    * Release's Track title
@@ -68,15 +68,15 @@ export interface ReleaseQueryReleaseTracklist {
   /**
    * Release's Track artists
    */
-  artists: ReleaseQueryReleaseTracklistArtists[] | null;
+  artists: ReleaseQueryReleaseItemReleaseTracklistArtists[] | null;
   /**
    * Release's Track stream
    */
-  stream: ReleaseQueryReleaseTracklistStream | null;
+  stream: ReleaseQueryReleaseItemReleaseTracklistStream | null;
 }
 
-export interface ReleaseQueryRelease {
-  __typename: "Release";
+export interface ReleaseQueryReleaseItemRelease {
+  __typename: "ReleaseDtoOutput";
   /**
    * release ID
    */
@@ -112,7 +112,7 @@ export interface ReleaseQueryRelease {
   /**
    * Release tracklist
    */
-  tracklist: ReleaseQueryReleaseTracklist[] | null;
+  tracklist: ReleaseQueryReleaseItemReleaseTracklist[] | null;
   /**
    * Release discogs
    */
@@ -135,8 +135,32 @@ export interface ReleaseQueryRelease {
   genre: string | null;
 }
 
+export interface ReleaseQueryReleaseItem {
+  __typename: "ReleaseItem";
+  /**
+   * Item id
+   */
+  id: string | null;
+  /**
+   * Item name
+   */
+  name: string | null;
+  /**
+   * Item price
+   */
+  price: number | null;
+  /**
+   * Item price
+   */
+  availableQuantity: number | null;
+  /**
+   * Item release
+   */
+  release: ReleaseQueryReleaseItemRelease | null;
+}
+
 export interface ReleaseQuery {
-  release: ReleaseQueryRelease;
+  releaseItem: ReleaseQueryReleaseItem;
 }
 
 export interface ReleaseQueryVariables {

@@ -14,7 +14,7 @@ const BuyButton = ({ isActive, isSoldOut, price, onClick }: BuyButtonProps) => {
   };
   return (
     <Button onClick={handleClick} className={className} disabled={isSoldOut}>
-      {!isSoldOut ? `Buy for $${price}` : "Sold out"}
+      {!isSoldOut ? `€ ${price}` : "Sold out"}
     </Button>
   );
 };

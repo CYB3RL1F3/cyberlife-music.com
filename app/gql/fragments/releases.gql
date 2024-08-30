@@ -1,4 +1,4 @@
-fragment ReleaseSnippetFragment on Release {
+fragment ReleaseSnippetFragment on ReleaseDtoOutput {
   _id
   slug
   title
@@ -12,4 +12,14 @@ fragment ReleaseSnippetFragment on Release {
   }
   discogs
   notes
+}
+
+fragment ReleaseSnippetItemFragment on ReleaseItem {
+  id
+  name
+  price
+  availableQuantity
+  release {
+    ...ReleaseSnippetFragment
+  }
 }

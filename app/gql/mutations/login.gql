@@ -1,0 +1,5 @@
+mutation login($credentials: LoginDto!) {
+  login(credentials: $credentials) {
+    ...AuthenticatedCustomerEntityFragment
+  }
+}

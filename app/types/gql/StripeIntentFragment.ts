@@ -4,14 +4,17 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: FeatureFlagFragment
+// GraphQL fragment: StripeIntentFragment
 // ====================================================
 
-export interface FeatureFlagFragment {
-  __typename: "FeatureFlagActive";
+export interface StripeIntentFragment {
+  __typename: "StripeResponse";
   /**
-   * Feature flag name
+   * Status
    */
-  flag: string | null;
-  isActive: boolean;
+  status: string;
+  /**
+   * Intent
+   */
+  intent: Any;
 }

@@ -1,0 +1,5 @@
+mutation register($profile: String!, $customer: CreateCustomerDto!) {
+  register(profile: $profile, customer: $customer) {
+    ...AuthenticatedCustomerEntityFragment
+  }
+}

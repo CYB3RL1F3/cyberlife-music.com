@@ -13,8 +13,8 @@ const ReleasePage = ({ id }: ReleasePageProps) => {
       loading={!data && loading}
       loader={<Loader message="Please wait while we're chasing release..." />}
     >
-      {data?.release ? (
-        <ViewRelease release={data.release} />
+      {data?.releaseItem ? (
+        <ViewRelease release={data.releaseItem} />
       ) : (
         <ErrorPage
           code={404}

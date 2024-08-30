@@ -1,0 +1,22 @@
+fragment CustomerEntityFragment on CustomerEntity {
+  userId
+  firstName
+  lastName
+  email
+  birthday
+  orderHistory
+  subtitle
+  confirmedEmail
+  _id
+  createdAt
+  updatedAt
+}
+
+fragment AuthenticatedCustomerEntityFragment on AuthenticatedCustomerEntity {
+  customer {
+    ...CustomerEntityFragment
+  }
+  token
+  authenticated
+  _id
+}

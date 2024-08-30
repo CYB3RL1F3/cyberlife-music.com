@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: ReleasesQuery
+// GraphQL fragment: ReleaseSnippetItemFragment
 // ====================================================
 
-export interface ReleasesQueryReleaseItemsReleaseTracklist {
+export interface ReleaseSnippetItemFragmentReleaseTracklist {
   __typename: "ReleaseTrack";
   /**
    * Release's Track title
@@ -15,7 +15,7 @@ export interface ReleasesQueryReleaseItemsReleaseTracklist {
   title: string | null;
 }
 
-export interface ReleasesQueryReleaseItemsRelease {
+export interface ReleaseSnippetItemFragmentRelease {
   __typename: "ReleaseDtoOutput";
   /**
    * release ID
@@ -52,7 +52,7 @@ export interface ReleasesQueryReleaseItemsRelease {
   /**
    * Release tracklist
    */
-  tracklist: ReleasesQueryReleaseItemsReleaseTracklist[] | null;
+  tracklist: ReleaseSnippetItemFragmentReleaseTracklist[] | null;
   /**
    * Release discogs
    */
@@ -63,7 +63,7 @@ export interface ReleasesQueryReleaseItemsRelease {
   notes: string | null;
 }
 
-export interface ReleasesQueryReleaseItems {
+export interface ReleaseSnippetItemFragment {
   __typename: "ReleaseItem";
   /**
    * Item id
@@ -84,14 +84,5 @@ export interface ReleasesQueryReleaseItems {
   /**
    * Item release
    */
-  release: ReleasesQueryReleaseItemsRelease | null;
-}
-
-export interface ReleasesQuery {
-  releaseItems: ReleasesQueryReleaseItems[];
-}
-
-export interface ReleasesQueryVariables {
-  profile: string;
-  webshopId: string;
+  release: ReleaseSnippetItemFragmentRelease | null;
 }

@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: ReleaseFragment
+// GraphQL fragment: ReleaseItemFragment
 // ====================================================
 
-export interface ReleaseFragmentTracklistArtists {
+export interface ReleaseItemFragmentReleaseTracklistArtists {
   __typename: "artist";
   /**
    * Artist Name
@@ -19,7 +19,7 @@ export interface ReleaseFragmentTracklistArtists {
   role: string | null;
 }
 
-export interface ReleaseFragmentTracklistStream {
+export interface ReleaseItemFragmentReleaseTracklistStream {
   __typename: "Track";
   /**
    * track ID
@@ -51,7 +51,7 @@ export interface ReleaseFragmentTracklistStream {
   duration: number | null;
 }
 
-export interface ReleaseFragmentTracklist {
+export interface ReleaseItemFragmentReleaseTracklist {
   __typename: "ReleaseTrack";
   /**
    * Release's Track title
@@ -68,14 +68,14 @@ export interface ReleaseFragmentTracklist {
   /**
    * Release's Track artists
    */
-  artists: ReleaseFragmentTracklistArtists[] | null;
+  artists: ReleaseItemFragmentReleaseTracklistArtists[] | null;
   /**
    * Release's Track stream
    */
-  stream: ReleaseFragmentTracklistStream | null;
+  stream: ReleaseItemFragmentReleaseTracklistStream | null;
 }
 
-export interface ReleaseFragment {
+export interface ReleaseItemFragmentRelease {
   __typename: "ReleaseDtoOutput";
   /**
    * release ID
@@ -112,7 +112,7 @@ export interface ReleaseFragment {
   /**
    * Release tracklist
    */
-  tracklist: ReleaseFragmentTracklist[] | null;
+  tracklist: ReleaseItemFragmentReleaseTracklist[] | null;
   /**
    * Release discogs
    */
@@ -133,4 +133,28 @@ export interface ReleaseFragment {
    * Release genre
    */
   genre: string | null;
+}
+
+export interface ReleaseItemFragment {
+  __typename: "ReleaseItem";
+  /**
+   * Item id
+   */
+  id: string | null;
+  /**
+   * Item name
+   */
+  name: string | null;
+  /**
+   * Item price
+   */
+  price: number | null;
+  /**
+   * Item price
+   */
+  availableQuantity: number | null;
+  /**
+   * Item release
+   */
+  release: ReleaseItemFragmentRelease | null;
 }
