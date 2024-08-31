@@ -1,5 +1,5 @@
-import type { ReleaseItemFragment } from "~/types/gql/ReleaseItemFragment";
+import type { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
 
 export type ListReleasesProps = {
-  releases?: ReleaseItemFragment[];
+  releases?: ReleasesQueryReleaseItems[];
 };

@@ -92,7 +92,7 @@ export interface ReleaseItemFragmentRelease {
   /**
    * Release date
    */
-  releaseDate: Any | null;
+  releaseDate: Date | null;
   /**
    * Release role
    */

@@ -31,6 +31,7 @@ import NotSupportedPage from "./components/pages/NotSupportedPage";
 import PlayerContextProvider from "./components/contexts/PlayerContext";
 import { ToastContainer } from "react-toastify";
 import NoScript from "./components/organisms/NoScript";
+import CartContextProvider from "./components/contexts/CartContext/CartContext.provider";
 
 export type ApplicationProps = {
   config: Config;
@@ -90,47 +91,49 @@ const Application = ({ config, children }: ApplicationProps) => {
       <LazyMotion features={domAnimation}>
         <ConfigContextProvider config={config}>
           <PlayerContextProvider>
-            <PwaContextProvider>
-              <NotificationContextProvider>
-                <Layout>
-                  <DisplayInfosContainer />
-                  <div className="relative">
-                    <div className="absolute z-10 w-full">
-                      <PageDetailHeaderPortal.Container />
+            <CartContextProvider>
+              <PwaContextProvider>
+                <NotificationContextProvider>
+                  <Layout>
+                    <DisplayInfosContainer />
+                    <div className="relative">
+                      <div className="absolute z-10 w-full">
+                        <PageDetailHeaderPortal.Container />
+                      </div>
+                      <ContainerScrollPage>
+                        <NoScript />
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            className="max-md:min-h-[calc(100vh_-_21rem)]"
+                            key={location.pathname}
+                            initial={{ opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ opacity: 0.8 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {children ?? outlet}
+                          </motion.div>
+                          <FooterMobile />
+                        </AnimatePresence>
+                      </ContainerScrollPage>
                     </div>
-                    <ContainerScrollPage>
-                      <NoScript />
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          className="max-md:min-h-[calc(100vh_-_21rem)]"
-                          key={location.pathname}
-                          initial={{ opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ opacity: 0.8 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {children ?? outlet}
-                        </motion.div>
-                        <FooterMobile />
-                      </AnimatePresence>
-                    </ContainerScrollPage>
-                  </div>
-                  <ClientOnly>{() => <AudioContainer />}</ClientOnly>
-                </Layout>
-                <ToastContainer
-                  role="alert"
-                  position="bottom-left"
-                  theme="colored"
-                  autoClose={6000}
-                  hideProgressBar={false}
-                  newestOnTop
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  pauseOnHover
-                />
-              </NotificationContextProvider>
-            </PwaContextProvider>
+                    <ClientOnly>{() => <AudioContainer />}</ClientOnly>
+                  </Layout>
+                  <ToastContainer
+                    role="alert"
+                    position="bottom-left"
+                    theme="colored"
+                    autoClose={6000}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    pauseOnHover
+                  />
+                </NotificationContextProvider>
+              </PwaContextProvider>
+            </CartContextProvider>
           </PlayerContextProvider>
         </ConfigContextProvider>
       </LazyMotion>

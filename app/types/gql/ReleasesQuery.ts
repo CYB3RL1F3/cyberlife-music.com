@@ -32,7 +32,7 @@ export interface ReleasesQueryReleaseItemsRelease {
   /**
    * Release date
    */
-  releaseDate: Any | null;
+  releaseDate: Date | null;
   /**
    * Release role
    */

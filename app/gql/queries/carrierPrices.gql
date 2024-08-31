@@ -1,0 +1,6 @@
+query CarrierPrices($country: String!, $items: [CartItemInput!]!) {
+  carrierPrices(country: $country, items: $items) {
+    upsPrice
+    colissimoPrice
+  }
+}

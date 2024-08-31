@@ -1,4 +1,4 @@
-export type BuyButtonProps = {
+export type ButtonBuyProps = {
   isActive?: boolean;
   isSoldOut?: boolean;
   price?: number;

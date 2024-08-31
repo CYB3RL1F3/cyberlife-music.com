@@ -1,5 +1,5 @@
 import type { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
 
-export type BuyReleaseButtonProps = {
+export type ButtonBuyReleaseProps = {
   release: ReleasesQueryReleaseItems;
 };
