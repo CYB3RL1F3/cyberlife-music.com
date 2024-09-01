@@ -40,7 +40,7 @@ export interface ExpeditionFragment {
   /**
    * tracking number
    */
-  trackingNumber: string;
+  trackingNumber: string | null;
   /**
    * service
    */

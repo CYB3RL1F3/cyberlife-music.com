@@ -84,7 +84,7 @@ export interface OrderFragmentExpedition {
   /**
    * tracking number
    */
-  trackingNumber: string;
+  trackingNumber: string | null;
   /**
    * service
    */
@@ -115,54 +115,6 @@ export interface OrderFragmentExpedition {
   vat: number;
 }
 
-export interface OrderFragmentCustomer {
-  __typename: "CustomerEntity";
-  /**
-   * User id
-   */
-  userId: string | null;
-  /**
-   * User firstname
-   */
-  firstName: string | null;
-  /**
-   * User lastname
-   */
-  lastName: string | null;
-  /**
-   * User email
-   */
-  email: string | null;
-  /**
-   * User birthday
-   */
-  birthday: Any | null;
-  /**
-   * User orderHistory
-   */
-  orderHistory: string | null;
-  /**
-   * User subtitle
-   */
-  subtitle: string | null;
-  /**
-   * User confirmed email
-   */
-  confirmedEmail: boolean | null;
-  /**
-   * User ID
-   */
-  _id: string | null;
-  /**
-   * User creation date
-   */
-  createdAt: Any | null;
-  /**
-   * User update date
-   */
-  updatedAt: Any | null;
-}
-
 export interface OrderFragmentPayment {
   __typename: "Payment";
   /**
@@ -190,10 +142,6 @@ export interface OrderFragment {
    */
   cart: OrderFragmentCart;
   /**
-   * Customer id
-   */
-  customerId: string;
-  /**
    * Order date
    */
   orderAt: Any;
@@ -213,10 +161,6 @@ export interface OrderFragment {
    * Webshop ID
    */
   webshopId: string;
-  /**
-   * Customer
-   */
-  customer: OrderFragmentCustomer;
   /**
    * order ID
    */

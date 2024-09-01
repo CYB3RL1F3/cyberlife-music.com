@@ -6,7 +6,6 @@ import type { Routes } from "~/routes/routes";
 import { useState } from "react";
 import ButtonMenu from "~/components/molecules/ButtonMenu";
 import { AnimatePresence, motion } from "framer-motion";
-import NavItemCustomer from "../NavItemCustomer";
 
 const items: LinkNavItemProps[] = [
   {
@@ -66,13 +65,7 @@ const Header = () => {
         <Nav
           isOpen={isOpen}
           routes={routes}
-          children={
-            <LinkNavItemList
-              onChange={close}
-              items={items}
-              extra={<NavItemCustomer />}
-            />
-          }
+          children={<LinkNavItemList onChange={close} items={items} />}
         />
       </motion.header>
     </AnimatePresence>

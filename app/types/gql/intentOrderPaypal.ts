@@ -86,7 +86,7 @@ export interface IntentOrderPaypalIntentOrderPaypalOrderExpedition {
   /**
    * tracking number
    */
-  trackingNumber: string;
+  trackingNumber: string | null;
   /**
    * service
    */
@@ -117,54 +117,6 @@ export interface IntentOrderPaypalIntentOrderPaypalOrderExpedition {
   vat: number;
 }
 
-export interface IntentOrderPaypalIntentOrderPaypalOrderCustomer {
-  __typename: "CustomerEntity";
-  /**
-   * User id
-   */
-  userId: string | null;
-  /**
-   * User firstname
-   */
-  firstName: string | null;
-  /**
-   * User lastname
-   */
-  lastName: string | null;
-  /**
-   * User email
-   */
-  email: string | null;
-  /**
-   * User birthday
-   */
-  birthday: Any | null;
-  /**
-   * User orderHistory
-   */
-  orderHistory: string | null;
-  /**
-   * User subtitle
-   */
-  subtitle: string | null;
-  /**
-   * User confirmed email
-   */
-  confirmedEmail: boolean | null;
-  /**
-   * User ID
-   */
-  _id: string | null;
-  /**
-   * User creation date
-   */
-  createdAt: Any | null;
-  /**
-   * User update date
-   */
-  updatedAt: Any | null;
-}
-
 export interface IntentOrderPaypalIntentOrderPaypalOrderPayment {
   __typename: "Payment";
   /**
@@ -192,10 +144,6 @@ export interface IntentOrderPaypalIntentOrderPaypalOrder {
    */
   cart: IntentOrderPaypalIntentOrderPaypalOrderCart;
   /**
-   * Customer id
-   */
-  customerId: string;
-  /**
    * Order date
    */
   orderAt: Any;
@@ -215,10 +163,6 @@ export interface IntentOrderPaypalIntentOrderPaypalOrder {
    * Webshop ID
    */
   webshopId: string;
-  /**
-   * Customer
-   */
-  customer: IntentOrderPaypalIntentOrderPaypalOrderCustomer;
   /**
    * order ID
    */

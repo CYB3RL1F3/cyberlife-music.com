@@ -92,7 +92,6 @@ fragment OrderFragment on Order {
   cart {
     ...CartFragment
   }
-  customerId
   orderAt
   updatedAt
   expedition {
@@ -100,9 +99,6 @@ fragment OrderFragment on Order {
   }
   query
   webshopId
-  customer {
-    ...CustomerEntityFragment
-  }
   _id
   payment {
     ...PaymentFragment

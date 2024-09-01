@@ -27,6 +27,14 @@ export interface ArtistDto {
   role?: string | null;
 }
 
+export interface BillingInput {
+  address: AddressInput;
+  email: string;
+  phone: number;
+  amountWithTax: number;
+  vat: number;
+}
+
 export interface CartInput {
   items: CartItemInput[];
   amount: number;
@@ -58,39 +66,13 @@ export interface ContactDto {
   message: string;
 }
 
-export interface CreateCustomerDto {
-  userId?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
-  email?: string | null;
-  birthday?: Any | null;
-  orderHistory?: string | null;
-  subtitle?: string | null;
-  confirmedEmail?: boolean | null;
-  password?: string | null;
-}
-
-export interface CustomerInput {
-  userId?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
-  email?: string | null;
-  birthday?: Any | null;
-  orderHistory?: string | null;
-  subtitle?: string | null;
-  confirmedEmail?: boolean | null;
-  Id?: string | null;
-  createdAt?: Any | null;
-  updatedAt?: Any | null;
-}
-
 export interface DiscogsStatsDto {
   collection?: number | null;
   wantlist?: number | null;
 }
 
 export interface ExpeditionInput {
-  trackingNumber: string;
+  trackingNumber?: string | null;
   service: string;
   status: string;
   address: AddressInput;
@@ -116,20 +98,14 @@ export interface LikeDto {
   createdAt?: Any | null;
 }
 
-export interface LoginDto {
-  email: string;
-  password: string;
-}
-
 export interface OrderDto {
   cart: CartInput;
-  customerId: string;
   orderAt: Any;
   updatedAt: Any;
   expedition: ExpeditionInput;
+  billing: BillingInput;
   query?: string | null;
   webshopId: string;
-  customer: CustomerInput;
 }
 
 export interface PlaylistTrackDto {

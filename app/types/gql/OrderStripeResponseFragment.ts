@@ -84,7 +84,7 @@ export interface OrderStripeResponseFragmentOrderExpedition {
   /**
    * tracking number
    */
-  trackingNumber: string;
+  trackingNumber: string | null;
   /**
    * service
    */
@@ -115,54 +115,6 @@ export interface OrderStripeResponseFragmentOrderExpedition {
   vat: number;
 }
 
-export interface OrderStripeResponseFragmentOrderCustomer {
-  __typename: "CustomerEntity";
-  /**
-   * User id
-   */
-  userId: string | null;
-  /**
-   * User firstname
-   */
-  firstName: string | null;
-  /**
-   * User lastname
-   */
-  lastName: string | null;
-  /**
-   * User email
-   */
-  email: string | null;
-  /**
-   * User birthday
-   */
-  birthday: Any | null;
-  /**
-   * User orderHistory
-   */
-  orderHistory: string | null;
-  /**
-   * User subtitle
-   */
-  subtitle: string | null;
-  /**
-   * User confirmed email
-   */
-  confirmedEmail: boolean | null;
-  /**
-   * User ID
-   */
-  _id: string | null;
-  /**
-   * User creation date
-   */
-  createdAt: Any | null;
-  /**
-   * User update date
-   */
-  updatedAt: Any | null;
-}
-
 export interface OrderStripeResponseFragmentOrderPayment {
   __typename: "Payment";
   /**
@@ -190,10 +142,6 @@ export interface OrderStripeResponseFragmentOrder {
    */
   cart: OrderStripeResponseFragmentOrderCart;
   /**
-   * Customer id
-   */
-  customerId: string;
-  /**
    * Order date
    */
   orderAt: Any;
@@ -213,10 +161,6 @@ export interface OrderStripeResponseFragmentOrder {
    * Webshop ID
    */
   webshopId: string;
-  /**
-   * Customer
-   */
-  customer: OrderStripeResponseFragmentOrderCustomer;
   /**
    * order ID
    */
