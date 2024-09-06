@@ -6,5 +6,18 @@
   "files.exclude": {
     "**/*.js.map": true,
     "**/public/build/**": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.alwaysShowStatus": true,
+  "prettier.tabWidth": 2,
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "prettier.documentSelectors": [
+    "**/*.{ts,tsx}"
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

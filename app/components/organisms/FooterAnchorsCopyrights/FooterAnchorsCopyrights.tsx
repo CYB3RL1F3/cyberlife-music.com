@@ -1,5 +1,7 @@
+import dayjs from "dayjs";
 import type { FooterAnchorsProps } from "~/components/molecules/FooterAnchors";
 import FooterAnchors from "~/components/molecules/FooterAnchors";
+
 
 const FooterAnchorsCopyrights = () => {
   const anchors: FooterAnchorsProps["anchors"] = [
@@ -9,12 +11,16 @@ const FooterAnchorsCopyrights = () => {
       target: "_blank"
     },
     {
-      label: "2022",
+      label: dayjs().format("YYYY"),
       href: ""
     },
     {
       label: "About website",
       href: "/about"
+    },
+    {
+      label: "Legal notice",
+      href: "/legal-notice"
     },
     {
       label: "Download presskit",

@@ -95,13 +95,13 @@ export interface LikeDto {
   verified?: boolean | null;
   city?: string | null;
   country?: string | null;
-  createdAt?: Any | null;
+  createdAt?: any | null;
 }
 
 export interface OrderDto {
   cart: CartInput;
-  orderAt: Any;
-  updatedAt: Any;
+  orderAt: any;
+  updatedAt: any;
   expedition: ExpeditionInput;
   billing: BillingInput;
   query?: string | null;
@@ -121,7 +121,7 @@ export interface PlaylistTrackDto {
   artwork?: string | null;
   download?: string | null;
   soundcloud?: string | null;
-  date?: Any | null;
+  date?: any | null;
   downloadable?: boolean | null;
   duration?: number | null;
   stats?: StatsDto | null;
@@ -148,7 +148,7 @@ export interface ReleaseDtoInput {
   releaseId?: number | null;
   mainRelease?: number | null;
   images?: string[] | null;
-  releaseDate?: Any | null;
+  releaseDate?: Date | null;
   cat?: string | null;
   tracklist?: ReleaseTrackDto[] | null;
   notes?: string | null;

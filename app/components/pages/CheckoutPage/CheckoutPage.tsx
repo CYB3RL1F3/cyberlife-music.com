@@ -1,5 +1,6 @@
 import PageDetailHeaderPortal from "~/components/molecules/PageDetailHeaderPortal";
 import ButtonLinkBuyRelease from "~/components/organisms/ButtonLinkBuyRelease";
+import OrderFunnelContainer from "~/components/organisms/OrderFunnelContainer";
 
 const CheckoutPage = () => {
   return (
@@ -9,7 +10,9 @@ const CheckoutPage = () => {
           <ButtonLinkBuyRelease />
         </div>
       </PageDetailHeaderPortal>
-      <div className="flex justify-center">Checkout</div>
+      <div className="flex justify-center">
+        <OrderFunnelContainer />
+      </div>
     </>
   );
 };

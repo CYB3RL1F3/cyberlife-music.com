@@ -1,0 +1,78 @@
+import { useState } from 'react';
+import DropdownItems from './DropdownItems';
+import DropdownWrapper from './DropdownWrapper';
+import { DropdownItemsProps, DropdownProps } from './Dropdown.types';
+import DropdownItem from './DropdownItem';
+import DropdownButton from './DropdownButton';
+import Input from '../Input';
+
+const Dropdown = <T,>({
+  label,
+  dropdownButton,
+  items,
+  itemToKey,
+  render,
+  onChange,
+  closeOnSelect = true,
+  position = 'bottom',
+  filterable,
+  disabled,
+  useFilter,
+  filterPlaceholder,
+  ...props
+}: DropdownProps<T>) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen((isOpen) => !isOpen);
+  };
+
+  const handleChange: DropdownItemsProps<T>['onChange'] = (item, index) => {
+    closeOnSelect && setIsOpen(false);
+    onChange?.(item, index);
+  };
+
+  const [filteredItems, setFilteredItems] = useState(items);
+
+  const handleFilter = (value: string) => {
+    if (!filterable || !useFilter) {
+      return;
+    }
+    setFilteredItems(useFilter(value));
+  };
+
+  console.log('FILTERED ITEMS ==> ', filteredItems, items);
+
+  return (
+    <Dropdown.Wrapper
+      isOpen={isOpen}
+      onToggle={toggleDropdown}
+      label={label}
+      disabled={disabled}
+      position={position}
+      dropdownButton={dropdownButton}
+    >
+      {filterable && useFilter && (
+        <Input
+          placeholder={filterPlaceholder}
+          className="px-2 mt-4 text-white bg-gray-500 bg-opacity-100 placeholder-slate-400"
+          onChange={handleFilter}
+        />
+      )}
+      <Dropdown.Items
+        itemToKey={itemToKey}
+        items={filterable && useFilter ? filteredItems : items}
+        render={render}
+        onChange={handleChange}
+        {...props}
+      />
+    </Dropdown.Wrapper>
+  );
+};
+
+Dropdown.Items = DropdownItems;
+Dropdown.Item = DropdownItem;
+Dropdown.Wrapper = DropdownWrapper;
+Dropdown.Button = DropdownButton;
+
+export default Dropdown;

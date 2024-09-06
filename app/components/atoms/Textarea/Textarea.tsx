@@ -2,9 +2,10 @@ import type { ChangeEventHandler } from "react";
 import { forwardRef } from "react";
 import { useInputStyle } from "~/hooks/useInputStyle";
 import type { TextareaProps } from "./Textarea.types";
+import { twMerge } from "tailwind-merge";
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ value, onChange, placeholder, hasError, ...props }, ref) => {
+  ({ value, onChange, placeholder, hasError, className: customClassName, ...props }, ref) => {
     const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
       const nextValue = e.currentTarget.value;
       onChange?.(nextValue);
@@ -21,7 +22,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        className={className}
+        className={twMerge(className, customClassName)}
         onFocus={onFocus}
         onBlurCapture={onBlur}
         {...props}

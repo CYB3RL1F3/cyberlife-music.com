@@ -7,10 +7,12 @@ const Action = ({
   style,
   title,
   disabled,
+  type = 'button',
   className
 }: ActionProps) => {
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={clsx("border-none bg-none cursor-pointer", className)}

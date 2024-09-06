@@ -22,7 +22,7 @@ const NotSupportedPageLayout = ({
           "absolute z-30 top-[70vh] w-screen px-8 md:px-24 bottom o-8"
         )}
       >
-        <hr className="w-full h-1 bg-white" />
+        <hr className="w-full h-1 " />
         <div className="o-4">
           <p className="w-full text-md">{browserText}</p>
           <ListBrowsers />

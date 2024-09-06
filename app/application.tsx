@@ -31,7 +31,6 @@ import NotSupportedPage from "./components/pages/NotSupportedPage";
 import PlayerContextProvider from "./components/contexts/PlayerContext";
 import { ToastContainer } from "react-toastify";
 import NoScript from "./components/organisms/NoScript";
-import CartContextProvider from "./components/contexts/CartContext/CartContext.provider";
 
 export type ApplicationProps = {
   config: Config;
@@ -91,7 +90,6 @@ const Application = ({ config, children }: ApplicationProps) => {
       <LazyMotion features={domAnimation}>
         <ConfigContextProvider config={config}>
           <PlayerContextProvider>
-            <CartContextProvider>
               <PwaContextProvider>
                 <NotificationContextProvider>
                   <Layout>
@@ -133,7 +131,6 @@ const Application = ({ config, children }: ApplicationProps) => {
                   />
                 </NotificationContextProvider>
               </PwaContextProvider>
-            </CartContextProvider>
           </PlayerContextProvider>
         </ConfigContextProvider>
       </LazyMotion>

@@ -31,7 +31,8 @@ const uppercaseInterfaces = (value: string) => {
         "number",
         "string[]",
         "boolean[]",
-        "number[]"
+        "number[]",
+        "any",
       ].includes(interfaceName)
     ) {
       return `: ${interfaceName}`;

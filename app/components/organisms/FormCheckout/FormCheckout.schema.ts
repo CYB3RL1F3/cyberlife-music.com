@@ -45,15 +45,15 @@ export const refineAddress = refine(nonempty(string()), "address", (value) => {
 
 export const refineZipCode = refine(nonempty(string()), "zipCode", (value) => {
   if (!value) return "Your zip code is required.";
-  if (value.length < 2)
-    return "Your zip code must contain serious content with at least 2 characters.";
+  if (value.length < 1)
+    return "Your zip code is required.";
   return true;
 });
 
 export const refineCity = refine(nonempty(string()), "city", (value) => {
   if (!value) return "Your city name is required.";
   if (value.length < 2)
-    return "Your city name must contain serious content with at least 2 characters.";
+    return "Your city name is required.";
   return true;
 });
 
@@ -83,7 +83,7 @@ export const refineCarrier = refine(
   }),
   "carrier",
   (value) => {
-    if (!value.carrier || !value.price) return "You must select a carrier.";
+    if (!value.carrier) return "You must select a carrier.";
     return true;
   }
 );
@@ -92,7 +92,7 @@ const expedition = object({
   isSameAsBilling: rule(
     "isSameAsBilling",
     boolean(),
-    "You must provide a boolean."
+    "You must indicate whether you use the billing address as expedition address or not."
   ),
   firstName: refineFirstName,
   lastName: refineLastName,
@@ -105,7 +105,9 @@ const expedition = object({
 });
 
 export const refineExpedition = refine(expedition, "expedition", (value) => {
+  console.log('PASSS');
   if (value.isSameAsBilling) return true;
+  console.log('PASSSS');
   const [validated] = expedition.validate(value, {
     coerce: true
   });
@@ -122,5 +124,6 @@ export const formCheckoutSchema = object({
   city: refineCity,
   country: refineCountry,
   carrier: refineCarrier,
-  honeyPot: refineHoneyPot
+  honeyPot: refineHoneyPot,
+  expedition: refineExpedition,
 });

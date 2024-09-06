@@ -12,7 +12,7 @@ const AutoCompleteItem = ({
       title={value}
       onClick={onClick}
       className={clsx(
-        "w-full h-8 p-2 text-xs border-none outline-none transition-all duration-25",
+        "w-full text-left h-8 p-2 text-xs italic border-none outline-none transition-all duration-25",
         {
           " text-gray-200 hover:bg-gray-800 hover:text-gray-400 bg-gray-600":
             !isHover,

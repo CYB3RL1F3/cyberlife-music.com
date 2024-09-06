@@ -15,7 +15,8 @@ export const useCarrierPricesQuery = (
       variables: {
         country,
         items
-      }
+      },
+      skip: !items.length || !country
     }
   );
 };

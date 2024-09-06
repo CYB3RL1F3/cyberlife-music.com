@@ -6,4 +6,5 @@ export type FieldSwitchProps = Pick<
   "value" | "onChange" | "id"
 > & {
   label: ReactNode;
+  error?: ReactNode;
 };
