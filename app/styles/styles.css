@@ -1136,12 +1136,12 @@ video {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.grid-cols-\[5fr_1fr_1fr_1fr_2fr\] {
-  grid-template-columns: 5fr 1fr 1fr 1fr 2fr;
-}
-
 .grid-cols-\[4fr_1fr\] {
   grid-template-columns: 4fr 1fr;
+}
+
+.grid-cols-\[5fr_1fr_1fr_1fr_2fr\] {
+  grid-template-columns: 5fr 1fr 1fr 1fr 2fr;
 }
 
 .flex-row {

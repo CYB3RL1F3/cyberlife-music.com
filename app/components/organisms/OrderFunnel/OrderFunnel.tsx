@@ -5,6 +5,7 @@ import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
 import OrderFunnelEmpty from '../OrderFunnelEmpty';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
+  console.log('PASS ==> ', defaultStep, items);
   const [step, setStep] = useState(defaultStep);
   const nextStep = () => {
     setStep(step + 1);

@@ -33,6 +33,10 @@ const initialValues: Partial<FormCheckoutValues> = {
   city: '',
   email: '',
   phone: '',
+  carrier: {
+    carrier: '',
+    price: 0,
+  },
   expedition: {
     isSameAsBilling: true,
     firstName: '',
@@ -58,12 +62,14 @@ const FormCheckout = ({
     watch,
     reset,
     setValue,
-    formState: { isSubmitted, isValid, ...formState },
+    formState: { isSubmitted, errors, isValid, ...formState },
   } = useForm<FormCheckoutValues>({
     defaultValues,
     reValidateMode: 'onChange',
     resolver: superstructResolver(formCheckoutSchema),
   });
+
+  console.log('ERRORS ===> ', errors);
 
   const transition = useFluidTransition();
   useMobileVibration(isSubmitted && !isValid);
@@ -92,11 +98,15 @@ const FormCheckout = ({
   useEffect(() => {
     if (isSameAsBilling) {
       setCanUpdateExpeditionCity(false);
+      setValue('expedition', {
+        ...initialValues.expedition,
+        isSameAsBilling: true,
+      });
     } else {
       if (!expeditionCountry) return;
       setCanUpdateExpeditionCity(true);
-      setValue('city', '');
-      setValue('zipCode', '');
+      setValue('expedition.city', '');
+      setValue('expedition.zipCode', '');
     }
   }, [expeditionCountry, isSameAsBilling]);
 
@@ -132,7 +142,13 @@ const FormCheckout = ({
   useDebounceEffect(
     () => {
       if (isSameAsBilling) return;
-      if (expeditionCity?.length || !canUpdateExpeditionCity) return;
+      if (
+        expeditionCity?.length ||
+        !expeditionCountry?.length ||
+        !expeditionZipCode?.length ||
+        !canUpdateExpeditionCity
+      )
+        return;
       const nextCity = getCityByZipCode(expeditionCountry, expeditionZipCode);
       if (!nextCity) return;
       setValue('expedition.city', nextCity);
@@ -322,7 +338,11 @@ const FormCheckout = ({
       </motion.div>
 
       <motion.div {...transition(0.95)} className="flex w-full gap-2">
-        {footer?.({ isSubmitted, isValid, ...formState }, values, reset)}
+        {footer?.(
+          { isSubmitted, isValid, errors, ...formState },
+          values,
+          reset,
+        )}
       </motion.div>
 
       {/* SUBMIT */}
