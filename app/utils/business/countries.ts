@@ -248,4 +248,13 @@ const countries = [
   { value: "ZW", label: "Zimbabwe" }
 ];
 
+export const getCountryByValue = (value: string) => {
+  return countries.find((country) => country.value === value);
+}
+
+export const getCountryLabelByValue = (value: string) => {
+  const country = getCountryByValue(value);
+  return country ? country.label : '';
+}
+
 export default countries;

@@ -2,6 +2,7 @@ import FormCheckout from '~/components/organisms/FormCheckout/FormCheckout';
 import type { FormCheckoutContainerProps } from './FormCheckoutContainer.types';
 import FormCheckoutFooter from '../FormCheckoutFooter';
 import { FormCheckoutProps } from '../FormCheckout/FormCheckout.types';
+import { useCart } from '~/hooks/db/useCart';
 
 const FormCheckoutContainer = ({
   onCancel,
@@ -9,8 +10,9 @@ const FormCheckoutContainer = ({
   onSubmit,
   ...props
 }: FormCheckoutContainerProps) => {
-  const handleSubmit: FormCheckoutProps['onSubmit'] = (values) => {
-    console.log('submit', values);
+  const { checkout, setCheckout } = useCart();
+  const handleSubmit: FormCheckoutProps['onSubmit'] = async (values) => {
+    await setCheckout(values);
     onSubmit?.(values);
   };
 
@@ -18,6 +20,7 @@ const FormCheckoutContainer = ({
     <FormCheckout
       items={items}
       onSubmit={handleSubmit}
+      defaultValues={checkout}
       {...props}
       footer={(state, values, reset) => (
         <FormCheckoutFooter

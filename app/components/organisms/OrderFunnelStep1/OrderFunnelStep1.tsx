@@ -19,7 +19,7 @@ const OrderFunnelStep1 = ({ items, onSubmit }: OrderFunnelStep1Props) => {
         <div className="w-full mt-4">
           <TableOrderPrice items={items} />
         </div>
-        <FormOrderConsentContainer items={items} onSubmit={onSubmit}>
+        <FormOrderConsentContainer onSubmit={onSubmit}>
           <ButtonClearCart />
           <ButtonLink href="/releases" className="w-fit">
             Cancel

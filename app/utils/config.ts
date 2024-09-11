@@ -14,7 +14,12 @@ export const getServerConfig = (): Config | null => {
       mapbox: {
         accessToken: parsed?.MAPBOX_API_KEY || process.env.MAPBOX_API_KEY || "",
         style: "mapbox://styles/cyberlife/cjq9kpl33b01d2smvny3ciast"
-      }
+      },
+      paypal: {
+        clientId: parsed?.PAYPAL_CLIENT_ID || process.env.PAYPAL_CLIENT_ID || "",
+        baseUrl: parsed?.PAYPAL_BASE_URL || process.env.PAYPAL_BASE_URL || ""
+      },
+      webshopId: parsed?.WEBSHOP_ID || process.env.WEBSHOP_ID || "",
     };
   }
   return null;

@@ -24,5 +24,5 @@ export interface PaymentFragment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }

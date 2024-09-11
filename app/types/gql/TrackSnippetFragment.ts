@@ -36,7 +36,7 @@ export interface TrackSnippetFragment {
   /**
    * track date
    */
-  date: Any | null;
+  date: any | null;
   /**
    * track uri
    */

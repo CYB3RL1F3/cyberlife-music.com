@@ -337,6 +337,15 @@ const FormCheckout = ({
         />
       </motion.div>
 
+      <motion.div {...transition(0.25)} className="w-full">
+        <ControlledFieldTextarea
+          control={control}
+          name="query"
+          placeholder="Any additional information? (delay, delivery extra informations, special request...)"
+          className="min-h-[6rem]"
+        />
+      </motion.div>
+
       <motion.div {...transition(0.95)} className="flex w-full gap-2">
         {footer?.(
           { isSubmitted, isValid, errors, ...formState },

@@ -9,8 +9,8 @@ const OrderFunnelStep2 = (props: OrderFunnelStep2Props) => {
     <AnimatePresence mode="wait">
       <div className="flex flex-col items-end justify-end w-full">
         <FormHeading
-          title="Finalize the order!"
-          description="Complete this form with your shipping details and payment method."
+          title="Complete the order!"
+          description="Complete this form with your shipping details."
         />
         <FormCheckoutContainer {...props} />
       </div>

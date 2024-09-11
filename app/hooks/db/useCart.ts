@@ -1,8 +1,11 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "react-toastify";
 import db from "~/db";
-import { CartItemFragment } from "~/types/gql/CartItemFragment";
-import { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
+import type { CartItemFragment } from "~/types/gql/CartItemFragment";
+import type { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
+import type { FormCheckoutValues } from "~/components/organisms/FormCheckout/FormCheckout.types";
+import { useMemo } from "react";
+import type { Cart } from "~/db/db";
 
 export type CartItem = Omit<CartItemFragment, "__typename"> & {
     release: ReleasesQueryReleaseItems;
@@ -18,18 +21,47 @@ export const useCart = () => {
     }
   });
 
+  const updateCart = (values: Partial<Cart>) => {
+    if (!cart) {
+      db.cart.add({
+        consent: false,
+        items: [],
+        ...values,
+      }, "cart");
+      return;
+    }
+    try {
+      db.cart.update("cart", {
+        ...cart,
+        ...values
+      });
+    } catch(e) {
+      const _cart = {...cart};
+      db.cart.clear();
+      try {
+        db.cart.add({
+          ..._cart,
+          ...values,
+        }, "cart");
+      } catch(e) {
+        db.cart.clear();
+        toast.error("An error occurred. Cart has been cleared.");
+      }
+    }
+  }
+
   const addItem = async (value: CartItem) => {
     try {
       if (cart?.items) {
-        await db.cart.update("cart", {
+        await updateCart({
           consent: false,
           items: [...cart.items, value]
-        } );
+        });
       } else {
-        await db.cart.add({
+        await updateCart({
           consent: false,
           items: [value],
-        }, "cart");
+        });
       }
     } catch(e) {
       db.cart.clear();
@@ -39,7 +71,7 @@ export const useCart = () => {
 
   const updateItemQuantity = async (id: string, quantity: number) => {
     if (cart) {
-      await db.cart.update("cart", {
+      await updateCart({
         consent: false,
         items: cart.items.map((item) => item.id === id ? { ...item, quantity } : item)
       });
@@ -47,7 +79,6 @@ export const useCart = () => {
   }
 
   const removeItem = async (id: string) => {
-    console.log('ITEMS ==> ', cart);
     if (cart) {
       const nextItems = cart.items?.filter((item) => item.id !== id);
       try {
@@ -63,8 +94,8 @@ export const useCart = () => {
     }
   };
 
-  const clear = () => {
-    db.cart.clear();
+  const clear = async () => {
+    await db.cart.clear();
   }
 
   const isItemInCart = (id: string) => {
@@ -78,18 +109,54 @@ export const useCart = () => {
     if (!cart?.items) {
       throw new Error("Cart is empty");
     }
-    await db.cart.update("cart", {
-      consent: true,
-      items: cart.items
+    await updateCart({
+      consent: true
     });
   }
 
   const amount = cart?.items?.reduce((acc, item) => acc + item.amount * item.quantity, 0) || 0;
 
+  const setCheckout = async (checkout: FormCheckoutValues) => {
+    if (!cart) {
+      throw new Error("Cart is empty");
+    }
+    await updateCart({
+      checkout,
+      confirmedCheckout: true
+    });
+  }
+
+  const setConfirmedCheckout = async (confirmedCheckout: boolean) => {
+    if (!cart) {
+      throw new Error("Cart is empty");
+    }
+    await updateCart({
+      confirmedCheckout
+    });
+  }
+
+  const currentStep = useMemo(() => {
+    if (!cart || typeof cart?.consent === 'undefined') {
+      return -1;
+    }
+    if (cart?.checkout && cart?.confirmedCheckout && cart?.consent) {
+      return 2;
+    }
+    if (cart?.consent) {
+      return 1;
+    }
+    return 0;
+  }, [cart?.consent, cart?.checkout, cart?.confirmedCheckout]);
+
   return {
     items: cart?.items || [],
     consent: cart?.consent,
     consentCart,
+    confirmedCheckout: cart?.confirmedCheckout,
+    setConfirmedCheckout,
+    checkout: cart?.checkout,
+    setCheckout,
+    currentStep,
     amount,
     addItem,
     removeItem,

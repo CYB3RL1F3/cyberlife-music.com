@@ -104,7 +104,7 @@ export interface OrderStripeResponseFragmentOrderExpedition {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */
@@ -132,7 +132,7 @@ export interface OrderStripeResponseFragmentOrderPayment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }
 
 export interface OrderStripeResponseFragmentOrder {
@@ -144,11 +144,11 @@ export interface OrderStripeResponseFragmentOrder {
   /**
    * Order date
    */
-  orderAt: Any;
+  orderAt: any;
   /**
    * Order update date
    */
-  updatedAt: Any;
+  updatedAt: any;
   /**
    * Order expedition
    */
@@ -188,7 +188,7 @@ export interface OrderStripeResponseFragmentPaymentIntent {
   /**
    * Intent
    */
-  intent: Any;
+  intent: any;
 }
 
 export interface OrderStripeResponseFragment {

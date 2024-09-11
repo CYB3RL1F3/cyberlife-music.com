@@ -8,7 +8,7 @@ const FormOrderConsentContainer = ({
   onSubmit,
   ...props
 }: FormOrderConsentContainerProps) => {
-  const { consentCart } = useCart();
+  const { consentCart, items } = useCart();
 
   const handleSubmit: FormOrderConsentProps['onSubmit'] = async (values) => {
     try {
@@ -22,7 +22,7 @@ const FormOrderConsentContainer = ({
       toast.error('An error occurred. Please try again.');
     }
   };
-  return <FormOrderConsent {...props} onSubmit={handleSubmit} />;
+  return <FormOrderConsent {...props} items={items} onSubmit={handleSubmit} />;
 };
 
 export default FormOrderConsentContainer;

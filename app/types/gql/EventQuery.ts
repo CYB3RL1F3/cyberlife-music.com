@@ -68,11 +68,11 @@ export interface EventQueryEvent {
   /**
    * event date
    */
-  date: Any | null;
+  date: any | null;
   /**
    * event end date
    */
-  endDate: Any | null;
+  endDate: any | null;
   /**
    * country name
    */

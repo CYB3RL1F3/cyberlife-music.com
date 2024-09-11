@@ -32,7 +32,7 @@ export interface ReleaseSnippetFragment {
   /**
    * Release date
    */
-  releaseDate: Any | null;
+  releaseDate: any | null;
   /**
    * Release role
    */

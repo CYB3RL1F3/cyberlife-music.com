@@ -106,7 +106,7 @@ export interface IntentOrderPaypalIntentOrderPaypalOrderExpedition {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */
@@ -134,7 +134,7 @@ export interface IntentOrderPaypalIntentOrderPaypalOrderPayment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }
 
 export interface IntentOrderPaypalIntentOrderPaypalOrder {
@@ -146,11 +146,11 @@ export interface IntentOrderPaypalIntentOrderPaypalOrder {
   /**
    * Order date
    */
-  orderAt: Any;
+  orderAt: any;
   /**
    * Order update date
    */
-  updatedAt: Any;
+  updatedAt: any;
   /**
    * Order expedition
    */

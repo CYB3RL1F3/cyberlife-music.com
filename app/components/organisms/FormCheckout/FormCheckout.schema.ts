@@ -123,44 +123,44 @@ export const refineExpedition = refine(expedition, "expedition", (value) => {
 
   const failures: Failure[] = [];
 
-  const [refinedFirstName] = refineFirstName.validate(value.firstName);
-  if (refinedFirstName) {
-    failures.push(createFailure(["expedition", "firstName"], refinedFirstName.message));
+  const [errorFirstName] = refineFirstName.validate(value.firstName);
+  if (errorFirstName) {
+    failures.push(createFailure(["expedition", "firstName"], errorFirstName.message));
   }
 
-  const [refinedLastName] = refineLastName.validate(value.lastName);
-  if (refinedLastName) {
-    failures.push(createFailure(["expedition", "lastName"], refinedLastName.message));
+  const [errorLastName] = refineLastName.validate(value.lastName);
+  if (errorLastName) {
+    failures.push(createFailure(["expedition", "lastName"], errorLastName.message));
   }
 
-  const [refinedEmail] = refineEmail.validate(value.email);
-  if (refinedEmail) {
-    failures.push(createFailure(["expedition", "email"], refinedEmail.message));
+  const [errorEmail] = refineEmail.validate(value.email);
+  if (errorEmail) {
+    failures.push(createFailure(["expedition", "email"], errorEmail.message));
   }
 
-  const [refinedPhone] = refinePhone.validate(value.phone);
-  if (refinedPhone) {
-    failures.push(createFailure(["expedition", "phone"], refinedPhone.message));
+  const [errorPhone] = refinePhone.validate(value.phone);
+  if (errorPhone) {
+    failures.push(createFailure(["expedition", "phone"], errorPhone.message));
   }
 
-  const [refinedAddress] = refineAddress.validate(value.address);
-  if (refinedAddress) {
-    failures.push(createFailure(["expedition", "address"], refinedAddress.message));
+  const [errorAddress] = refineAddress.validate(value.address);
+  if (errorAddress) {
+    failures.push(createFailure(["expedition", "address"], errorAddress.message));
   }
 
-  const [refinedZipCode] = refineZipCode.validate(value.zipCode);
-  if (refinedZipCode) {
-    failures.push(createFailure(["expedition", "zipCode"], refinedZipCode.message));
+  const [errorZipCode] = refineZipCode.validate(value.zipCode);
+  if (errorZipCode) {
+    failures.push(createFailure(["expedition", "zipCode"], errorZipCode.message));
   }
 
-  const [refinedCity] = refineCity.validate(value.city);
-  if (refinedCity) {
-    failures.push(createFailure(["expedition", "city"], refinedCity.message));
+  const [errorCity] = refineCity.validate(value.city);
+  if (errorCity) {
+    failures.push(createFailure(["expedition", "city"], errorCity.message));
   }
   
-  const [refinedCountry] = refineCountry.validate(value.country);
-  if (refinedCountry) {
-    failures.push(createFailure(["expedition", "country"], refinedCountry.message));
+  const [errorCountry] = refineCountry.validate(value.country);
+  if (errorCountry) {
+    failures.push(createFailure(["expedition", "country"], errorCountry.message));
   }
 
   if (!failures.length) return true;
@@ -179,4 +179,5 @@ export const formCheckoutSchema = object({
   carrier: refineCarrier,
   honeyPot: refineHoneyPot,
   expedition: refineExpedition,
+  query: optional(string())
 });

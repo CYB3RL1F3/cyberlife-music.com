@@ -106,7 +106,7 @@ export interface IntentOrderStripeIntentOrderStripeOrderExpedition {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */
@@ -134,7 +134,7 @@ export interface IntentOrderStripeIntentOrderStripeOrderPayment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }
 
 export interface IntentOrderStripeIntentOrderStripeOrder {
@@ -146,11 +146,11 @@ export interface IntentOrderStripeIntentOrderStripeOrder {
   /**
    * Order date
    */
-  orderAt: Any;
+  orderAt: any;
   /**
    * Order update date
    */
-  updatedAt: Any;
+  updatedAt: any;
   /**
    * Order expedition
    */
@@ -190,7 +190,7 @@ export interface IntentOrderStripeIntentOrderStripePaymentIntent {
   /**
    * Intent
    */
-  intent: Any;
+  intent: any;
 }
 
 export interface IntentOrderStripeIntentOrderStripe {

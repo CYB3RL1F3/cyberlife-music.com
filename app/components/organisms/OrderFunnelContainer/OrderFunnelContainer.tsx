@@ -4,17 +4,15 @@ import { useCart } from '~/hooks/db/useCart';
 import Loader from '~/components/molecules/Loader';
 
 const OrderFunnelContainer = () => {
-  const { items, consent } = useCart();
-  console.log('consent ==> ', consent);
+  const { currentStep, items } = useCart();
   return (
     <HandlerContent
-      loading={typeof consent === 'undefined'}
+      loading={currentStep === -1}
       loader={<Loader message="Please wait while we're loading your cart..." />}
     >
-      <OrderFunnel items={items} defaultStep={consent ? 1 : 0} />
+      <OrderFunnel items={items} defaultStep={currentStep} />
     </HandlerContent>
   );
-  return <OrderFunnel items={items} defaultStep={consent ? 1 : 0} />;
 };
 
 export default OrderFunnelContainer;

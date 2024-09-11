@@ -10,6 +10,11 @@ export type Config = {
   apiEndpoint: string;
   notificationPoolId: string;
   env: Environment;
+  paypal: {
+    clientId: string;
+    baseUrl: string;
+  };
+  webshopId: string;
 };
 
 export type ConfigContextValues = {

@@ -27,12 +27,12 @@ export interface ArtistDto {
   role?: string | null;
 }
 
-export interface BillingInput {
+export interface BillingDto {
   address: AddressInput;
   email: string;
-  phone: number;
-  amountWithTax: number;
-  vat: number;
+  phone: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface CartInput {
@@ -77,7 +77,7 @@ export interface ExpeditionInput {
   status: string;
   address: AddressInput;
   email: string;
-  phone: number;
+  phone: string;
   amountWithTax: number;
   vat: number;
 }
@@ -103,9 +103,16 @@ export interface OrderDto {
   orderAt: any;
   updatedAt: any;
   expedition: ExpeditionInput;
-  billing: BillingInput;
+  billing: BillingDto;
   query?: string | null;
   webshopId: string;
+}
+
+export interface PaymentInput {
+  id: string;
+  transactionId: string;
+  paymentMethod: string;
+  transactionDate: any;
 }
 
 export interface PlaylistTrackDto {
@@ -148,7 +155,7 @@ export interface ReleaseDtoInput {
   releaseId?: number | null;
   mainRelease?: number | null;
   images?: string[] | null;
-  releaseDate?: Date | null;
+  releaseDate?: any | null;
   cat?: string | null;
   tracklist?: ReleaseTrackDto[] | null;
   notes?: string | null;

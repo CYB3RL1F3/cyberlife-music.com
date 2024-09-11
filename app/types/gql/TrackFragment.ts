@@ -112,7 +112,7 @@ export interface TrackFragment {
   /**
    * track date
    */
-  date: Any | null;
+  date: any | null;
   /**
    * track uri
    */

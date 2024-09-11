@@ -1,0 +1,7 @@
+
+fragment PaymentFragment on Payment {
+  id
+  transactionId
+  paymentMethod
+  transactionDate
+}

@@ -1,0 +1,22 @@
+
+fragment AddressFragment on Address {
+  name
+  address
+  zipCode
+  city
+  country
+  extra
+}
+
+fragment ExpeditionFragment on Expedition {
+  trackingNumber
+  service
+  status
+  address {
+    ...AddressFragment
+  }
+  email
+  phone
+  amountWithTax
+  vat
+}

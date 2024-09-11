@@ -4287,7 +4287,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4379,7 +4379,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4387,7 +4387,7 @@
             "deprecationReason": null
           },
           {
-            "name": "amountWithTax",
+            "name": "firstName",
             "description": "amount ttc",
             "args": [],
             "type": {
@@ -4395,7 +4395,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4403,7 +4403,7 @@
             "deprecationReason": null
           },
           {
-            "name": "vat",
+            "name": "lastName",
             "description": "amount ttc",
             "args": [],
             "type": {
@@ -4411,7 +4411,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4496,7 +4496,7 @@
           },
           {
             "name": "billing",
-            "description": "Order expedition",
+            "description": "Order billing",
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -8062,7 +8062,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -8109,7 +8109,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "BillingInput",
+        "name": "BillingDto",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
@@ -8154,7 +8154,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -8163,14 +8163,14 @@
             "deprecationReason": null
           },
           {
-            "name": "amountWithTax",
+            "name": "firstName",
             "description": "amount ttc",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -8179,14 +8179,14 @@
             "deprecationReason": null
           },
           {
-            "name": "vat",
+            "name": "lastName",
             "description": "amount ttc",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -8272,13 +8272,13 @@
           },
           {
             "name": "billing",
-            "description": "Order expedition",
+            "description": "Order billing",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "BillingInput",
+                "name": "BillingDto",
                 "ofType": null
               }
             },
@@ -9833,8 +9833,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "PaymentInput",
+                    "kind": "SCALAR",
+                    "name": "String",
                     "ofType": null
                   }
                 },
@@ -9898,8 +9898,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "PaymentInput",
+                    "kind": "SCALAR",
+                    "name": "String",
                     "ofType": null
                   }
                 },
@@ -10162,13 +10162,13 @@
           },
           {
             "name": "billing",
-            "description": "Order expedition",
+            "description": "Order billing",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "BillingInput",
+                "name": "BillingDto",
                 "ofType": null
               }
             },

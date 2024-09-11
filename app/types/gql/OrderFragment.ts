@@ -104,7 +104,7 @@ export interface OrderFragmentExpedition {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */
@@ -132,7 +132,7 @@ export interface OrderFragmentPayment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }
 
 export interface OrderFragment {
@@ -144,11 +144,11 @@ export interface OrderFragment {
   /**
    * Order date
    */
-  orderAt: Any;
+  orderAt: any;
   /**
    * Order update date
    */
-  updatedAt: Any;
+  updatedAt: any;
   /**
    * Order expedition
    */

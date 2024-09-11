@@ -16,5 +16,5 @@ export interface StripeIntentFragment {
   /**
    * Intent
    */
-  intent: Any;
+  intent: any;
 }

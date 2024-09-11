@@ -104,7 +104,7 @@ export interface OrderPaypalResponseFragmentOrderExpedition {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */
@@ -132,7 +132,7 @@ export interface OrderPaypalResponseFragmentOrderPayment {
   /**
    * Order transaction date
    */
-  transactionDate: Any;
+  transactionDate: any;
 }
 
 export interface OrderPaypalResponseFragmentOrder {
@@ -144,11 +144,11 @@ export interface OrderPaypalResponseFragmentOrder {
   /**
    * Order date
    */
-  orderAt: Any;
+  orderAt: any;
   /**
    * Order update date
    */
-  updatedAt: Any;
+  updatedAt: any;
   /**
    * Order expedition
    */

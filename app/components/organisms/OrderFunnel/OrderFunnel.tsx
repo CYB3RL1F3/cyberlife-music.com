@@ -2,7 +2,9 @@ import { useState } from 'react';
 import OrderFunnelStep1 from '~/components/organisms/OrderFunnelStep1';
 import type { OrderFunnelProps } from './OrderFunnel.types';
 import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
-import OrderFunnelEmpty from '../OrderFunnelEmpty';
+import OrderFunnelEmpty from '~/components/organisms/OrderFunnelEmpty';
+import OrderFunnelStep3 from '~/components/organisms/OrderFunnelStep3';
+import OrderFunnelSuccess from '~/components/organisms/OrderFunnelSuccess';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   console.log('PASS ==> ', defaultStep, items);
@@ -18,6 +20,7 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const CONFIRM = 0;
   const SHIPPING = 1;
   const PAYMENT = 2;
+  const SUCCESS = 3;
 
   if (!items.length) {
     return <OrderFunnelEmpty />;
@@ -34,6 +37,10 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
           onCancel={prevStep}
         />
       );
+    case PAYMENT:
+      return <OrderFunnelStep3 onCancel={prevStep} onSuccess={nextStep} />;
+    case SUCCESS:
+      return <OrderFunnelSuccess />;
     default:
       return null;
   }

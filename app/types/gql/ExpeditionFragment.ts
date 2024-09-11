@@ -60,7 +60,7 @@ export interface ExpeditionFragment {
   /**
    * phone number
    */
-  phone: number;
+  phone: string;
   /**
    * amount ttc
    */

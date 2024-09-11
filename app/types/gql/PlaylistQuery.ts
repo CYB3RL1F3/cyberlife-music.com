@@ -36,7 +36,7 @@ export interface PlaylistQueryPlaylistTracks {
   /**
    * track date
    */
-  date: Any | null;
+  date: any | null;
   /**
    * track uri
    */
