@@ -14,7 +14,8 @@ export type CartItem = Omit<CartItemFragment, "__typename"> & {
 export const useCart = () => {
   const cart = useLiveQuery(async () => {
     try {
-        return await db.cart.get("cart")
+        const cart = await db.cart.get("cart");
+        return cart;
     } catch(e) {
         console.log(e);
         return null
@@ -136,7 +137,7 @@ export const useCart = () => {
   }
 
   const currentStep = useMemo(() => {
-    if (!cart || typeof cart?.consent === 'undefined') {
+    if (!cart) {
       return -1;
     }
     if (cart?.checkout && cart?.confirmedCheckout && cart?.consent) {

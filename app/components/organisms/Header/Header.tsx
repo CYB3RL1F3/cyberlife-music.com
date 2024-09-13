@@ -1,33 +1,37 @@
-import Nav from "~/components/organisms/Nav";
-import LinkNavItemList from "~/components/organisms/LinkNavItemList";
-import { Link } from "@remix-run/react";
-import type { LinkNavItemProps } from "~/components/atoms/LinkNavItem/LinkNavItem.types";
-import type { Routes } from "~/routes/routes";
-import { useState } from "react";
-import ButtonMenu from "~/components/molecules/ButtonMenu";
-import { AnimatePresence, motion } from "framer-motion";
+import Nav from '~/components/organisms/Nav';
+import LinkNavItemList from '~/components/organisms/LinkNavItemList';
+import { Link } from '@remix-run/react';
+import type { LinkNavItemProps } from '~/components/atoms/LinkNavItem/LinkNavItem.types';
+import type { Routes } from '~/routes/routes';
+import { useState } from 'react';
+import ButtonMenu from '~/components/molecules/ButtonMenu';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const items: LinkNavItemProps[] = [
   {
-    href: "/",
-    label: "Podcasts"
+    href: '/',
+    label: 'Podcasts',
   },
   {
-    href: "/events",
-    label: "Gigs"
+    href: '/events',
+    label: 'Gigs',
   },
   {
-    href: "/releases",
-    label: "Releases"
+    href: '/releases',
+    label: 'Releases',
   },
   {
-    href: "/videos",
-    label: "Videos"
+    href: '/videos',
+    label: 'Videos',
   },
   {
-    href: "/contact",
-    label: "Contact"
-  }
+    href: '/contact',
+    label: 'Contact',
+  },
+  {
+    href: '/checkout',
+    label: 'Cart',
+  },
 ];
 
 const routes: Routes[] = items.map(({ href }) => href);
@@ -42,15 +46,15 @@ const Header = () => {
       <motion.header
         className="flex items-center justify-between w-screen h-12 text-sm md:px-6"
         initial={{
-          y: -50
+          y: -50,
         }}
         animate={{
-          y: 0
+          y: 0,
         }}
         transition={{
           duration: 0.25,
           delay: 0.25,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       >
         <h1 className="p-0 m-1 mx-2 md:m-0 md:mx-0">

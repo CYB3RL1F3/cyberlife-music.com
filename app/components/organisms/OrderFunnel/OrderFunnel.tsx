@@ -5,6 +5,7 @@ import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
 import OrderFunnelEmpty from '~/components/organisms/OrderFunnelEmpty';
 import OrderFunnelStep3 from '~/components/organisms/OrderFunnelStep3';
 import OrderFunnelSuccess from '~/components/organisms/OrderFunnelSuccess';
+import { useNavigate } from '@remix-run/react';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   console.log('PASS ==> ', defaultStep, items);
@@ -15,6 +16,12 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
 
   const prevStep = () => {
     setStep(step - 1);
+  };
+
+  const navigate = useNavigate();
+
+  const goToHomePage = () => {
+    navigate('/');
   };
 
   const CONFIRM = 0;
@@ -40,7 +47,7 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
     case PAYMENT:
       return <OrderFunnelStep3 onCancel={prevStep} onSuccess={nextStep} />;
     case SUCCESS:
-      return <OrderFunnelSuccess />;
+      return <OrderFunnelSuccess onClose={goToHomePage} />;
     default:
       return null;
   }

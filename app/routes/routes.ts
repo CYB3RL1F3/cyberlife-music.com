@@ -7,7 +7,8 @@ export const routes = [
   "/events/:id",
   "/videos",
   "/videos/:id",
-  "/contact"
+  "/contact",
+  "/checkout",
 ] as const;
 
 export type Routes = typeof routes[number];

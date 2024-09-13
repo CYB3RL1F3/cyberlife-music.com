@@ -4,8 +4,9 @@ import Button from '~/components/atoms/Button';
 import type { OrderFunnelSuccessProps } from './OrderFunnelSuccess.types';
 import { Link } from '@remix-run/react';
 import { useCart } from '~/hooks/db/useCart';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
+import useDebounceEffect from '~/hooks/useDebouncedEffect';
 
 const getAnimation = (i: number) => ({
   initial: { y: -50, opacity: 0 },
@@ -42,17 +43,30 @@ const getCarrierLabel = (carrier?: string) => {
 const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
   const { checkout, clear } = useCart();
   const { data } = useInfosQuery();
+  const [canClear, setCanClear] = useState(false);
+
+  useDebounceEffect(
+    () => {
+      setCanClear(true);
+    },
+    [],
+    2000,
+  );
 
   const handleClose = async () => {
-    await clear();
     onClose?.();
+    setTimeout(async () => {
+      await clear();
+    }, 100);
   };
 
   useEffect(() => {
     return () => {
-      clear();
+      if (canClear) {
+        clear();
+      }
     };
-  });
+  }, [canClear]);
 
   return (
     <div className="w-full py-4 o-8">
@@ -68,7 +82,7 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
           Order successfully placed!
         </h1>
       </motion.div>
-      <motion.div className="w-full" {...getAnimation(2)}>
+      <motion.div className="w-full o-4" {...getAnimation(2)}>
         <p className="w-full px-4 text-lg text-center">
           Many thanks {checkout?.firstName} for your purchase!
         </p>
@@ -95,7 +109,8 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
             ) : (
               '.'
             )}{' '}
-            Please note that the order can't be cancelled.
+            Please note that the order can't be cancelled as soon as the parcel
+            is shipped.
           </p>
         )}
       </motion.div>
