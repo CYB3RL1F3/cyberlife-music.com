@@ -172,10 +172,6 @@ export interface IntentOrderStripeIntentOrderStripeOrder {
    */
   payment: IntentOrderStripeIntentOrderStripeOrderPayment;
   /**
-   * paid
-   */
-  paid: boolean;
-  /**
    * Order status
    */
   status: string;

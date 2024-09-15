@@ -8,7 +8,6 @@ import OrderFunnelSuccess from '~/components/organisms/OrderFunnelSuccess';
 import { useNavigate } from '@remix-run/react';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
-  console.log('PASS ==> ', defaultStep, items);
   const [step, setStep] = useState(defaultStep);
   const nextStep = () => {
     setStep(step + 1);
@@ -21,7 +20,7 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate('/');
+    navigate('/podcasts', { replace: true });
   };
 
   const CONFIRM = 0;

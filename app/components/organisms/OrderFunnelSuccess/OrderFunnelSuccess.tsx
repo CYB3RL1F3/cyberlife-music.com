@@ -57,7 +57,7 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
     onClose?.();
     setTimeout(async () => {
       await clear();
-    }, 100);
+    }, 1000);
   };
 
   useEffect(() => {

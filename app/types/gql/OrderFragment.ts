@@ -170,10 +170,6 @@ export interface OrderFragment {
    */
   payment: OrderFragmentPayment;
   /**
-   * paid
-   */
-  paid: boolean;
-  /**
    * Order status
    */
   status: string;

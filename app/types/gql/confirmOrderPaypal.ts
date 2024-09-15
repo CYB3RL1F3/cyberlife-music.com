@@ -172,10 +172,6 @@ export interface ConfirmOrderPaypalConfirmOrderPaypal {
    */
   payment: ConfirmOrderPaypalConfirmOrderPaypalPayment;
   /**
-   * paid
-   */
-  paid: boolean;
-  /**
    * Order status
    */
   status: string;

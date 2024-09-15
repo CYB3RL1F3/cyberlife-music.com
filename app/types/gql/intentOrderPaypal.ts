@@ -172,10 +172,6 @@ export interface IntentOrderPaypalIntentOrderPaypalOrder {
    */
   payment: IntentOrderPaypalIntentOrderPaypalOrderPayment;
   /**
-   * paid
-   */
-  paid: boolean;
-  /**
    * Order status
    */
   status: string;

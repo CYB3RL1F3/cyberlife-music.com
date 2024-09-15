@@ -12,15 +12,15 @@ export type CartItem = Omit<CartItemFragment, "__typename"> & {
 };
 
 export const useCart = () => {
-  const cart = useLiveQuery(async () => {
+  const [cart, loaded] = useLiveQuery(async () => {
     try {
         const cart = await db.cart.get("cart");
-        return cart;
+        return [cart, true] as const;
     } catch(e) {
         console.log(e);
-        return null
+        return [null, true] as const;
     }
-  });
+  }, [], [null, false]);
 
   const updateCart = (values: Partial<Cart>) => {
     if (!cart) {
@@ -150,6 +150,7 @@ export const useCart = () => {
   }, [cart?.consent, cart?.checkout, cart?.confirmedCheckout]);
 
   return {
+    loaded,
     items: cart?.items || [],
     consent: cart?.consent,
     consentCart,

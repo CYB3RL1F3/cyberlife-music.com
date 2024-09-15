@@ -54,7 +54,7 @@ const FormCheckout = ({
   items,
   onSubmit,
   footer,
-  defaultValues = initialValues,
+  defaultValues,
 }: FormCheckoutProps) => {
   const {
     control,
@@ -64,12 +64,13 @@ const FormCheckout = ({
     setValue,
     formState: { isSubmitted, errors, isValid, ...formState },
   } = useForm<FormCheckoutValues>({
-    defaultValues,
+    defaultValues: {
+      ...initialValues,
+      ...defaultValues,
+    },
     reValidateMode: 'onChange',
     resolver: superstructResolver(formCheckoutSchema),
   });
-
-  console.log('ERRORS ===> ', errors);
 
   const transition = useFluidTransition();
   useMobileVibration(isSubmitted && !isValid);
