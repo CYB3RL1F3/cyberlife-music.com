@@ -14,10 +14,6 @@ export interface DownloadOrderTracksDownloadOrderTracksDownloadsRelease {
    */
   slug: string | null;
   /**
-   * Release ID
-   */
-  id: string | null;
-  /**
    * Release title
    */
   title: string | null;

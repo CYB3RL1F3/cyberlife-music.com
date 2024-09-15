@@ -78,7 +78,8 @@ const FormCheckoutFooter = ({
             )
           }
         >
-          Purchase the order
+          <span className="lg:hidden">Purchase</span>
+          <span className="max-lg:hidden">Purchase the order</span>
         </Button>
       </div>
     </div>

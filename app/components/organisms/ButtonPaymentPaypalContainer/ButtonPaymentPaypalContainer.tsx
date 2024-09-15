@@ -9,6 +9,7 @@ import { useConfirmOrderPaypalMutation } from '~/hooks/mutations/useConfirmOrder
 import ButtonPaymentPaypal from '../ButtonPaymentPaypal/ButtonPaymentPaypal';
 import { Link } from '@remix-run/react';
 import ClientOnly from '~/components/atoms/ClientOnly';
+import { useCancelOrderMutation } from '~/hooks/mutations/useCancelOrderPaypalMutation';
 
 export type PaypalApproveParameters = {
   orderId: string;
@@ -22,6 +23,7 @@ const ButtonPaymentPaypalContainer = ({
   const { data } = useReleasesQuery();
   const [intentOrder] = useIntentOrderPaypalMutation();
   const [confirmOrder] = useConfirmOrderPaypalMutation();
+  const [cancelOrder] = useCancelOrderMutation();
   const currentOrderId = useRef<string | null>(null);
 
   const handleOrder = async () => {
@@ -77,11 +79,17 @@ const ButtonPaymentPaypalContainer = ({
     onPaymentSuccess();
   };
 
-  const handleError: PayPalButtonsComponentProps['onError'] = (error) => {
+  const handleError: PayPalButtonsComponentProps['onError'] = async (error) => {
     toast.error(
       'An error occurred while trying to pay. Please try again later.',
     );
     console.error(error);
+    if (!currentOrderId.current) return;
+    try {
+      await cancelOrder(currentOrderId.current);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   if (!data?.releaseItems) return null;

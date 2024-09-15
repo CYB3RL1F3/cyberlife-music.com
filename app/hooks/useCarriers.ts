@@ -38,7 +38,7 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
     if (prices?.colissimoPrice) {
       value.push({
         id: 'colissimo',
-        label: `La Poste (Colissimo) +${prices.colissimoPrice}€ fee`,
+        label: `La Poste (Colissimo) +${prices.colissimoPrice} € fee`,
         value: {
           carrier: 'laposte',
           price: prices.colissimoPrice,
@@ -48,7 +48,7 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
     if (prices?.upsPrice) {
       value.push({
         id: 'ups',
-        label: `UPS +${prices.upsPrice}€ fee`,
+        label: `UPS +${prices.upsPrice} € fee`,
         value: {
           carrier: 'ups',
           price: prices.upsPrice,

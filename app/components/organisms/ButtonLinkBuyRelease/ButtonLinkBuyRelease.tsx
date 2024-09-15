@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import ButtonLink from "~/components/atoms/ButtonLink";
-import Icon from "~/components/atoms/Icon";
-import { FaCartShopping } from "react-icons/fa6";
-import { useCart } from "~/hooks/db/useCart";
+import { motion } from 'framer-motion';
+import ButtonLink from '~/components/atoms/ButtonLink';
+import Icon from '~/components/atoms/Icon';
+import { FaCartShopping } from 'react-icons/fa6';
+import { useCart } from '~/hooks/db/useCart';
 
 const ButtonLinkBuyRelease = () => {
   const { amount, items } = useCart();
@@ -11,13 +11,12 @@ const ButtonLinkBuyRelease = () => {
     <motion.div
       className="flex justify-end w-full"
       animate={{
-        opacity: amount > 0 ? 1 : 0
+        opacity: amount > 0 ? 1 : 0,
       }}
     >
       <ButtonLink href="/checkout" className="flex gap-2 px-2 w-fit">
         <span className="text-white">
-          {items.length} item{(items.length) > 1 ? "s" : ""} in cart{" "}-{" "}
-          {amount}€
+          {items.length} item{items.length > 1 ? 's' : ''} in cart - {amount} €
         </span>
         <Icon size={16} icon={<FaCartShopping className="text-white" />} />
       </ButtonLink>

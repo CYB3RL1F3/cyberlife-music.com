@@ -172,7 +172,10 @@ const FormCheckout = ({
 
   return (
     <form onSubmit={submit} className="w-full md:w-[40vw] o-4">
-      <motion.div {...transition(0.1)} className="flex w-full gap-4">
+      <motion.div
+        {...transition(0.1)}
+        className="flex w-full gap-4 max-lg:flex-col"
+      >
         <ControlledFieldInput
           control={control}
           name="firstName"
@@ -207,8 +210,11 @@ const FormCheckout = ({
           filterable
         />
       </motion.div>
-      <motion.div {...transition(0.55)} className="flex w-full gap-4">
-        <div className="w-1/3">
+      <motion.div
+        {...transition(0.55)}
+        className="flex w-full gap-4 max-lg:flex-col"
+      >
+        <div className="w-full lg:w-1/3">
           <ControlledFieldInputAutoComplete
             control={control}
             name="zipCode"
@@ -217,7 +223,7 @@ const FormCheckout = ({
             values={suggestedZipCodes}
           />
         </div>
-        <div className="w-2/3">
+        <div className="w-full lg:w-2/3">
           <ControlledFieldInputAutoComplete
             control={control}
             name="city"
@@ -228,7 +234,10 @@ const FormCheckout = ({
         </div>
       </motion.div>
       <br />
-      <motion.div {...transition(0.7)} className="flex w-full gap-2">
+      <motion.div
+        {...transition(0.7)}
+        className="flex w-full gap-4 max-lg:flex-col"
+      >
         <ControlledFieldInput
           control={control}
           name="email"
