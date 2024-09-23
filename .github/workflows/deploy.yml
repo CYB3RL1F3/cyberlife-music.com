@@ -1,0 +1,82 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+    types:
+      - closed
+
+jobs:
+  deploy:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code du dépôt
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Configurer l'agent SSH avec la clé privée
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      # 3. Déployer sur le VPS
+      - name: Deploy to VPS
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
+            echo "Deploy in production environment"
+
+            ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/cyberlife-front'
+
+            rsync -avz --delete \
+              --exclude '.git' \
+              --exclude '.env' \
+              --exclude 'node_modules' \
+              . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/cyberlife-front/
+
+            ssh $VPS_USER@$VPS_IP '
+              set -e
+              if ! command -v pnpm &> /dev/null; then
+                npm install -g pnpm
+              fi &&
+              cd ~/server/cyberlife-front &&
+              pnpm install --frozen-lockfile &&
+              pnpm run build &&
+              cd ~/server/ &&
+              docker-compose restart cyberlife-front
+            '
+
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "Deploy in staging environment"
+
+            ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/cyberlife-staging'
+
+            rsync -avz --delete \
+              --exclude '.git' \
+              --exclude 'node_modules' \
+              --exclude '.env' \
+              . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/cyberlife-staging/
+
+            ssh $VPS_USER@$VPS_IP '
+              set -e
+              if ! command -v pnpm &> /dev/null; then
+                npm install -g pnpm
+              fi &&
+              cd ~/server/cyberlife-staging &&
+              pnpm install --frozen-lockfile &&
+              pnpm run build &&
+              cd ~/server/ &&
+              docker-compose restart cyberlife-staging
+            '
+          fi

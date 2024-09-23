@@ -1,10 +1,10 @@
-import { gql, useMutation } from "@apollo/client";
-import { profile } from "~/config";
-import cancelOrderMutation from "~/gql/mutations/cancelOrderMutation.gql";
+import { gql, useMutation } from '@apollo/client';
+import { profile } from '~/config';
+import cancelOrderMutation from '~/gql/mutations/cancelOrderMutation.gql';
 import type {
   CancelOrder,
-  CancelOrderVariables
-} from "~/types/gql/cancelOrder";
+  CancelOrderVariables,
+} from '~/types/gql/cancelOrder';
 
 const cancelOrderMutationGql = gql`
   ${cancelOrderMutation}
@@ -15,15 +15,15 @@ export const useCancelOrderMutation = () => {
     CancelOrder,
     CancelOrderVariables
   >(cancelOrderMutationGql, {
-    errorPolicy: "all"
+    errorPolicy: 'all',
   });
 
-  const cancelOrder = (orderId: CancelOrderVariables["orderId"]) => {
+  const cancelOrder = (orderId: CancelOrderVariables['orderId']) => {
     return mutation({
       variables: {
         profile,
-        orderId
-      }
+        orderId,
+      },
     });
   };
   return [cancelOrder, mutationResults] as const;
