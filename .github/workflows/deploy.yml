@@ -28,12 +28,29 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
       # 3. Déployer sur le VPS
       - name: Deploy to VPS
         env:
           VPS_IP: ${{ secrets.VPS_IP }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
+          if [ -z "$VPS_USER" ]; then
+            echo "Error: VPS_USER is not set."
+            exit 1
+          else
+            echo "VPS_USER is set."
+          fi
+          if [ -z "$VPS_IP" ]; then
+            echo "Error: VPS_IP is not set."
+            exit 1
+          else
+            echo "VPS_IP is set."
+          fi
           if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             echo "Deploy in production environment"
 
@@ -47,12 +64,6 @@ jobs:
 
             ssh $VPS_USER@$VPS_IP '
               set -e
-              if ! command -v pnpm &> /dev/null; then
-                npm install -g pnpm
-              fi &&
-              cd ~/server/cyberlife-front &&
-              pnpm install --frozen-lockfile &&
-              pnpm run build &&
               cd ~/server/ &&
               docker-compose restart cyberlife-front
             '
@@ -70,12 +81,6 @@ jobs:
 
             ssh $VPS_USER@$VPS_IP '
               set -e
-              if ! command -v pnpm &> /dev/null; then
-                npm install -g pnpm
-              fi &&
-              cd ~/server/cyberlife-staging &&
-              pnpm install --frozen-lockfile &&
-              pnpm run build &&
               cd ~/server/ &&
               docker-compose restart cyberlife-staging
             '
