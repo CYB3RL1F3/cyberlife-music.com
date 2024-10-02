@@ -41,7 +41,7 @@ COPY --from=builder /usr/src/app/public ./public
 RUN pnpm install --prod --frozen-lockfile
 
 # Copier les fichiers de configuration nécessaires
-COPY --from=builder /usr/src/app/remix.config.js ./
+COPY --from=builder /usr/src/app/remix.config.cjs ./
 COPY --from=builder /usr/src/app/remix.env.d.ts ./
 
 ENV PORT=3000
