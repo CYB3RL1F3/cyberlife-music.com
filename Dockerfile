@@ -1,51 +1,35 @@
-# Étape 1 : Build de l'application
-FROM node:21-alpine AS builder
+# Utiliser l'image Node.js 21 basée sur Alpine
+FROM node:21-alpine
 
-ENV NODE_VERSION 21.2.0
+# Définir la version de Node.js
+ENV NODE_VERSION=21.2.0
 
-# Installer PNPM, TypeScript et Remix globalement
-RUN npm install -g pnpm typescript remix
+# Installer PNPM globalement
+RUN npm install -g pnpm@9.11.0 typescript remix
 
 # Définir le répertoire de travail
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copier les fichiers de configuration uniquement
+# Copier les fichiers de configuration
 COPY package.json pnpm-lock.yaml ./
 
-# Installer les dépendances (incluant les devDependencies pour le build)
+# Installer les dépendances (y compris les devDependencies pour le build)
 RUN pnpm install --frozen-lockfile
 
 # Copier le reste des fichiers de l'application
 COPY . .
 
+# Vérifier que entry.worker.ts existe
+RUN ls -la /app/app
+
 # Construire l'application pour la production
 RUN pnpm run build
 
-# Étape 2 : Exécution de l'application
-FROM node:21-alpine
-
-ENV NODE_VERSION 21.2.0
-
-# Installer PNPM globalement
-RUN npm install -g pnpm
-
-# Définir le répertoire de travail
-WORKDIR /usr/src/app
-
-# Copier les fichiers nécessaires depuis l'étape de build
-COPY --from=builder /usr/src/app/package.json /usr/src/app/pnpm-lock.yaml ./
-COPY --from=builder /usr/src/app/build ./build
-COPY --from=builder /usr/src/app/public ./public
-
-# Installer uniquement les dépendances de production
-RUN pnpm install --prod --frozen-lockfile
-
-# Copier les fichiers de configuration nécessaires
-COPY --from=builder /usr/src/app/remix.config.cjs ./
-COPY --from=builder /usr/src/app/remix.env.d.ts ./
-
+# Définir la variable d'environnement PORT
 ENV PORT=3000
 
+# Exposer le port
 EXPOSE $PORT
 
+# Lancer l'application
 CMD ["pnpm", "start"]

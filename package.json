@@ -4,10 +4,10 @@
   "scripts": {
     "build": "pnpm build:css && pnpm build:worker && pnpm build:remix",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/styles.css",
-    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "build:remix": "pnpm remix build",
-    "build:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --minify --bundle --format=esm --define:process.env.NODE_ENV='\"production\"'",
+    "build:worker": "ls -la ./app && esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --minify --bundle --format=esm --define:process.env.NODE_ENV='\"production\"'",
     "dev": "npm-run-all -p dev:*",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "download:schema": "apollo service:download --endpoint=http://localhost:8888/v2/graphql ./graphql-schema.json",
@@ -66,7 +66,7 @@
     "react-map-gl": "^7.1.7",
     "react-player": "^2.16.0",
     "react-toastify": "^10.0.5",
-    "remix": "^2.10.3",
+    "remix": "^2.12.1",
     "remix-auth": "^3.7.0",
     "source-map-support": "^0.5.21",
     "superstruct": "^2.0.2",
@@ -81,10 +81,10 @@
     "typescript": "^5.5.4",
     "web-push": "^3.6.7",
     "xml-js": "^1.6.11",
-    "zen-observable-ts": "^1.1.0"
+    "zen-observable-ts": "^1.1.0",
+    "@remix-run/dev": "^2.12.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.10.3",
     "@remix-run/eslint-config": "^2.10.3",
     "@types/node-persist": "^3.1.8",
     "@types/react": "^18.3.3",
