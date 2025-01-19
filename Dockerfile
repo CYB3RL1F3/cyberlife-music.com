@@ -25,11 +25,5 @@ RUN ls -la /app/app
 # Construire l'application pour la production
 RUN pnpm run build
 
-# Définir la variable d'environnement PORT
-ENV PORT=3000
-
-# Exposer le port
-EXPOSE $PORT
-
 # Lancer l'application
 CMD ["pnpm", "start"]
