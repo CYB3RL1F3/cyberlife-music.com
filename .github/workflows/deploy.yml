@@ -51,37 +51,27 @@ jobs:
           else
             echo "VPS_IP is set."
           fi
+
           if [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
             echo "Deploy in production environment"
-
-            ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/cyberlife-front'
-
-            rsync -avz --delete \
-              --exclude '.git' \
-              --exclude '.env' \
-              --exclude 'node_modules' \
-              . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/cyberlife-front/
-
-            ssh $VPS_USER@$VPS_IP '
-              set -e
-              cd ~/server/ &&
-              docker-compose restart cyberlife-front
-            '
-
+            ENVIRONMENT = prod
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             echo "Deploy in staging environment"
+            ENVIRONMENT = staging
+          end
 
-            ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/cyberlife-staging'
+          ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/${ENVIRONMENT}/cyberlife-front'
 
-            rsync -avz --delete \
-              --exclude '.git' \
-              --exclude 'node_modules' \
-              --exclude '.env' \
-              . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/cyberlife-staging/
+          rsync -avz --delete \
+            --exclude '.git' \
+            --exclude '.env' \
+            --exclude 'node_modules' \
+            . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/${ENVIRONMENT}/cyberlife-front/
 
-            ssh $VPS_USER@$VPS_IP '
-              set -e
-              cd ~/server/ &&
-              docker-compose restart cyberlife-staging
-            '
-          fi
+          ssh $VPS_USER@$VPS_IP '
+            set -e
+            cd ~/server/${ENVIRONMENT}/cyberlife-front
+            docker-compose down 
+            docker-compose pull 
+            docker-compose up -d --build
+          '
