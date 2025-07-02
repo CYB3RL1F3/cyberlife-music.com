@@ -20,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Récupérer le code du dépôt
+      # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Configurer l'agent SSH avec la clé privée
+      # 2. Setup SSH agent
       - name: Setup SSH agent
         uses: webfactory/ssh-agent@v0.5.4
         with:
@@ -35,7 +35,7 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
 
-      # 3. Déployer sur le VPS
+      # 3. Deploy to VPS
       - name: Deploy to VPS
         env:
           VPS_IP: ${{ secrets.VPS_IP }}
@@ -47,6 +47,7 @@ jobs:
           else
             echo "VPS_USER is set."
           fi
+
           if [ -z "$VPS_IP" ]; then
             echo "Error: VPS_IP is not set."
             exit 1
@@ -54,15 +55,18 @@ jobs:
             echo "VPS_IP is set."
           fi
 
-          if [[ "${{ github.ref }}" =~ ^refs/heads/(master|prod)$ ]]; then
-            ENVIRONMENT = prod
-          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
-            ENVIRONMENT = staging
-          end
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            ENVIRONMENT=staging
+          else
+            echo "No matching branch found. Exiting."
+            exit 1
+          fi
 
           echo "Deploying frontend to environment: $ENVIRONMENT"
 
-          ssh $VPS_USER@$VPS_IP 'mkdir -p ~/server/${ENVIRONMENT}/cyberlife-front'
+          ssh $VPS_USER@$VPS_IP "mkdir -p ~/server/${ENVIRONMENT}/cyberlife-front"
 
           rsync -avz --delete \
             --exclude '.git' \
@@ -72,51 +76,44 @@ jobs:
 
           echo "Files synchronized to VPS successfully."
 
-      # 4.Build and push the Docker image
+      # 4. Build and push the Docker image
       - name: Build and push image
         env:
           VPS_IP: ${{ secrets.VPS_IP }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
-          echo "Deploying frontend to environment: $ENVIRONMENT"
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            ENVIRONMENT=staging
+          else
+            echo "No matching branch found. Exiting."
+            exit 1
+          fi
 
-          
-          env:
-            VPS_IP: ${{ secrets.VPS_IP }}
-            VPS_USER: ${{ secrets.VPS_USER }}
-          run: |
-            if [[ "${{ github.ref }}" =~ ^refs/heads/(master|prod)$ ]]; then
-              ENVIRONMENT=prod
-            elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
-              ENVIRONMENT=staging
-            else
-              echo "No matching branch found. Exiting."
-              exit 1
-            fi
+          echo "Rebuilding Docker containers for ${ENVIRONMENT} environment..."
 
-            echo "Rebuilding Docker containers for ${ENVIRONMENT} environment..."
+          ssh $VPS_USER@$VPS_IP "\
+            set -e && \
+            export ENVIRONMENT=${ENVIRONMENT} && \
+            cd ~/server/\$ENVIRONMENT/cyberlife-front && \
+            echo 'Stopping Docker containers...' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} stop || echo 'Container already stopped.' && \
+            echo 'Building and starting containers...' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} up -d --build app
+          "
 
-            ssh $VPS_USER@$VPS_IP "\
-              set -e && \
-              export ENVIRONMENT=${ENVIRONMENT} && \
-              cd ~/server/\$ENVIRONMENT/cyberlife-front && \
-              echo 'Stopping Docker containers...' && \
-              env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} stop || echo 'Container already stopped.' && \
-              echo 'Building and starting containers...' && \
-              env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} up -d --build app
-            "
-    
       # 5. Healthcheck for the frontend
       - name: HTTP healthcheck (local)
         env:
-            VPS_IP: ${{ secrets.VPS_IP }}
-            VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
         shell: bash
         run: |
-          if [[ "${{ github.ref }}" =~ ^refs/heads/(master|prod)$ ]]; then
-            export ENVIRONMENT="prod"
-          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
-            export ENVIRONMENT="staging"
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            ENVIRONMENT=staging
           else
             echo "No matching branch found. Exiting."
             exit 1
