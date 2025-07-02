@@ -56,9 +56,9 @@ jobs:
           fi
 
           if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
-            ENVIRONMENT=prod
+            export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
-            ENVIRONMENT=staging
+            export ENVIRONMENT=staging
           else
             echo "No matching branch found. Exiting."
             exit 1
@@ -83,9 +83,9 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
           if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
-            ENVIRONMENT=prod
+            export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
-            ENVIRONMENT=staging
+            export ENVIRONMENT=staging
           else
             echo "No matching branch found. Exiting."
             exit 1
@@ -111,9 +111,9 @@ jobs:
         shell: bash
         run: |
           if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
-            ENVIRONMENT=prod
+            export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
-            ENVIRONMENT=staging
+            export ENVIRONMENT=staging
           else
             echo "No matching branch found. Exiting."
             exit 1
