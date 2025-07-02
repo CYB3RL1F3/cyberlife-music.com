@@ -6,7 +6,17 @@ services:
     restart: always
     build: 
       context: ./
+      dockerfile: Dockerfile
+    container_name: cyberlife-front-${ENVIRONMENT}
     env_file: 
-      - ./.env
+      - .env
+    mem_limit: 1g
+    memswap_limit: 2g
+    mem_reservation: 512m
+    mem_swappiness: 20
+    volumes:
+      - cache:/app/.cache
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
 
   
