@@ -17,6 +17,6 @@ services:
     volumes:
       - cache:/app/.cache
     ports:
-      - "${FRONT_PORT}:${FRONT_PORT}"
+      - "${PORT}:${PORT}"
 
   

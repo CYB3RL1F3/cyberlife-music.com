@@ -123,8 +123,8 @@ jobs:
           ssh $VPS_USER@$VPS_IP "\
             set -e && \
             export ENVIRONMENT=${ENVIRONMENT} && \
-            export FRONT_PORT=\$(grep -E '^FRONT_PORT=' ~/server/${ENVIRONMENT}/cyberlife-front/.env | cut -d '=' -f2) && \
-            FRONT_URL=\"http://127.0.0.1:\${FRONT_PORT}\" && \
+            export PORT=\$(grep -E '^PORT=' ~/server/${ENVIRONMENT}/cyberlife-front/.env | cut -d '=' -f2) && \
+            FRONT_URL=\"http://127.0.0.1:\${PORT}\" && \
             echo 'Checking if frontend is up locally at' \$FRONT_URL... && \
             sleep 10 && \
             for i in {1..10}; do \
