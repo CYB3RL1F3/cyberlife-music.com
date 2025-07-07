@@ -15,7 +15,7 @@
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",
     "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql",
-    "start": "pnpm build && cross-env NODE_ENV=production pnpm remix-serve build/index.js"
+    "start": "cross-env NODE_ENV=production pnpm remix-serve build/index.js"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",

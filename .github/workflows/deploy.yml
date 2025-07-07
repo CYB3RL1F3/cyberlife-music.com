@@ -99,6 +99,7 @@ jobs:
             cd ~/server/\$ENVIRONMENT/cyberlife-front && \
             echo 'Stopping Docker containers...' && \
             env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} stop || echo 'Container already stopped.' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} rm -f app || echo 'Container already deleted.' && \
             echo 'Building and starting containers...' && \
             env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} up -d --build app
           "

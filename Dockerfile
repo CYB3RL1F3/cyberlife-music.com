@@ -5,7 +5,7 @@ FROM node:21-alpine
 ENV NODE_VERSION=21.2.0
 
 # Installer PNPM globalement
-RUN npm install -g pnpm@9.11.0 typescript remix
+RUN npm install -g pnpm@9.11.0 typescript remix pm2
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -26,4 +26,4 @@ RUN ls -la /app/app
 RUN pnpm run build
 
 # Lancer l'application
-CMD ["pnpm", "start"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
