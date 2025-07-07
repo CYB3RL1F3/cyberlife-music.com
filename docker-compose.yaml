@@ -1,6 +1,9 @@
 version: "3.9"
 volumes:
   cache:
+networks:
+  vps_network:
+    driver: bridge
 services:
   app:
     restart: always
@@ -8,6 +11,8 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: cyberlife-front-${ENVIRONMENT}
+    networks:
+      - vps_network
     env_file: 
       - .env
     mem_limit: 1g
