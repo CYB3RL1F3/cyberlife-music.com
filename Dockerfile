@@ -43,7 +43,4 @@ COPY --from=builder /app/app/styles ./app/styles
 COPY --from=builder /app/ecosystem.config.js ./
 COPY --from=builder /app/.env .env
 
-COPY --from=builder /app/scripts/docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-
 CMD ["pm2-runtime", "ecosystem.config.js"]
