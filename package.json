@@ -2,6 +2,7 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
+    "start": "cross-env NODE_ENV=production pnpm remix-serve build/index.js",
     "build": "pnpm build:css && pnpm build:worker && pnpm build:remix",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/styles.css",
     "build:remix": "pnpm remix build",
@@ -14,8 +15,7 @@
     "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",
-    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql",
-    "start": "cross-env NODE_ENV=production pnpm remix-serve build/index.js"
+    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",

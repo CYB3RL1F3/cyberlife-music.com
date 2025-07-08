@@ -1,29 +1,49 @@
-# Utiliser l'image Node.js 21 basée sur Alpine
-FROM node:21-alpine
+# ======================================
+# STAGE 1: Build
+# ======================================
+FROM node:21-alpine AS builder
 
-# Définir la version de Node.js
 ENV NODE_VERSION=21.2.0
 
-# Installer PNPM globalement
-RUN npm install -g pnpm@9.11.0 typescript remix pm2
+RUN npm install -g pnpm@9.11.0 typescript remix tailwindcss esbuild cross-env npm-run-all
 
-# Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de configuration
 COPY package.json pnpm-lock.yaml ./
 
-# Installer les dépendances (y compris les devDependencies pour le build)
 RUN pnpm install --frozen-lockfile
 
-# Copier le reste des fichiers de l'application
 COPY . .
 
-# Vérifier que entry.worker.ts existe
-RUN ls -la /app/app
+RUN ls -la ./app
 
-# Construire l'application pour la production
 RUN pnpm run build
 
-# Lancer l'application
+# ======================================
+# STAGE 2: Production
+# ======================================
+FROM node:21-alpine AS production
+
+ENV NODE_ENV=production
+
+RUN npm install -g pnpm@9.11.0 pm2
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
+RUN pnpm prune --prod
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/app/styles ./app/styles
+
+COPY --from=builder /app/ecosystem.config.js ./
+COPY --from=builder /app/.env .env
+
+COPY --from=builder /app/scripts/docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 CMD ["pm2-runtime", "ecosystem.config.js"]
