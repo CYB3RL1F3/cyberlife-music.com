@@ -19,6 +19,10 @@ export interface CarrierPricesCarrierPrices {
    * Carrier collissimo price
    */
   colissimoPrice: number;
+  /**
+   * Carrier Mondial Relay price
+   */
+  mondialRelayPrice: number | null;
 }
 
 export interface CarrierPrices {
@@ -26,6 +30,7 @@ export interface CarrierPrices {
 }
 
 export interface CarrierPricesVariables {
+  profile: string;
   country: string;
   items: CartItemInput[];
 }

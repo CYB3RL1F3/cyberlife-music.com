@@ -160,6 +160,7 @@ export interface ReleaseDtoInput {
   tracklist?: ReleaseTrackDto[] | null;
   notes?: string | null;
   discogs?: string | null;
+  bandcamp?: string | null;
   country?: string | null;
   styles?: string[] | null;
   stats?: DiscogsStatsDto | null;

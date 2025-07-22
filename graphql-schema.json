@@ -1403,6 +1403,18 @@
             "deprecationReason": null
           },
           {
+            "name": "bandcamp",
+            "description": "Release bandcamp",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "country",
             "description": "Release country",
             "args": [],
@@ -1705,6 +1717,18 @@
           {
             "name": "discogs",
             "description": "Release discogs",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bandcamp",
+            "description": "Release bandcamp",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -2029,6 +2053,18 @@
           {
             "name": "discogs",
             "description": "Release discogs",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bandcamp",
+            "description": "Release bandcamp",
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -4759,6 +4795,18 @@
             "deprecationReason": null
           },
           {
+            "name": "weight",
+            "description": "Item weight",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "itemRef",
             "description": "Item ID",
             "args": [],
@@ -5225,6 +5273,18 @@
                 "name": "Float",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mondialRelayPrice",
+            "description": "Carrier Mondial Relay price",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -6763,6 +6823,18 @@
             "deprecationReason": null
           },
           {
+            "name": "bandcamp",
+            "description": "Release bandcamp",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "country",
             "description": "Release country",
             "type": {
@@ -7065,6 +7137,18 @@
           {
             "name": "discogs",
             "description": "Release discogs",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "bandcamp",
+            "description": "Release bandcamp",
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -8783,6 +8867,18 @@
             "deprecationReason": null
           },
           {
+            "name": "weight",
+            "description": "Item weight",
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "itemRef",
             "description": "Item ID",
             "type": {
@@ -9001,6 +9097,22 @@
             "name": "carrierPrices",
             "description": null,
             "args": [
+              {
+                "name": "profile",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
               {
                 "name": "country",
                 "description": null,

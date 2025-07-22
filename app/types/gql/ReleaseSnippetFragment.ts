@@ -58,6 +58,10 @@ export interface ReleaseSnippetFragment {
    */
   discogs: string | null;
   /**
+   * Release bandcamp
+   */
+  bandcamp: string | null;
+  /**
    * Release notes
    */
   notes: string | null;

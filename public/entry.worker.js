@@ -1,4 +1,4 @@
-// node_modules/.pnpm/@remix-run+router@1.18.0/node_modules/@remix-run/router/dist/router.js
+// node_modules/.pnpm/@remix-run+router@1.23.0/node_modules/@remix-run/router/dist/router.js
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function(target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -47,7 +47,7 @@ var validRequestMethodsArr = ["get", ...validMutationMethodsArr];
 var validRequestMethods = new Set(validRequestMethodsArr);
 var UNSAFE_DEFERRED_SYMBOL = Symbol("deferred");
 
-// node_modules/.pnpm/@remix-run+server-runtime@2.10.3_typescript@5.5.4/node_modules/@remix-run/server-runtime/dist/esm/responses.js
+// node_modules/.pnpm/@remix-run+server-runtime@2.16.8_typescript@5.8.3/node_modules/@remix-run/server-runtime/dist/esm/responses.js
 var json3 = (data, init = {}) => {
   return json(data, init);
 };
@@ -242,7 +242,7 @@ async function appHandleFetch(event, {
 
 @remix-run/router/dist/router.js:
   (**
-   * @remix-run/router v1.18.0
+   * @remix-run/router v1.23.0
    *
    * Copyright (c) Remix Software Inc.
    *
@@ -254,7 +254,7 @@ async function appHandleFetch(event, {
 
 @remix-run/server-runtime/dist/esm/responses.js:
   (**
-   * @remix-run/server-runtime v2.10.3
+   * @remix-run/server-runtime v2.16.8
    *
    * Copyright (c) Remix Software Inc.
    *
@@ -266,7 +266,7 @@ async function appHandleFetch(event, {
 
 @remix-run/server-runtime/dist/esm/index.js:
   (**
-   * @remix-run/server-runtime v2.10.3
+   * @remix-run/server-runtime v2.16.8
    *
    * Copyright (c) Remix Software Inc.
    *

@@ -357,6 +357,13 @@ const FormCheckout = ({
       </motion.div>
 
       <motion.div {...transition(0.95)} className="flex w-full gap-2">
+        <ControlledFieldInput
+          autoComplete="off"
+          autoCorrect="off"
+          control={control}
+          name="amount"
+          type="hidden"
+        />
         {footer?.(
           { isSubmitted, isValid, errors, ...formState },
           values,

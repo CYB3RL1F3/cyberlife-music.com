@@ -18,7 +18,7 @@ const FormOrderDownloadConfirm = ({
     defaultValues: {
       email: defaultValues?.email || '',
     },
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
     mode: 'onChange',
     resolver: superstructResolver(formOrderDownloadConfirmSchema),
   });
@@ -36,6 +36,13 @@ const FormOrderDownloadConfirm = ({
           name="email"
           type="email"
           placeholder="Your email"
+        />
+        <ControlledFieldInput
+          autoComplete="off"
+          autoCorrect="off"
+          control={control}
+          name="address"
+          type="hidden"
         />
       </motion.div>
       <motion.div {...transition(0.3)} className="w-full">

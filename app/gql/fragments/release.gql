@@ -1,5 +1,17 @@
 fragment ReleaseFragment on ReleaseDtoOutput {
-  ...ReleaseSnippetFragment
+ _id
+  slug
+  title
+  releaseDate
+  role
+  year
+  thumb
+  label
+  tracklist {
+    title
+  }
+  discogs
+  bandcamp
   notes
   cat
   format

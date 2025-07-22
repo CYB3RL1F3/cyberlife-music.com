@@ -1,22 +1,24 @@
-import { useQuery } from "@apollo/client";
+import { useQuery } from '@apollo/client';
 import type {
   CarrierPrices,
-  CarrierPricesVariables
-} from "~/types/gql/CarrierPrices";
-import { carrierPricesGqlQuery } from "~/queries/carrierPrices";
+  CarrierPricesVariables,
+} from '~/types/gql/CarrierPrices';
+import { carrierPricesGqlQuery } from '~/queries/carrierPrices';
+import { profile } from '~/config';
 
 export const useCarrierPricesQuery = (
-  country: CarrierPricesVariables["country"],
-  items: CarrierPricesVariables["items"]
+  country: CarrierPricesVariables['country'],
+  items: CarrierPricesVariables['items'],
 ) => {
   return useQuery<CarrierPrices, CarrierPricesVariables>(
     carrierPricesGqlQuery,
     {
       variables: {
         country,
-        items
+        items,
+        profile,
       },
-      skip: !items.length || !country
-    }
+      skip: !items.length || !country,
+    },
   );
 };

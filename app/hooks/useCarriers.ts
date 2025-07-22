@@ -14,21 +14,28 @@ export type Carrier = {
 export const useCarrierPrices = (country: string, items: CartItem[]) => {
   const { data } = useReleasesQuery();
 
-  const getProduct = (item: CartItem, releaseItems: ReleasesQueryReleaseItems[]): ReleaseDtoInput => {
+  const getProduct = (
+    item: CartItem,
+    releaseItems: ReleasesQueryReleaseItems[],
+  ): ReleaseDtoInput => {
     const value = releaseItems.find(
       (releaseItem) => releaseItem.id === item.id,
     )?.release!;
+
     const { _id, __typename, ...release } = value;
     return release;
-  }
+  };
 
-  const cartItems: CarrierPricesVariables["items"] = data?.releaseItems && items ? items.map((item) => ({
-    amount: item.amount,
-    quantity: item.quantity,
-    productId: item.productId,
-    id: item.id,
-    product: getProduct(item, data.releaseItems)
-  })) : [];
+  const cartItems: CarrierPricesVariables['items'] =
+    data?.releaseItems && items
+      ? items.map((item) => ({
+          amount: item.amount,
+          quantity: item.quantity,
+          productId: item.productId,
+          id: item.id,
+          product: getProduct(item, data.releaseItems),
+        }))
+      : [];
 
   const carriers = useCarrierPricesQuery(country, cartItems);
 
@@ -42,9 +49,10 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
         value: {
           carrier: 'laposte',
           price: prices.colissimoPrice,
-        }
+        },
       });
     }
+
     if (prices?.upsPrice) {
       value.push({
         id: 'ups',
@@ -52,9 +60,21 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
         value: {
           carrier: 'ups',
           price: prices.upsPrice,
-        }
+        },
       });
     }
+
+    if (prices?.mondialRelayPrice) {
+      value.push({
+        id: 'mondialRelay',
+        label: `Mondial Relay +${prices.mondialRelayPrice} € fee`,
+        value: {
+          carrier: 'mondial_relay',
+          price: prices.mondialRelayPrice,
+        },
+      });
+    }
+
     if (value.length) {
       value.push({
         id: 'pickup',
@@ -62,9 +82,10 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
         value: {
           carrier: 'pickup',
           price: 0,
-        }
+        },
       });
     }
+
     return value;
   }, [carriers.data]);
 

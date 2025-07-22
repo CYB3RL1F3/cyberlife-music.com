@@ -11,6 +11,7 @@ fragment ReleaseSnippetFragment on ReleaseDtoOutput {
     title
   }
   discogs
+  bandcamp
   notes
 }
 

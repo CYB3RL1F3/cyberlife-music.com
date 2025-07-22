@@ -1,19 +1,19 @@
-import clsx from "clsx";
-import type { InlineListItemProps } from "./InlineListItem.types";
+import clsx from 'clsx';
+import type { InlineListItemProps } from './InlineListItem.types';
 
 const InlineListItem = ({
   children,
   className,
-  index
+  index,
 }: InlineListItemProps) => {
   return (
     <li
       className={clsx(
+        'inline-flex',
         {
-          "inline-flex before:content-['-'] before:w-4 before:text-center":
-            index > 0
+          "before:content-['-'] before:w-4 before:text-center": index > 0,
         },
-        className
+        className,
       )}
     >
       {children}

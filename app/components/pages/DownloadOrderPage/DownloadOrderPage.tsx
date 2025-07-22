@@ -44,7 +44,7 @@ const DownloadOrderPage = ({ id, token }: DownloadOrderPageProps) => {
       <div className="flex flex-col items-end justify-end w-full">
         <FormHeading
           title="Download your audio files!"
-          description={<>Download the audio files of your order.</>}
+          description={<>Get the digital wav files of your order.</>}
         />
         <div className="flex justify-end w-full">
           {!values && !error && (

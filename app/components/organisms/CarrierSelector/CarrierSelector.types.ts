@@ -1,12 +1,11 @@
-import { NonUndefined } from "react-hook-form";
-import { CartItem } from "~/hooks/db/useCart";
-import { Carrier } from "~/hooks/useCarriers";
+import type { ReactNode } from 'react';
+import { CartItem } from '~/hooks/db/useCart';
+import { Carrier } from '~/hooks/useCarriers';
 
-  export type CarrierSelectorProps = {
-    country: string;
-    items: CartItem[];
-    label?: string;
-    value?: Carrier;
-    onChange: (value: CarrierSelectorProps['value']) => void;
-  }
-  
+export type CarrierSelectorProps = {
+  country: string;
+  items: CartItem[];
+  label?: ReactNode;
+  value?: Carrier;
+  onChange: (value: CarrierSelectorProps['value']) => void;
+};

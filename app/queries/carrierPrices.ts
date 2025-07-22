@@ -1,16 +1,26 @@
-import { gql } from "@apollo/client";
-import { profile } from "~/config";
-import carrierPricesQuery from "~/gql/queries/carrierPrices.gql";
-import type { EventQuery, EventQueryVariables } from "~/types/gql/EventQuery";
-import { runQuery } from "~/utils/graphql";
+import { gql } from '@apollo/client';
+import { profile } from '~/config';
+import carrierPricesQuery from '~/gql/queries/carrierPrices.gql';
+import type {
+  CarrierPrices,
+  CarrierPricesVariables,
+} from '~/types/gql/CarrierPrices';
+import { runQuery } from '~/utils/graphql';
 
 export const carrierPricesGqlQuery = gql`
   ${carrierPricesQuery}
 `;
 
-export const runEventQuery = (id: string) => {
-  return runQuery<EventQuery, EventQueryVariables>(carrierPricesGqlQuery, {
-    profile,
-    id
-  });
+export const runCarrierPricesQuery = (
+  country: CarrierPricesVariables['country'],
+  items: CarrierPricesVariables['items'],
+) => {
+  return runQuery<CarrierPrices, CarrierPricesVariables>(
+    carrierPricesGqlQuery,
+    {
+      country,
+      items,
+      profile,
+    },
+  );
 };

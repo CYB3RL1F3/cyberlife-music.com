@@ -6,6 +6,7 @@ import type { Routes } from '~/routes/routes';
 import { useState } from 'react';
 import ButtonMenu from '~/components/molecules/ButtonMenu';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useFeatureFlagQuery } from '~/hooks/queries/useFeatureFlagQuery';
 
 const items: LinkNavItemProps[] = [
   {
@@ -41,6 +42,19 @@ const Header = () => {
   const toggle = () => setOpen((open) => !open);
   const close = () => setOpen(false);
 
+  const { data } = useFeatureFlagQuery('purchase');
+
+  const filteredRoutes = data?.featureFlag?.isActive
+    ? routes
+    : routes.filter((route) => route !== '/checkout');
+
+  const filteredItems = items.filter((item) => {
+    if (item.href === '/checkout') {
+      return data?.featureFlag?.isActive;
+    }
+    return true;
+  });
+
   return (
     <AnimatePresence>
       <motion.header
@@ -68,8 +82,8 @@ const Header = () => {
         </h1>
         <Nav
           isOpen={isOpen}
-          routes={routes}
-          children={<LinkNavItemList onChange={close} items={items} />}
+          routes={filteredRoutes}
+          children={<LinkNavItemList onChange={close} items={filteredItems} />}
         />
       </motion.header>
     </AnimatePresence>
