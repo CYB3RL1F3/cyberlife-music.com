@@ -1,9 +1,9 @@
-import LinkIcon from "~/components/atoms/LinkIcon/LinkIcon";
-import type { ListLinkIconsProps } from "./ListLinkIcons.types";
+import LinkIcon from '~/components/atoms/LinkIcon/LinkIcon';
+import type { ListLinkIconsProps } from './ListLinkIcons.types';
 
 const ListLinkIcons = ({ linkIcons }: ListLinkIconsProps) => {
   return (
-    <div className="flex justify-end gap-1">
+    <div className="flex items-center justify-end h-6 gap-2">
       {linkIcons.map((iconLink) => (
         <LinkIcon key={iconLink.id} {...iconLink} />
       ))}

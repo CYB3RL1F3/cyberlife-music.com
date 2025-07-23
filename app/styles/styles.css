@@ -631,6 +631,14 @@ video {
   top: 100%;
 }
 
+.top-12 {
+  top: 3rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -911,6 +919,10 @@ video {
   max-height: 100%;
 }
 
+.max-h-72 {
+  max-height: 18rem;
+}
+
 .min-h-12 {
   min-height: 3rem;
 }
@@ -921,6 +933,14 @@ video {
 
 .min-h-\[6rem\] {
   min-height: 6rem;
+}
+
+.min-h-24 {
+  min-height: 6rem;
+}
+
+.min-h-8 {
+  min-height: 2rem;
 }
 
 .w-0 {
@@ -1250,6 +1270,10 @@ video {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .overflow-y-scroll {

@@ -30,7 +30,7 @@ const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
   if (discogs) {
     linkIcons.push({
       icon: (
-        <ImgIcon size={15} icon={DiscogsIcon} alt="Discogs Icon" isInverted />
+        <ImgIcon size={14} icon={DiscogsIcon} alt="Discogs Icon" isInverted />
       ),
       url: discogs,
       id: `discogs__${_id}`,

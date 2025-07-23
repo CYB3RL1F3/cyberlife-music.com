@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export type DropdownItemProps<T> = {
   children: ReactNode;
@@ -17,8 +17,8 @@ export type DropdownItemsProps<T> = {
   render: (
     item: T,
     selected: boolean,
-    value: DropdownItemsProps<T>["value"],
-    index: number
+    value: DropdownItemsProps<T>['value'],
+    index: number,
   ) => React.ReactNode;
 };
 
@@ -28,22 +28,24 @@ export type DropdownWrapperProps = {
   isOpen?: boolean;
   disabled?: boolean;
   handleClickOutside?: boolean;
-  position?: "top" | "bottom";
+  position?: 'top' | 'bottom';
   onToggle?: () => void;
+  extra?: ReactNode;
   dropdownButton?: (
     isOpen: boolean,
     toggle?: () => void,
     label?: ReactNode,
-    disabled?: boolean
+    disabled?: boolean,
   ) => ReactNode;
 };
 
 export type DropdownProps<T> = Omit<
   DropdownItemsProps<T> & DropdownWrapperProps,
-  "children" | "onToggle"
+  'children' | 'onToggle'
 > & {
   closeOnSelect?: boolean;
   filterable?: boolean;
+
   useFilter?: (value: string) => T[];
   filterPlaceholder?: string;
 };

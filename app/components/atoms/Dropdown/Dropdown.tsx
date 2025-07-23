@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import DropdownItems from './DropdownItems';
 import DropdownWrapper from './DropdownWrapper';
 import { DropdownItemsProps, DropdownProps } from './Dropdown.types';
@@ -43,6 +43,20 @@ const Dropdown = <T,>({
 
   console.log('FILTERED ITEMS ==> ', filteredItems, items);
 
+  const extra = useMemo(
+    () =>
+      filterable && useFilter ? (
+        <div className="relative flex items-center justify-center w-full h-12 px-2 mt-2">
+          <Input
+            placeholder={filterPlaceholder}
+            className="w-full text-white bg-gray-600 bg-opacity-50 placeholder-slate-400"
+            onChange={handleFilter}
+          />
+        </div>
+      ) : null,
+    [filterable, useFilter, filterPlaceholder],
+  );
+
   return (
     <Dropdown.Wrapper
       isOpen={isOpen}
@@ -51,14 +65,8 @@ const Dropdown = <T,>({
       disabled={disabled}
       position={position}
       dropdownButton={dropdownButton}
+      extra={extra}
     >
-      {filterable && useFilter && (
-        <Input
-          placeholder={filterPlaceholder}
-          className="px-2 mt-4 text-white bg-gray-500 bg-opacity-100 placeholder-slate-400"
-          onChange={handleFilter}
-        />
-      )}
       <Dropdown.Items
         itemToKey={itemToKey}
         items={filterable && useFilter ? filteredItems : items}
