@@ -1,5 +1,5 @@
 query ReleaseQuery($profile: String!, $id: String!) {
-  release(profile: $profile, id: $id) {
-    ...ReleaseFragment
+  releaseItem(profile: $profile, id: $id) {
+    ...ReleaseItemFragment
   }
 }

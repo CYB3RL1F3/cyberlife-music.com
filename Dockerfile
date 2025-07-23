@@ -1,22 +1,46 @@
-# Filename: Dockerfile
+# ======================================
+# STAGE 1: Build
+# ======================================
+FROM node:21-alpine AS builder
 
-FROM node:21-alpine
+ENV NODE_VERSION=21.2.0
 
-ENV NODE_VERSION 21.2.0
+RUN npm install -g pnpm@9.11.0 typescript remix tailwindcss esbuild cross-env npm-run-all
 
-RUN npm install -g pnpm
-RUN npm install typescript -g
-RUN npm install -g remix
+WORKDIR /app
 
-WORKDIR /usr/src/app
+COPY package.json pnpm-lock.yaml ./
 
-# Installer Remix et PNPM
+RUN pnpm install --frozen-lockfile
+
 COPY . .
 
-RUN pnpm install
+RUN ls -la ./app
 
-ENV PORT=3000
+RUN pnpm run build
 
-EXPOSE $PORT
+# ======================================
+# STAGE 2: Production
+# ======================================
+FROM node:21-alpine AS production
 
-CMD ["pnpm", "start"]
+ENV NODE_ENV=production
+
+RUN npm install -g pnpm@9.11.0 pm2
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
+RUN pnpm prune --prod
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/app/styles ./app/styles
+
+COPY --from=builder /app/ecosystem.config.js ./
+COPY --from=builder /app/.env .env
+
+CMD ["pm2-runtime", "ecosystem.config.js"]

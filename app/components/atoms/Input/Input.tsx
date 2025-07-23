@@ -3,10 +3,11 @@ import { forwardRef } from "react";
 import { useLayoutEffect } from "react";
 import { useInputStyle } from "~/hooks/useInputStyle";
 import type { InputProps } from "./Input.types";
+import { twMerge } from "tailwind-merge";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { value, placeholder, hasError, onChange, onUnfocus = () => {}, ...props },
+    { value, placeholder, hasError, onChange, onUnfocus = () => {}, className: customClassName, ...props },
     ref
   ) => {
     const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -31,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <input
-        className={className}
+        className={twMerge(className, customClassName)}
         value={value}
         placeholder={placeholder}
         onChange={handleChange}

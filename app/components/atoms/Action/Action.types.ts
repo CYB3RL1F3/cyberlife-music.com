@@ -6,4 +6,5 @@ export type ActionProps = {
   onClick: ReactEventHandler<HTMLButtonElement>;
   title?: string;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };

@@ -376,6 +376,9 @@ input:-webkit-autofill:active{
     
 }
 
+.about h1 {
+  @apply pb-4 text-xl font-bold underline;
+}
 
 .about h2 {
   @apply pb-4 text-lg;

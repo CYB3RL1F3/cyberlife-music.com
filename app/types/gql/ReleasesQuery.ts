@@ -7,7 +7,7 @@
 // GraphQL query operation: ReleasesQuery
 // ====================================================
 
-export interface ReleasesQueryReleasesTracklist {
+export interface ReleasesQueryReleaseItemsReleaseTracklist {
   __typename: "ReleaseTrack";
   /**
    * Release's Track title
@@ -15,8 +15,8 @@ export interface ReleasesQueryReleasesTracklist {
   title: string | null;
 }
 
-export interface ReleasesQueryReleases {
-  __typename: "Release";
+export interface ReleasesQueryReleaseItemsRelease {
+  __typename: "ReleaseDtoOutput";
   /**
    * release ID
    */
@@ -32,7 +32,7 @@ export interface ReleasesQueryReleases {
   /**
    * Release date
    */
-  releaseDate: Any | null;
+  releaseDate: any | null;
   /**
    * Release role
    */
@@ -52,21 +52,50 @@ export interface ReleasesQueryReleases {
   /**
    * Release tracklist
    */
-  tracklist: ReleasesQueryReleasesTracklist[] | null;
+  tracklist: ReleasesQueryReleaseItemsReleaseTracklist[] | null;
   /**
    * Release discogs
    */
   discogs: string | null;
+  /**
+   * Release bandcamp
+   */
+  bandcamp: string | null;
   /**
    * Release notes
    */
   notes: string | null;
 }
 
+export interface ReleasesQueryReleaseItems {
+  __typename: "ReleaseItem";
+  /**
+   * Item id
+   */
+  id: string | null;
+  /**
+   * Item name
+   */
+  name: string | null;
+  /**
+   * Item price
+   */
+  price: number | null;
+  /**
+   * Item price
+   */
+  availableQuantity: number | null;
+  /**
+   * Item release
+   */
+  release: ReleasesQueryReleaseItemsRelease | null;
+}
+
 export interface ReleasesQuery {
-  releases: ReleasesQueryReleases[];
+  releaseItems: ReleasesQueryReleaseItems[];
 }
 
 export interface ReleasesQueryVariables {
   profile: string;
+  webshopId: string;
 }

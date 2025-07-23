@@ -1,0 +1,19 @@
+
+
+fragment OrderFragment on Order {
+  cart {
+    ...CartFragment
+  }
+  orderAt
+  updatedAt
+  expedition {
+    ...ExpeditionFragment
+  }
+  query
+  webshopId
+  _id
+  payment {
+    ...PaymentFragment
+  }
+  status
+}

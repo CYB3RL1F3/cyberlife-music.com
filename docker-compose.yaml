@@ -1,12 +1,27 @@
 version: "3.9"
 volumes:
   cache:
+networks:
+  vps_network:
+    driver: bridge
 services:
   app:
     restart: always
     build: 
       context: ./
+      dockerfile: Dockerfile
+    container_name: cyberlife-front-${ENVIRONMENT}
+    networks:
+      - vps_network
     env_file: 
-      - ./.env
+      - .env
+    mem_limit: 1g
+    memswap_limit: 2g
+    mem_reservation: 512m
+    mem_swappiness: 20
+    volumes:
+      - cache:/app/.cache
+    ports:
+      - "${PORT}:${PORT}"
 
   

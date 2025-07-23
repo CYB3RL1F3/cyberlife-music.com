@@ -1,0 +1,20 @@
+fragment DownloadFragment on Download {
+  id
+  token
+  email
+  date
+  expire
+  downloads {
+    name
+    url
+    release {
+      slug
+      title
+      releaseDate
+      role
+      year
+      thumb
+      label
+    }
+  }
+}

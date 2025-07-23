@@ -1,7 +1,7 @@
 import type { ReactEventHandler, ReactNode } from "react";
 
 export type ButtonProps = {
-  type?: "button" | "submit";
+  type?: "button" | "submit" | "reset";
   onClick?: ReactEventHandler<HTMLButtonElement>;
   children?: ReactNode;
   rightIcon?: ReactNode;

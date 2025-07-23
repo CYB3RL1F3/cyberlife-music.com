@@ -76,7 +76,7 @@ export interface ReleaseFragmentTracklist {
 }
 
 export interface ReleaseFragment {
-  __typename: "Release";
+  __typename: "ReleaseDtoOutput";
   /**
    * release ID
    */
@@ -92,7 +92,7 @@ export interface ReleaseFragment {
   /**
    * Release date
    */
-  releaseDate: Any | null;
+  releaseDate: any | null;
   /**
    * Release role
    */
@@ -117,6 +117,10 @@ export interface ReleaseFragment {
    * Release discogs
    */
   discogs: string | null;
+  /**
+   * Release bandcamp
+   */
+  bandcamp: string | null;
   /**
    * Release notes
    */

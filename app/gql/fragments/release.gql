@@ -1,10 +1,23 @@
-fragment ReleaseFragment on Release {
-  ...ReleaseSnippetFragment
+fragment ReleaseFragment on ReleaseDtoOutput {
+ _id
+  slug
+  title
+  releaseDate
+  role
+  year
+  thumb
+  label
+  tracklist {
+    title
+  }
+  discogs
+  bandcamp
   notes
   cat
   format
   role
   genre
+  year
   tracklist {
     position
     id
@@ -22,5 +35,15 @@ fragment ReleaseFragment on Release {
       waveform
       duration
     }
+  }
+}
+
+fragment ReleaseItemFragment on ReleaseItem {
+  id
+  name
+  price
+  availableQuantity
+  release {
+    ...ReleaseFragment
   }
 }

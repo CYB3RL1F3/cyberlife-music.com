@@ -1,0 +1,142 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - prod
+  pull_request:
+    branches:
+      - master
+      - develop
+      - prod
+    types:
+      - closed
+
+jobs:
+  deploy:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Setup SSH agent
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
+      # 3. Deploy to VPS
+      - name: Deploy to VPS
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          if [ -z "$VPS_USER" ]; then
+            echo "Error: VPS_USER is not set."
+            exit 1
+          else
+            echo "VPS_USER is set."
+          fi
+
+          if [ -z "$VPS_IP" ]; then
+            echo "Error: VPS_IP is not set."
+            exit 1
+          else
+            echo "VPS_IP is set."
+          fi
+
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            export ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            export ENVIRONMENT=staging
+          else
+            echo "No matching branch found. Exiting."
+            exit 1
+          fi
+
+          echo "Deploying frontend to environment: $ENVIRONMENT"
+
+          ssh $VPS_USER@$VPS_IP "mkdir -p ~/server/${ENVIRONMENT}/cyberlife-front"
+
+          rsync -avz --delete \
+            --exclude '.git' \
+            --exclude '.env' \
+            --exclude 'node_modules' \
+            . $VPS_USER@$VPS_IP:/home/$VPS_USER/server/${ENVIRONMENT}/cyberlife-front/
+
+          echo "Files synchronized to VPS successfully."
+
+      # 4. Build and push the Docker image
+      - name: Build and push image
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            export ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            export ENVIRONMENT=staging
+          else
+            echo "No matching branch found. Exiting."
+            exit 1
+          fi
+
+          echo "Rebuilding Docker containers for ${ENVIRONMENT} environment..."
+
+          ssh $VPS_USER@$VPS_IP "\
+            set -e && \
+            export ENVIRONMENT=${ENVIRONMENT} && \
+            cd ~/server/\$ENVIRONMENT/cyberlife-front && \
+            echo 'Stopping Docker containers...' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} stop || echo 'Container already stopped.' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} rm -f app || echo 'Container already deleted.' && \
+            echo 'Building and starting containers...' && \
+            env \$(cat .env | grep -v '^#' | xargs) docker compose -p cyberlife-front-\${ENVIRONMENT} up -d --build app
+          "
+
+      # 5. Healthcheck for the frontend
+      - name: HTTP healthcheck (local)
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+            export ENVIRONMENT=prod
+          elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
+            export ENVIRONMENT=staging
+          else
+            echo "No matching branch found. Exiting."
+            exit 1
+          fi
+
+          echo "Checking health of frontend in environment: $ENVIRONMENT"
+          ssh $VPS_USER@$VPS_IP "\
+            set -e && \
+            export ENVIRONMENT=${ENVIRONMENT} && \
+            export PORT=\$(grep -E '^PORT=' ~/server/${ENVIRONMENT}/cyberlife-front/.env | cut -d '=' -f2) && \
+            FRONT_URL=\"http://127.0.0.1:\${PORT}\" && \
+            echo 'Checking if frontend is up locally at' \$FRONT_URL... && \
+            sleep 10 && \
+            for i in {1..10}; do \
+              STATUS=\$(curl -s -o /dev/null -w '%{http_code}' -H 'Accept: text/html' \$FRONT_URL || echo '000'); \
+              echo 'Attempt' \$i ': HTTP status' \$STATUS; \
+              if [ \"\$STATUS\" -eq 200 ]; then \
+                echo '✅ Frontend is healthy!'; \
+                exit 0; \
+              fi; \
+              sleep 5; \
+            done; \
+            echo '❌ Frontend did not respond with HTTP 200 after 10 attempts.'; \
+            exit 1 \
+          "

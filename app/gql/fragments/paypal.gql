@@ -1,0 +1,29 @@
+fragment PaypalLinkFragment on PaypalLink {
+  href
+  rel
+  method
+}
+
+fragment PaypalIntentFragment on PaypalIntent {
+  status
+  id
+  links {
+    ...PaypalLinkFragment
+  }
+}
+
+fragment PaypalResponseFragment on PaypalResponse {
+  intent {
+    ...PaypalIntentFragment
+  }
+  status
+}
+
+fragment OrderPaypalResponseFragment on OrderPaypalResponse {
+  order {
+    ...OrderFragment
+  }
+  paymentIntent {
+    ...PaypalResponseFragment
+  }
+}

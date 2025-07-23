@@ -1,10 +1,10 @@
-import type { ReleaseQueryRelease } from "~/types/gql/ReleaseQuery";
+import type { ReleaseItemFragmentReleaseTracklist } from "~/types/gql/ReleaseItemFragment";
 
 export const isCyberlife = (value: string) =>
   /cyberlife/gim.test(value.toLocaleLowerCase());
 
 export const getCyberlifeReleaseTracks = (
-  tracks: NonNullable<ReleaseQueryRelease["tracklist"]>
+  tracks: ReleaseItemFragmentReleaseTracklist[]
 ) => {
   return tracks.filter((track) => {
     if (!track.title || !track.artists) return false;

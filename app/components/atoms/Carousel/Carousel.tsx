@@ -1,28 +1,29 @@
-import { Children, useRef, useEffect, useMemo, useState } from "react";
-import type { CarouselProps } from "./Carousel.types";
-import type { AnimationOptions } from "framer-motion";
+import { Children, useRef, useEffect, useMemo, useState } from 'react';
+import type { CarouselProps } from './Carousel.types';
+import type { ValueAnimationOptions } from 'framer-motion';
 import {
   AnimatePresence,
   useMotionValue,
   motion,
-  animate
-} from "framer-motion";
-import { useResize } from "~/hooks/useResize";
+  animate,
+} from 'framer-motion';
+import { useResize } from '~/hooks/useResize';
 
-const transition: AnimationOptions<number> = {
-  type: "tween"
+const transition: ValueAnimationOptions<number> = {
+  keyframes: [0, 1],
+  type: 'tween',
 };
 
 const Carousel = ({
   index,
   canDrag = true,
   children,
-  onDrag
+  onDrag,
 }: CarouselProps) => {
-  const childrens = useMemo(() => Children.toArray(children), [children]);
+  const childrenArray = useMemo(() => Children.toArray(children), [children]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [itemSize, setItemSize] = useState(
-    containerRef.current?.clientWidth || 0
+    containerRef.current?.clientWidth || 0,
   );
 
   useResize(() => {
@@ -37,12 +38,12 @@ const Carousel = ({
   });
 
   const width = useMemo(
-    () => itemSize * childrens.length,
-    [childrens, itemSize]
+    () => itemSize * childrenArray.length,
+    [childrenArray, itemSize],
   );
   const currentX = useMemo(() => (-index + 0) * itemSize, [index, itemSize]);
   const x = useMotionValue(currentX);
-  if (typeof window === "undefined") return null;
+  if (typeof window === 'undefined') return null;
   animate(x, currentX, transition);
 
   return (
@@ -52,12 +53,12 @@ const Carousel = ({
         <motion.div
           className={`absolute w-fit flex`}
           dragElastic={0.3}
-          drag={canDrag ? "x" : undefined}
+          drag={canDrag ? 'x' : undefined}
           dragConstraints={{ left: -width, right: 0 }}
           style={{ x, width }}
           onDragEnd={onDrag}
         >
-          {childrens.map((child, index) => (
+          {childrenArray.map((child, index) => (
             <div key={`carousel__${index}`} style={{ width: `${itemSize}px` }}>
               {child}
             </div>

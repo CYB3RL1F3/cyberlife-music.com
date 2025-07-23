@@ -1,0 +1,5 @@
+mutation confirmOrderPaypal($profile: String!, $orderId: String!, $payment: PaymentInput!) {
+  confirmOrderPaypal(profile: $profile, orderId: $orderId, payment: $payment) {
+    ...OrderFragment
+  }
+}

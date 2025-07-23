@@ -1,29 +1,13 @@
-import List from "~/components/organisms/List";
-import type { ListEventsProps, SplittedEvents } from "./ListEvents.types";
-import dayjs from "dayjs";
-import ListEventsItem from "../ListEventsItem";
-import ListEventsEmpty from "../ListEventsEmpty";
-import ListSeparator from "~/components/molecules/ListSeparator";
+import List from '~/components/organisms/List';
+import type { ListEventsProps } from './ListEvents.types';
+import ListEventsItem from '~/components/organisms/ListEventsItem';
+import ListEventsEmpty from '~/components/organisms/ListEventsEmpty';
+import ListSeparator from '~/components/molecules/ListSeparator';
+import { getSplittedEvents } from '~/utils/events';
+import dayjs from 'dayjs';
 
 const ListEvents = ({ events }: ListEventsProps) => {
-  const { forthcomingEvents, pastEvents } = (
-    events || []
-  ).reduce<SplittedEvents>(
-    (acc, event) => {
-      const date = event.date ? dayjs(event.date) : null;
-      if (!date) return acc;
-      if (date.isBefore(dayjs())) {
-        acc.pastEvents.push(event);
-      } else {
-        acc.forthcomingEvents.push(event);
-      }
-      return acc;
-    },
-    {
-      forthcomingEvents: [],
-      pastEvents: []
-    }
-  );
+  const { forthcomingEvents, pastEvents } = getSplittedEvents(events, dayjs());
 
   return (
     <List
@@ -39,7 +23,7 @@ const ListEvents = ({ events }: ListEventsProps) => {
           .map((event) =>
             event.title ? (
               <ListEventsItem key={event._id} event={event} />
-            ) : null
+            ) : null,
           )
       )}
       {pastEvents.length > 0 && (
@@ -48,7 +32,7 @@ const ListEvents = ({ events }: ListEventsProps) => {
         </ListSeparator>
       )}
       {pastEvents?.map((event) =>
-        event.title ? <ListEventsItem key={event._id} event={event} /> : null
+        event.title ? <ListEventsItem key={event._id} event={event} /> : null,
       )}
     </List>
   );

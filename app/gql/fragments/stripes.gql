@@ -1,0 +1,13 @@
+fragment StripeIntentFragment on StripeResponse {
+  status
+  intent
+}
+
+fragment OrderStripeResponseFragment on OrderStripeResponse {
+  order {
+    ...OrderFragment
+  }
+  paymentIntent {
+    ...StripeIntentFragment
+  }
+}

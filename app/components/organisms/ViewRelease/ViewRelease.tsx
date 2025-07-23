@@ -18,23 +18,26 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       opacity: 1
     }
   });
+  if (!release.release) return null;
+
+  const { title, notes, tracklist, thumb, slug } = release.release;
   return (
     <article className="o-4">
       <PageDetailHeaderPortal>
-        <PageDetailHeader title={release.title} url="/releases" />
+        <PageDetailHeader title={title} url="/releases" />
       </PageDetailHeaderPortal>
       <motion.article className="w-full" {...transition(0.05)}>
         <ReleaseDetails release={release} />
       </motion.article>
       <motion.article className="py-4" {...transition(0.1)}>
-        <Text.RightItalic>{release.notes}</Text.RightItalic>
+        <Text.RightItalic>{notes}</Text.RightItalic>
       </motion.article>
-      {release.tracklist && (
+      {tracklist && (
         <ReleaseTracklist
-          id={release.slug}
-          tracks={release.tracklist}
-          thumb={release.thumb}
-          album={release.title}
+          id={slug}
+          tracks={tracklist}
+          thumb={thumb}
+          album={title}
         />
       )}
     </article>

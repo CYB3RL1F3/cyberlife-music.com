@@ -6,10 +6,9 @@ import dayjs from "dayjs";
 import ListLinkIconsRelease from "~/components/organisms/ListLinkIconsRelease";
 
 const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
-  const { thumb, releaseDate, cat, label, role, genre } = release;
-  const date = releaseDate
-    ? dayjs(releaseDate).format("DD/MM/YYYY")
-    : release.year;
+  if (!release.release) return null;
+  const { thumb, releaseDate, cat, label, role, genre, year } = release.release;
+  const date = releaseDate ? dayjs(releaseDate).format("DD/MM/YYYY") : year;
   return (
     <PageDetailLayout
       thumbnail={<Thumbnail variant="wider" src={thumb || ""} />}

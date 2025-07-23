@@ -1,22 +1,22 @@
-import ListItem from "~/components/molecules/ListItem";
-import ListItemSnippet from "~/components/molecules/ListItemSnippet";
-import Picture from "~/components/organisms/Picture";
-import type { ListEventsItemProps } from "./ListEventsItem.types";
-import NowAlert from "~/components/molecules/NowAlert";
-import { checkIsToday, getShortEventDateDisplay } from "~/utils/date";
+import ListItem from '~/components/molecules/ListItem';
+import ListItemSnippet from '~/components/molecules/ListItemSnippet';
+import Picture from '~/components/organisms/Picture';
+import type { ListEventsItemProps } from './ListEventsItem.types';
+import NowAlert from '~/components/molecules/NowAlert';
+import { checkIsToday, getShortEventDateDisplay } from '~/utils/date';
 
 const ListEventsItem = ({ event }: ListEventsItemProps) => {
-  const { slug, flyer, title, date, address, country } = event;
-  const isToday = checkIsToday(event.date, event.endDate); // event.title?.includes("Spiritus"); // date && dayjs(date).isSame(dayjs());
+  const { slug, flyer, title, date, endDate, address, country } = event;
+  const isToday = checkIsToday(date, endDate);
 
-  const countryName = country ? country.padStart(country.length + 2, "- ") : "";
+  const countryName = country ? country.padStart(country.length + 2, '- ') : '';
 
   if (!title) return null;
   return (
     <ListItem
       emphasis={isToday}
       thumbnail={
-        <Picture alt={title} variant="large" src={flyer?.front || ""} />
+        <Picture alt={title} variant="large" src={flyer?.front || ''} />
       }
     >
       {isToday && (
@@ -26,7 +26,7 @@ const ListEventsItem = ({ event }: ListEventsItemProps) => {
       <ListItemSnippet title={title} href={`${slug}`}>
         <div className="w-full h-14">
           <p className="text-sm italic text-right">
-            {date && getShortEventDateDisplay(event, "Do MMMM YYYY")}
+            {date && getShortEventDateDisplay(event, 'Do MMMM YYYY')}
           </p>
           <p className="text-sm italic text-right">
             {address} {countryName}

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { profile } from "~/config";
+import { profile, webshopId } from "~/config";
 import type {
   ReleasesQuery,
   ReleasesQueryVariables
@@ -9,7 +9,8 @@ import { releasesGqlQuery } from "~/queries/releases";
 export const useReleasesQuery = () => {
   return useQuery<ReleasesQuery, ReleasesQueryVariables>(releasesGqlQuery, {
     variables: {
-      profile
+      profile,
+      webshopId
     }
   });
 };

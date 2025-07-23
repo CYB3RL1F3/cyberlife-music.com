@@ -1,0 +1,10 @@
+
+fragment CartFragment on Cart {
+  items {
+    ...CartItemFragment
+  }
+  amount
+  amountWithTax
+  vat
+  redeem
+}
