@@ -4,7 +4,7 @@ import Button from '~/components/atoms/Button';
 import type { OrderFunnelSuccessProps } from './OrderFunnelSuccess.types';
 import { Link } from '@remix-run/react';
 import { useCart } from '~/hooks/db/useCart';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
 import useDebounceEffect from '~/hooks/useDebouncedEffect';
 
@@ -29,17 +29,6 @@ const getAnimation = (i: number) => ({
   },
 });
 
-const getCarrierLabel = (carrier?: string) => {
-  switch (carrier) {
-    case 'laposte':
-      return <a href="https://laposte.fr">La Poste</a>;
-    case 'ups':
-      return <a href="https://ups.com">UPS</a>;
-    default:
-      return 'the transporter';
-  }
-};
-
 const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
   const { checkout, clear } = useCart();
   const { data } = useInfosQuery();
@@ -50,23 +39,33 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
       setCanClear(true);
     },
     [],
-    2000,
+    1000,
   );
 
   const handleClose = async () => {
+    await clear();
     onClose?.();
-    setTimeout(async () => {
-      await clear();
-    }, 1000);
   };
 
   useEffect(() => {
-    return () => {
-      if (canClear) {
-        clear();
-      }
-    };
-  }, [canClear]);
+    if (!canClear) return () => {};
+    return () => clear();
+  }, [canClear, clear]);
+
+  const carrier = useMemo(() => checkout?.carrier?.carrier, [checkout]);
+
+  const carrierLabel = useMemo(() => {
+    switch (carrier) {
+      case 'laposte':
+        return <a href="https://laposte.fr">La Poste</a>;
+      case 'ups':
+        return <a href="https://ups.com">UPS</a>;
+      case 'mondial_relay':
+        return <a href="https://mondialrelay.fr">Mondial Relay</a>;
+      default:
+        return 'the transporter';
+    }
+  }, [carrier]);
 
   return (
     <div className="w-full py-4 o-8">
@@ -93,7 +92,9 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
         {checkout?.carrier?.carrier !== 'pickup' ? (
           <p className="w-full px-4 text-center text-md">
             The order you placed will be tracked and you'll be able to follow it
-            very soon on {getCarrierLabel(checkout?.carrier?.carrier)} website.
+            very soon on {carrierLabel} website. <br />
+            Please note that the order can't be cancelled as soon as the parcel
+            is shipped.
           </p>
         ) : (
           <p className="w-full px-4 text-center text-orange-400 text-md">
@@ -109,8 +110,7 @@ const OrderFunnelSuccess = ({ onClose }: OrderFunnelSuccessProps) => {
             ) : (
               '.'
             )}{' '}
-            Please note that the order can't be cancelled as soon as the parcel
-            is shipped.
+            Please note that the order can't be cancelled or refunded.
           </p>
         )}
       </motion.div>
