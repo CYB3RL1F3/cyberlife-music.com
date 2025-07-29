@@ -74,6 +74,10 @@ export interface EventFragment {
    */
   endDate: any | null;
   /**
+   * description
+   */
+  description: string | null;
+  /**
    * country name
    */
   country: string | null;
@@ -97,10 +101,6 @@ export interface EventFragment {
    * promoter name
    */
   promoter: string | null;
-  /**
-   * description
-   */
-  description: string | null;
   /**
    * event Id
    */
