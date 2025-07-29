@@ -1,6 +1,6 @@
 import { runEventsQuery } from '~/queries/events';
 import dayjs from 'dayjs';
-import { rssGenerator, RSSItem } from '~/utils/rss-generator';
+import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
 
 const getItems = async (): Promise<RSSItem[]> => {
@@ -11,10 +11,17 @@ const getItems = async (): Promise<RSSItem[]> => {
     title: event.title || '',
     description: event.description || '',
     link: `${config?.domain}/events/${event.slug}`,
-    pubDate: dayjs(event.date).format(),
+    pubDate: dayjs(event.date).format(rssDateFormat),
     guid: `${event._id}`,
     category: 'Events',
-    author: 'Cyberlife Music',
+    author: config?.contactEmail || 'contact@cyberlife-music.com',
+    enclosure: event.flyer?.front
+      ? {
+          url: event.flyer.front,
+          type: 'image/jpeg',
+          length: 10000,
+        }
+      : undefined,
   }));
 
   return items;
@@ -29,7 +36,14 @@ export const loader = async () => {
     description: "Cyberlife Music's Events",
     link: `${config?.domain}/events`,
     item: items,
+    id: 'events',
+    atomLink: `${config?.domain}/rss/events.xml`,
     contact: config?.contactEmail,
+    image: {
+      url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
+      title: 'Cyberlife Music',
+      link: `${config?.domain}/events`,
+    },
   });
 
   return new Response(content, {

@@ -29,9 +29,18 @@ export type RSS = {
   description: string;
   link?: string;
   item: RSSItem[];
+  id: string;
+  atomLink: string;
   contact?: string;
+  image: {
+    url: string;
+    title: string;
+    link: string;
+  };
   options?: Options.JS2XML;
 };
+
+export const rssDateFormat = 'ddd, DD MMM YYYY HH:mm:ss ZZ';
 
 export const rssGenerator = ({
   title = 'Cyberlife Music RSS Feed',
@@ -39,12 +48,20 @@ export const rssGenerator = ({
   link = 'https://cyberlife-music.com',
   contact,
   item,
+  image,
+  atomLink,
   options: opts,
 }: RSS) => {
   const options = {
     ...defaultOptions,
     ...opts,
   };
+  console.log({
+    'atom:link': {
+      rel: 'self',
+      href: atomLink,
+    },
+  });
   const rss = {
     rss: {
       _attributes: {
@@ -53,11 +70,12 @@ export const rssGenerator = ({
       channel: {
         title,
         description,
+        image,
         link,
         language: 'en-US',
-        webmaster: contact || 'contact@cyberlife-music.com',
-        lastBuildDate: dayjs().format(),
-        pubDate: dayjs().format(),
+        webMaster: contact || 'contact@cyberlife-music.com',
+        lastBuildDate: dayjs().format(rssDateFormat),
+        pubDate: dayjs().format(rssDateFormat),
         item,
       },
     },
