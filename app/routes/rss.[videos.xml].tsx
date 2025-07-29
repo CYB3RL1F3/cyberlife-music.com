@@ -1,5 +1,11 @@
 import dayjs from 'dayjs';
-import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
+import {
+  cleanUrl,
+  getField,
+  rssDateFormat,
+  rssGenerator,
+  RSSItem,
+} from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
 import { runVideosQuery } from '~/queries/videos';
 
@@ -12,14 +18,15 @@ const getItems = async (): Promise<RSSItem[]> => {
     description: video.description || '',
     link: `${config?.domain || ''}/videos/${video.slug}`,
     pubDate: dayjs().format(rssDateFormat),
-    guid: `${video._id}`,
     category: 'videos',
     author: config?.contactEmail || 'contact@cyberlife-music.com',
     enclosure: video.illustration
       ? {
-          url: video.illustration,
-          type: 'image/jpeg',
-          length: 10000,
+          _attributes: {
+            url: cleanUrl(video.illustration),
+            type: 'image/jpeg',
+            length: 10000,
+          },
         }
       : undefined,
   }));
@@ -41,7 +48,7 @@ export const loader = async () => {
     contact: config?.contactEmail,
     image: {
       url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music',
+      title: 'Cyberlife Music Videos RSS Feed',
       link: `${config?.domain}/videos`,
     },
   });

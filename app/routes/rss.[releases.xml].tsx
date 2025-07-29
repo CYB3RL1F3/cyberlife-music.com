@@ -1,5 +1,11 @@
 import dayjs from 'dayjs';
-import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
+import {
+  cleanUrl,
+  getField,
+  rssDateFormat,
+  rssGenerator,
+  RSSItem,
+} from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
 import { runReleasesQuery } from '~/queries/releases';
 
@@ -10,16 +16,17 @@ const getItems = async (): Promise<RSSItem[]> => {
   const items: RSSItem[] = events.data.releaseItems.map((release) => ({
     title: release.release?.title || '',
     description: release.release?.bandcamp || '',
-    link: `${config?.domain || ''}/releases/${release.release?.slug}`,
+    link: cleanUrl(`${config?.domain || ''}/releases/${release.release?.slug}`),
     pubDate: dayjs(release.release?.releaseDate).format(rssDateFormat),
-    guid: `${release.id}`,
     category: 'Releases',
     author: config?.contactEmail || 'contact@cyberlife-music.com',
     enclosure: release.release?.thumb
       ? {
-          url: release.release?.thumb,
-          type: 'image/jpeg',
-          length: 10000,
+          _attributes: {
+            url: cleanUrl(release.release.thumb),
+            type: 'image/jpeg',
+            length: 10000,
+          },
         }
       : undefined,
   }));
@@ -41,7 +48,7 @@ export const loader = async () => {
     contact: config?.contactEmail,
     image: {
       url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music',
+      title: 'Cyberlife Music Releases RSS Feed',
       link: `${config?.domain}/releases`,
     },
   });

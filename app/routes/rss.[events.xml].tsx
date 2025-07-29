@@ -1,6 +1,12 @@
 import { runEventsQuery } from '~/queries/events';
 import dayjs from 'dayjs';
-import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
+import {
+  cleanUrl,
+  getField,
+  rssDateFormat,
+  rssGenerator,
+  RSSItem,
+} from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
 
 const getItems = async (): Promise<RSSItem[]> => {
@@ -12,14 +18,15 @@ const getItems = async (): Promise<RSSItem[]> => {
     description: event.description || '',
     link: `${config?.domain}/events/${event.slug}`,
     pubDate: dayjs(event.date).format(rssDateFormat),
-    guid: `${event._id}`,
     category: 'Events',
     author: config?.contactEmail || 'contact@cyberlife-music.com',
     enclosure: event.flyer?.front
       ? {
-          url: event.flyer.front,
-          type: 'image/jpeg',
-          length: 10000,
+          _attributes: {
+            url: cleanUrl(event.flyer.front),
+            type: 'image/jpeg',
+            length: 10000,
+          },
         }
       : undefined,
   }));
@@ -41,7 +48,7 @@ export const loader = async () => {
     contact: config?.contactEmail,
     image: {
       url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music',
+      title: 'Cyberlife Music Events RSS Feed',
       link: `${config?.domain}/events`,
     },
   });

@@ -1,6 +1,12 @@
 import { runPlaylistQuery } from '~/queries/playlists';
 import dayjs from 'dayjs';
-import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
+import {
+  cleanUrl,
+  getField,
+  rssDateFormat,
+  rssGenerator,
+  RSSItem,
+} from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
 
 const getItems = async (): Promise<RSSItem[]> => {
@@ -13,14 +19,17 @@ const getItems = async (): Promise<RSSItem[]> => {
       description: podcast.description || '',
       link: `${config?.domain || ''}/podcasts/${podcast.slug}`,
       pubDate: dayjs(podcast.date).format(rssDateFormat),
-      guid: `${podcast.id}`,
       category: 'Podcasts',
       author: config?.contactEmail || 'contact@cyberlife-music.com',
       enclosure: podcast.url
         ? {
-            url: podcast.url,
-            type: 'audio/mpeg',
-            length: 100000,
+            _attributes: {
+              url: cleanUrl(
+                `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+              ),
+              type: 'audio/mpeg',
+              length: 10000,
+            },
           }
         : undefined,
     }),
@@ -43,7 +52,7 @@ export const loader = async () => {
     contact: config?.contactEmail,
     image: {
       url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music',
+      title: 'Cyberlife Music Podcasts RSS Feed',
       link: `${config?.domain}/podcasts`,
     },
   });

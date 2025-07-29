@@ -8,14 +8,16 @@ export type RSSItem = {
   description: string;
   link: string;
   pubDate?: string;
-  guid?: string;
+  guid?: ReturnType<typeof getField>;
   author?: string;
   category?: string | string[];
   content?: string;
   enclosure?: {
-    url: string;
-    length?: number;
-    type?: string;
+    _attributes: {
+      url: string;
+      type: string;
+      length?: number;
+    };
   };
   [`xhtml:link`]?: {
     rel: 'alternate';
@@ -41,6 +43,34 @@ export type RSS = {
 };
 
 export const rssDateFormat = 'ddd, DD MMM YYYY HH:mm:ss ZZ';
+
+export const cleanUrl = (url: string) => {
+  return decodeURIComponent(encodeURIComponent(url));
+};
+
+export const getField = <
+  T extends Record<string, string | boolean | number | null>,
+  U extends
+    | Record<string, string | boolean | number | null>
+    | string
+    | number
+    | boolean
+    | null,
+>(
+  content: U,
+  attributes: T,
+) => {
+  if (typeof content === 'object' && content !== null) {
+    return {
+      _attributes: attributes,
+      ...content,
+    };
+  }
+  return {
+    _attributes: attributes,
+    _text: content,
+  };
+};
 
 export const rssGenerator = ({
   title = 'Cyberlife Music RSS Feed',

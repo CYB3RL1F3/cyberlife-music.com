@@ -2,7 +2,13 @@ import { runEventsQuery } from '~/queries/events';
 import { runPlaylistQuery } from '~/queries/playlists';
 import { runReleasesQuery } from '~/queries/releases';
 import dayjs from 'dayjs';
-import { rssDateFormat, rssGenerator, RSSItem } from '~/utils/rss-generator';
+import {
+  cleanUrl,
+  getField,
+  rssDateFormat,
+  rssGenerator,
+  RSSItem,
+} from '~/utils/rss-generator';
 import { runVideosQuery } from '~/queries/videos';
 import { getConfig } from '~/utils/config';
 import { getDate } from '~/utils/date';
@@ -20,64 +26,72 @@ const getItems = async (): Promise<RSSItem[]> => {
     ...events.data.events.map((event) => ({
       title: event.title || '',
       description: event.description || '',
-      link: `${config?.domain || ''}/events/${event.slug}`,
+      link: cleanUrl(`${config?.domain || ''}/events/${event.slug}`),
       pubDate: dayjs(getDate(event.date)).format(rssDateFormat),
-      guid: `${event._id}`,
       category: 'Events',
       author: config?.contactEmail || 'contact@cyberlife-music.com',
       enclosure: event.flyer?.front
         ? {
-            url: event.flyer.front,
-            type: 'image/jpeg',
-            length: 10000,
+            _attributes: {
+              url: cleanUrl(event.flyer.front),
+              type: 'image/jpeg',
+              length: 10000,
+            },
           }
         : undefined,
     })),
     ...(podcasts.data.playlist.tracks || []).map((podcast) => ({
       title: podcast.title || '',
       description: podcast.description || '',
-      link: `${config?.domain || ''}/podcasts/${podcast.slug}`,
+      link: cleanUrl(`${config?.domain || ''}/podcasts/${podcast.slug}`),
       pubDate: dayjs(podcast.date).format(rssDateFormat),
-      guid: `${podcast.id}`,
       category: 'Podcasts',
       author: config?.contactEmail || 'contact@cyberlife-music.com',
       enclosure: podcast.url
         ? {
-            url: `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
-            type: 'audio/mpeg',
-            length: 100000,
+            _attributes: {
+              url: cleanUrl(
+                `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+              ),
+              type: 'audio/mpeg',
+              length: 10000,
+            },
           }
         : undefined,
     })),
     ...(releases.data.releaseItems || []).map((release) => ({
       title: release.release?.title || '',
       description: release.release?.bandcamp || '',
-      link: `${config?.domain || ''}/releases/${release.release?.slug}`,
+      link: cleanUrl(
+        `${config?.domain || ''}/releases/${release.release?.slug}`,
+      ),
       pubDate: dayjs(release.release?.releaseDate).format(rssDateFormat),
-      guid: `${release.id}`,
       category: 'Releases',
       author: config?.contactEmail || 'contact@cyberlife-music.com',
       enclosure: release.release?.thumb
         ? {
-            url: release.release?.thumb,
-            type: 'image/jpeg',
-            length: 10000,
+            _attributes: {
+              url: cleanUrl(release.release.thumb),
+              type: 'image/jpeg',
+              length: 10000,
+            },
           }
         : undefined,
     })),
     ...(videos.data.videos || []).map((video) => ({
       title: video.title || '',
       description: video.description || '',
-      link: `${config?.domain || ''}/videos/${video.slug}`,
+      link: cleanUrl(`${config?.domain || ''}/videos/${video.slug}`),
       pubDate: dayjs().format(rssDateFormat),
-      guid: `${video._id}`,
       category: 'Videos',
       author: config?.contactEmail || 'contact@cyberlife-music.com',
       enclosure: video.illustration
         ? {
-            url: video.illustration,
-            type: 'image/jpeg',
-            length: 10000,
+            _attributes: {
+              url: cleanUrl(video.illustration),
+              type: 'image/jpeg',
+              length: 10000,
+            },
           }
         : undefined,
     })),
@@ -105,7 +119,7 @@ export const loader = async () => {
     contact: config?.contactEmail,
     image: {
       url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music',
+      title: 'Cyberlife Music RSS Feed',
       link: config?.domain || 'https://cyberlife-music.com',
     },
   });
