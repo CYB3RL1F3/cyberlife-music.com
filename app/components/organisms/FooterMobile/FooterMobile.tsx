@@ -1,6 +1,6 @@
-import FooterAnchorsInfosContainer from "~/components/organisms/FooterAnchorsInfosContainer";
-import FooterAnchorsCopyrights from "~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights";
-import NotificationActivationSwitch from "../NotificationActivationSwitch";
+import FooterAnchorsInfosContainer from '~/components/organisms/FooterAnchorsInfosContainer';
+import FooterAnchorsCopyrights from '~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights';
+import NotificationActivationSwitch from '../NotificationActivationSwitch';
 
 const FooterMobile = () => {
   return (
@@ -8,8 +8,10 @@ const FooterMobile = () => {
       <div className="mb-4">
         <NotificationActivationSwitch id="NotificationActivationSwitch__mobile" />
       </div>
-      <FooterAnchorsCopyrights />
-      <FooterAnchorsInfosContainer />
+      <div className="flex items-start justify-between px-4">
+        <FooterAnchorsCopyrights />
+        <FooterAnchorsInfosContainer />
+      </div>
     </div>
   );
 };

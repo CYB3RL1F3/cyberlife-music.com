@@ -1168,10 +1168,6 @@ video {
   grid-template-columns: 5fr 3rem 3rem 2fr;
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -1631,6 +1627,10 @@ video {
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .pl-1 {
@@ -2660,19 +2660,8 @@ input:-webkit-autofill:active{
   --toastify-color-info: #3f6177;
 }
 
-.before\:w-4::before {
-  content: var(--tw-content);
-  width: 1rem;
-}
-
-.before\:text-center::before {
-  content: var(--tw-content);
-  text-align: center;
-}
-
-.before\:content-\[\'-\'\]::before {
-  --tw-content: '-';
-  content: var(--tw-content);
+.mapboxgl-canvas-container {
+  height: 100%;
 }
 
 .hover\:bg-gray-500:hover {
@@ -2902,6 +2891,10 @@ input:-webkit-autofill:active{
     flex-direction: column;
   }
 
+  .md\:items-center {
+    align-items: center;
+  }
+
   .md\:justify-start {
     justify-content: flex-start;
   }
@@ -2984,6 +2977,21 @@ input:-webkit-autofill:active{
 
   .md\:leading-8 {
     line-height: 2rem;
+  }
+
+  .md\:before\:w-4::before {
+    content: var(--tw-content);
+    width: 1rem;
+  }
+
+  .md\:before\:text-center::before {
+    content: var(--tw-content);
+    text-align: center;
+  }
+
+  .md\:before\:content-\[\'-\'\]::before {
+    --tw-content: '-';
+    content: var(--tw-content);
   }
 
   .md\:hover\:text-white:hover {

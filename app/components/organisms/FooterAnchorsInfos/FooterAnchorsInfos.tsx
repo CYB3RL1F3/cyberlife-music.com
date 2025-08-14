@@ -1,43 +1,43 @@
-import type { FooterAnchorsProps } from "~/components/molecules/FooterAnchors";
-import FooterAnchors from "~/components/molecules/FooterAnchors";
-import type { FooterAnchorsInfosProps } from "./FooterAnchorsInfos.types";
-import { useMemo } from "react";
+import type { FooterAnchorsProps } from '~/components/molecules/FooterAnchors';
+import FooterAnchors from '~/components/molecules/FooterAnchors';
+import type { FooterAnchorsInfosProps } from './FooterAnchorsInfos.types';
+import { useMemo } from 'react';
 
 const FooterAnchorsInfos = ({ infos }: FooterAnchorsInfosProps) => {
-  const anchors: FooterAnchorsProps["anchors"] = useMemo(
+  const anchors: FooterAnchorsProps['anchors'] = useMemo(
     () => [
       {
-        label: "Soundcloud",
-        href: infos.soundcloud
+        label: 'Soundcloud',
+        href: infos.soundcloud,
       },
       {
-        label: "Bandcamp",
-        href: infos.bandcamp
+        label: 'Bandcamp',
+        href: infos.bandcamp,
       },
       {
-        label: "Discogs",
-        href: infos.discogs
+        label: 'Discogs',
+        href: infos.discogs,
       },
       {
-        label: "Instagram",
-        href: infos.instagram
+        label: 'Instagram',
+        href: infos.instagram,
       },
       {
-        label: "Facebook",
-        href: infos.facebook
+        label: 'Facebook',
+        href: infos.facebook,
       },
       {
-        label: "Twitter",
-        href: infos.twitter
+        label: 'Twitter',
+        href: infos.twitter,
       },
       {
-        label: "Resident Advisor",
-        href: infos.RA
-      }
+        label: 'Resident Advisor',
+        href: infos.RA,
+      },
     ],
-    [infos]
+    [infos],
   );
-  return <FooterAnchors anchors={anchors} />;
+  return <FooterAnchors className="items-end" anchors={anchors} />;
 };
 
 export default FooterAnchorsInfos;

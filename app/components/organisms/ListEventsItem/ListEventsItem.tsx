@@ -23,7 +23,7 @@ const ListEventsItem = ({ event }: ListEventsItemProps) => {
         <NowAlert className="absolute px-2 md:p-3 top-[5rem] md:top-0" />
       )}
 
-      <ListItemSnippet title={title} href={`${slug}`}>
+      <ListItemSnippet title={title} href={`/events/${slug}`}>
         <div className="w-full h-14">
           <p className="text-sm italic text-right">
             {date && getShortEventDateDisplay(event, 'Do MMMM YYYY')}

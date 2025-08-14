@@ -5,13 +5,9 @@ import FooterAnchors from '~/components/molecules/FooterAnchors';
 const FooterAnchorsCopyrights = () => {
   const anchors: FooterAnchorsProps['anchors'] = [
     {
-      label: '© Cyberlife',
+      label: `© Cyberlife`,
       href: 'https://github.com/CYB3RL1F3',
       target: '_blank',
-    },
-    {
-      label: dayjs().format('YYYY'),
-      href: '',
     },
     {
       label: 'About website',

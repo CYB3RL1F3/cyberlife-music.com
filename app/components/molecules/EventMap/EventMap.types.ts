@@ -1,5 +1,6 @@
-import type { EventQueryEvent } from "~/types/gql/EventQuery";
+import type { EventQueryEvent } from '~/types/gql/EventQuery';
 
 export type EventMapProps = {
-  location: NonNullable<EventQueryEvent["location"]>;
+  location: NonNullable<EventQueryEvent['location']>;
+  height?: number;
 };

@@ -11,7 +11,8 @@ const InlineListItem = ({
       className={clsx(
         'inline-flex',
         {
-          "before:content-['-'] before:w-4 before:text-center": index > 0,
+          "md:before:content-['-'] md:before:w-4 md:before:text-center":
+            index > 0,
         },
         className,
       )}
