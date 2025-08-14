@@ -18,7 +18,7 @@ export const useCart = () => {
         const cart = await db.cart.get('cart');
         return [cart, true] as const;
       } catch (e) {
-        console.log(e);
+        console.error(e);
         return [null, true] as const;
       }
     },
@@ -104,7 +104,7 @@ export const useCart = () => {
           'cart',
         );
       } catch (e) {
-        console.log('ERROR ====> ', e);
+        console.error('ERROR ====> ', e);
         db.cart.clear();
       }
     }
