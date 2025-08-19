@@ -2072,10 +2072,6 @@ video {
   --scrollbar-width: 0.25rem;
 }
 
-.\[xmlns\:atom\] {
-  xmlns: atom;
-}
-
 @font-face {
   font-family:"myriad-pro-semi-condensed";
 

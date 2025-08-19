@@ -38,7 +38,7 @@ export const getReleaseRssItem = (
   };
 };
 
-export const getReleasesRssFeed = (
+export const getReleaseRssFeed = (
   release: ReleasesQueryReleaseItems,
   config = getConfig(),
 ) => {

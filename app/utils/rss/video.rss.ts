@@ -44,7 +44,7 @@ export const getVideoRssItem = (
   return item;
 };
 
-export const getVideosRssFeed = (
+export const getVideoRssFeed = (
   video: VideosQueryVideos,
   config = getConfig(),
 ) => {
