@@ -29,9 +29,11 @@ const getPaths = async (): Promise<Path[]> => {
     getPath('/podcasts'),
     getPath('/events'),
     getPath('/releases', 0.8),
+    getPath('/videos', 0.8),
     getPath('/contact', 0.5, 'monthly'),
     getPath('/about', 0.5, 'monthly'),
     getPath('/legal-notice', 0.5, 'monthly'),
+    getPath('/checkout', 0.2, 'monthly'),
   ];
   const eventsPaths = (events.data.events || []).map((event) =>
     getPath(`/events/${event.slug}`),
