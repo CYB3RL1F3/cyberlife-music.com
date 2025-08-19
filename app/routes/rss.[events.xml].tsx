@@ -1,64 +1,33 @@
 import { runEventsQuery } from '~/queries/events';
-import dayjs from 'dayjs';
-import {
-  cleanUrl,
-  getField,
-  rssDateFormat,
-  rssGenerator,
-  RSSItem,
-} from '~/utils/rss-generator';
 import { getConfig } from '~/utils/config';
+import { getEventsRssFeed } from '~/utils/rss/events.rss';
 
-const getItems = async (): Promise<RSSItem[]> => {
+const getContent = async () => {
   const config = getConfig();
   const events = await runEventsQuery();
 
-  const items: RSSItem[] = events.data.events.map((event) => ({
-    title: event.title || '',
-    description: event.description || '',
-    link: `${config?.domain}/events/${event.slug}`,
-    pubDate: dayjs(event.date).format(rssDateFormat),
-    category: 'Events',
-    author: config?.contactEmail || 'contact@cyberlife-music.com',
-    enclosure: event.flyer?.front
-      ? {
-          _attributes: {
-            url: cleanUrl(event.flyer.front),
-            type: 'image/jpeg',
-            length: 10000,
-          },
-        }
-      : undefined,
-  }));
-
-  return items;
+  const content = getEventsRssFeed(events.data.events, config);
+  return content;
 };
 
 export const loader = async () => {
-  const config = getConfig();
-  const items = await getItems();
+  const content = await getContent();
 
-  const content = await rssGenerator({
-    title: 'Cyberlife Music Events RSS Feed',
-    description: "Cyberlife Music's Events",
-    link: `${config?.domain}/events`,
-    item: items,
-    id: 'events',
-    atomLink: `${config?.domain}/rss/events.xml`,
-    contact: config?.contactEmail,
-    image: {
-      url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music Events RSS Feed',
-      link: `${config?.domain}/events`,
-    },
-  });
+  const headers = {
+    'Content-Type': 'application/xml',
+    'xml-version': '1.0',
+    encoding: 'UTF-8',
+  };
+
+  if (!content) {
+    return new Response('<error>No events found</error>', {
+      status: 404,
+      headers,
+    });
+  }
 
   return new Response(content, {
     status: 200,
-    headers: {
-      'Content-Type': 'application/xml',
-      'xml-version': '1.0',
-      encoding: 'UTF-8',
-    },
+    headers,
   });
 };

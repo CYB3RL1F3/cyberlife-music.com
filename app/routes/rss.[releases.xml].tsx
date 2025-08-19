@@ -1,64 +1,33 @@
-import dayjs from 'dayjs';
-import {
-  cleanUrl,
-  getField,
-  rssDateFormat,
-  rssGenerator,
-  RSSItem,
-} from '~/utils/rss-generator';
-import { getConfig } from '~/utils/config';
 import { runReleasesQuery } from '~/queries/releases';
+import { getConfig } from '~/utils/config';
+import { getReleasesRssFeed } from '~/utils/rss/releases.rss';
 
-const getItems = async (): Promise<RSSItem[]> => {
-  const events = await runReleasesQuery();
+const getContent = async () => {
+  const releases = await runReleasesQuery();
   const config = getConfig();
-
-  const items: RSSItem[] = events.data.releaseItems.map((release) => ({
-    title: release.release?.title || '',
-    description: release.release?.bandcamp || '',
-    link: cleanUrl(`${config?.domain || ''}/releases/${release.release?.slug}`),
-    pubDate: dayjs(release.release?.releaseDate).format(rssDateFormat),
-    category: 'Releases',
-    author: config?.contactEmail || 'contact@cyberlife-music.com',
-    enclosure: release.release?.thumb
-      ? {
-          _attributes: {
-            url: cleanUrl(release.release.thumb),
-            type: 'image/jpeg',
-            length: 10000,
-          },
-        }
-      : undefined,
-  }));
-
-  return items;
+  if (!releases.data.releaseItems) return null;
+  const content = getReleasesRssFeed(releases.data.releaseItems, config);
+  return content;
 };
 
 export const loader = async () => {
-  const config = getConfig();
-  const items = await getItems();
+  const content = await getContent();
 
-  const content = await rssGenerator({
-    title: 'Cyberlife Music Releases RSS Feed',
-    description: "Cyberlife Music's releases",
-    link: `${config?.domain}/releases`,
-    item: items,
-    id: 'releases',
-    atomLink: `${config?.domain}/rss/releases.xml`,
-    contact: config?.contactEmail,
-    image: {
-      url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
-      title: 'Cyberlife Music Releases RSS Feed',
-      link: `${config?.domain}/releases`,
-    },
-  });
+  const headers = {
+    'Content-Type': 'application/xml',
+    'xml-version': '1.0',
+    encoding: 'UTF-8',
+  };
+
+  if (!content) {
+    return new Response('<error>No podcasts found</error>', {
+      status: 404,
+      headers,
+    });
+  }
 
   return new Response(content, {
     status: 200,
-    headers: {
-      'Content-Type': 'application/xml',
-      'xml-version': '1.0',
-      encoding: 'UTF-8',
-    },
+    headers,
   });
 };
