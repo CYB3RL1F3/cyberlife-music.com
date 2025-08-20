@@ -1,6 +1,6 @@
 import Selector from '~/components/molecules/Selector';
 import type { CarrierSelectorProps } from './CarrierSelector.types';
-import { useCarrierPrices } from '~/hooks/useCarriers';
+import { useCarrierPrices } from '~/hooks/data/useCarriers';
 
 const CarrierSelector = ({
   country,

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { useCarrierPricesQuery } from './queries/useCarrierPricesQuery';
-import { useReleasesQuery } from './queries/useReleasesQuery';
-import { CartItem } from './db/useCart';
+import { useCarrierPricesQuery } from '../queries/useCarrierPricesQuery';
+import { useReleasesQuery } from '../queries/useReleasesQuery';
+import { CartItem } from '../db/useCart';
 import { ReleaseDtoInput } from '~/types/gql/globalTypes';
 import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
 import { CarrierPricesVariables } from '~/types/gql/CarrierPrices';
