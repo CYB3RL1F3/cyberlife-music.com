@@ -1,21 +1,24 @@
-import Icon from "~/components/atoms/Icon";
-import Mapbox from "~/components/atoms/Mapbox";
-import { Marker } from "~/components/atoms/MapboxElements";
-import type { EventMapProps } from "./EventMap.types";
-import { TfiLocationPin } from "react-icons/tfi";
-import type { MutableRefObject } from "react";
-import { useRef } from "react";
+import Icon from '~/components/atoms/Icon';
+import Mapbox from '~/components/atoms/Mapbox';
+import { Marker } from '~/components/atoms/MapboxElements';
+import type { EventMapProps } from './EventMap.types';
+import { TfiLocationPin } from 'react-icons/tfi';
+import type { MutableRefObject } from 'react';
+import { useRef } from 'react';
 
-const EventMap = ({ location }: EventMapProps) => {
-  const [longitude, latitude] = location.position!;
+const EventMap = ({ location, height = 272 }: EventMapProps) => {
   const ref = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
+  if (!location?.position) {
+    return null;
+  }
 
-  const height = 320;
+  const [longitude, latitude] = location.position;
+
   return (
-    <div className="w-full" ref={ref}>
+    <div className="w-full h-full relative" ref={ref}>
       <Mapbox
         zoom={14}
-        width={"100%"}
+        width={'100%'}
         height={height}
         longitude={longitude}
         latitude={latitude}
@@ -23,7 +26,7 @@ const EventMap = ({ location }: EventMapProps) => {
         onMapRendered={(event) => event.target.resize()}
       >
         <Marker
-          style={{ marginLeft: "32%", marginTop: `-${height}px` }}
+          style={{ marginLeft: '32%', marginTop: `-${height}px` }}
           longitude={longitude}
           latitude={latitude}
         >

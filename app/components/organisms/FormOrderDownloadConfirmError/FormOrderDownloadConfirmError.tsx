@@ -38,10 +38,16 @@ const FormOrderDownloadConfirmError = ({
           <Link to={'/contact'} className="underline">
             contact<span>@</span>cyberlife-music.com
           </Link>{' '}
-          or by PM on <Link to={instagramLink}>Instagram</Link> for further
-          assistance, mentioning your order ID {id}, the order date if possible,
-          and your email {email} used. We'll get back to you as soon as
-          possible.
+          {instagramLink ? (
+            <>
+              or by PM on <Link to={instagramLink}>Instagram</Link>
+            </>
+          ) : (
+            ''
+          )}{' '}
+          for further assistance, mentioning your order ID {id}, the order date
+          if possible, and your email {email} used. We'll get back to you as
+          soon as possible.
         </motion.p>
         <motion.p
           {...transition(0.6)}

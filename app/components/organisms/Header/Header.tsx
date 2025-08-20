@@ -10,7 +10,7 @@ import { useFeatureFlagQuery } from '~/hooks/queries/useFeatureFlagQuery';
 
 const items: LinkNavItemProps[] = [
   {
-    href: '/',
+    href: '/podcasts',
     label: 'Podcasts',
   },
   {

@@ -23,6 +23,8 @@ import { useEffect, useMemo, useState } from 'react';
 import useDebounceEffect from '~/hooks/useDebouncedEffect';
 import ControlledFieldCheckbox from '../ControlledFieldCheckbox';
 import ControlledCarrierSelector from '../ControlledFieldCarrierSelector/ControlledFieldCarrierSelector';
+import { useLocationsSuggestions } from '~/hooks/data/useLocationsSuggestions';
+import { AutocompleteLocationSuggestionType } from '~/types/gql/globalTypes';
 
 const initialValues: Partial<FormCheckoutValues> = {
   firstName: '',
@@ -131,7 +133,9 @@ const FormCheckout = ({
   useDebounceEffect(
     () => {
       if (city?.length || !canUpdateCity) return;
-      const nextCity = getCityByZipCode(country, zipCode);
+      const nextCity = suggestedZipCodes.find(
+        (value) => value.zipcode === zipCode,
+      )?.city;
       if (!nextCity) return;
       setValue('city', nextCity);
       setCanUpdateCity(false);
@@ -150,7 +154,9 @@ const FormCheckout = ({
         !canUpdateExpeditionCity
       )
         return;
-      const nextCity = getCityByZipCode(expeditionCountry, expeditionZipCode);
+      const nextCity = suggestedExpeditionZipCodes.find(
+        (value) => value.zipcode === zipCode,
+      )?.city;
       if (!nextCity) return;
       setValue('expedition.city', nextCity);
       setCanUpdateExpeditionCity(false);
@@ -159,15 +165,28 @@ const FormCheckout = ({
     400,
   );
 
-  const suggestedCities = useMemo(() => getCities(country), [country]);
-  const suggestedZipCodes = useMemo(() => getZipCodes(country), [country]);
-  const suggestedExpeditionCities = useMemo(
-    () => (expeditionCountry && getCities(expeditionCountry)) || [],
-    [expeditionCountry],
+  const suggestedCities = useLocationsSuggestions(
+    country,
+    city,
+    AutocompleteLocationSuggestionType.city,
   );
-  const suggestedExpeditionZipCodes = useMemo(
-    () => (expeditionCountry && getZipCodes(expeditionCountry)) || [],
-    [expeditionCountry],
+
+  const suggestedZipCodes = useLocationsSuggestions(
+    country,
+    zipCode,
+    AutocompleteLocationSuggestionType.postcode,
+  );
+
+  const suggestedExpeditionCities = useLocationsSuggestions(
+    expeditionCountry || '',
+    expeditionCity || '',
+    AutocompleteLocationSuggestionType.city,
+  );
+
+  const suggestedExpeditionZipCodes = useLocationsSuggestions(
+    expeditionCountry || '',
+    expeditionZipCode || '',
+    AutocompleteLocationSuggestionType.postcode,
   );
 
   return (
@@ -220,7 +239,7 @@ const FormCheckout = ({
             name="zipCode"
             placeholder="ZIP code"
             size="w-full"
-            values={suggestedZipCodes}
+            values={suggestedZipCodes.map((value) => value.zipcode)}
           />
         </div>
         <div className="w-full lg:w-2/3">
@@ -229,7 +248,7 @@ const FormCheckout = ({
             name="city"
             placeholder="City"
             size="w-full"
-            values={suggestedCities}
+            values={suggestedCities.map((value) => value.city)}
           />
         </div>
       </motion.div>
@@ -308,7 +327,9 @@ const FormCheckout = ({
                 name="expedition.zipCode"
                 placeholder="ZIP code"
                 size="w-full"
-                values={suggestedExpeditionZipCodes}
+                values={suggestedExpeditionZipCodes.map(
+                  (value) => value.zipcode,
+                )}
               />
             </div>
             <div className="w-2/3">
@@ -317,7 +338,7 @@ const FormCheckout = ({
                 name="expedition.city"
                 placeholder="City"
                 size="w-full"
-                values={suggestedExpeditionCities}
+                values={suggestedExpeditionCities.map((value) => value.city)}
               />
             </div>
           </motion.div>

@@ -51,7 +51,7 @@ const Carousel = ({
       <div className="absolute w-full h-full blur" />
       <AnimatePresence>
         <motion.div
-          className={`absolute w-fit flex`}
+          className={`absolute w-fit h-full flex`}
           dragElastic={0.3}
           drag={canDrag ? 'x' : undefined}
           dragConstraints={{ left: -width, right: 0 }}

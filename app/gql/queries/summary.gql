@@ -1,0 +1,5 @@
+query SummaryQuery($profile: String!, $playlist: String!, $webshopId: String!, $topPodcastId: String!, $expectedNbReleases: Float) {
+  summary(profile: $profile, playlist: $playlist, webshopId: $webshopId, topPodcastId: $topPodcastId, expectedNbReleases: $expectedNbReleases) {
+    ...SummaryFragment
+  }
+}

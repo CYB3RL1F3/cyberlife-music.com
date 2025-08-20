@@ -1,10 +1,16 @@
-import Anchor from "~/components/atoms/Anchor";
-import type { FooterAnchorsProps } from "./FooterAnchors.types";
-import InlineListItem from "~/components/atoms/InlineListItem";
+import Anchor from '~/components/atoms/Anchor';
+import type { FooterAnchorsProps } from './FooterAnchors.types';
+import InlineListItem from '~/components/atoms/InlineListItem';
+import clsx from 'clsx';
 
-const FooterAnchors = ({ anchors }: FooterAnchorsProps) => {
+const FooterAnchors = ({ anchors, className }: FooterAnchorsProps) => {
   return (
-    <ul className="flex flex-row items-center justify-center md:h-12 md:justify-end max-md:flex-wrap">
+    <ul
+      className={clsx(
+        'flex flex-col md:flex-row md:items-center justify-center md:h-12 md:justify-end max-md:flex-wrap',
+        className,
+      )}
+    >
       {anchors.map(({ href, label }, index) => (
         <InlineListItem index={index} key={`FooterAnchors__${href}`}>
           {href ? (

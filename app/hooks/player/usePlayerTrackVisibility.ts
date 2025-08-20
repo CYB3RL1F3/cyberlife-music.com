@@ -1,7 +1,7 @@
-import { usePlayerContext } from "~/components/contexts/PlayerContext";
-import { useLocation } from "@remix-run/react";
-import { useEffect, useMemo, useState } from "react";
-import { getDomElement } from "~/utils/getDomElement";
+import { usePlayerContext } from '~/components/contexts/PlayerContext';
+import { useLocation } from '@remix-run/react';
+import { useEffect, useMemo, useState } from 'react';
+import { getDomElement } from '~/utils/getDomElement';
 
 export const usePlayerTrackVisibility = (isMobile?: boolean) => {
   const { pathname } = useLocation();
@@ -32,7 +32,7 @@ export const usePlayerTrackVisibility = (isMobile?: boolean) => {
           setVisible(false);
         });
       },
-      { threshold: 0.9 }
+      { threshold: 0.9 },
     );
 
     setObserver(observer);
@@ -43,7 +43,6 @@ export const usePlayerTrackVisibility = (isMobile?: boolean) => {
     const effect = async () => {
       if (!currentTrack?.id || !isTrackInCurrentContext || !observer) return;
       element = await getDomElement(`#player__${currentTrack.id}`);
-      console.log("ELEMENT ====> ", element, `#player__${currentTrack.id}`);
       if (!element) return;
       observer.observe(element);
     };
@@ -60,6 +59,6 @@ export const usePlayerTrackVisibility = (isMobile?: boolean) => {
     !!currentTrack && (!isTrackInCurrentContext || !isVisible);
 
   return {
-    showExternalPlayer
+    showExternalPlayer,
   };
 };

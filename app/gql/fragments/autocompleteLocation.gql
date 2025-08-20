@@ -1,0 +1,8 @@
+fragment AutocompleteLocation on AutocompleteLocationEntity {
+  suggestions {
+    zipcode
+    city
+    country
+    countryCode
+  }
+}

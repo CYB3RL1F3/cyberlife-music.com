@@ -1,8 +1,7 @@
-import { CartItem } from "~/hooks/db/useCart";
-import { Carrier } from "~/hooks/useCarriers";
+import { CartItem } from '~/hooks/db/useCart';
+import { Carrier } from '~/hooks/data/useCarriers';
 
-  export type TableFinalOrderProps = {
-    items: CartItem[];
-    carrier: Carrier;
-  }
-  
+export type TableFinalOrderProps = {
+  items: CartItem[];
+  carrier: Carrier;
+};

@@ -11,7 +11,7 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/styles.css",
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
-    "download:schema": "apollo service:download --endpoint=http://localhost:8888/v2/graphql ./graphql-schema.json",
+    "download:schema": "apollo service:download --endpoint=http://localhost:4001/v2/graphql ./graphql-schema.json",
     "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",

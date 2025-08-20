@@ -30,9 +30,7 @@ const ButtonPaymentPaypalContainer = ({
     if (!data?.releaseItems) throw new Error('No release items');
     const order = getOrder(items, checkout, data.releaseItems);
     const { data: intentData } = await intentOrder(order);
-    console.log('INTENT DATA ===> ', intentData);
     const orderId = intentData?.intentOrderPaypal?.order?._id;
-    console.log('ORDER ID ===> ', orderId);
     if (!orderId) {
       toast.error(
         'An error occurred while trying to pay. Please try again later.',
@@ -49,7 +47,7 @@ const ButtonPaymentPaypalContainer = ({
       );
       throw new Error('No payment intent id');
     }
-    console.log('ID ==> ', id);
+
     return id;
   };
 

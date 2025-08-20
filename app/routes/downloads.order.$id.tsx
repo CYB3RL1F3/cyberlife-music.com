@@ -11,8 +11,6 @@ export default function DownloadOrderRoute() {
   const [value] = useSearchParams();
   const token = value.get('token');
 
-  console.log('id:', id, ', token:', token);
-
   if (!id) {
     return (
       <ErrorPage code={400} message="Invalid request: order ID not found!" />
