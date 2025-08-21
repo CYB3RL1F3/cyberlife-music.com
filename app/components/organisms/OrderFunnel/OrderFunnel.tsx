@@ -20,7 +20,7 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate('/podcasts', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const CONFIRM = 0;

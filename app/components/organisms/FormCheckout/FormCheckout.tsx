@@ -14,11 +14,6 @@ import ControlledFieldInputAutoComplete from '../ControlledFieldInputAutoComplet
 import ControlledFieldSelector from '../ControlledFieldSelector';
 import countries from '~/utils/business/countries';
 import CountryFlag from '~/components/atoms/CountryFlag';
-import {
-  getCities,
-  getCityByZipCode,
-  getZipCodes,
-} from '~/utils/business/cities';
 import { useEffect, useMemo, useState } from 'react';
 import useDebounceEffect from '~/hooks/useDebouncedEffect';
 import ControlledFieldCheckbox from '../ControlledFieldCheckbox';
