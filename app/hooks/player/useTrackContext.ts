@@ -1,5 +1,5 @@
-import { usePlayerContext } from "~/components/contexts/PlayerContext";
-import { useMemo } from "react";
+import { usePlayerContext } from '~/components/contexts/PlayerContext';
+import { useMemo } from 'react';
 
 export const useTrackContext = (id: number) => {
   const {
@@ -18,7 +18,7 @@ export const useTrackContext = (id: number) => {
 
   const isPlaying = useMemo(
     () => isCurrentTrack && playing,
-    [isCurrentTrack, playing]
+    [isCurrentTrack, playing],
   );
 
   const togglePlay = () => {
@@ -39,6 +39,12 @@ export const useTrackContext = (id: number) => {
     currentTrack?.contexts?.desktop &&
     currentTrack.contexts.desktop.includes(currentContext);
 
+  const onEnded = () => {
+    const nextId = currentTrack?.nextId;
+    if (!nextId) return;
+    playerContext.play(nextId, true);
+  };
+
   return {
     load: currentTrack?.load || 0,
     seek: currentTrack?.seek || 0,
@@ -54,6 +60,7 @@ export const useTrackContext = (id: number) => {
     togglePlay,
     setLoad,
     setSeek,
-    id
+    id,
+    onEnded,
   };
 };

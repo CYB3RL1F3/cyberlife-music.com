@@ -1,8 +1,12 @@
 import { usePlaylistQuery } from '../queries/usePlaylistQuery';
+import { useReleaseQuery } from '../queries/useReleaseQuery';
 
-export const usePodcastTrackPosition = (id: number | null) => {
-  const { data } = usePlaylistQuery('dj-sets');
-  const tracks = data?.playlist?.tracks;
+export const useReleaseTrackPosition = (
+  releaseId: string,
+  id: number | null,
+) => {
+  const { data } = useReleaseQuery(releaseId);
+  const tracks = data?.releaseItem?.release?.tracklist;
   const currentIndex = tracks?.findIndex((track) => track.id === id);
   const prevIndex = currentIndex
     ? currentIndex > 0
@@ -18,7 +22,7 @@ export const usePodcastTrackPosition = (id: number | null) => {
       : 0;
 
   return {
-    prevId: tracks?.[prevIndex]?.id,
-    nextId: tracks?.[nextIndex]?.id,
+    prevId: tracks?.[prevIndex]?.stream?.id,
+    nextId: tracks?.[nextIndex]?.stream?.id,
   };
 };

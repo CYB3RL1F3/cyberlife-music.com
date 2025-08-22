@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export type TrackPlayerContext = {
   desktop: readonly string[];
@@ -49,7 +49,7 @@ export type Buffer = Record<string, BufferedTrack>;
 
 export type PlayerContextState = {
   buffer: Buffer;
-  currentTrackId?: TrackToBuffer["id"];
+  currentTrackId?: TrackToBuffer['id'];
   currentContext?: string;
   playing: boolean;
   volume: number;
@@ -58,7 +58,7 @@ export type PlayerContextState = {
 };
 
 export type BufferPayload = {
-  id: TrackToBuffer["id"];
+  id: TrackToBuffer['id'];
   value: number;
 };
 
@@ -68,38 +68,38 @@ export type SeekPayload = BufferPayload & {
 
 export type PlayerContextAction =
   | {
-      type: "ADD_TRACK";
+      type: 'ADD_TRACK';
       payload: TrackToBuffer;
     }
   | {
-      type: "SET_CURRENT_TRACK";
-      payload: TrackToBuffer["id"];
+      type: 'SET_CURRENT_TRACK';
+      payload: TrackToBuffer['id'];
     }
   | {
-      type: "SET_PLAYING_STATE";
+      type: 'SET_PLAYING_STATE';
       payload: {
         playing: boolean;
         jumping: boolean;
       };
     }
   | {
-      type: "SET_LOAD";
+      type: 'SET_LOAD';
       payload: BufferPayload;
     }
   | {
-      type: "SET_SEEK";
+      type: 'SET_SEEK';
       payload: SeekPayload;
     }
   | {
-      type: "SET_CURRENT_CONTEXT";
+      type: 'SET_CURRENT_CONTEXT';
       payload: string;
     }
   | {
-      type: "SET_VOLUME";
+      type: 'SET_VOLUME';
       payload: number;
     }
   | {
-      type: "SET_SHOW_EXTERNAL_PLAYER";
+      type: 'SET_SHOW_EXTERNAL_PLAYER';
       payload: boolean;
     };
 

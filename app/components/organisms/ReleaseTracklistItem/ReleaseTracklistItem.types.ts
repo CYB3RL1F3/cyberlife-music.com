@@ -1,10 +1,12 @@
-import type { ReleaseQueryReleaseTracklist } from "~/types/gql/ReleaseQuery";
-import type { ReleaseQueryRelease } from "~/types/gql/ReleaseQuery";
-import { PlayerReleaseTrackContainerProps } from "../PlayerReleaseTrackContainer/PlayerReleaseTrackContainer.types";
+import {
+  ReleaseQueryReleaseItemRelease,
+  ReleaseQueryReleaseItemReleaseTracklist,
+} from '~/types/gql/ReleaseQuery';
+import { PlayerReleaseTrackContainerProps } from '../PlayerReleaseTrackContainer/PlayerReleaseTrackContainer.types';
 
 export type ReleaseTracklistItemProps = {
-  track: ReleaseQueryReleaseTracklist;
-  thumb: ReleaseQueryRelease["thumb"];
+  track: ReleaseQueryReleaseItemReleaseTracklist;
+  thumb: ReleaseQueryReleaseItemRelease['thumb'];
   id: string;
-  album?: ReleaseQueryRelease["title"];
-} & Pick<PlayerReleaseTrackContainerProps, "nextId" | "prevId">;
+  album?: ReleaseQueryReleaseItemRelease['title'];
+} & Pick<PlayerReleaseTrackContainerProps, 'nextId' | 'prevId'>;
