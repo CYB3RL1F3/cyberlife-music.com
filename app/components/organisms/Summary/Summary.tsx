@@ -15,7 +15,7 @@ const Summary = ({
   latestVideo,
 }: SummaryProps) => {
   return (
-    <List noBorder={() => true}>
+    <List>
       {nextEvent ? (
         <SummaryLayout
           title="Next gig"
