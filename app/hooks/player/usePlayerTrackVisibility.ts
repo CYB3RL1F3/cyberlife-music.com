@@ -1,6 +1,6 @@
-import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import { useLocation } from '@remix-run/react';
 import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from '@remix-run/react';
+import { usePlayerContext } from '~/components/contexts/PlayerContext';
 import { getDomElement } from '~/utils/getDomElement';
 
 export const usePlayerTrackVisibility = (isMobile?: boolean) => {
