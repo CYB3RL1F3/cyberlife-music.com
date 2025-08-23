@@ -5,6 +5,7 @@ import ListVideosItem from '~/components/organisms/ListVideosItem';
 import ListPodcasts from '~/components/organisms/ListPodcasts';
 import ListEvents from '~/components/organisms/ListEvents';
 import type { SummaryProps } from './Summary.types';
+import List from '../List';
 
 const Summary = ({
   nextEvent,
@@ -14,7 +15,7 @@ const Summary = ({
   latestVideo,
 }: SummaryProps) => {
   return (
-    <div className="o-4">
+    <List noBorder={() => true}>
       {nextEvent ? (
         <SummaryLayout
           title="Next gig"
@@ -56,7 +57,7 @@ const Summary = ({
           <ListVideosItem video={latestVideo} />
         </SummaryLayout>
       ) : null}
-    </div>
+    </List>
   );
 };
 
