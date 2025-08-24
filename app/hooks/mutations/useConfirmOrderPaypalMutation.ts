@@ -1,15 +1,16 @@
-import { gql, useMutation } from "@apollo/client";
-import { profile } from "~/config";
-import confirmOrderPaypalMutation from "~/gql/mutations/confirmOrderPaypal.gql";
+import { useMutation } from '@apollo/client/react';
+import { gql } from '@apollo/client';
+import { profile } from '~/config';
+import confirmOrderPaypalMutation from '~/gql/mutations/confirmOrderPaypal.gql';
 import type {
   ConfirmOrderPaypal,
-  ConfirmOrderPaypalVariables
-} from "~/types/gql/confirmOrderPaypal";
-import orderFragment from "~/gql/fragments/orders.gql";
-import cartItemFragment from "~/gql/fragments/cartItem.gql";
-import cartFragment from "~/gql/fragments/cart.gql";
-import expeditionFragment from "~/gql/fragments/expedition.gql";
-import paymentFragment from "~/gql/fragments/payment.gql";
+  ConfirmOrderPaypalVariables,
+} from '~/types/gql/confirmOrderPaypal';
+import orderFragment from '~/gql/fragments/orders.gql';
+import cartItemFragment from '~/gql/fragments/cartItem.gql';
+import cartFragment from '~/gql/fragments/cart.gql';
+import expeditionFragment from '~/gql/fragments/expedition.gql';
+import paymentFragment from '~/gql/fragments/payment.gql';
 
 const confirmOrderPaypalMutationGql = gql`
   ${cartItemFragment}
@@ -25,16 +26,19 @@ export const useConfirmOrderPaypalMutation = () => {
     ConfirmOrderPaypal,
     ConfirmOrderPaypalVariables
   >(confirmOrderPaypalMutationGql, {
-    errorPolicy: "all"
+    errorPolicy: 'all',
   });
 
-  const confirmOrderPaypal = (orderId: ConfirmOrderPaypalVariables["orderId"], payment: ConfirmOrderPaypalVariables["payment"]) => {
+  const confirmOrderPaypal = (
+    orderId: ConfirmOrderPaypalVariables['orderId'],
+    payment: ConfirmOrderPaypalVariables['payment'],
+  ) => {
     return mutation({
       variables: {
         profile,
         orderId,
-        payment
-      }
+        payment,
+      },
     });
   };
   return [confirmOrderPaypal, mutationResults] as const;

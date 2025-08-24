@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import type { AutoCompleteLocationsVariables } from '~/types/gql/AutoCompleteLocations';
 import { autocompleteLocationsGql } from '~/queries/autocompleteLocations';
 import { AutoCompleteLocations } from '~/types/gql/AutoCompleteLocations';

@@ -1,51 +1,51 @@
-import {
-  ApolloClient,
-  ApolloProvider,
-  createHttpLink,
-  ApolloLink,
-  InMemoryCache
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-import type { ApolloContextProps } from "./ApolloContext.types";
-import { omitDeep } from "~/utils/object";
-import { getApiUrl } from "~/utils/config";
+// ApolloContext.tsx
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import type { ApolloContextProps } from './ApolloContext.types';
+import { omitDeep } from '~/utils/object';
+import { getApiUrl } from '~/utils/config';
+import { ApolloProvider } from '@apollo/client/react';
+import { BaseHttpLink } from '@apollo/client/link/http';
 
+// Déclare la shape de l'état hydraté si tu fais du SSR/SSG
+
+// @ts-expect-error xxx
 const cleanupLink = new ApolloLink((operation, forward) => {
   if (operation.variables) {
-    operation.variables = omitDeep(operation.variables, "__typename");
+    operation.variables = omitDeep(operation.variables, '__typename');
   }
-  return forward(operation);
+  // forward peut être undefined si la chaîne est vide (rare, mais safe)
+  return forward ? forward(operation) : null;
 });
-export const getClient = () => {
-  const link = setContext((operation, { headers }) => {
-    // get the authentication token from local storage if it exists
-    // return the headers to the context so httpLink can read them
 
-    return {
-      headers
-    };
+export const getClient = () => {
+  const authLink = setContext((_, { headers }) => {
+    // Place ici tes tokens/headers custom si besoin
+    return { headers };
   });
 
-  const uri = getApiUrl();
-
-  const httpLink = createHttpLink({
-    uri
+  const httpLink = new BaseHttpLink({
+    uri: getApiUrl(),
+    // credentials: 'include', // décommente si tu utilises des cookies
   });
 
   const cache =
-    typeof window !== "undefined"
+    typeof window !== 'undefined' && window.__APOLLO_STATE__
       ? new InMemoryCache().restore(window.__APOLLO_STATE__)
       : new InMemoryCache();
 
   const client = new ApolloClient({
-    link: link.concat(cleanupLink).concat(httpLink),
+    // @ts-expect-error xxx
+    link: ApolloLink.from([authLink, cleanupLink, httpLink]),
     cache,
     defaultOptions: {
       watchQuery: {
-        fetchPolicy: "cache-and-network"
-      }
-    }
+        fetchPolicy: 'cache-and-network',
+      },
+    },
+    // ssrMode: typeof window === 'undefined', // active si rendu côté serveur
   });
+
   return client;
 };
 

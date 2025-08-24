@@ -23,7 +23,7 @@ export const useCart = () => {
       }
     },
     [],
-    [null, false],
+    [null, false] as const,
   );
 
   const updateCart = (values: Partial<Cart>) => {

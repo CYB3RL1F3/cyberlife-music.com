@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-import { profile } from '~/config';
 import autocompleteLocation from '~/gql/queries/autocompleteLocations.gql';
 import autocompleteLocationFragment from '~/gql/fragments/autocompleteLocation.gql';
 import type { AutocompleteLocation } from '~/types/gql/AutocompleteLocation';

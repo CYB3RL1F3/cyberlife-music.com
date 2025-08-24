@@ -1,11 +1,12 @@
 import downloadOrderFragment from '~/gql/fragments/download.gql';
-import { gql, useMutation } from "@apollo/client";
-import { profile } from "~/config";
-import downloadOrderTracksMutation from "~/gql/mutations/downloadOrderTracks.gql";
+import { useMutation } from '@apollo/client/react';
+import { gql } from '@apollo/client';
+import { profile } from '~/config';
+import downloadOrderTracksMutation from '~/gql/mutations/downloadOrderTracks.gql';
 import type {
   DownloadOrderTracks,
-  DownloadOrderTracksVariables
-} from "~/types/gql/DownloadOrderTracks";
+  DownloadOrderTracksVariables,
+} from '~/types/gql/DownloadOrderTracks';
 
 const downloadOrderTracksMutationGql = gql`
   ${downloadOrderFragment}
@@ -13,22 +14,26 @@ const downloadOrderTracksMutationGql = gql`
 `;
 
 export const useDownloadOrderTracksMutation = (
-onCompleted: (data: DownloadOrderTracks) => void, onError: (error: any) => void) => {
+  onCompleted: (data: DownloadOrderTracks) => void,
+  onError: (error: any) => void,
+) => {
   const [mutation, mutationResults] = useMutation<
-  DownloadOrderTracks,
-  DownloadOrderTracksVariables
+    DownloadOrderTracks,
+    DownloadOrderTracksVariables
   >(downloadOrderTracksMutationGql, {
     onCompleted,
     onError,
-    errorPolicy: "all"
+    errorPolicy: 'all',
   });
 
-  const downloadOrderTracks = (variables: Omit<DownloadOrderTracksVariables, 'profile'>) => {
+  const downloadOrderTracks = (
+    variables: Omit<DownloadOrderTracksVariables, 'profile'>,
+  ) => {
     return mutation({
       variables: {
         ...variables,
-        profile
-      }
+        profile,
+      },
     });
   };
   return [downloadOrderTracks, mutationResults] as const;

@@ -7,7 +7,7 @@ import type { MutableRefObject } from 'react';
 import { useRef } from 'react';
 
 const EventMap = ({ location, height = 272 }: EventMapProps) => {
-  const ref = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
+  const ref = useRef<HTMLDivElement>(null);
   if (!location?.position) {
     return null;
   }
@@ -15,7 +15,7 @@ const EventMap = ({ location, height = 272 }: EventMapProps) => {
   const [longitude, latitude] = location.position;
 
   return (
-    <div className="w-full h-full relative" ref={ref}>
+    <div className="relative w-full h-full" ref={ref}>
       <Mapbox
         zoom={14}
         width={'100%'}
