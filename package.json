@@ -15,7 +15,7 @@
     "clean:types": "npx ts-node ./scripts/fix-type-files.ts",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
     "generate:graphql": "pnpm codegen && pnpm clean:types",
-    "codegen": "pnpm download:schema && apollo codegen:generate --outputFlat ./app/types/gql --localSchemaFile=./graphql-schema.json --target=typescript --tagName=gql"
+    "codegen": "pnpm download:schema && graphql-codegen --config ./codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.0.0",
@@ -31,7 +31,6 @@
     "@wry/context": "^0.7.4",
     "@wry/equality": "^0.5.7",
     "@wry/trie": "^0.5.0",
-    "apollo": "^2.34.0",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "concurrently": "^9.2.0",
@@ -83,6 +82,11 @@
     "zen-observable-ts": "^1.1.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/near-operation-file-preset": "^3.1.0",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
     "@remix-run/eslint-config": "^2.17.0",
     "@types/dompurify": "^3.2.0",
     "@types/node": "^24.3.0",
