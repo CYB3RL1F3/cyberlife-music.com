@@ -12,31 +12,14 @@ const schema: CodegenConfig['schema'] = API_URL
 
 const config: CodegenConfig = {
   schema,
-  // 👉 on ne prend que tes fichiers d’opérations
+  // uniquement tes documents d'opérations
   documents: ['app/gql/**/*.{gql,graphql}'],
   generates: {
-    // 1) Types de base du schéma (reste dans app/types/gql)
-    'app/types/gql/types.ts': {
-      plugins: ['typescript'],
-      config: { useTypeImports: true },
-    },
-
-    // 2) TOUT le code par opération sous app/types/gql/** (miroir de app/gql/**)
-    // ⚠️ Pas de slash final ici
-    'app/types/gql': {
-      preset: 'near-operation-file',
-      presetConfig: {
-        // fichier généré par op
-        extension: '.ts', // exigé par typescript-react-apollo
-        // pas de sous-dossier __generated__
-        folder: '.',
-        // import relatif vers les types du schéma
-        baseTypesPath: 'types.ts',
-      },
+    'app/types/gql.ts': {
       plugins: [
-        'typescript',
-        'typescript-operations',
-        'typescript-react-apollo',
+        'typescript', // types du schéma
+        'typescript-operations', // types par opération
+        'typescript-react-apollo', // hooks React (useQuery/useMutation…)
       ],
       config: {
         withHooks: true,
@@ -48,8 +31,6 @@ const config: CodegenConfig = {
       },
     },
   },
-
-  // on veut échouer s’il n’y a pas de documents
   ignoreNoDocuments: false,
 };
 
