@@ -1,5 +1,5 @@
-import type { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
-import { ReleaseFragmentTracklistArtists } from "~/types/gql/ReleaseFragment";
+import type { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
+import { ReleaseFragmentTracklistArtists } from '~/types/gql/ReleaseFragment';
 
 export type PlayerReleaseTrackContainerProps = {
   track: Parameters<typeof useReleaseTrackPlayer>[0];
@@ -8,4 +8,5 @@ export type PlayerReleaseTrackContainerProps = {
   album?: string | null;
   prevId?: number | null;
   nextId?: number | null;
+  uniqId: string;
 };

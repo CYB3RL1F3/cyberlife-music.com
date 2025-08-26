@@ -1,22 +1,22 @@
-import PageDetailHeader from "~/components/molecules/PageDetailHeader";
-import PageDetailHeaderPortal from "~/components/molecules/PageDetailHeaderPortal";
-import ReleaseDetails from "../ReleaseDetails/ReleaseDetails";
-import ReleaseTracklist from "../ReleaseTracklist";
-import type { ViewReleaseProps } from "./ViewRelease.types";
-import Text from "~/components/atoms/Text";
-import { useFluidTransition } from "~/hooks/useFluidTransition";
-import { motion } from "framer-motion";
+import PageDetailHeader from '~/components/molecules/PageDetailHeader';
+import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
+import ReleaseDetails from '../ReleaseDetails/ReleaseDetails';
+import ReleaseTracklist from '../ReleaseTracklist';
+import type { ViewReleaseProps } from './ViewRelease.types';
+import Text from '~/components/atoms/Text';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { motion } from 'framer-motion';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
   const transition = useFluidTransition({
     initial: {
       x: 50,
-      opacity: 0
+      opacity: 0,
     },
     animate: {
       x: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   });
   if (!release.release) return null;
 

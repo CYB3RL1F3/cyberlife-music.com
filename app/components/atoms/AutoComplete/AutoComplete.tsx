@@ -1,10 +1,11 @@
-import clsx from "clsx";
-import type { AutoCompleteProps } from "./AutoComplete.types";
-import { useCallback, useLayoutEffect, useState } from "react";
+import clsx from 'clsx';
+import type { AutoCompleteProps } from './AutoComplete.types';
+import { useCallback, useLayoutEffect, useState } from 'react';
+import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
 
 const actionValues = {
   ArrowUp: -1 as const,
-  ArrowDown: 1 as const
+  ArrowDown: 1 as const,
 };
 
 const AutoComplete = ({
@@ -12,7 +13,7 @@ const AutoComplete = ({
   onSelect,
   autoCompleteItem,
   disabled,
-  size = "w-full"
+  size = 'w-full',
 }: AutoCompleteProps) => {
   const [hover, setHover] = useState(0);
   const isOpen = !!values.length;
@@ -29,32 +30,27 @@ const AutoComplete = ({
         return hover + dy;
       });
     },
-    [values.length]
+    [values.length],
   );
 
-  const handleKeyboard = useCallback(
+  const handleKeyboard = useCallback<Parameters<typeof useKeydownEvent>[0]>(
     (e: KeyboardEvent) => {
       if (disabled) return;
-      if (e.key === "Enter") {
+      if (e.key === 'Enter') {
         e.preventDefault();
         onSelect?.(values[hover]);
       }
 
-      if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
       moveTo(actionValues[e.key]);
     },
-    [disabled, hover, moveTo, onSelect, values]
+    [disabled, hover, moveTo, onSelect, values],
   );
 
-  useLayoutEffect(() => {
-    window.document.addEventListener("keydown", handleKeyboard);
-    return () => {
-      window.document.removeEventListener("keydown", handleKeyboard);
-    };
-  }, [handleKeyboard]);
+  useKeydownEvent(handleKeyboard);
 
   return (
-    <div className={clsx("relative", size)}>
+    <div className={clsx('relative', size)}>
       {isOpen && !disabled && (
         <div className="absolute z-20 flex flex-col gap-1 w-inherit">
           {values.map((value, index) =>
@@ -63,8 +59,8 @@ const AutoComplete = ({
               isHover: hover === index,
               onClick: () => {
                 onSelect?.(value);
-              }
-            })
+              },
+            }),
           )}
         </div>
       )}

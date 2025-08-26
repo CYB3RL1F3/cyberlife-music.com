@@ -1,30 +1,30 @@
-import type { FormContactProps, FormContactValues } from "./FormContact.types";
-import { superstructResolver } from "@hookform/resolvers/superstruct";
-import { useForm } from "react-hook-form";
-import { formContactSchema } from "./FormContact.schema";
-import ControlledFieldInput from "~/components/organisms/ControlledFieldInput";
-import ControlledFieldInputAutoComplete from "~/components/organisms/ControlledFieldInputAutoComplete/ControlledFieldInputAutoComplete";
-import ControlledFieldTextarea from "~/components/organisms/ControlledFieldTextarea";
-import { IoMdSend } from "react-icons/io";
-import ButtonSubmit from "~/components/molecules/ButtonSubmit/ButtonSubmit";
-import { useMobileVibration } from "~/hooks/useMobileVibration";
-import { motion, AnimatePresence } from "framer-motion";
-import { useFluidTransition } from "~/hooks/useFluidTransition";
-import FormHeading from "../FormHeading";
+import type { FormContactProps, FormContactValues } from './FormContact.types';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+import { useForm } from 'react-hook-form';
+import { formContactSchema } from './FormContact.schema';
+import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
+import ControlledFieldInputAutoComplete from '~/components/organisms/ControlledFieldInputAutoComplete/ControlledFieldInputAutoComplete';
+import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTextarea';
+import { IoMdSend } from 'react-icons/io';
+import ButtonSubmit from '~/components/molecules/ButtonSubmit/ButtonSubmit';
+import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import FormHeading from '../FormHeading';
 
 const FormContact = ({
   onSubmit,
   defaultValues,
-  subjectSuggestions
+  subjectSuggestions,
 }: FormContactProps) => {
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting, isDirty, isSubmitted, isValid }
+    formState: { isSubmitting, isDirty, isSubmitted, isValid },
   } = useForm<FormContactValues>({
     defaultValues,
-    reValidateMode: "onChange",
-    resolver: superstructResolver(formContactSchema)
+    reValidateMode: 'onChange',
+    resolver: superstructResolver(formContactSchema),
   });
 
   useMobileVibration(isSubmitted && !isValid);
@@ -38,7 +38,7 @@ const FormContact = ({
           title="Let's keep in touch!"
           description={
             <>
-              You can contact me by this form or by mail at{" "}
+              You can contact me by this form or by mail at{' '}
               <a
                 className="underline"
                 href="mailto:contact@cyberlife-music.com"

@@ -1,9 +1,9 @@
-import type { AvatarProps } from "./Avatar.types";
-import { useDynamicSource } from "~/hooks/useDynamicSource";
+import type { AvatarProps } from './Avatar.types';
+import { useDynamicSource } from '~/hooks/misc/useDynamicSource';
 
 const Avatar = ({ src, alt }: AvatarProps) => {
   const placeholder =
-    "https://www.belin.re/wp-content/uploads/2018/11/default-avatar-600x600.png";
+    'https://www.belin.re/wp-content/uploads/2018/11/default-avatar-600x600.png';
   const img = useDynamicSource(src, placeholder);
   return (
     <img

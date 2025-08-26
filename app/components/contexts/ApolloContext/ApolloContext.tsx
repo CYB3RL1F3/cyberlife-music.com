@@ -1,6 +1,5 @@
 // ApolloContext.tsx
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import type { ApolloContextProps } from './ApolloContext.types';
 import { omitDeep } from '~/utils/object';
 import { getApiUrl } from '~/utils/config';
@@ -9,21 +8,16 @@ import { BaseHttpLink } from '@apollo/client/link/http';
 
 // Déclare la shape de l'état hydraté si tu fais du SSR/SSG
 
-// @ts-expect-error xxx
-const cleanupLink = new ApolloLink((operation, forward) => {
+const requestHandler: ApolloLink.RequestHandler = (operation, forward) => {
   if (operation.variables) {
     operation.variables = omitDeep(operation.variables, '__typename');
   }
-  // forward peut être undefined si la chaîne est vide (rare, mais safe)
-  return forward ? forward(operation) : null;
-});
+  return forward(operation);
+};
+
+const cleanupLink = new ApolloLink(requestHandler);
 
 export const getClient = () => {
-  const authLink = setContext((_, { headers }) => {
-    // Place ici tes tokens/headers custom si besoin
-    return { headers };
-  });
-
   const httpLink = new BaseHttpLink({
     uri: getApiUrl(),
     // credentials: 'include', // décommente si tu utilises des cookies
@@ -35,8 +29,7 @@ export const getClient = () => {
       : new InMemoryCache();
 
   const client = new ApolloClient({
-    // @ts-expect-error xxx
-    link: ApolloLink.from([authLink, cleanupLink, httpLink]),
+    link: ApolloLink.from([cleanupLink, httpLink]),
     cache,
     defaultOptions: {
       watchQuery: {

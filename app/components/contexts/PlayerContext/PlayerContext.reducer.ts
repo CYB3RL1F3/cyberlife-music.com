@@ -3,15 +3,15 @@ import type {
   PlayerContextState,
   BufferPayload,
   TrackToBuffer,
-  SeekPayload
-} from "./PlayerContext.types";
+  SeekPayload,
+} from './PlayerContext.types';
 
 export const initialState: PlayerContextState = {
   buffer: {},
   playing: false,
   volume: 100,
   jumping: false,
-  showExternalPlayer: true
+  showExternalPlayer: true,
 };
 
 const addTrack = (state: PlayerContextState, value: TrackToBuffer) => {
@@ -22,12 +22,17 @@ const addTrack = (state: PlayerContextState, value: TrackToBuffer) => {
       [id]: {
         seek: 0,
         load: 0,
-        ...value
-      }
+        ...value,
+      },
+    };
+  } else {
+    state.buffer[id] = {
+      ...state.buffer[id],
+      ...value,
     };
   }
   return {
-    ...state
+    ...state,
   };
 };
 
@@ -41,9 +46,9 @@ const setSeek = (state: PlayerContextState, payload: SeekPayload) => {
       ...state.buffer,
       [id]: {
         ...state.buffer[id],
-        seek: value
-      }
-    }
+        seek: value,
+      },
+    },
   };
 };
 
@@ -56,52 +61,52 @@ const setLoad = (state: PlayerContextState, payload: BufferPayload) => {
       ...state.buffer,
       [id]: {
         ...state.buffer[id],
-        load: value
-      }
-    }
+        load: value,
+      },
+    },
   };
 };
 
 const playerContextReducer = (
   state = initialState,
-  { type, payload }: PlayerContextAction
+  { type, payload }: PlayerContextAction,
 ) => {
   switch (type) {
-    case "ADD_TRACK": {
+    case 'ADD_TRACK': {
       const updatedState = addTrack(state, payload);
       return updatedState;
     }
-    case "SET_CURRENT_TRACK": {
+    case 'SET_CURRENT_TRACK': {
       return {
         ...state,
-        currentTrackId: payload
+        currentTrackId: payload,
       };
     }
-    case "SET_PLAYING_STATE": {
+    case 'SET_PLAYING_STATE': {
       return {
         ...state,
         playing: payload.playing,
-        jumping: payload.jumping
+        jumping: payload.jumping,
       };
     }
-    case "SET_LOAD": {
+    case 'SET_LOAD': {
       const updatedState = setLoad(state, payload);
       return updatedState;
     }
-    case "SET_SEEK": {
+    case 'SET_SEEK': {
       const updatedState = setSeek(state, payload);
       return updatedState;
     }
-    case "SET_CURRENT_CONTEXT": {
+    case 'SET_CURRENT_CONTEXT': {
       return {
         ...state,
-        currentContext: payload
+        currentContext: payload,
       };
     }
-    case "SET_VOLUME": {
+    case 'SET_VOLUME': {
       return {
         ...state,
-        volume: payload
+        volume: payload,
       };
     }
     default:

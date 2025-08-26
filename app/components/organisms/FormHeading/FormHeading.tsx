@@ -1,7 +1,7 @@
-import { useFluidTransition } from "~/hooks/useFluidTransition";
-import type { FormHeadingProps } from "./FormHeading.types";
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import type { FormHeadingProps } from './FormHeading.types';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const FormHeading = ({ title, description }: FormHeadingProps) => {
   const transition = useFluidTransition();

@@ -2,6 +2,7 @@ import FooterAnchorsInfosContainer from '~/components/organisms/FooterAnchorsInf
 import FooterAnchorsCopyrights from '~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights';
 import PlayerWidgetMobile from '../PlayerWidgetMobile/PlayerWidgetMobile';
 import { AnimatePresence, motion } from 'framer-motion';
+import ClientOnly from '~/components/atoms/ClientOnly';
 
 const Footer = () => {
   return (
@@ -24,7 +25,7 @@ const Footer = () => {
         </motion.footer>
       </AnimatePresence>
       <div className="mt-1 md:hidden">
-        <PlayerWidgetMobile />
+        <ClientOnly>{() => <PlayerWidgetMobile />}</ClientOnly>
       </div>
     </>
   );

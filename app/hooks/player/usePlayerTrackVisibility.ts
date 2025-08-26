@@ -1,14 +1,18 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useLocation } from '@remix-run/react';
 import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import { getDomElement } from '~/utils/getDomElement';
+import { useLocation } from '@remix-run/react';
+import { useEffect, useMemo, useState } from 'react';
+import useDebounceEffect from '../misc/useDebouncedEffect';
 
 export const usePlayerTrackVisibility = (isMobile?: boolean) => {
   const { pathname } = useLocation();
+  const [observer, setObserver] = useState<IntersectionObserver | null>(null);
+  const [isVisible, setVisible] = useState(false);
+
   const { setCurrentTrackContext, currentTrack } = usePlayerContext();
 
   useEffect(() => {
     setCurrentTrackContext(pathname);
+    setVisible(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -16,47 +20,66 @@ export const usePlayerTrackVisibility = (isMobile?: boolean) => {
     if (!currentTrack) return false;
     if (isMobile) return currentTrack.contexts.mobile.includes(pathname);
     return currentTrack.contexts.desktop.includes(pathname);
-  }, [currentTrack, isMobile, pathname]);
-
-  const [observer, setObserver] = useState<IntersectionObserver | null>(null);
-  const [isVisible, setVisible] = useState(false);
+  }, [currentTrack?.contexts?.desktop?.length, isMobile, pathname]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            return;
-          }
-          setVisible(false);
-        });
+    const newObserver = new IntersectionObserver(
+      (entries, observer) => {
+        const isElementVisible = entries.some((entry) => entry.isIntersecting);
+        setVisible(isElementVisible);
       },
-      { threshold: 0.9 },
+      { threshold: 0.6 },
     );
 
-    setObserver(observer);
-  }, []);
+    setObserver(newObserver);
+    return () => {
+      newObserver.disconnect();
+      setObserver(null);
+    };
+  }, [pathname]);
+
+  function onRemoved(el: HTMLElement, callback: () => void) {
+    const observer = new MutationObserver(() => {
+      if (!document.contains(el)) {
+        observer.disconnect();
+        callback();
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+    return observer;
+  }
 
   useEffect(() => {
-    let element: Element | null;
-    const effect = async () => {
-      if (!currentTrack?.id || !isTrackInCurrentContext || !observer) return;
-      element = await getDomElement(`#player__${currentTrack.id}`);
-      if (!element) return;
-      observer.observe(element);
+    const effect = () => {
+      if (!currentTrack?.id || !observer) {
+        return;
+      }
+
+      const elementId = `player__${currentTrack.id}__${pathname.replace('/', '_')}`;
+      const element = document.getElementById(elementId);
+
+      if (isTrackInCurrentContext && element) {
+        observer.observe(element);
+        onRemoved(element, () => {
+          observer.unobserve(element);
+          effect();
+        });
+      }
+
+      return () => {
+        if (element) {
+          observer.unobserve(element);
+        }
+      };
     };
 
-    effect();
-
-    return () => {
-      if (!element || !observer) return;
-      observer.unobserve(element);
-    };
-  }, [currentTrack?.id, isTrackInCurrentContext, observer]);
+    return effect();
+  }, [currentTrack?.id, pathname, isTrackInCurrentContext, observer]);
 
   const showExternalPlayer =
-    !!currentTrack && (!isTrackInCurrentContext || !isVisible);
+    !!currentTrack?.id &&
+    (!isTrackInCurrentContext || (isTrackInCurrentContext && !isVisible));
 
   return {
     showExternalPlayer,

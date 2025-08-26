@@ -1,20 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
-import { useSubscribeMutation } from "~/hooks/mutations/useSubscribeMutation";
-import { useConfigContext } from "../ConfigContext";
-import { NotificationContext } from "./NotificationContext";
-import type { NotificationContextProviderProps } from "./NotificationContext.types";
+import { useCallback, useEffect, useState } from 'react';
+import { useSubscribeMutation } from '~/hooks/mutations/useSubscribeMutation';
+import { useConfigContext } from '../ConfigContext';
+import { NotificationContext } from './NotificationContext';
+import type { NotificationContextProviderProps } from './NotificationContext.types';
 import {
   getSubscription,
-  getSubscriptionParameters
-} from "./NotificationContext.utils";
+  getSubscriptionParameters,
+} from './NotificationContext.utils';
 
-import { usePwaContext } from "../PwaContext/PwaContext.hook";
-import { useUnSubscribeMutation } from "~/hooks/mutations/useUnsubscribeMutation";
-import { useLocalStorage } from "~/hooks/useLocaleStorage";
-import { toast } from "react-toastify";
+import { usePwaContext } from '../PwaContext/PwaContext.hook';
+import { useUnSubscribeMutation } from '~/hooks/mutations/useUnsubscribeMutation';
+import { useLocalStorage } from '~/hooks/misc/useLocaleStorage';
+import { toast } from 'react-toastify';
 
 const NotificationContextProvider = ({
-  children
+  children,
 }: NotificationContextProviderProps) => {
   const [isVerified, setVerified] = useState(false);
   const [isSubscribed, toggleSubscribed] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const NotificationContextProvider = ({
 
   const [storedSubscribeState, setStoredSubscribeState] = useLocalStorage<
     boolean | undefined
-  >("subscription", undefined);
+  >('subscription', undefined);
 
   const [unsubscribe] = useUnSubscribeMutation((data) => {
     if (data.unsubscribe.deleted) {
@@ -52,7 +52,7 @@ const NotificationContextProvider = ({
     isSubscribed,
     registration,
     setStoredSubscribeState,
-    subscribe
+    subscribe,
   ]);
 
   const doUnsubscribe = async () => {
@@ -72,7 +72,7 @@ const NotificationContextProvider = ({
 
       if (subscribed) {
         toast.success("You're now subscribed to notifications!", {
-          position: toast.POSITION.BOTTOM_RIGHT
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
     } else {
@@ -80,7 +80,7 @@ const NotificationContextProvider = ({
 
       if (unsubscribed) {
         toast.info("You're now unsubscribed to notifications.", {
-          position: toast.POSITION.BOTTOM_RIGHT
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
     }
@@ -91,13 +91,13 @@ const NotificationContextProvider = ({
     const asyncEffect = async () => {
       await doSubscribe();
     };
-    if (typeof Notification === "undefined") return;
+    if (typeof Notification === 'undefined') return;
 
     if (
-      Notification.permission === "granted" &&
+      Notification.permission === 'granted' &&
       registration &&
       !isVerified &&
-      (storedSubscribeState || typeof storedSubscribeState === "undefined")
+      (storedSubscribeState || typeof storedSubscribeState === 'undefined')
     ) {
       setVerified(true);
       asyncEffect();
@@ -108,7 +108,7 @@ const NotificationContextProvider = ({
     <NotificationContext.Provider
       value={{
         isSubscribed,
-        setSubscribed
+        setSubscribed,
       }}
     >
       {children}

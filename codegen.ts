@@ -24,7 +24,7 @@ const config: CodegenConfig = {
         gqlTagName: 'gql',
         gqlImport: 'graphql-tag',
         skipTypename: true,
-        maybeValue: 'T | null',
+        maybeValue: 'T | null | undefined',
         namingConvention: {
           typeNames: 'change-case#pascalCase',
           enumValues: 'change-case#pascalCase',

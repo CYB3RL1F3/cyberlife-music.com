@@ -4,7 +4,7 @@ import { Link } from '@remix-run/react';
 import { MdWarning } from 'react-icons/md';
 import Icon from '~/components/atoms/Icon';
 import { motion } from 'framer-motion';
-import { useFluidTransition } from '~/hooks/useFluidTransition';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 
 const FormOrderDownloadConfirmError = ({
   id,

@@ -6,7 +6,7 @@ import { Link } from '@remix-run/react';
 import { useCart } from '~/hooks/db/useCart';
 import { useEffect, useMemo, useState } from 'react';
 import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
-import useDebounceEffect from '~/hooks/useDebouncedEffect';
+import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
 
 const getAnimation = (i: number) => ({
   initial: { y: -50, opacity: 0 },

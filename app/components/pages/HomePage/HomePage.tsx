@@ -1,19 +1,12 @@
-import ListPodcasts from '~/components/organisms/ListPodcasts';
-import { useSummaryQuery } from '~/hooks/queries/useSummaryQuery';
 import HandlerContent from '~/components/molecules/HandlerContent';
 import Loader from '~/components/molecules/Loader';
-import { getConfig } from '~/utils/config';
 import Summary from '~/components/organisms/Summary';
 import ErrorPage from '../ErrorPage';
 import ButtonLink from '~/components/atoms/ButtonLink';
+import { useHomepageSummary } from '~/hooks/misc/useHomepageSummary';
 
 const HomePage = () => {
-  const { data, loading } = useSummaryQuery({
-    playlist: 'dj-sets',
-    topPodcastId: 'minuteuf-20',
-    webshopId: getConfig()?.webshopId!,
-    expectedNbReleases: 2,
-  });
+  const { data, loading } = useHomepageSummary();
 
   return (
     <HandlerContent

@@ -5,4 +5,5 @@ export type PlayerTrackProps = {
   isPlaying?: boolean;
   id?: number | string;
   onSeekChange?: (seek: number) => void;
+  uniqId?: string;
 };

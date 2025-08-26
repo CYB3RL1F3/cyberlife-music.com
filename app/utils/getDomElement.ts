@@ -15,6 +15,6 @@ export const getDomElement = (selector: string): Promise<Element> =>
 
     observer.observe(window.document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   });

@@ -5,7 +5,7 @@ import type {
 } from 'react';
 import { forwardRef } from 'react';
 import { useLayoutEffect } from 'react';
-import { useInputStyle } from '~/hooks/useInputStyle';
+import { useInputStyle } from '~/hooks/misc/useInputStyle';
 import type { InputProps } from './Input.types';
 import { twMerge } from 'tailwind-merge';
 

@@ -2,7 +2,7 @@ import AutoComplete from '~/components/atoms/AutoComplete';
 import AutoCompleteItem from '~/components/atoms/AutoCompleteItem';
 import ClientOnly from '~/components/atoms/ClientOnly';
 import FieldInput from '~/components/molecules/FieldInput';
-import { useToggleState } from '~/hooks/useToggleState';
+import { useToggleState } from '~/hooks/misc/useToggleState';
 import type { FieldInputAutoCompleteProps } from './FieldInputAutoComplete.types';
 import { forwardRef } from 'react';
 

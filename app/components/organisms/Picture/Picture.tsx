@@ -1,8 +1,8 @@
-import Action from "~/components/atoms/Action";
-import Thumbnail from "~/components/molecules/Thumbnail";
-import ModalImage from "../ModalImage";
-import type { PictureProps } from "./Picture.types";
-import { useToggleState } from "~/hooks/useToggleState";
+import Action from '~/components/atoms/Action';
+import Thumbnail from '~/components/molecules/Thumbnail';
+import ModalImage from '../ModalImage';
+import type { PictureProps } from './Picture.types';
+import { useToggleState } from '~/hooks/misc/useToggleState';
 
 const Picture = ({ src, alt, variant }: PictureProps) => {
   const [isOpen, open, close] = useToggleState();

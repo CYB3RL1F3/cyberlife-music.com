@@ -1,8 +1,8 @@
-import { useMemo } from "react";
-import FormContactContainer from "~/components/organisms/FormContactContainer";
-import { useToggleState } from "~/hooks/useToggleState";
-import FormContactSuccess from "~/components/organisms/FormContactSuccess/FormContactSuccess";
-import { AnimatePresence, motion } from "framer-motion";
+import { useMemo } from 'react';
+import FormContactContainer from '~/components/organisms/FormContactContainer';
+import { useToggleState } from '~/hooks/misc/useToggleState';
+import FormContactSuccess from '~/components/organisms/FormContactSuccess/FormContactSuccess';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ContactPage = () => {
   const [isSuccess, showSuccess, hideSuccess] = useToggleState();
@@ -16,7 +16,7 @@ const ContactPage = () => {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
-        key={isSuccess ? "success" : "form"}
+        key={isSuccess ? 'success' : 'form'}
         initial={{ opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ opacity: 0.8 }}

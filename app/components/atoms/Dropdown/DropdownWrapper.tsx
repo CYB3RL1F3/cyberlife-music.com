@@ -1,7 +1,7 @@
 import { useMemo, useRef, type ReactNode } from 'react';
 import DropdownButton from './DropdownButton';
 import clsx from 'clsx';
-import { useOnClickOutside } from '~/hooks/useOnClickOutside';
+import { useOutsideMouseClickEvent } from '~/hooks/events/useOutsideMouseClickEvent';
 import { DropdownWrapperProps } from './Dropdown.types';
 
 const defaultDropdownButton: DropdownWrapperProps['dropdownButton'] = (
@@ -33,7 +33,7 @@ const DropdownWrapper = ({
 }: DropdownWrapperProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useOnClickOutside(ref, () => {
+  useOutsideMouseClickEvent(ref, () => {
     isOpen && handleClickOutside && onToggle?.();
   });
 

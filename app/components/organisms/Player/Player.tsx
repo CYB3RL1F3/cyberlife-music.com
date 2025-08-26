@@ -1,7 +1,7 @@
-import ActionPlay from "~/components/molecules/ActionPlay";
-import type { PlayerTrackProps } from "../PlayerTrack";
-import PlayerTrack from "../PlayerTrack";
-import type { PlayerProps } from "./Player.types";
+import ActionPlay from '~/components/molecules/ActionPlay';
+import type { PlayerTrackProps } from '../PlayerTrack';
+import PlayerTrack from '../PlayerTrack';
+import type { PlayerProps } from './Player.types';
 
 const Player = ({
   isPlaying,
@@ -10,9 +10,10 @@ const Player = ({
   seek,
   title,
   load,
-  waveform
+  waveform,
+  uniqId,
 }: PlayerProps) => {
-  const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
+  const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
   };
 
@@ -30,6 +31,7 @@ const Player = ({
           load={load}
           isPlaying={isPlaying}
           onSeekChange={handleSeekChange}
+          uniqId={uniqId}
         />
       </div>
     </article>

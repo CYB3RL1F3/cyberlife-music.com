@@ -5,7 +5,7 @@ import {
 } from './FormOrderDownloadConfirm.types';
 import ControlledFieldInput from '../ControlledFieldInput';
 import { motion } from 'framer-motion';
-import { useFluidTransition } from '~/hooks/useFluidTransition';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { superstructResolver } from '@hookform/resolvers/superstruct';
 import { formOrderDownloadConfirmSchema } from './FormOrderDownloadConfirm.schema';
 

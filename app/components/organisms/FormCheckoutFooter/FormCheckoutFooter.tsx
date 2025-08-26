@@ -7,7 +7,7 @@ import { GrPowerReset } from 'react-icons/gr';
 import { RxCross2 } from 'react-icons/rx';
 import { FormCheckoutFooterProps } from './FormCheckoutFooter.types';
 import { motion } from 'framer-motion';
-import { useFluidTransition } from '~/hooks/useFluidTransition';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 
 const FormCheckoutFooter = ({
   reset,

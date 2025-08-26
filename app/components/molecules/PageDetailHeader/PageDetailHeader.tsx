@@ -1,16 +1,16 @@
-import { HiArrowLeft } from "react-icons/hi";
-import Heading from "~/components/atoms/Heading";
-import type { PageDetailHeaderProps } from "./PageDetailHeader.types";
-import { Link } from "@remix-run/react";
-import { useFluidTransition } from "~/hooks/useFluidTransition";
-import { motion } from "framer-motion";
+import { HiArrowLeft } from 'react-icons/hi';
+import Heading from '~/components/atoms/Heading';
+import type { PageDetailHeaderProps } from './PageDetailHeader.types';
+import { Link } from '@remix-run/react';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { motion } from 'framer-motion';
 
 const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
   const transition = useFluidTransition({
     initial: {
       y: 0,
-      opacity: 0
-    }
+      opacity: 0,
+    },
   });
   return (
     <motion.div

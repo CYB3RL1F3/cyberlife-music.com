@@ -1,3 +1,5 @@
-import type { useCurrentTrackPlayer } from "~/hooks/player/useCurrentTrackPlayer";
+import type { useCurrentTrackPlayer } from '~/hooks/player/useCurrentTrackPlayer';
 
-export type PlayerProps = ReturnType<typeof useCurrentTrackPlayer>;
+export type PlayerProps = ReturnType<typeof useCurrentTrackPlayer> & {
+  uniqId: string;
+};

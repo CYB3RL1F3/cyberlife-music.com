@@ -3,7 +3,7 @@ import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPorta
 import type { ViewVideoProps } from './ViewVideo.types';
 import Text from '~/components/atoms/Text';
 import VideoPlayer from '~/components/organisms/VideoPlayer';
-import { useFluidTransition } from '~/hooks/useFluidTransition';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { motion } from 'framer-motion';
 
 const ViewVideo = ({ video }: ViewVideoProps) => {
