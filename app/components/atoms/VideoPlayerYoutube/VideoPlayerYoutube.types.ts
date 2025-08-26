@@ -1,3 +1,3 @@
-export type VideoPlayerYoutubeProps = {
-  url: string;
-};
+import { ReactPlayerProps } from 'react-player/dist/types';
+
+export type VideoPlayerYoutubeProps = ReactPlayerProps;

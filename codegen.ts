@@ -16,11 +16,7 @@ const config: CodegenConfig = {
   documents: ['app/gql/**/*.{gql,graphql}'],
   generates: {
     'app/types/gql.ts': {
-      plugins: [
-        'typescript', // types du schéma
-        'typescript-operations', // types par opération
-        'typescript-react-apollo', // hooks React (useQuery/useMutation…)
-      ],
+      plugins: ['typescript', 'typescript-operations'],
       config: {
         withHooks: true,
         avoidOptionals: true,
@@ -28,6 +24,11 @@ const config: CodegenConfig = {
         gqlTagName: 'gql',
         gqlImport: 'graphql-tag',
         skipTypename: true,
+        maybeValue: 'T | null',
+        namingConvention: {
+          typeNames: 'change-case#pascalCase',
+          enumValues: 'change-case#pascalCase',
+        },
       },
     },
   },
