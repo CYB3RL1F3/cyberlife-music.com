@@ -3,7 +3,7 @@ export type PlayerTrackProps = {
   seek: number;
   load: number;
   isPlaying?: boolean;
-  id?: number | string;
+  id: number | string;
   onSeekChange?: (seek: number) => void;
   uniqId?: string;
 };

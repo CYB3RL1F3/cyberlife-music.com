@@ -34,11 +34,6 @@ export const useTrackContext = (id: number) => {
     playerContext.setSeek(id, value, jumping);
   };
 
-  const isInCurrentContext =
-    currentContext &&
-    currentTrack?.contexts?.desktop &&
-    currentTrack.contexts.desktop.includes(currentContext);
-
   const onEnded = () => {
     const nextId = currentTrack?.nextId;
     if (!nextId) return;
@@ -52,7 +47,6 @@ export const useTrackContext = (id: number) => {
     waveform: currentTrack?.waveform,
     title: currentTrack?.title,
     duration: currentTrack?.duration,
-    isInCurrentContext,
     isPlaying,
     isCurrentTrack,
     volume,

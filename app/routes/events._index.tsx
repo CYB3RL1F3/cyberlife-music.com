@@ -1,4 +1,5 @@
 import { LinksFunction } from '@remix-run/server-runtime';
+import ErrorPage from '~/components/pages/ErrorPage';
 import EventsPage from '~/components/pages/EventsPage';
 
 export const links: LinksFunction = () => {
@@ -15,3 +16,12 @@ export const links: LinksFunction = () => {
 export default function EventsRoute() {
   return <EventsPage />;
 }
+
+export const CatchBoundary = () => {
+  return (
+    <ErrorPage
+      code={500}
+      message="An error occurred while loading events page"
+    />
+  );
+};

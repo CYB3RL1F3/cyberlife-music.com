@@ -5,7 +5,7 @@ import ReleaseTracklist from '../ReleaseTracklist';
 import type { ViewReleaseProps } from './ViewRelease.types';
 import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
   const transition = useFluidTransition({
@@ -22,25 +22,27 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
 
   const { title, notes, tracklist, thumb, slug } = release.release;
   return (
-    <article className="o-4">
-      <PageDetailHeaderPortal>
-        <PageDetailHeader title={title} url="/releases" />
-      </PageDetailHeaderPortal>
-      <motion.article className="w-full" {...transition(0.05)}>
-        <ReleaseDetails release={release} />
-      </motion.article>
-      <motion.article className="py-4" {...transition(0.1)}>
-        <Text.RightItalic>{notes}</Text.RightItalic>
-      </motion.article>
-      {tracklist && (
-        <ReleaseTracklist
-          id={slug}
-          tracks={tracklist}
-          thumb={thumb}
-          album={title}
-        />
-      )}
-    </article>
+    <AnimatePresence mode="wait">
+      <article className="o-4">
+        <PageDetailHeaderPortal>
+          <PageDetailHeader title={title} url="/releases" />
+        </PageDetailHeaderPortal>
+        <motion.article className="w-full" {...transition(0.05)}>
+          <ReleaseDetails release={release} />
+        </motion.article>
+        <motion.article className="py-4" {...transition(0.1)}>
+          <Text.RightItalic>{notes}</Text.RightItalic>
+        </motion.article>
+        {tracklist && (
+          <ReleaseTracklist
+            id={slug}
+            tracks={tracklist}
+            thumb={thumb}
+            album={title}
+          />
+        )}
+      </article>
+    </AnimatePresence>
   );
 };
 

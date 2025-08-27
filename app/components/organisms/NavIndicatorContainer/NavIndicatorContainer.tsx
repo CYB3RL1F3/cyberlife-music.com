@@ -1,14 +1,13 @@
-import type { MutableRefObject } from "react";
-import { useRef, useEffect } from "react";
-import NavIndicator from "~/components/atoms/NavIndicator";
-import { useNavContext } from "~/components/contexts/NavContext";
-import { debounce } from "~/utils/debounce";
+import type { MutableRefObject } from 'react';
+import { useRef, useEffect } from 'react';
+import NavIndicator from '~/components/atoms/NavIndicator';
+import { useNavContext } from '~/components/contexts/NavContext';
+import { debounce } from '~/utils/debounce';
 
 const NavIndicatorContainer = () => {
   const { currentIndex, items, setOffset } = useNavContext();
   const currentItem = items[currentIndex];
-  const ref =
-    useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement | null>;
+  const ref = useRef<HTMLDivElement>(null);
 
   const update = debounce(() => {
     const offset = ref.current?.offsetLeft;

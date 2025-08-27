@@ -11,7 +11,6 @@ const PlayerTrack = ({
   isPlaying,
   onSeekChange,
   id,
-  uniqId = '',
 }: PlayerTrackProps) => {
   const waveformRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
@@ -34,7 +33,7 @@ const PlayerTrack = ({
 
   return (
     <div
-      id={id ? `player__${id}__${uniqId}` : undefined}
+      id={`player__${id}`}
       ref={playerRef}
       onClick={moveSeek}
       className={clsx('relative w-full h-6 cursor-pointer opacity-80', {

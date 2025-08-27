@@ -6,13 +6,11 @@ import Thumbnail from '~/components/molecules/Thumbnail';
 import PlayerPodcastTrackContainer from '~/components/organisms/PlayerPodcastTrackContainer';
 import type { ListPodcastsItemProps } from './ListPodcastsItem.types';
 import ListLinkIconsPodcast from '../ListLinkIconsPodcast';
-import { useLocation } from '@remix-run/react';
 
 const ListPodcastsItem = ({
   podcast,
   artworkFallback,
 }: ListPodcastsItemProps) => {
-  const { pathname } = useLocation();
   const { artwork, title, slug, description, waveform } = podcast;
   if (!title || !waveform) return null;
   return (
@@ -33,10 +31,7 @@ const ListPodcastsItem = ({
           </div>
         </div>
         <div className="hidden md:block">
-          <PlayerPodcastTrackContainer
-            uniqId={pathname.replace('/', '_')}
-            track={podcast}
-          />
+          <PlayerPodcastTrackContainer track={podcast} />
         </div>
       </ListItemSnippet>
     </ListItem>

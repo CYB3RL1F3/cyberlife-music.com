@@ -1,5 +1,8 @@
 import type { useCurrentTrackPlayer } from '~/hooks/player/useCurrentTrackPlayer';
 
-export type PlayerProps = ReturnType<typeof useCurrentTrackPlayer> & {
-  uniqId: string;
+export type PlayerProps = Omit<
+  ReturnType<typeof useCurrentTrackPlayer>,
+  'id'
+> & {
+  id: string | number;
 };

@@ -1,4 +1,5 @@
 export const routes = [
+  '/',
   '/podcasts',
   '/podcasts/:id',
   '/releases',

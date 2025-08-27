@@ -45,10 +45,7 @@ const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
         <PodcastDetails podcast={podcast} />
       </motion.article>
       <motion.article {...transition(0.2)}>
-        <PlayerPodcastTrackContainer
-          uniqId={pathname.replace('/', '_')}
-          track={podcast}
-        />
+        <PlayerPodcastTrackContainer track={podcast} />
       </motion.article>
       <motion.article {...transition(0.3)} className="pt-4 o-8">
         {description && (

@@ -3,10 +3,16 @@ import Loader from '~/components/molecules/Loader';
 import Summary from '~/components/organisms/Summary';
 import ErrorPage from '../ErrorPage';
 import ButtonLink from '~/components/atoms/ButtonLink';
-import { useHomepageSummary } from '~/hooks/misc/useHomepageSummary';
+import { useSummaryQuery } from '~/hooks/queries/useSummaryQuery';
+import { getConfig } from '~/utils/config';
 
 const HomePage = () => {
-  const { data, loading } = useHomepageSummary();
+  const { data, loading } = useSummaryQuery({
+    playlist: 'dj-sets',
+    topPodcastId: 'minuteuf-20',
+    webshopId: getConfig()?.webshopId!,
+    expectedNbReleases: 2,
+  });
 
   return (
     <HandlerContent

@@ -1,4 +1,5 @@
 import { LoaderFunction } from '@remix-run/server-runtime';
+import ErrorPage from '~/components/pages/ErrorPage';
 import HomePage from '~/components/pages/HomePage';
 import { runSummaryQuery } from '~/queries/summary';
 import { getConfig } from '~/utils/config';
@@ -37,3 +38,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function IndexRoute() {
   return <HomePage />;
 }
+
+export const CatchBoundary = () => {
+  return (
+    <ErrorPage
+      code={500}
+      message="An error occurred while loading this website"
+    />
+  );
+};

@@ -1,33 +1,33 @@
-import type { AnchorProps } from "./Anchor.types";
-import { clsx } from "clsx";
-import { Link } from "@remix-run/react";
-import { useMemo } from "react";
-import { useButtonStyle } from "~/hooks/styles/useButtonStyle";
-import { useLinkStyle } from "~/hooks/styles/useLinkStyle";
+import type { AnchorProps } from './Anchor.types';
+import { clsx } from 'clsx';
+import { Link } from '@remix-run/react';
+import { useMemo } from 'react';
+import { useButtonStyle } from '~/hooks/styles/useButtonStyle';
+import { useLinkStyle } from '~/hooks/styles/useLinkStyle';
 
 const Anchor = ({
   children,
   href,
   className,
-  target = "_blank",
-  variant = "link"
+  target = '_blank',
+  variant = 'link',
 }: AnchorProps) => {
   const buttonStyle = useButtonStyle(className);
   const linkStyle = useLinkStyle(className);
   const cls = useMemo(
     () =>
       clsx({
-        [linkStyle]: variant === "link",
-        [buttonStyle]: variant === "button"
+        [linkStyle]: variant === 'link',
+        [buttonStyle]: variant === 'button',
       }),
-    [buttonStyle, linkStyle, variant]
+    [buttonStyle, linkStyle, variant],
   );
 
   if (!href) return null;
-  const internal = !href.includes("https://");
+  const internal = !href.includes('https://');
 
   return internal ? (
-    <Link to={href} prefetch="intent" className={cls}>
+    <Link to={href} prefetch="render" className={cls}>
       {children}
     </Link>
   ) : (

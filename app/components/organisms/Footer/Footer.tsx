@@ -1,7 +1,7 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import FooterAnchorsInfosContainer from '~/components/organisms/FooterAnchorsInfosContainer';
 import FooterAnchorsCopyrights from '~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights';
-import PlayerWidgetMobile from '../PlayerWidgetMobile/PlayerWidgetMobile';
-import { AnimatePresence, motion } from 'framer-motion';
+import PlayerWidgetMobile from '~/components/organisms/PlayerWidgetMobile/PlayerWidgetMobile';
 import ClientOnly from '~/components/atoms/ClientOnly';
 
 const Footer = () => {

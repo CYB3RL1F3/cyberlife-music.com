@@ -1,13 +1,13 @@
-import List from "~/components/organisms/List";
-import { getCyberlifeReleaseTracks } from "~/utils/business/filters";
-import ReleaseTracklistItem from "~/components/organisms/ReleaseTracklistItem";
-import type { ReleaseTracklistProps } from "./ReleaseTracklist.types";
+import List from '~/components/organisms/List';
+import { getCyberlifeReleaseTracks } from '~/utils/business/filters';
+import ReleaseTracklistItem from '~/components/organisms/ReleaseTracklistItem';
+import type { ReleaseTracklistProps } from './ReleaseTracklist.types';
 
 const ReleaseTracklist = ({
   tracks,
   thumb,
   id,
-  album
+  album,
 }: ReleaseTracklistProps) => {
   const cyberTracks = getCyberlifeReleaseTracks(tracks);
   return (
@@ -17,7 +17,6 @@ const ReleaseTracklist = ({
           id && (
             <ReleaseTracklistItem
               key={track.id}
-              id={id}
               track={track}
               thumb={thumb}
               album={album}
@@ -32,7 +31,7 @@ const ReleaseTracklist = ({
                   : cyberTracks[cyberTracks.length - 1].stream?.id
               }
             />
-          )
+          ),
       )}
     </List>
   );

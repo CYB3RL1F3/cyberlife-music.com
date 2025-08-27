@@ -7,6 +7,5 @@ import { PlayerReleaseTrackContainerProps } from '../PlayerReleaseTrackContainer
 export type ReleaseTracklistItemProps = {
   track: ReleaseQueryReleaseItemReleaseTracklist;
   thumb: ReleaseQueryReleaseItemRelease['thumb'];
-  id: string;
   album?: ReleaseQueryReleaseItemRelease['title'];
 } & Pick<PlayerReleaseTrackContainerProps, 'nextId' | 'prevId'>;

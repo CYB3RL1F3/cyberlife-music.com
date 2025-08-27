@@ -5,15 +5,13 @@ import type { PlayerReleaseTrackContainerProps } from './PlayerReleaseTrackConta
 
 const PlayerReleaseTrackContainer = ({
   track,
-  id,
   artists,
   album,
   prevId,
   nextId,
-  uniqId,
 }: PlayerReleaseTrackContainerProps) => {
   const { waveform, id: trackId } = track;
-  const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, id, {
+  const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, {
     artist: artists?.map(({ name }) => name).join(', '),
     album,
     prevId,
@@ -31,7 +29,6 @@ const PlayerReleaseTrackContainer = ({
       seek={seek}
       isPlaying={isPlaying}
       onSeekChange={handleSeekChange}
-      uniqId={uniqId}
     />
   );
 };

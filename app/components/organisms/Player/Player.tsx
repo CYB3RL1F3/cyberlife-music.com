@@ -11,7 +11,7 @@ const Player = ({
   title,
   load,
   waveform,
-  uniqId,
+  id,
 }: PlayerProps) => {
   const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
@@ -31,7 +31,7 @@ const Player = ({
           load={load}
           isPlaying={isPlaying}
           onSeekChange={handleSeekChange}
-          uniqId={uniqId}
+          id={id}
         />
       </div>
     </article>

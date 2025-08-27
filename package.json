@@ -35,7 +35,7 @@
     "clsx": "2.1.1",
     "concurrently": "9.2.1",
     "cross-env": "10.0.0",
-    "dayjs": "1.11.13",
+    "dayjs": "1.11.14",
     "dexie": "4.2.0",
     "dexie-react-hooks": "4.2.0",
     "dompurify": "3.2.6",

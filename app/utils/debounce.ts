@@ -1,13 +1,25 @@
-let dbnc = false;
+export function debounce<T extends (...args: any[]) => void>(
+  callback: T,
+  delayMs: number,
+) {
+  let timeoutId: number | null = null;
 
-export const debounce =
-  (func: Function, duration: number) =>
-  (...args: any[]) => {
-    if (dbnc === false) {
-      dbnc = true;
-      func(...args);
-      setTimeout(() => {
-        dbnc = false;
-      }, duration);
+  const debounced = (...args: Parameters<T>) => {
+    if (timeoutId !== null) {
+      window.clearTimeout(timeoutId);
+    }
+    timeoutId = window.setTimeout(() => {
+      timeoutId = null;
+      callback(...args);
+    }, delayMs);
+  };
+
+  debounced.cancel = () => {
+    if (timeoutId !== null) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
     }
   };
+
+  return debounced as T & { cancel: () => void };
+}

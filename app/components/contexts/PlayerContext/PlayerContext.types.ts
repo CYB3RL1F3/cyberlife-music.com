@@ -1,10 +1,5 @@
 import type { ReactNode } from 'react';
 
-export type TrackPlayerContext = {
-  desktop: readonly string[];
-  mobile: readonly string[];
-};
-
 export type TrackToBuffer = {
   id: number;
   url: string;
@@ -12,7 +7,6 @@ export type TrackToBuffer = {
   artist?: string;
   album?: string | null;
   artwork?: string | null;
-  contexts: TrackPlayerContext;
   waveform: string;
   duration: number;
   nextId?: number | null;

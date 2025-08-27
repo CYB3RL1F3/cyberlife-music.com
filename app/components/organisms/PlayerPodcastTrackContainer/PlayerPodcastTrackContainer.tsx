@@ -5,7 +5,6 @@ import type { PlayerPodcastTrackContainerProps } from './PlayerPodcastTrackConta
 
 const PlayerPodcastTrackContainer = ({
   track,
-  uniqId,
 }: PlayerPodcastTrackContainerProps) => {
   const { waveform, id } = track;
 
@@ -25,7 +24,6 @@ const PlayerPodcastTrackContainer = ({
       seek={seek}
       isPlaying={isPlaying}
       onSeekChange={handleSeekChange}
-      uniqId={uniqId}
     />
   );
 };

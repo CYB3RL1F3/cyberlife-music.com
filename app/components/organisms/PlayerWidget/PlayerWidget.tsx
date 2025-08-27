@@ -16,7 +16,7 @@ const PlayerWidget = () => {
       animate={showExternalPlayer ? 'open' : 'closed'}
       variants={variants}
     >
-      <PlayerCurrentTrackContainer />
+      <PlayerCurrentTrackContainer id="widget" />
     </motion.div>
   );
 };

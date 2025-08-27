@@ -1,11 +1,12 @@
 import { useCurrentTrackPlayer } from '~/hooks/player/useCurrentTrackPlayer';
-import Player from '../Player/Player';
-import { useLocation } from '@remix-run/react';
+import Player from '~/components/organisms/Player';
+import { PlayerCurrentTrackContainerProps } from './PlayerCurrentTrackContainer.types';
 
-const PlayerCurrentTrackContainer = () => {
+const PlayerCurrentTrackContainer = ({
+  id,
+}: PlayerCurrentTrackContainerProps) => {
   const currentTrackPlayer = useCurrentTrackPlayer();
-  const { pathname } = useLocation();
-  return <Player {...currentTrackPlayer} uniqId={pathname.replace('/', '_')} />;
+  return <Player {...currentTrackPlayer} id={id} />;
 };
 
 export default PlayerCurrentTrackContainer;

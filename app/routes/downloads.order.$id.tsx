@@ -25,3 +25,12 @@ export default function DownloadOrderRoute() {
 
   return <DownloadOrderPage id={id} token={token} />;
 }
+
+export const CatchBoundary = () => {
+  return (
+    <ErrorPage
+      code={500}
+      message="An error occurred while loading the download page"
+    />
+  );
+};
