@@ -18,7 +18,6 @@ export const useMediaSession = () => {
   const handleSeek = useCallback(
     ({ seekTime }: MediaSessionActionDetails) => {
       if (!currentTrack?.id || typeof seekTime === 'undefined') return;
-      console.log('WTF SEEEKK ?????');
       setSeek(currentTrack.id, seekTime, true);
     },
     [currentTrack?.id, setSeek],
@@ -132,13 +131,16 @@ export const useMediaSession = () => {
 
     navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
 
-    if (!currentTrack?.id || playing) {
+    if (!currentTrack?.id || !playing) {
       return;
     }
+
     const { seek, duration } = currentTrack;
     const trackDuration = duration / 1000;
     const currentPosition = trackDuration * (seek / 100);
     const playbackRate = 1;
+
+    console.log('PS >> ', currentPosition, trackDuration);
 
     if (
       Number.isFinite(trackDuration) &&
