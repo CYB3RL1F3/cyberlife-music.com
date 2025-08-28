@@ -2862,6 +2862,16 @@ input:-webkit-autofill:active{
     height: auto;
   }
 
+  .md\:h-24 {
+    height: 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .md\:md\:h-24 {
+      height: 6rem;
+    }
+  }
+
   .md\:w-16 {
     width: 4rem;
   }

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 export const useLinkNavItemStyle = () =>
   clsx(
-    'h-24 leading-24 md:leading-8 md:h-8 inline-flex items-center uppercase text-xl md:text-lg font-semibold',
+    'h-16 leading-16 md:h-24 md:leading-24 md:leading-8 md:h-8 inline-flex items-center uppercase text-xl md:text-lg font-semibold',
     'cursor-pointer hover:text-white',
   );
 
