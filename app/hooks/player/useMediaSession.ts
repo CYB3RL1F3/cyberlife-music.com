@@ -140,8 +140,6 @@ export const useMediaSession = () => {
     const currentPosition = trackDuration * (seek / 100);
     const playbackRate = 1;
 
-    console.log('PS >> ', currentPosition, trackDuration);
-
     if (
       Number.isFinite(trackDuration) &&
       trackDuration > 0 &&
