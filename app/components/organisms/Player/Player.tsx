@@ -24,7 +24,7 @@ const Player = ({
       <div className="w-12 h-12">
         <ActionPlay title={title} isPlaying={isPlaying} onChange={togglePlay} />
       </div>
-      <div className="flex items-center w-full ml-2">
+      <div className="flex items-center w-full h-12 ml-2">
         <PlayerTrack
           waveform={waveform}
           seek={seek}

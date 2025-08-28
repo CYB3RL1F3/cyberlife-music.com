@@ -24,9 +24,7 @@ const Footer = () => {
           <FooterAnchorsInfosContainer />
         </motion.footer>
       </AnimatePresence>
-      <div className="mt-1 md:hidden">
-        <ClientOnly>{() => <PlayerWidgetMobile />}</ClientOnly>
-      </div>
+      <ClientOnly>{() => <PlayerWidgetMobile />}</ClientOnly>
     </>
   );
 };
