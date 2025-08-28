@@ -2,7 +2,6 @@ import { useLayoutEffect, useRef } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import type { AudioProps } from './Audio.types';
-import { debounce } from '~/utils/debounce';
 
 const Audio = ({
   url,
@@ -45,8 +44,8 @@ const Audio = ({
     <ReactAudioPlayer
       ref={playerRef}
       src={url}
-      listenInterval={200}
-      onListen={debounce(onListen, 200)}
+      listenInterval={100}
+      onListen={onListen}
       onEnded={onEnded}
       controls={false}
       autoPlay

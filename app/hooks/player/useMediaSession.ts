@@ -1,8 +1,9 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { usePlayerContext } from '~/components/contexts/PlayerContext';
 
 export const useMediaSession = () => {
-  const { currentTrack, isPlaying, play, pause, setSeek } = usePlayerContext();
+  const { currentTrack, jumping, isPlaying, play, pause, setSeek } =
+    usePlayerContext();
 
   const handlePlay = useCallback(() => {
     if (!currentTrack?.id) return;
@@ -17,6 +18,7 @@ export const useMediaSession = () => {
   const handleSeek = useCallback(
     ({ seekTime }: MediaSessionActionDetails) => {
       if (!currentTrack?.id || typeof seekTime === 'undefined') return;
+      console.log('WTF SEEEKK ?????');
       setSeek(currentTrack.id, seekTime, true);
     },
     [currentTrack?.id, setSeek],
@@ -32,7 +34,6 @@ export const useMediaSession = () => {
     play(currentTrack.nextId);
   }, [currentTrack?.nextId, play]);
 
-  /* MEDIA SESSION CONTROLS */
   useEffect(() => {
     if (!('mediaSession' in navigator)) return;
     const id = currentTrack?.id;
@@ -69,6 +70,11 @@ export const useMediaSession = () => {
             {
               src: currentTrack?.artwork,
               sizes: '384x384',
+              type: 'image/png',
+            },
+            {
+              src: currentTrack?.artwork,
+              sizes: '500x500',
               type: 'image/png',
             },
             {
@@ -116,4 +122,34 @@ export const useMediaSession = () => {
     handlePlayPreviousTrack,
     handlePlayNextTrack,
   ]);
+
+  useEffect(() => {
+    const trackId = currentTrack?.id;
+    if (!trackId || jumping) return;
+    if (!('mediaSession' in navigator)) return;
+
+    const playing = isPlaying(trackId);
+
+    navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
+
+    if (!currentTrack?.id || playing) {
+      return;
+    }
+    const { seek, duration } = currentTrack;
+    const trackDuration = duration / 1000;
+    const currentPosition = trackDuration * (seek / 100);
+    const playbackRate = 1;
+
+    if (
+      Number.isFinite(trackDuration) &&
+      trackDuration > 0 &&
+      Number.isFinite(currentPosition)
+    ) {
+      navigator.mediaSession.setPositionState({
+        duration: trackDuration,
+        playbackRate,
+        position: Math.max(0, Math.min(currentPosition, trackDuration)),
+      });
+    }
+  }, [currentTrack?.id, currentTrack?.duration, currentTrack?.seek, isPlaying]);
 };
