@@ -1,42 +1,46 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePlayerContext } from '~/components/contexts/PlayerContext';
+import useDebounceEffect from '../misc/useDebouncedEffect';
 
 export const useMediaSession = () => {
   const { currentTrack, jumping, isPlaying, play, pause, setSeek } =
     usePlayerContext();
 
-  const handlePlay = useCallback(() => {
+  const handlePlay = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.id) return;
+    window.navigator.mediaSession.playbackState = 'playing';
     play(currentTrack.id);
   }, [currentTrack?.id, play]);
 
-  const handlePause = useCallback(() => {
+  const handlePause = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.id) return;
+    window.navigator.mediaSession.playbackState = 'paused';
     pause(currentTrack.id);
   }, [currentTrack?.id, pause]);
 
-  const handleSeek = useCallback(
-    ({ seekTime }: MediaSessionActionDetails) => {
+  const handleSeek = useCallback<MediaSessionActionHandler>(
+    ({ seekTime }) => {
       if (!currentTrack?.id || typeof seekTime === 'undefined') return;
+
       setSeek(currentTrack.id, seekTime, true);
     },
     [currentTrack?.id, setSeek],
   );
 
-  const handlePlayPreviousTrack = useCallback(() => {
+  const handlePlayPreviousTrack = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.prevId) return;
     play(currentTrack.prevId);
   }, [currentTrack?.prevId, play]);
 
-  const handlePlayNextTrack = useCallback(() => {
+  const handlePlayNextTrack = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.nextId) return;
     play(currentTrack.nextId);
   }, [currentTrack?.nextId, play]);
 
   useEffect(() => {
-    if (!('mediaSession' in navigator)) return;
+    if (!('mediaSession' in window.navigator)) return;
     const id = currentTrack?.id;
-    if (!id || !isPlaying(id)) {
+    if (!id) {
       return;
     }
 
@@ -83,8 +87,8 @@ export const useMediaSession = () => {
             },
           ]
         : [],
-    };
-    navigator.mediaSession.metadata = new MediaMetadata(metadata);
+    } satisfies MediaMetadataInit;
+    window.navigator.mediaSession.metadata = new MediaMetadata(metadata);
   }, [
     currentTrack?.id,
     currentTrack?.title,
@@ -95,7 +99,7 @@ export const useMediaSession = () => {
   ]);
 
   useEffect(() => {
-    const mediaSession = navigator.mediaSession;
+    const mediaSession = window.navigator.mediaSession;
 
     if (!mediaSession) return;
 
@@ -122,34 +126,66 @@ export const useMediaSession = () => {
     handlePlayNextTrack,
   ]);
 
+  const [handleStarts, setHandleStarts] = useState(false);
+
   useEffect(() => {
     const trackId = currentTrack?.id;
-    if (!trackId || jumping) return;
-    if (!('mediaSession' in navigator)) return;
-
-    const playing = isPlaying(trackId);
-
-    navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
-
-    if (!currentTrack?.id || !playing) {
-      return;
-    }
-
-    const { seek, duration } = currentTrack;
-    const trackDuration = duration / 1000;
-    const currentPosition = trackDuration * (seek / 100);
-    const playbackRate = 1;
-
-    if (
-      Number.isFinite(trackDuration) &&
-      trackDuration > 0 &&
-      Number.isFinite(currentPosition)
-    ) {
-      navigator.mediaSession.setPositionState({
+    if (!trackId) return;
+    if (isPlaying(trackId)) {
+      setHandleStarts(true);
+      const { duration } = currentTrack;
+      const trackDuration = duration / 1000;
+      console.log(window.navigator.mediaSession.setPositionState);
+      window.navigator.mediaSession.playbackState = 'playing';
+      window.navigator.mediaSession.setPositionState({
         duration: trackDuration,
-        playbackRate,
-        position: Math.max(0, Math.min(currentPosition, trackDuration)),
+        playbackRate: 1,
+        position: 0,
       });
+      console.log(trackDuration, window.navigator.mediaSession);
     }
-  }, [currentTrack?.id, currentTrack?.duration, currentTrack?.seek, isPlaying]);
+  }, [isPlaying, currentTrack?.id]);
+
+  useDebounceEffect(
+    () => {
+      if (handleStarts) {
+        setHandleStarts(false);
+        return;
+      }
+      window.requestAnimationFrame(() => {
+        const trackId = currentTrack?.id;
+        if (!trackId) return;
+        if (!('mediaSession' in window.navigator)) return;
+
+        const playing = isPlaying(trackId);
+
+        window.navigator.mediaSession.playbackState = playing
+          ? 'playing'
+          : 'paused';
+
+        if (!currentTrack?.id || !playing) {
+          return;
+        }
+
+        const { seek, duration } = currentTrack;
+        const trackDuration = duration / 1000;
+        const currentPosition = trackDuration * (seek / 100);
+        const playbackRate = 1;
+
+        if (
+          Number.isFinite(trackDuration) &&
+          trackDuration > 0 &&
+          Number.isFinite(currentPosition)
+        ) {
+          window.navigator.mediaSession.setPositionState({
+            duration: trackDuration,
+            playbackRate,
+            position: Math.max(0, Math.min(currentPosition, trackDuration)),
+          });
+        }
+      });
+    },
+    [currentTrack?.id, currentTrack?.duration, currentTrack?.seek, isPlaying],
+    1000,
+  );
 };

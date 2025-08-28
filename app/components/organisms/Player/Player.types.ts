@@ -5,4 +5,5 @@ export type PlayerProps = Omit<
   'id'
 > & {
   id: string | number;
+  className?: string;
 };

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import type { AudioProps } from './Audio.types';
@@ -22,6 +22,7 @@ const Audio = ({
 
   const onListen = (value: number) => {
     if (!element?.current || !duration) return;
+
     const loaded =
       (element.current.buffered.end(element.current.buffered.length - 1) /
         element.current.duration) *

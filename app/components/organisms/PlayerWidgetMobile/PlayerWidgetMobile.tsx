@@ -10,13 +10,13 @@ const variants = {
 const PlayerWidgetMobile = () => {
   const { showExternalPlayer } = usePlayerTrackVisibility();
   return (
-    <div className="fixed bottom-0 z-10 w-screen h-12">
+    <div className="fixed bottom-0 z-10 w-screen h-12 bg-black bg-opacity-80">
       <motion.div
         className="flex w-screen h-12 md:hidden"
         animate={showExternalPlayer ? 'open' : 'closed'}
         variants={variants}
       >
-        <PlayerCurrentTrackContainer id="widget__mobile" />
+        <PlayerCurrentTrackContainer className="w-[85vw]" id="widget__mobile" />
       </motion.div>
     </div>
   );

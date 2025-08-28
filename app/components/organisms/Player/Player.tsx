@@ -2,6 +2,7 @@ import ActionPlay from '~/components/molecules/ActionPlay';
 import type { PlayerTrackProps } from '../PlayerTrack';
 import PlayerTrack from '../PlayerTrack';
 import type { PlayerProps } from './Player.types';
+import { twMerge } from 'tailwind-merge';
 
 const Player = ({
   isPlaying,
@@ -12,6 +13,7 @@ const Player = ({
   load,
   waveform,
   id,
+  className,
 }: PlayerProps) => {
   const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
@@ -24,7 +26,7 @@ const Player = ({
       <div className="w-12 h-12">
         <ActionPlay title={title} isPlaying={isPlaying} onChange={togglePlay} />
       </div>
-      <div className="flex items-center w-full h-12 ml-2">
+      <div className={twMerge('flex items-center w-full h-12 ml-2', className)}>
         <PlayerTrack
           waveform={waveform}
           seek={seek}

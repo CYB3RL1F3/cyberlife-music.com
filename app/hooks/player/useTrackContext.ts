@@ -1,5 +1,5 @@
 import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 export const useTrackContext = (id: number) => {
   const {
@@ -29,7 +29,9 @@ export const useTrackContext = (id: number) => {
     playerContext.pause(id);
   };
 
-  const setLoad = (value: number) => playerContext.setLoad(id, value);
+  const setLoad = (value: number) => {
+    playerContext.setLoad(id, value);
+  };
   const setSeek = (value: number, jumping?: boolean) => {
     playerContext.setSeek(id, value, jumping);
   };

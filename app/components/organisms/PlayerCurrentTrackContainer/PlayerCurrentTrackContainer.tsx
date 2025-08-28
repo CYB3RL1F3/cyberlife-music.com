@@ -4,9 +4,10 @@ import { PlayerCurrentTrackContainerProps } from './PlayerCurrentTrackContainer.
 
 const PlayerCurrentTrackContainer = ({
   id,
+  className,
 }: PlayerCurrentTrackContainerProps) => {
   const currentTrackPlayer = useCurrentTrackPlayer();
-  return <Player {...currentTrackPlayer} id={id} />;
+  return <Player {...currentTrackPlayer} id={id} className={className} />;
 };
 
 export default PlayerCurrentTrackContainer;
