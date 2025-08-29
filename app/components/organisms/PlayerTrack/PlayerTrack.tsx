@@ -1,4 +1,4 @@
-import type { MouseEventHandler, MutableRefObject } from 'react';
+import type { MouseEventHandler } from 'react';
 import { useCallback, useRef } from 'react';
 import Waveform from '~/components/atoms/Waveform';
 import type { PlayerTrackProps } from './PlayerTrack.types';
