@@ -2792,6 +2792,10 @@ input:-webkit-autofill:active{
 }
 
 @media (min-width: 768px) {
+  .md\:fixed {
+    position: fixed;
+  }
+
   .md\:top-0 {
     top: 0px;
   }
