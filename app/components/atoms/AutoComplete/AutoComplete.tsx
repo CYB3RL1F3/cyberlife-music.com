@@ -52,7 +52,7 @@ const AutoComplete = ({
   return (
     <div className={clsx('relative', size)}>
       {isOpen && !disabled && (
-        <div className="absolute z-20 flex flex-col gap-1 w-inherit">
+        <div className="absolute flex flex-col gap-1 z-[10000] w-inherit">
           {values.map((value, index) =>
             autoCompleteItem({
               value,

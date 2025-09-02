@@ -651,6 +651,14 @@ video {
   z-index: 40;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
+.z-\[10000\] {
+  z-index: 10000;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -925,6 +933,10 @@ video {
 
 .min-h-\[6rem\] {
   min-height: 6rem;
+}
+
+.min-h-4 {
+  min-height: 1rem;
 }
 
 .w-0 {

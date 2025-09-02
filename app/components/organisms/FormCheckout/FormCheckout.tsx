@@ -69,10 +69,7 @@ const FormCheckout = ({
     resolver: superstructResolver(formCheckoutSchema),
   });
 
-  const willChange = useWillChange();
-  const transition = useFluidTransition({
-    style: { willChange },
-  });
+  const transition = useFluidTransition();
 
   useMobileVibration(isSubmitted && !isValid);
   const submit = handleSubmit((values) => onSubmit(values));
