@@ -7,14 +7,14 @@ import { superstructResolver } from '@hookform/resolvers/superstruct';
 import { formCheckoutSchema } from './FormCheckout.schema';
 import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { motion } from 'framer-motion';
+import { motion, useWillChange } from 'framer-motion';
 import ControlledFieldInput from '../ControlledFieldInput';
 import ControlledFieldTextarea from '../ControlledFieldTextarea';
 import ControlledFieldInputAutoComplete from '../ControlledFieldInputAutoComplete';
 import ControlledFieldSelector from '../ControlledFieldSelector';
 import countries from '~/utils/business/countries';
 import CountryFlag from '~/components/atoms/CountryFlag';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
 import ControlledFieldCheckbox from '../ControlledFieldCheckbox';
 import ControlledCarrierSelector from '../ControlledFieldCarrierSelector/ControlledFieldCarrierSelector';
@@ -69,7 +69,11 @@ const FormCheckout = ({
     resolver: superstructResolver(formCheckoutSchema),
   });
 
-  const transition = useFluidTransition();
+  const willChange = useWillChange();
+  const transition = useFluidTransition({
+    style: { willChange },
+  });
+
   useMobileVibration(isSubmitted && !isValid);
   const submit = handleSubmit((values) => onSubmit(values));
 
@@ -85,6 +89,30 @@ const FormCheckout = ({
 
   const [canUpdateCity, setCanUpdateCity] = useState(true);
   const [canUpdateExpeditionCity, setCanUpdateExpeditionCity] = useState(false);
+
+  const suggestedCities = useLocationsSuggestions(
+    country,
+    city,
+    AutocompleteLocationSuggestionType.city,
+  );
+
+  const suggestedZipCodes = useLocationsSuggestions(
+    country,
+    zipCode,
+    AutocompleteLocationSuggestionType.postcode,
+  );
+
+  const suggestedExpeditionCities = useLocationsSuggestions(
+    expeditionCountry || '',
+    expeditionCity || '',
+    AutocompleteLocationSuggestionType.city,
+  );
+
+  const suggestedExpeditionZipCodes = useLocationsSuggestions(
+    expeditionCountry || '',
+    expeditionZipCode || '',
+    AutocompleteLocationSuggestionType.postcode,
+  );
 
   useEffect(() => {
     if (!country) return;
@@ -113,7 +141,7 @@ const FormCheckout = ({
       if (zipCode?.length) setCanUpdateCity(true);
     },
     [zipCode],
-    100,
+    200,
   );
 
   useDebounceEffect(
@@ -122,7 +150,7 @@ const FormCheckout = ({
       if (expeditionZipCode?.length) setCanUpdateExpeditionCity(true);
     },
     [expeditionZipCode],
-    100,
+    200,
   );
 
   useDebounceEffect(
@@ -136,7 +164,7 @@ const FormCheckout = ({
       setCanUpdateCity(false);
     },
     [city, zipCode, canUpdateCity],
-    400,
+    200,
   );
 
   useDebounceEffect(
@@ -152,36 +180,13 @@ const FormCheckout = ({
       const nextCity = suggestedExpeditionZipCodes.find(
         (value) => value.zipcode === zipCode,
       )?.city;
+
       if (!nextCity) return;
       setValue('expedition.city', nextCity);
       setCanUpdateExpeditionCity(false);
     },
     [expeditionCity, expeditionZipCode, canUpdateCity],
-    400,
-  );
-
-  const suggestedCities = useLocationsSuggestions(
-    country,
-    city,
-    AutocompleteLocationSuggestionType.city,
-  );
-
-  const suggestedZipCodes = useLocationsSuggestions(
-    country,
-    zipCode,
-    AutocompleteLocationSuggestionType.postcode,
-  );
-
-  const suggestedExpeditionCities = useLocationsSuggestions(
-    expeditionCountry || '',
-    expeditionCity || '',
-    AutocompleteLocationSuggestionType.city,
-  );
-
-  const suggestedExpeditionZipCodes = useLocationsSuggestions(
-    expeditionCountry || '',
-    expeditionZipCode || '',
-    AutocompleteLocationSuggestionType.postcode,
+    200,
   );
 
   return (
@@ -201,7 +206,7 @@ const FormCheckout = ({
           placeholder="Your last name"
         />
       </motion.div>
-      <motion.div {...transition(0.25)} className="w-full">
+      <motion.div {...transition(0.15)} className="w-full">
         <ControlledFieldTextarea
           control={control}
           name="address"
@@ -209,7 +214,7 @@ const FormCheckout = ({
           className="min-h-[6rem]"
         />
       </motion.div>
-      <motion.div {...transition(0.4)} className="w-full">
+      <motion.div {...transition(0.2)} className="w-full">
         <ControlledFieldSelector
           name="country"
           control={control}
@@ -225,7 +230,7 @@ const FormCheckout = ({
         />
       </motion.div>
       <motion.div
-        {...transition(0.55)}
+        {...transition(0.25)}
         className="flex w-full gap-4 max-lg:flex-col"
       >
         <div className="w-full lg:w-1/3">
@@ -249,7 +254,7 @@ const FormCheckout = ({
       </motion.div>
       <br />
       <motion.div
-        {...transition(0.7)}
+        {...transition(0.3)}
         className="flex w-full gap-4 max-lg:flex-col"
       >
         <ControlledFieldInput
@@ -265,7 +270,7 @@ const FormCheckout = ({
           type="phone"
         />
       </motion.div>
-      <motion.div {...transition(0.7)} className="w-full">
+      <motion.div {...transition(0.35)} className="w-full">
         <ControlledFieldCheckbox
           id="expedition.isSameAsBilling"
           control={control}
@@ -292,7 +297,7 @@ const FormCheckout = ({
               placeholder="Recipient last name"
             />
           </motion.div>
-          <motion.div {...transition(0.25)} className="w-full">
+          <motion.div {...transition(0.15)} className="w-full">
             <ControlledFieldTextarea
               control={control}
               name="expedition.address"
@@ -300,7 +305,7 @@ const FormCheckout = ({
               className="min-h-[6rem]"
             />
           </motion.div>
-          <motion.div {...transition(0.4)} className="w-full">
+          <motion.div {...transition(0.2)} className="w-full">
             <ControlledFieldSelector
               name="expedition.country"
               control={control}
@@ -315,7 +320,7 @@ const FormCheckout = ({
               filterable
             />
           </motion.div>
-          <motion.div {...transition(0.55)} className="flex w-full gap-4">
+          <motion.div {...transition(0.25)} className="flex w-full gap-4">
             <div className="w-1/3">
               <ControlledFieldInputAutoComplete
                 control={control}
@@ -337,7 +342,7 @@ const FormCheckout = ({
               />
             </div>
           </motion.div>
-          <motion.div {...transition(0.7)} className="flex w-full gap-2 pt-4">
+          <motion.div {...transition(0.3)} className="flex w-full gap-2 pt-4">
             <ControlledFieldInput
               control={control}
               name="expedition.email"
@@ -354,7 +359,7 @@ const FormCheckout = ({
         </div>
       )}
 
-      <motion.div {...transition(0.7)} className="flex w-full gap-2">
+      <motion.div {...transition(0.4)} className="flex w-full gap-2">
         <ControlledCarrierSelector
           items={items}
           country={country}
@@ -363,7 +368,7 @@ const FormCheckout = ({
         />
       </motion.div>
 
-      <motion.div {...transition(0.25)} className="w-full">
+      <motion.div {...transition(0.45)} className="w-full">
         <ControlledFieldTextarea
           control={control}
           name="query"
@@ -372,7 +377,7 @@ const FormCheckout = ({
         />
       </motion.div>
 
-      <motion.div {...transition(0.95)} className="flex w-full gap-2">
+      <motion.div {...transition(0.5)} className="flex w-full gap-2">
         <ControlledFieldInput
           autoComplete="off"
           autoCorrect="off"

@@ -12,12 +12,11 @@ import DisplayPodcastComments from '~/components/organisms/DisplayPodcastComment
 import PlayerPodcastTrackContainer from '~/components/organisms/PlayerPodcastTrackContainer';
 import { useMemo } from 'react';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useLocation } from '@remix-run/react';
+import { motion, useWillChange } from 'framer-motion';
 
 const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
-  const { pathname } = useLocation();
   const { title, description, tracklist, likes, comments, taglist } = podcast;
+
   const tags: ListTagProps['tags'] = useMemo(
     () =>
       (taglist || []).map((tag) => ({
@@ -26,6 +25,9 @@ const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
       })),
     [taglist],
   );
+
+  const willChange = useWillChange();
+
   const transition = useFluidTransition({
     initial: {
       x: 50,
@@ -35,30 +37,34 @@ const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
       x: 0,
       opacity: 1,
     },
+    exit: {
+      x: 50,
+      opacity: 0.2,
+    },
+    style: { willChange },
   });
+
   return (
-    <AnimatePresence mode="wait">
-      <article className="o-4">
-        <PageDetailHeaderPortal>
-          <PageDetailHeader title={title} url="/" />
-        </PageDetailHeaderPortal>
-        <motion.article {...transition(0.1)}>
-          <PodcastDetails podcast={podcast} />
-        </motion.article>
-        <motion.article {...transition(0.2)}>
-          <PlayerPodcastTrackContainer track={podcast} />
-        </motion.article>
-        <motion.article {...transition(0.3)} className="pt-4 o-8">
-          {description && (
-            <Text>{parseHtml(toHtml(description, 'underline'))}</Text>
-          )}
-          {!!tracklist && <DisplayPodcastTracklist tracklist={tracklist} />}
-          {!!tags.length && <ListTag tags={tags} />}
-          {!!likes?.length && <DisplayPodcastLikes likes={likes} />}
-          {!!comments?.length && <DisplayPodcastComments comments={comments} />}
-        </motion.article>
-      </article>
-    </AnimatePresence>
+    <section className="o-4">
+      <PageDetailHeaderPortal>
+        <PageDetailHeader title={title} url="/podcasts" />
+      </PageDetailHeaderPortal>
+      <motion.article {...transition(0.1)}>
+        <PodcastDetails podcast={podcast} />
+      </motion.article>
+      <motion.article {...transition(0.2)}>
+        <PlayerPodcastTrackContainer track={podcast} />
+      </motion.article>
+      <motion.article {...transition(0.3)} className="pt-4 o-8">
+        {description && (
+          <Text>{parseHtml(toHtml(description, 'underline'))}</Text>
+        )}
+        {!!tracklist && <DisplayPodcastTracklist tracklist={tracklist} />}
+        {!!tags.length && <ListTag tags={tags} />}
+        {!!likes?.length && <DisplayPodcastLikes likes={likes} />}
+        {!!comments?.length && <DisplayPodcastComments comments={comments} />}
+      </motion.article>
+    </section>
   );
 };
 

@@ -4,28 +4,27 @@ import type { ViewVideoProps } from './ViewVideo.types';
 import Text from '~/components/atoms/Text';
 import VideoPlayer from '~/components/organisms/VideoPlayer';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion, useWillChange } from 'framer-motion';
 
 const ViewVideo = ({ video }: ViewVideoProps) => {
   const { title, description, type, url } = video;
-  const transition = useFluidTransition();
+  const willChange = useWillChange();
+  const transition = useFluidTransition({
+    style: { willChange },
+  });
+
   return (
-    <AnimatePresence mode="wait">
-      <div className="o-4">
-        <PageDetailHeaderPortal>
-          <PageDetailHeader title={title} url="/videos" />
-        </PageDetailHeaderPortal>
-        <motion.div
-          {...transition(0.1)}
-          className="flex justify-end w-full h-96"
-        >
-          <VideoPlayer width={680} height="auto" url={url} type={type} />
-        </motion.div>
-        <motion.div {...transition(0.2)} className="w-full">
-          <Text.RightItalic>{description}</Text.RightItalic>
-        </motion.div>
-      </div>
-    </AnimatePresence>
+    <div className="o-4">
+      <PageDetailHeaderPortal>
+        <PageDetailHeader title={title} url="/videos" />
+      </PageDetailHeaderPortal>
+      <motion.div {...transition(0.1)} className="flex justify-end w-full h-96">
+        <VideoPlayer width={680} height="auto" url={url} type={type} />
+      </motion.div>
+      <motion.div {...transition(0.2)} className="w-full">
+        <Text.RightItalic>{description}</Text.RightItalic>
+      </motion.div>
+    </div>
   );
 };
 

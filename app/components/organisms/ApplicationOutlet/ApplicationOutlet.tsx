@@ -20,8 +20,8 @@ export const ApplicationOutlet = ({ children }: ApplicationOutletProps) => {
       onExitComplete={handleExitComplete}
       custom={{
         initial: { opacity: 0 },
-        animate: { x: 0, opacity: 1 },
-        exit: { opacity: 0.8 },
+        animate: { x: 0, opacity: 1, transition: { when: 'beforeChildren' } },
+        exit: { opacity: 0.8, transition: { when: 'afterChildren' } },
         transition: { duration: 0.3 },
       }}
     >

@@ -1,10 +1,11 @@
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import type { FormHeadingProps } from './FormHeading.types';
 
-import { motion } from 'framer-motion';
+import { motion, useWillChange } from 'framer-motion';
 
 const FormHeading = ({ title, description }: FormHeadingProps) => {
-  const transition = useFluidTransition();
+  const willChange = useWillChange();
+  const transition = useFluidTransition({ style: { willChange } });
 
   return (
     <motion.div {...transition(0)} className="w-full h-28">

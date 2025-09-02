@@ -5,9 +5,10 @@ import ReleaseTracklist from '../ReleaseTracklist';
 import type { ViewReleaseProps } from './ViewRelease.types';
 import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion, useWillChange } from 'framer-motion';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
+  const willChange = useWillChange();
   const transition = useFluidTransition({
     initial: {
       x: 50,
@@ -17,32 +18,35 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       x: 0,
       opacity: 1,
     },
+    exit: {
+      x: 50,
+      opacity: 0,
+    },
+    style: { willChange },
   });
   if (!release.release) return null;
 
   const { title, notes, tracklist, thumb, slug } = release.release;
   return (
-    <AnimatePresence mode="wait">
-      <article className="o-4">
-        <PageDetailHeaderPortal>
-          <PageDetailHeader title={title} url="/releases" />
-        </PageDetailHeaderPortal>
-        <motion.article className="w-full" {...transition(0.05)}>
-          <ReleaseDetails release={release} />
-        </motion.article>
-        <motion.article className="py-4" {...transition(0.1)}>
-          <Text.RightItalic>{notes}</Text.RightItalic>
-        </motion.article>
-        {tracklist && (
-          <ReleaseTracklist
-            id={slug}
-            tracks={tracklist}
-            thumb={thumb}
-            album={title}
-          />
-        )}
-      </article>
-    </AnimatePresence>
+    <article className="o-4">
+      <PageDetailHeaderPortal>
+        <PageDetailHeader title={title} url="/releases" />
+      </PageDetailHeaderPortal>
+      <motion.article className="w-full" {...transition(0.05, 0.1)}>
+        <ReleaseDetails release={release} />
+      </motion.article>
+      <motion.article className="py-4" {...transition(0.1, 0.15)}>
+        <Text.RightItalic>{notes}</Text.RightItalic>
+      </motion.article>
+      {tracklist && (
+        <ReleaseTracklist
+          id={slug}
+          tracks={tracklist}
+          thumb={thumb}
+          album={title}
+        />
+      )}
+    </article>
   );
 };
 

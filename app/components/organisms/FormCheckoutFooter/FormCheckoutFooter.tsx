@@ -17,6 +17,7 @@ const FormCheckoutFooter = ({
   onCancel,
 }: FormCheckoutFooterProps) => {
   const transition = useFluidTransition();
+
   return (
     <div className="flex flex-col items-end justify-end w-full gap-4">
       {values.carrier ? (

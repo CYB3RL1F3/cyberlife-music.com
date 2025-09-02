@@ -1,26 +1,38 @@
 import { useEffect, useRef } from 'react';
 
-function useDebounceEffect<Deps>(effect: () => void | (() => void), deps: Deps[], delay: number) {
-  const callback = useRef(effect);
+type Cleanup = void | (() => void);
+
+export default function useDebounceEffect<T extends ReadonlyArray<unknown>>(
+  effect: () => Cleanup,
+  deps: T,
+  delay: number,
+) {
+  const callbackRef = useRef(effect);
+  const cleanupRef = useRef<(() => void) | undefined>(undefined);
 
   useEffect(() => {
-    callback.current = effect;
+    callbackRef.current = effect;
   }, [effect]);
 
   useEffect(() => {
-    const handler = () => {
-      if (callback.current) {
-        callback.current();
+    const id = setTimeout(() => {
+      if (cleanupRef.current) {
+        cleanupRef.current();
+        cleanupRef.current = undefined;
       }
-    };
 
-    const timeoutId = setTimeout(handler, delay);
+      const maybeCleanup = callbackRef.current?.();
+      if (typeof maybeCleanup === 'function') {
+        cleanupRef.current = maybeCleanup;
+      }
+    }, delay);
 
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(id);
+      if (cleanupRef.current) {
+        cleanupRef.current();
+        cleanupRef.current = undefined;
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps, delay]);
 }
-
-export default useDebounceEffect;

@@ -8,7 +8,7 @@ import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTexta
 import { IoMdSend } from 'react-icons/io';
 import ButtonSubmit from '~/components/molecules/ButtonSubmit/ButtonSubmit';
 import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useWillChange } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import FormHeading from '../FormHeading';
 
@@ -30,7 +30,10 @@ const FormContact = ({
   useMobileVibration(isSubmitted && !isValid);
 
   const submit = handleSubmit((values) => onSubmit(values));
-  const transition = useFluidTransition();
+
+  const willChange = useWillChange();
+  const transition = useFluidTransition({ style: { willChange } });
+
   return (
     <AnimatePresence mode="wait">
       <div className="flex flex-col items-end justify-end w-full">
