@@ -1,5 +1,5 @@
 import { EventsQueryEvents } from '~/types/gql/EventsQuery';
-import { getConfig } from '../config';
+import { getConfig } from '~/utils/config';
 import {
   cleanUrl,
   rssDateFormat,
@@ -8,12 +8,16 @@ import {
   cleanText,
 } from './builder.rss';
 import dayjs from 'dayjs';
+import { isBeforeDate } from '../events';
 
 export const getEventRssItem = (
   event: EventsQueryEvents,
   config = getConfig(),
 ): RSSItem | null => {
   if (!config) return null;
+
+  const diff = dayjs().diff(dayjs(event.date), 'day') - 30;
+  const pubDate = dayjs(event.date).subtract(diff, 'day').format(rssDateFormat);
 
   return {
     title: cleanText(event.title || ''),
@@ -26,7 +30,7 @@ export const getEventRssItem = (
         href: `${config?.domain}/events/${event.slug}`,
       },
     },
-    pubDate: dayjs(event.date).format(rssDateFormat),
+    pubDate,
     category: 'Events',
     author: 'contact@cyberlife-music.com (David Cyberlife)',
     guid: `${config?.domain}/rss/events/${event.slug}.xml`,
