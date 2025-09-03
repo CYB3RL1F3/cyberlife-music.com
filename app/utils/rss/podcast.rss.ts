@@ -9,11 +9,26 @@ import {
 import dayjs from 'dayjs';
 import { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
 
-export const getPodcastRssItem = (
+export const getFileSize = async (url: string): Promise<number> => {
+  const response = await fetch(url, {
+    method: 'HEAD',
+    redirect: 'follow',
+  });
+
+  console.log('RESPONSE => ', response);
+  const contentLength = response.headers.get('Content-Length');
+  return contentLength ? parseInt(contentLength, 10) : 0;
+};
+
+export const getPodcastRssItem = async (
   podcast: PlaylistQueryPlaylistTracks,
   config = getConfig(),
-): RSSItem | null => {
+): Promise<RSSItem | null> => {
   if (!config) return null;
+
+  const length = await getFileSize(
+    `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+  );
 
   return {
     title: podcast.title || '',
@@ -38,7 +53,7 @@ export const getPodcastRssItem = (
               `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
             ),
             type: 'audio/mpeg',
-            length: 10000,
+            length,
           },
         }
       : undefined,
@@ -46,13 +61,13 @@ export const getPodcastRssItem = (
   };
 };
 
-export const getPodcastRssFeed = (
+export const getPodcastRssFeed = async (
   podcast: PlaylistQueryPlaylistTracks,
   config = getConfig(),
 ) => {
   if (!config) return null;
 
-  const items = getPodcastRssItem(podcast, config);
+  const items = await getPodcastRssItem(podcast, config);
   if (!items) return null;
 
   const content = buildRssFeed({
@@ -64,7 +79,7 @@ export const getPodcastRssFeed = (
     atomLink: `${config?.domain}/rss/podcasts/${podcast.slug}.xml`,
     contact: 'contact@cyberlife-music.com (David Cyberlife)',
     image: {
-      url: `https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg`,
+      url: `https://cdn.cyberlife-music.com/images/cyberlife-podcast-artwork.jpg`,
       title: 'Cyberlife Music Podcasts RSS Feed',
       link: `${config?.domain}/podcasts`,
     },

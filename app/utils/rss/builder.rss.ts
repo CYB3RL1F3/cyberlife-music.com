@@ -46,6 +46,8 @@ export type RSS = {
     link: string;
   };
   options?: Options.JS2XML;
+  attributes?: Record<string, string>;
+  extra?: Record<string, unknown>;
 };
 
 export const rssDateFormat = 'ddd, DD MMM YYYY HH:mm:ss ZZ';
@@ -105,6 +107,8 @@ export const buildRssFeed = ({
   atomLink,
   contact = defaultContact,
   options: opts,
+  attributes,
+  extra,
 }: RSS) => {
   const options = {
     ...defaultOptions,
@@ -116,6 +120,7 @@ export const buildRssFeed = ({
       _attributes: {
         version: '2.0',
         [`xmlns:atom`]: 'http://www.w3.org/2005/Atom',
+        ...attributes,
       },
       channel: {
         title,
@@ -126,6 +131,7 @@ export const buildRssFeed = ({
         webMaster: contact,
         lastBuildDate: dayjs().format(rssDateFormat),
         pubDate: dayjs().format(rssDateFormat),
+        ...extra,
         [`atom:link`]: {
           _attributes: {
             rel: 'self',
