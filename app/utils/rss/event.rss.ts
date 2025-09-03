@@ -16,7 +16,7 @@ export const getEventRssItem = (
 ): RSSItem | null => {
   if (!config) return null;
 
-  const diff = dayjs().diff(dayjs(event.date), 'day') - 30;
+  const diff = dayjs().diff(dayjs(event.date), 'day') + 30;
   const pubDate = dayjs(event.date).subtract(diff, 'day').format(rssDateFormat);
 
   return {
