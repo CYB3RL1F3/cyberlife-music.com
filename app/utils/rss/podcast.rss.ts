@@ -14,8 +14,7 @@ export const getFileSize = async (url: string): Promise<number> => {
     method: 'HEAD',
     redirect: 'follow',
   });
-
-  console.log('RESPONSE => ', response);
+  if (!response.ok) return 0;
   const contentLength = response.headers.get('Content-Length');
   return contentLength ? parseInt(contentLength, 10) : 0;
 };
@@ -29,6 +28,8 @@ export const getPodcastRssItem = async (
   const length = await getFileSize(
     `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
   );
+
+  if (!length || !podcast.url) return null;
 
   return {
     title: podcast.title || '',
@@ -46,17 +47,15 @@ export const getPodcastRssItem = async (
         href: `${config?.domain || ''}/podcasts/${podcast.slug}`,
       },
     },
-    enclosure: podcast.url
-      ? {
-          _attributes: {
-            url: cleanUrl(
-              `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
-            ),
-            type: 'audio/mpeg',
-            length,
-          },
-        }
-      : undefined,
+    enclosure: {
+      _attributes: {
+        url: cleanUrl(
+          `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+        ),
+        type: 'audio/mpeg',
+        length,
+      },
+    },
     guid: `${config?.domain || ''}/rss/podcasts/${podcast.slug}.xml`,
   };
 };
