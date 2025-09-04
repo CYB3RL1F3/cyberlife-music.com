@@ -17,10 +17,12 @@ export const getApplePodcastsRssItems = async (
       return {
         ...item,
         ['itunes:explicit']: false,
+        ['itunes:duration']: podcast.duration,
+        ['itunes:summary']: item.description,
         ['itunes:image']: {
           _attributes: {
             href:
-              podcast.artwork ||
+              podcast.artwork?.replace('t-500x500', 'original') ||
               'https://cdn.cyberlife-music.com/images/cyberlife-podcast-artwork.jpg',
           },
         },
@@ -60,12 +62,13 @@ export const getApplePodcastsRssFeed = async (
       ['xmlns:itunes']: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
     },
     extra: {
-      ['itunes:author']: 'Cyberlife Music',
+      ['itunes:author']: 'Cyberlife',
       ['itunes:owner']: {
         ['itunes:name']: 'Cyberlife Music',
         ['itunes:email']: config?.contactEmail,
       },
       ['itunes:explicit']: false,
+      ['itunes:type']: 'episodic',
       ['itunes:image']: {
         _attributes: {
           href: 'https://cdn.cyberlife-music.com/images/cyberlife-podcast-artwork.jpg',

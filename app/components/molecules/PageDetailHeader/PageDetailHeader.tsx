@@ -3,7 +3,7 @@ import Heading from '~/components/atoms/Heading';
 import type { PageDetailHeaderProps } from './PageDetailHeader.types';
 import { Link, useLocation } from '@remix-run/react';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { AnimatePresence, getValueTransition, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import clsx from 'clsx';
 
 const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
@@ -29,6 +29,7 @@ const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
       },
     },
   });
+
   const { key } = useLocation();
 
   return (
