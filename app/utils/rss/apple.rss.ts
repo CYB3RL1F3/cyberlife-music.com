@@ -3,6 +3,7 @@ import { buildRssFeed, RSSItem } from './builder.rss';
 
 import { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
 import { getPodcastRssItem } from './podcast.rss';
+import { formatDuration } from '../date';
 
 export const getApplePodcastsRssItems = async (
   podcasts: PlaylistQueryPlaylistTracks[],
@@ -17,7 +18,9 @@ export const getApplePodcastsRssItems = async (
       return {
         ...item,
         ['itunes:explicit']: false,
-        ['itunes:duration']: podcast.duration,
+        ['itunes:duration']: podcast.duration
+          ? formatDuration(podcast.duration)
+          : undefined,
         ['itunes:summary']: item.description,
         ['itunes:image']: {
           _attributes: {
