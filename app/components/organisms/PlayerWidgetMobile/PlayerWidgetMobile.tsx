@@ -4,7 +4,7 @@ import PlayerCurrentTrackContainer from '~/components/organisms/PlayerCurrentTra
 
 const variants = {
   open: { opacity: 1, y: 0 },
-  closed: { opacity: 0.5, y: 50 },
+  closed: { opacity: 0.5, y: 80 },
 };
 
 const PlayerWidgetMobile = () => {
@@ -15,6 +15,7 @@ const PlayerWidgetMobile = () => {
         className="flex w-screen h-full bg-black md:hidden bg-opacity-80"
         animate={showExternalPlayer ? 'open' : 'closed'}
         variants={variants}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <PlayerCurrentTrackContainer className="w-[85vw]" id="widget__mobile" />
       </motion.div>
