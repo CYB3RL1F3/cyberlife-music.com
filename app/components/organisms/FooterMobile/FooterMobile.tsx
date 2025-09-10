@@ -8,7 +8,7 @@ const FooterMobile = () => {
       <div className="mb-4">
         <NotificationActivationSwitch id="NotificationActivationSwitch__mobile" />
       </div>
-      <div className="flex items-start justify-between px-4">
+      <div className="flex items-start justify-between px-4 mb-4">
         <FooterAnchorsCopyrights />
         <FooterAnchorsInfosContainer />
       </div>

@@ -11,10 +11,13 @@ const ReleaseTracklistItem = ({
   album,
   nextId,
   prevId,
+  pageUrl,
 }: ReleaseTracklistItemProps) => {
   const { title, stream, artists } = track;
   if (!stream) return null;
   const { artwork } = stream;
+  console.log('pageUrl', pageUrl);
+
   return (
     <ListItem
       thumbnail={
@@ -25,6 +28,7 @@ const ReleaseTracklistItem = ({
             artist={artists?.map(({ name }) => name).join(', ')}
             nextId={nextId}
             prevId={prevId}
+            pageUrl={pageUrl}
           />
         </Thumbnail>
       }
@@ -38,6 +42,7 @@ const ReleaseTracklistItem = ({
             album={album}
             nextId={nextId}
             prevId={prevId}
+            pageUrl={pageUrl}
           />
         </div>
       </ListItemSnippet>

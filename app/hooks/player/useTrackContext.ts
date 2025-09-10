@@ -49,6 +49,7 @@ export const useTrackContext = (id: number) => {
     waveform: currentTrack?.waveform,
     title: currentTrack?.title,
     duration: currentTrack?.duration,
+    pageUrl: currentTrack?.pageUrl,
     isPlaying,
     isCurrentTrack,
     volume,

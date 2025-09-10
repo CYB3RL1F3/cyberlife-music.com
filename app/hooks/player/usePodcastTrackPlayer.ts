@@ -12,6 +12,7 @@ export const usePodcastTrackPlayer = (
     album: 'Podcasts',
     nextId,
     prevId,
+    pageUrl: `/podcasts/${track.slug}`,
   });
   return playerContext;
 };

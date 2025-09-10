@@ -6,4 +6,5 @@ export type ReleaseActionPlayContainerProps = {
   artist?: string | null;
   nextId?: number | null;
   prevId?: number | null;
+  pageUrl: string;
 };

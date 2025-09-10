@@ -7,4 +7,5 @@ export type PlayerReleaseTrackContainerProps = {
   album?: string | null;
   prevId?: number | null;
   nextId?: number | null;
+  pageUrl: string;
 };

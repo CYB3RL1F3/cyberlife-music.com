@@ -25,7 +25,7 @@ export const getApplePodcastsRssItems = async (
         ['itunes:image']: {
           _attributes: {
             href:
-              podcast.artwork?.replace('t-500x500', 'original') ||
+              podcast.artwork ||
               'https://cdn.cyberlife-music.com/images/cyberlife-podcast-artwork.jpg',
           },
         },

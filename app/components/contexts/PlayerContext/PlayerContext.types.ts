@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 export type TrackToBuffer = {
   id: number;
   url: string;
+  pageUrl: string;
   title: string;
   artist?: string;
   album?: string | null;

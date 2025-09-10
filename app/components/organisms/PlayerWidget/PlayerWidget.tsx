@@ -12,7 +12,7 @@ const PlayerWidget = () => {
 
   return (
     <motion.div
-      className="flex w-full"
+      className="flex flex-col w-full"
       animate={showExternalPlayer ? 'open' : 'closed'}
       variants={variants}
     >

@@ -30,6 +30,7 @@ const ReleaseTracklist = ({
                   ? cyberTracks[index - 1]?.stream?.id
                   : cyberTracks[cyberTracks.length - 1].stream?.id
               }
+              pageUrl={`/releases/${id}`}
             />
           ),
       )}

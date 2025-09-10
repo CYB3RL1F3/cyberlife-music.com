@@ -77,6 +77,11 @@ export const checkIsToday = (date: string, endDate?: string) => {
   return today.isSame(dayjs(date), 'day');
 };
 
+export const seekPercentToSeconds = (seek: number, duration: number) => {
+  if (duration <= 0) return 0;
+  return Math.round((seek / 100) * duration);
+};
+
 export const formatDuration = (value: number, isMs = true) => {
   if (!Number.isFinite(value) || value < 0) value = 0;
 

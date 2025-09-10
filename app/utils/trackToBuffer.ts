@@ -14,6 +14,7 @@ export type Extra = {
   album?: string | null;
   nextId?: number | null;
   prevId?: number | null;
+  pageUrl: string;
 };
 
 export const getTrackToBuffer = (track: TrackType, extra?: Extra) => {
@@ -30,6 +31,7 @@ export const getTrackToBuffer = (track: TrackType, extra?: Extra) => {
     artwork: track.artwork,
     nextId: extra?.nextId,
     prevId: extra?.prevId,
+    pageUrl: extra?.pageUrl || '/',
   };
   return toBuffer;
 };

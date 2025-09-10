@@ -8,4 +8,4 @@ export type ReleaseTracklistItemProps = {
   track: ReleaseQueryReleaseItemReleaseTracklist;
   thumb: ReleaseQueryReleaseItemRelease['thumb'];
   album?: ReleaseQueryReleaseItemRelease['title'];
-} & Pick<PlayerReleaseTrackContainerProps, 'nextId' | 'prevId'>;
+} & Pick<PlayerReleaseTrackContainerProps, 'nextId' | 'prevId' | 'pageUrl'>;

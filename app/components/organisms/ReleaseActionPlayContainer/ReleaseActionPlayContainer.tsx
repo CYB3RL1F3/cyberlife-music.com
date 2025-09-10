@@ -8,12 +8,14 @@ const ReleaseActionPlayContainer = ({
   artist,
   nextId,
   prevId,
+  pageUrl,
 }: ReleaseActionPlayContainerProps) => {
   const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, {
     album,
     artist,
     nextId,
     prevId,
+    pageUrl,
   });
   return (
     <ActionPlay
