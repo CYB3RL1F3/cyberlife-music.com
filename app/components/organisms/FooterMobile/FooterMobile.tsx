@@ -4,11 +4,9 @@ import NotificationActivationSwitch from '../NotificationActivationSwitch';
 
 const FooterMobile = () => {
   return (
-    <div className="my-4 md:hidden">
-      <div className="mb-4">
-        <NotificationActivationSwitch id="NotificationActivationSwitch__mobile" />
-      </div>
-      <div className="flex items-start justify-between px-4 mb-4">
+    <div className="px-4 mt-4 mb-12 o-4 md:hidden">
+      <NotificationActivationSwitch id="NotificationActivationSwitch__mobile" />
+      <div className="flex items-start justify-between">
         <FooterAnchorsCopyrights />
         <FooterAnchorsInfosContainer />
       </div>
