@@ -1,9 +1,10 @@
-import { useInfosQuery } from "~/hooks/queries/useInfosQuery";
-import DisplayInfos from "../DisplayInfos/DisplayInfos";
+import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
+import DisplayInfos from '~/components/organisms/DisplayInfos';
 
 const DisplayInfosContainer = () => {
   const { data, loading } = useInfosQuery();
-  if (!data || loading) return null;
+  if (loading && !data) return <DisplayInfos.Skeleton />;
+  if (!data) return null;
   return <DisplayInfos infos={data?.infos} />;
 };
 

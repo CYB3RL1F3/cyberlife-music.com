@@ -778,6 +778,10 @@ video {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -1040,6 +1044,10 @@ video {
   width: 95vw;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .min-w-44 {
   min-width: 11rem;
 }
@@ -1155,6 +1163,16 @@ video {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-not-allowed {
