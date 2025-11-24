@@ -23,7 +23,6 @@ export const VideoPlayerYoutube = ({
             height={height}
             config={{
               youtube: {
-                referrerpolicy: 'strict-origin-when-cross-origin',
                 enablejsapi: 1,
                 fs: 0,
               },
