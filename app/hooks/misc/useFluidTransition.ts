@@ -30,11 +30,9 @@ const defaultExit = {
   },
 };
 
-export type Animation = {
-  initial?: HTMLMotionProps<'div'>['initial'];
+export type Animation = Pick<HTMLMotionProps<'div'>, 'initial' | 'style'> & {
   animate?: TargetAndTransition;
   exit?: TargetAndTransition;
-  style?: MotionStyle;
 };
 
 export const useFluidTransition = (animation?: Animation) => {

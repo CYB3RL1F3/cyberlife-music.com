@@ -47,7 +47,7 @@ var validRequestMethodsArr = ["get", ...validMutationMethodsArr];
 var validRequestMethods = new Set(validRequestMethodsArr);
 var UNSAFE_DEFERRED_SYMBOL = Symbol("deferred");
 
-// node_modules/.pnpm/@remix-run+server-runtime@2.17.0_typescript@5.9.2/node_modules/@remix-run/server-runtime/dist/esm/responses.js
+// node_modules/.pnpm/@remix-run+server-runtime@2.17.0_typescript@5.9.3/node_modules/@remix-run/server-runtime/dist/esm/responses.js
 var json3 = (data, init = {}) => {
   return json(data, init);
 };
