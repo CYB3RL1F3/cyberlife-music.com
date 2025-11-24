@@ -5,7 +5,7 @@ import { getVideosRssFeed } from '~/utils/rss/videos.rss';
 const getContent = async () => {
   const videos = await runVideosQuery();
   const config = getConfig();
-  if (!videos.data.videos) return null;
+  if (!videos.data?.videos) return null;
   const content = getVideosRssFeed(videos.data.videos, config);
   return content;
 };

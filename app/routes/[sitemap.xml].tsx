@@ -35,17 +35,17 @@ const getPaths = async (): Promise<Path[]> => {
     getPath('/legal-notice', 0.5, 'monthly'),
     getPath('/checkout', 0.2, 'monthly'),
   ];
-  const eventsPaths = (events.data.events || []).map((event) =>
+  const eventsPaths = (events.data?.events || []).map((event) =>
     getPath(`/events/${event.slug}`),
   );
-  const podcastsPaths = (podcasts.data.playlist.tracks || []).map((podcast) =>
+  const podcastsPaths = (podcasts.data?.playlist.tracks || []).map((podcast) =>
     getPath(`/podcasts/${podcast.slug}`),
   );
-  const releasesPaths = (releases.data.releaseItems || [])
+  const releasesPaths = (releases.data?.releaseItems || [])
     .filter((release) => release.release?.slug)
     .map((release) => getPath(`/releases/${release.release?.slug}`));
 
-  const videosPaths = (videos.data.videos || []).map((video) =>
+  const videosPaths = (videos.data?.videos || []).map((video) =>
     getPath(`/videos/${video.slug}`),
   );
   return [

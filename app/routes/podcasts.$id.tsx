@@ -1,6 +1,6 @@
-import { useParams } from "@remix-run/react";
-import PodcastsPage from "~/components/pages/PodcastsPage";
-import PodcastPage from "~/components/pages/PodcastPage";
+import { useParams } from '@remix-run/react';
+import PodcastsPage from '~/components/pages/PodcastsPage';
+import PodcastPage from '~/components/pages/PodcastPage';
 
 export default function PodcastRoute() {
   const { id } = useParams();
