@@ -21,6 +21,13 @@ export const VideoPlayerYoutube = ({
             controls
             width={width}
             height={height}
+            config={{
+              youtube: {
+                referrerpolicy: 'strict-origin-when-cross-origin',
+                enablejsapi: 1,
+                fs: 0,
+              },
+            }}
           />
         </Suspense>
       )}
