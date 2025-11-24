@@ -4,6 +4,7 @@ fragment EventSnippetFragment on Event {
   title
   date
   endDate
+  description
   country
   address
   flyer {

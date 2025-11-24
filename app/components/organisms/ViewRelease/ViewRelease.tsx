@@ -1,22 +1,28 @@
-import PageDetailHeader from "~/components/molecules/PageDetailHeader";
-import PageDetailHeaderPortal from "~/components/molecules/PageDetailHeaderPortal";
-import ReleaseDetails from "../ReleaseDetails/ReleaseDetails";
-import ReleaseTracklist from "../ReleaseTracklist";
-import type { ViewReleaseProps } from "./ViewRelease.types";
-import Text from "~/components/atoms/Text";
-import { useFluidTransition } from "~/hooks/useFluidTransition";
-import { motion } from "framer-motion";
+import PageDetailHeader from '~/components/molecules/PageDetailHeader';
+import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
+import ReleaseDetails from '../ReleaseDetails/ReleaseDetails';
+import ReleaseTracklist from '../ReleaseTracklist';
+import type { ViewReleaseProps } from './ViewRelease.types';
+import Text from '~/components/atoms/Text';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { motion, useWillChange } from 'framer-motion';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
+  const willChange = useWillChange();
   const transition = useFluidTransition({
     initial: {
       x: 50,
-      opacity: 0
+      opacity: 0,
     },
     animate: {
       x: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
+    exit: {
+      x: 50,
+      opacity: 0,
+    },
+    style: { willChange },
   });
   if (!release.release) return null;
 
@@ -26,10 +32,10 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       <PageDetailHeaderPortal>
         <PageDetailHeader title={title} url="/releases" />
       </PageDetailHeaderPortal>
-      <motion.article className="w-full" {...transition(0.05)}>
+      <motion.article className="w-full" {...transition(0.05, 0.1)}>
         <ReleaseDetails release={release} />
       </motion.article>
-      <motion.article className="py-4" {...transition(0.1)}>
+      <motion.article className="py-4" {...transition(0.1, 0.15)}>
         <Text.RightItalic>{notes}</Text.RightItalic>
       </motion.article>
       {tracklist && (

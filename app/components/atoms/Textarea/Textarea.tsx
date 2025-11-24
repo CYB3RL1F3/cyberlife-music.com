@@ -1,19 +1,29 @@
-import type { ChangeEventHandler } from "react";
-import { forwardRef } from "react";
-import { useInputStyle } from "~/hooks/useInputStyle";
-import type { TextareaProps } from "./Textarea.types";
-import { twMerge } from "tailwind-merge";
+import type { ChangeEventHandler } from 'react';
+import { forwardRef } from 'react';
+import { useInputStyle } from '~/hooks/misc/useInputStyle';
+import type { TextareaProps } from './Textarea.types';
+import { twMerge } from 'tailwind-merge';
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ value, onChange, placeholder, hasError, className: customClassName, ...props }, ref) => {
+  (
+    {
+      value,
+      onChange,
+      placeholder,
+      hasError,
+      className: customClassName,
+      ...props
+    },
+    ref,
+  ) => {
     const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
       const nextValue = e.currentTarget.value;
       onChange?.(nextValue);
     };
-    const textareaClassName = "min-h-[10rem]";
+    const textareaClassName = 'min-h-[10rem]';
     const { className, onFocus, onBlur } = useInputStyle(
       hasError,
-      textareaClassName
+      textareaClassName,
     );
 
     return (
@@ -28,9 +38,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
-Textarea.displayName = "Textarea";
+Textarea.displayName = 'Textarea';
 
 export default Textarea;

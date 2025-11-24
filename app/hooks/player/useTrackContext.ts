@@ -1,5 +1,5 @@
-import { usePlayerContext } from "~/components/contexts/PlayerContext";
-import { useMemo } from "react";
+import { usePlayerContext } from '~/components/contexts/PlayerContext';
+import { useMemo, useState } from 'react';
 
 export const useTrackContext = (id: number) => {
   const {
@@ -18,7 +18,7 @@ export const useTrackContext = (id: number) => {
 
   const isPlaying = useMemo(
     () => isCurrentTrack && playing,
-    [isCurrentTrack, playing]
+    [isCurrentTrack, playing],
   );
 
   const togglePlay = () => {
@@ -29,15 +29,18 @@ export const useTrackContext = (id: number) => {
     playerContext.pause(id);
   };
 
-  const setLoad = (value: number) => playerContext.setLoad(id, value);
+  const setLoad = (value: number) => {
+    playerContext.setLoad(id, value);
+  };
   const setSeek = (value: number, jumping?: boolean) => {
     playerContext.setSeek(id, value, jumping);
   };
 
-  const isInCurrentContext =
-    currentContext &&
-    currentTrack?.contexts?.desktop &&
-    currentTrack.contexts.desktop.includes(currentContext);
+  const onEnded = () => {
+    const nextId = currentTrack?.nextId;
+    if (!nextId) return;
+    playerContext.play(nextId, true);
+  };
 
   return {
     load: currentTrack?.load || 0,
@@ -46,7 +49,7 @@ export const useTrackContext = (id: number) => {
     waveform: currentTrack?.waveform,
     title: currentTrack?.title,
     duration: currentTrack?.duration,
-    isInCurrentContext,
+    pageUrl: currentTrack?.pageUrl,
     isPlaying,
     isCurrentTrack,
     volume,
@@ -54,6 +57,7 @@ export const useTrackContext = (id: number) => {
     togglePlay,
     setLoad,
     setSeek,
-    id
+    id,
+    onEnded,
   };
 };

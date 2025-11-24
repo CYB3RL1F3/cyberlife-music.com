@@ -1,8 +1,12 @@
-import type { HTMLMotionProps, TargetAndTransition } from "framer-motion";
+import {
+  MotionStyle,
+  type HTMLMotionProps,
+  type TargetAndTransition,
+} from 'framer-motion';
 
 const defaultInitial = {
   y: -70,
-  opacity: 0
+  opacity: 0,
 };
 
 const defaultAnimate = {
@@ -10,8 +14,8 @@ const defaultAnimate = {
   opacity: 1,
   transition: {
     duration: 0.15,
-    delay: 0.25
-  }
+    delay: 0.25,
+  },
 };
 
 const defaultExit = {
@@ -19,12 +23,14 @@ const defaultExit = {
   opacity: 0,
   transition: {
     duration: 0.1,
-    delay: 0.05
-  }
+    delay: 0.05,
+  },
+  transitionEnd: {
+    opacity: 0,
+  },
 };
 
-type Animation = {
-  initial?: HTMLMotionProps<"div">['initial'];
+export type Animation = Pick<HTMLMotionProps<'div'>, 'initial' | 'style'> & {
   animate?: TargetAndTransition;
   exit?: TargetAndTransition;
 };
@@ -32,7 +38,7 @@ type Animation = {
 export const useFluidTransition = (animation?: Animation) => {
   const getTransition = (
     delay = 0.25,
-    delayExit = defaultExit.transition.delay
+    delayExit = defaultExit.transition.delay,
   ) => {
     return {
       initial: animation?.initial || defaultInitial,
@@ -40,17 +46,18 @@ export const useFluidTransition = (animation?: Animation) => {
         ...(animation?.animate || defaultAnimate),
         transition: {
           ...(animation?.animate?.transition || defaultAnimate.transition),
-          delay
-        }
+          delay,
+        },
       },
       exit: {
         ...(animation?.exit || defaultExit),
         transition: {
           ...(animation?.exit?.transition || defaultExit.transition),
-          delay: delayExit
-        }
-      }
-    } satisfies HTMLMotionProps<"div">;
+          delay: delayExit,
+        },
+      },
+      style: animation?.style,
+    } satisfies HTMLMotionProps<'div'>;
   };
   return getTransition;
 };

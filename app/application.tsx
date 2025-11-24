@@ -14,7 +14,6 @@ import {
   motion,
 } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { useEffect } from 'react';
 
 import Layout from './components/layouts/Layout';
 import DisplayInfosContainer from './components/organisms/DisplayInfosContainer/DisplayInfosContainer';
@@ -31,53 +30,19 @@ import { isSupported } from './utils/browser';
 import NotSupportedPage from './components/pages/NotSupportedPage';
 import PlayerContextProvider from './components/contexts/PlayerContext';
 import NoScript from './components/organisms/NoScript';
+import { useRemixNavigationPostMessage } from './hooks/misc/useRemixNavigationPostMessage';
+import ApplicationOutlet from './components/organisms/ApplicationOutlet';
+import dayjs from 'dayjs';
 
 export type ApplicationProps = {
   config: Config;
   children?: ReactNode;
 };
 
-let isMount = true;
-
 const Application = ({ config, children }: ApplicationProps) => {
-  let location = useLocation();
-  let matches = useMatches();
+  const location = useLocation();
 
-  const outlet = useOutlet();
-
-  useEffect(() => {
-    let mounted = isMount;
-    isMount = false;
-    if ('serviceWorker' in navigator) {
-      if (navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller?.postMessage({
-          type: 'REMIX_NAVIGATION',
-          isMount: mounted,
-          location,
-          matches,
-          manifest: window.__remixManifest,
-        });
-      } else {
-        let listener = async () => {
-          await navigator.serviceWorker.ready;
-          navigator.serviceWorker.controller?.postMessage({
-            type: 'REMIX_NAVIGATION',
-            isMount: mounted,
-            location,
-            matches,
-            manifest: window.__remixManifest,
-          });
-        };
-        navigator.serviceWorker.addEventListener('controllerchange', listener);
-        return () => {
-          navigator.serviceWorker.removeEventListener(
-            'controllerchange',
-            listener,
-          );
-        };
-      }
-    }
-  }, [location, matches]);
+  useRemixNavigationPostMessage(location);
 
   const isAppSupported = isSupported();
 
@@ -100,19 +65,8 @@ const Application = ({ config, children }: ApplicationProps) => {
                     </div>
                     <ContainerScrollPage>
                       <NoScript />
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          className="max-md:min-h-[calc(100vh_-_21rem)]"
-                          key={location.pathname}
-                          initial={{ opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          exit={{ opacity: 0.8 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {children ?? outlet}
-                        </motion.div>
-                        <FooterMobile />
-                      </AnimatePresence>
+                      <ApplicationOutlet>{children}</ApplicationOutlet>
+                      <FooterMobile />
                     </ContainerScrollPage>
                   </div>
                   <ClientOnly>{() => <AudioContainer />}</ClientOnly>

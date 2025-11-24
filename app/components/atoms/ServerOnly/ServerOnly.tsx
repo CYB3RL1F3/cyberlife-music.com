@@ -1,5 +1,5 @@
-import type { ServerOnlyProps } from "./ServerOnly.types";
-import { useHydrated } from "~/hooks/useHydrated";
+import type { ServerOnlyProps } from './ServerOnly.types';
+import { useHydrated } from '~/hooks/misc/useHydrated';
 
 export function ServerOnly({ children, fallback = null }: ServerOnlyProps) {
   return !useHydrated() ? <>{children()}</> : <>{fallback}</>;

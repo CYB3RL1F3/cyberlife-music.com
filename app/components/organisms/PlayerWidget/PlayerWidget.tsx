@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
-import { usePlayerTrackVisibility } from "~/hooks/player/usePlayerTrackVisibility";
-import PlayerCurrentTrackContainer from "~/components/organisms/PlayerCurrentTrackContainer";
+import { motion } from 'framer-motion';
+import { usePlayerTrackVisibility } from '~/hooks/player/usePlayerTrackVisibility';
+import PlayerCurrentTrackContainer from '~/components/organisms/PlayerCurrentTrackContainer';
 
 const variants = {
   open: { opacity: 1 },
-  closed: { opacity: 0 }
+  closed: { opacity: 0 },
 };
 
 const PlayerWidget = () => {
@@ -12,11 +12,11 @@ const PlayerWidget = () => {
 
   return (
     <motion.div
-      className="flex w-full"
-      animate={showExternalPlayer ? "open" : "closed"}
+      className="flex flex-col w-full"
+      animate={showExternalPlayer ? 'open' : 'closed'}
       variants={variants}
     >
-      <PlayerCurrentTrackContainer />
+      <PlayerCurrentTrackContainer id="widget" />
     </motion.div>
   );
 };

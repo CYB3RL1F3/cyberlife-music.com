@@ -1,8 +1,9 @@
-import { useMemo } from "react";
-import FormContactContainer from "~/components/organisms/FormContactContainer";
-import { useToggleState } from "~/hooks/useToggleState";
-import FormContactSuccess from "~/components/organisms/FormContactSuccess/FormContactSuccess";
-import { AnimatePresence, motion } from "framer-motion";
+import { useMemo } from 'react';
+import FormContactContainer from '~/components/organisms/FormContactContainer';
+import { useToggleState } from '~/hooks/misc/useToggleState';
+import FormContactSuccess from '~/components/organisms/FormContactSuccess/FormContactSuccess';
+import { AnimatePresence, motion } from 'framer-motion';
+import HandlerContent from '~/components/molecules/HandlerContent';
 
 const ContactPage = () => {
   const [isSuccess, showSuccess, hideSuccess] = useToggleState();
@@ -14,17 +15,19 @@ const ContactPage = () => {
   }, [hideSuccess, isSuccess, showSuccess]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={isSuccess ? "success" : "form"}
-        initial={{ opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ opacity: 0.8 }}
-        transition={{ duration: 0.3 }}
-      >
-        {currentPageElement}
-      </motion.div>
-    </AnimatePresence>
+    <HandlerContent>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={isSuccess ? 'success' : 'form'}
+          initial={{ opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ opacity: 0.8 }}
+          transition={{ duration: 0.3 }}
+        >
+          {currentPageElement}
+        </motion.div>
+      </AnimatePresence>
+    </HandlerContent>
   );
 };
 

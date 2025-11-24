@@ -1,0 +1,5 @@
+query AutoCompleteLocations($payload: AutocompleteLocationSuggestionInput!) {
+  autocompleteLocations(payload: $payload) {
+    ...AutocompleteLocation
+  }
+}

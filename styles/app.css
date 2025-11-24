@@ -402,3 +402,7 @@ input:-webkit-autofill:active{
   --toastify-color-success: #107a13;
   --toastify-color-info: #3f6177;
 }
+
+.mapboxgl-canvas-container {
+  height: 100%;
+}

@@ -1,20 +1,21 @@
-import type { ReleaseActionPlayContainerProps } from "./ReleaseActionPlayContainer.types";
-import ActionPlay from "~/components/molecules/ActionPlay";
-import { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
+import type { ReleaseActionPlayContainerProps } from './ReleaseActionPlayContainer.types';
+import ActionPlay from '~/components/molecules/ActionPlay';
+import { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
 
 const ReleaseActionPlayContainer = ({
   track,
-  id,
   album,
   artist,
   nextId,
-  prevId
+  prevId,
+  pageUrl,
 }: ReleaseActionPlayContainerProps) => {
-  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, id, {
+  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, {
     album,
     artist,
     nextId,
-    prevId
+    prevId,
+    pageUrl,
   });
   return (
     <ActionPlay

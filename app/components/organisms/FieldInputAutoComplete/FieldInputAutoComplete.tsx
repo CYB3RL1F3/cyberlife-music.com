@@ -1,10 +1,10 @@
-import AutoComplete from "~/components/atoms/AutoComplete";
-import AutoCompleteItem from "~/components/atoms/AutoCompleteItem";
-import ClientOnly from "~/components/atoms/ClientOnly";
-import FieldInput from "~/components/molecules/FieldInput";
-import { useToggleState } from "~/hooks/useToggleState";
-import type { FieldInputAutoCompleteProps } from "./FieldInputAutoComplete.types";
-import { forwardRef } from "react";
+import AutoComplete from '~/components/atoms/AutoComplete';
+import AutoCompleteItem from '~/components/atoms/AutoCompleteItem';
+import ClientOnly from '~/components/atoms/ClientOnly';
+import FieldInput from '~/components/molecules/FieldInput';
+import { useToggleState } from '~/hooks/misc/useToggleState';
+import type { FieldInputAutoCompleteProps } from './FieldInputAutoComplete.types';
+import { forwardRef } from 'react';
 
 const FieldInputAutoComplete = forwardRef<
   HTMLInputElement,
@@ -14,9 +14,11 @@ const FieldInputAutoComplete = forwardRef<
     (item) =>
       value &&
       value !== item &&
-      item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      item.toLocaleLowerCase().includes(value.toLocaleLowerCase()),
   );
   const [disabled, disable, enable] = useToggleState();
+
+  console.log('DISABLED:', disabled);
 
   return (
     <div className={size}>
@@ -50,6 +52,6 @@ const FieldInputAutoComplete = forwardRef<
   );
 });
 
-FieldInputAutoComplete.displayName = "FieldInputAutoComplete";
+FieldInputAutoComplete.displayName = 'FieldInputAutoComplete';
 
 export default FieldInputAutoComplete;

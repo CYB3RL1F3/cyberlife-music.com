@@ -38,6 +38,10 @@ export interface EventsQueryEvents {
    */
   endDate: any | null;
   /**
+   * description
+   */
+  description: string | null;
+  /**
    * country name
    */
   country: string | null;

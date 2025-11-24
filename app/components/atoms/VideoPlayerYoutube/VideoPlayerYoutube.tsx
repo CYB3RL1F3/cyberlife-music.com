@@ -1,8 +1,37 @@
-import type { VideoPlayerYoutubeProps } from "./VideoPlayerYoutube.types";
-import YouTubePlayer from "react-player/youtube";
+// app/components/VideoPlayer.tsx
+import ClientOnly from '~/components/atoms/ClientOnly';
+import { Suspense, lazy } from 'react';
+import { VideoPlayerYoutubeProps } from './VideoPlayerYoutube.types';
 
-const VideoPlayerYoutube = ({ url }: VideoPlayerYoutubeProps) => {
-  return <YouTubePlayer url={url} controls />;
+const ReactPlayer = lazy(() => import('react-player'));
+
+export const VideoPlayerYoutube = ({
+  src,
+  width,
+  height,
+  style,
+}: VideoPlayerYoutubeProps) => {
+  return (
+    <ClientOnly fallback={null}>
+      {() => (
+        <Suspense fallback={null}>
+          <ReactPlayer
+            src={src}
+            style={style}
+            controls
+            width={width}
+            height={height}
+            config={{
+              youtube: {
+                enablejsapi: 1,
+                fs: 0,
+              },
+            }}
+          />
+        </Suspense>
+      )}
+    </ClientOnly>
+  );
 };
 
 export default VideoPlayerYoutube;

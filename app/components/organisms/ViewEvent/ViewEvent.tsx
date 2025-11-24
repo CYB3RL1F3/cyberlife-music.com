@@ -1,31 +1,55 @@
-import PageDetailHeader from "~/components/molecules/PageDetailHeader";
-import PageDetailHeaderPortal from "~/components/molecules/PageDetailHeaderPortal";
-import CarouselEvent from "../CarouselEvent";
-import type { ViewEventProps } from "./ViewEvent.types";
-import Text from "~/components/atoms/Text";
-import Anchor from "~/components/atoms/Anchor";
-import { parseHtml, toHtml } from "~/utils/html";
-import { getEventDateDisplay } from "~/utils/date";
+import PageDetailHeader from '~/components/molecules/PageDetailHeader';
+import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
+import CarouselEvent from '../CarouselEvent';
+import type { ViewEventProps } from './ViewEvent.types';
+import Text from '~/components/atoms/Text';
+import { motion, useWillChange } from 'framer-motion';
+import Anchor from '~/components/atoms/Anchor';
+import { parseHtml, toHtml } from '~/utils/html';
+import { getEventDateDisplay } from '~/utils/date';
+import { AnimatePresence } from 'framer-motion';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 
 const ViewEvent = ({ event }: ViewEventProps) => {
   const { title, address, country, cost, lineup, description, links } = event;
+  const willChange = useWillChange();
+  const transition = useFluidTransition({
+    initial: {
+      x: 50,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: {
+      x: 50,
+      opacity: 0.2,
+    },
+    style: { willChange },
+  });
 
   return (
     <article className="o-8">
       <PageDetailHeaderPortal>
         <PageDetailHeader title={title} url="/events" />
       </PageDetailHeaderPortal>
-      <CarouselEvent event={event} />
+      <motion.div className="w-full" {...transition(0.1)}>
+        <CarouselEvent event={event} />
+      </motion.div>
       {description && (
-        <div className="flex justify-end w-full">
+        <motion.div {...transition(0.2)} className="flex justify-end w-full">
           <Text.RightMd>{parseHtml(toHtml(description))}</Text.RightMd>
-        </div>
+        </motion.div>
       )}
       <div className="flex justify-end w-full">
-        <div className="flex justify-center gap-4 w-[48rem]">
+        <motion.div
+          {...transition(0.3)}
+          className="flex justify-center gap-4 w-[48rem]"
+        >
           <div className="w-1/2 o-4">
             <Text.RightMdSemiBold className="whitespace-pre-line">
-              {getEventDateDisplay(event, "Do MMMM YYYY")}
+              {getEventDateDisplay(event, 'Do MMMM YYYY')}
             </Text.RightMdSemiBold>
             <Text.Right>{address}</Text.Right>
             <Text.Right>{country}</Text.Right>
@@ -39,15 +63,15 @@ const ViewEvent = ({ event }: ViewEventProps) => {
               </>
             ) : null}
           </div>
-          <div className="w-1/2 o-4">
+          <motion.div {...transition(0.3)} className="w-1/2 o-4">
             <Text.MdSemiBold>Lineup:</Text.MdSemiBold>
             <div>
               {lineup?.map((artist) => (
                 <Text.Semibold key={artist}>{artist}</Text.Semibold>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </article>
   );

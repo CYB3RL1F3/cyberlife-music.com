@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import OrderFunnelStep1 from '~/components/organisms/OrderFunnelStep1';
+import { useNavigate } from '@remix-run/react';
 import type { OrderFunnelProps } from './OrderFunnel.types';
-import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
 import OrderFunnelEmpty from '~/components/organisms/OrderFunnelEmpty';
+import OrderFunnelStep1 from '~/components/organisms/OrderFunnelStep1';
+import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
 import OrderFunnelStep3 from '~/components/organisms/OrderFunnelStep3';
 import OrderFunnelSuccess from '~/components/organisms/OrderFunnelSuccess';
-import { useNavigate } from '@remix-run/react';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const [step, setStep] = useState(defaultStep);
@@ -20,7 +20,7 @@ const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const navigate = useNavigate();
 
   const goToHomePage = () => {
-    navigate('/podcasts', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const CONFIRM = 0;

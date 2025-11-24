@@ -1,15 +1,15 @@
-import { useQuery } from "@apollo/client";
-import { profile } from "~/config";
+import { useQuery } from '@apollo/client/react';
+import { profile } from '~/config';
 
 import type {
   PlaylistTrackQuery,
-  PlaylistTrackQueryVariables
-} from "~/types/gql/PlaylistTrackQuery";
-import { playlistTrackGqlQuery } from "~/queries/playlistTrack";
+  PlaylistTrackQueryVariables,
+} from '~/types/gql/PlaylistTrackQuery';
+import { playlistTrackGqlQuery } from '~/queries/playlistTrack';
 
 export const usePlaylistTrackQuery = (
-  trackId: PlaylistTrackQueryVariables["trackId"],
-  keyType: PlaylistTrackQueryVariables["keyType"] = "slug"
+  trackId: PlaylistTrackQueryVariables['trackId'],
+  keyType: PlaylistTrackQueryVariables['keyType'] = 'slug',
 ) => {
   return useQuery<PlaylistTrackQuery, PlaylistTrackQueryVariables>(
     playlistTrackGqlQuery,
@@ -17,8 +17,8 @@ export const usePlaylistTrackQuery = (
       variables: {
         profile,
         trackId,
-        keyType
-      }
-    }
+        keyType,
+      },
+    },
   );
 };

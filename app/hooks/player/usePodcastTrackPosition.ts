@@ -1,7 +1,7 @@
-import { usePlaylistQuery } from "../queries/usePlaylistQuery";
+import { usePlaylistQuery } from '../queries/usePlaylistQuery';
 
 export const usePodcastTrackPosition = (id: number | null) => {
-  const { data } = usePlaylistQuery("dj-sets");
+  const { data } = usePlaylistQuery('dj-sets');
   const tracks = data?.playlist?.tracks;
   const currentIndex = tracks?.findIndex((track) => track.id === id);
   const prevIndex = currentIndex
@@ -19,6 +19,6 @@ export const usePodcastTrackPosition = (id: number | null) => {
 
   return {
     prevId: tracks?.[prevIndex]?.id,
-    nextId: tracks?.[nextIndex]?.id
+    nextId: tracks?.[nextIndex]?.id,
   };
 };

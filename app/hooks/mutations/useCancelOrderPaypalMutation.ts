@@ -1,4 +1,5 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client/react';
+import { gql } from '@apollo/client';
 import { profile } from '~/config';
 import cancelOrderMutation from '~/gql/mutations/cancelOrderMutation.gql';
 import type {

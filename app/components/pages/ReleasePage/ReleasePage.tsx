@@ -1,10 +1,10 @@
-import type { ReleasePageProps } from "./ReleasePage.types";
-import { useReleaseQuery } from "~/hooks/queries/useReleaseQuery";
-import HandlerContent from "~/components/molecules/HandlerContent";
-import Loader from "~/components/molecules/Loader";
-import ViewRelease from "~/components/organisms/ViewRelease";
-import ErrorPage from "../ErrorPage";
-import ButtonLink from "~/components/atoms/ButtonLink";
+import type { ReleasePageProps } from './ReleasePage.types';
+import ButtonLink from '~/components/atoms/ButtonLink';
+import HandlerContent from '~/components/molecules/HandlerContent';
+import Loader from '~/components/molecules/Loader';
+import ViewRelease from '~/components/organisms/ViewRelease';
+import ErrorPage from '~/components/pages/ErrorPage';
+import { useReleaseQuery } from '~/hooks/queries/useReleaseQuery';
 
 const ReleasePage = ({ id }: ReleasePageProps) => {
   const { data, loading } = useReleaseQuery(id);
@@ -14,7 +14,7 @@ const ReleasePage = ({ id }: ReleasePageProps) => {
       loader={<Loader message="Please wait while we're chasing release..." />}
     >
       {data?.releaseItem ? (
-        <ViewRelease release={data.releaseItem} />
+        <ViewRelease release={{ ...data.releaseItem }} />
       ) : (
         <ErrorPage
           code={404}

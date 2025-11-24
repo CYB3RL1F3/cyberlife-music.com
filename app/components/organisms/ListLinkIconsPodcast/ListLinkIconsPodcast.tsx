@@ -12,6 +12,7 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
   const { config } = useConfigContext();
   const apiUrl = config?.apiEndpoint || '';
   if (!id) return null;
+
   const linkIcons: ListLinkIconsProps['linkIcons'] = [
     {
       icon: (
@@ -24,6 +25,7 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
       title: `like podcast ${title}`,
     },
   ];
+
   if (soundcloud) {
     linkIcons.push({
       icon: <ImgIcon icon={SoundcloudIcon} alt="Soundcloud Icon" isInverted />,
@@ -32,6 +34,7 @@ const ListLinkIconsPodcast = ({ podcast }: ListLinkIconsPodcastProps) => {
       title: `Soundcloud link ${title || ''}`,
     });
   }
+
   if (downloadable && download && apiUrl) {
     const url = `${apiUrl}/cyberlife/playlists/${id}/download`;
     linkIcons.push({

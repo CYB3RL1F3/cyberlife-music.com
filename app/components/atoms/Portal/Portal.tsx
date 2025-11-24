@@ -1,8 +1,8 @@
-import { memo } from "react";
-import ReactDOM from "react-dom";
+import { memo } from 'react';
+import ReactDOM from 'react-dom';
 
-import { useDomElement } from "~/hooks/useDomElement";
-import type { PortalProps } from "./Portal.types";
+import { useDomElement } from '~/hooks/misc/useDomElement';
+import type { PortalProps } from './Portal.types';
 
 const Portal = memo(({ children, id }: PortalProps) => {
   const root = useDomElement(`#${id}`);
@@ -10,6 +10,6 @@ const Portal = memo(({ children, id }: PortalProps) => {
   return ReactDOM.createPortal(children, root);
 });
 
-Portal.displayName = "Portal";
+Portal.displayName = 'Portal';
 
 export default Portal;

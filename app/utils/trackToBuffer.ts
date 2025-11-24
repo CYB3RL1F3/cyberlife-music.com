@@ -1,11 +1,8 @@
-import type { ReleaseFragmentTracklistStream } from "../types/gql/ReleaseFragment";
-import type { PlaylistQueryPlaylistTracks } from "../types/gql/PlaylistQuery";
-import type { PlaylistTrackQueryPlaylistTrack } from "../types/gql/PlaylistTrackQuery";
-import type {
-  TrackPlayerContext,
-  TrackToBuffer
-} from "~/components/contexts/PlayerContext/PlayerContext.types";
-import { getApiEndpoint } from "./config";
+import type { ReleaseFragmentTracklistStream } from '../types/gql/ReleaseFragment';
+import type { PlaylistQueryPlaylistTracks } from '../types/gql/PlaylistQuery';
+import type { PlaylistTrackQueryPlaylistTrack } from '../types/gql/PlaylistTrackQuery';
+import type { TrackToBuffer } from '~/components/contexts/PlayerContext/PlayerContext.types';
+import { getApiEndpoint } from './config';
 
 export type TrackType =
   | ReleaseFragmentTracklistStream
@@ -17,27 +14,24 @@ export type Extra = {
   album?: string | null;
   nextId?: number | null;
   prevId?: number | null;
+  pageUrl: string;
 };
 
-export const getTrackToBuffer = (
-  track: TrackType,
-  contexts: TrackPlayerContext,
-  extra?: Extra
-) => {
+export const getTrackToBuffer = (track: TrackType, extra?: Extra) => {
   const apiUrl = getApiEndpoint();
   const url = `${apiUrl}/cyberlife/playlists/${track.id}/stream`;
   const toBuffer: TrackToBuffer = {
-    contexts,
     duration: track.duration || 0,
     id: track.id || 0,
-    title: track.title || "",
+    title: track.title || '',
     url,
-    waveform: track.waveform || "",
-    artist: extra?.artist || "",
-    album: extra?.album || "",
+    waveform: track.waveform || '',
+    artist: extra?.artist || '',
+    album: extra?.album || '',
     artwork: track.artwork,
     nextId: extra?.nextId,
-    prevId: extra?.prevId
+    prevId: extra?.prevId,
+    pageUrl: extra?.pageUrl || '/',
   };
   return toBuffer;
 };

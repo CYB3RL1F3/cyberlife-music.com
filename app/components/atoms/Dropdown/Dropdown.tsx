@@ -41,8 +41,6 @@ const Dropdown = <T,>({
     setFilteredItems(useFilter(value));
   };
 
-  console.log('FILTERED ITEMS ==> ', filteredItems, items);
-
   const extra = useMemo(
     () =>
       filterable && useFilter ? (

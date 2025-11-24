@@ -61,7 +61,7 @@ const DownloadOrderPage = ({ id, token }: DownloadOrderPageProps) => {
             <FormOrderDownloadConfirmError
               onRetry={handleRetry}
               id={id}
-              instagramLink={instagram!}
+              instagramLink={instagram}
               email={email}
               error={error.message}
             />

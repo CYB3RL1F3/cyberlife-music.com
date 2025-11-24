@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import type {
   LinksFunction,
   LoaderFunction,
-  MetaFunction
-} from "@remix-run/node";
-import { json } from "@remix-run/node";
+  MetaFunction,
+} from '@remix-run/node';
+import { json } from '@remix-run/node';
 import {
   Links,
   Meta,
@@ -12,50 +12,49 @@ import {
   useLoaderData,
   useLocation,
   useMatches,
-  isRouteErrorResponse
-} from "@remix-run/react";
+  isRouteErrorResponse,
+} from '@remix-run/react';
 
-import Application from "./application";
-import styles from "~/styles/styles.css";
-import reactToastifyStyles from "react-toastify/dist/ReactToastify.css";
-import ErrorPage from "./components/pages/ErrorPage";
-import { runInfosQuery } from "~/queries/infos";
-import { getConfig } from "./utils/config";
+import Application from './application';
+import styles from '~/styles/styles.css';
+import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css';
+import ErrorPage from './components/pages/ErrorPage';
+import { runInfosQuery } from '~/queries/infos';
+import { getConfig } from './utils/config';
 
 let isMount = true;
 
 const title = "Cyberlife's music";
-const image =
-  "https://res.cloudinary.com/hw2jydiif/image/upload/v1667476701/btby2qfnqpbpnnfpzdt5.webp";
+const image = 'https://cdn.cyberlife-music.com/images/cyberlife-bg.jpg';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const description = data?.description;
   const metadata = {
-    charset: "utf-8",
+    charset: 'utf-8',
     description,
-    expires: "0",
+    expires: '0',
     image,
-    "mobile-web-app-capable": "yes",
-    "og:description": description,
-    "og:image": image,
-    "og:image:secure_url": image,
-    "og:site_name": title,
-    "og:title": title,
-    "og:type": "website",
-    pragma: "no-cache",
-    robots: "all",
+    'mobile-web-app-capable': 'yes',
+    'og:description': description,
+    'og:image': image,
+    'og:image:secure_url': image,
+    'og:site_name': title,
+    'og:title': title,
+    'og:type': 'website',
+    pragma: 'no-cache',
+    robots: 'all',
     title,
-    "twitter:card": "summary",
-    "twitter:description": description,
-    "twitter:image": image,
-    "twitter:site_name": title,
-    "twitter:title": title,
-    viewport: "width=device-width,initial-scale=1"
+    'twitter:card': 'summary',
+    'twitter:description': description,
+    'twitter:image': image,
+    'twitter:site_name': title,
+    'twitter:title': title,
+    viewport: 'width=device-width,initial-scale=1',
   };
   const metadataArray = Object.entries(metadata).map(([name, content]) => {
     return {
       name,
-      content
+      content,
     };
   });
   return metadataArray;
@@ -63,17 +62,23 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: reactToastifyStyles },
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: reactToastifyStyles },
     {
-      rel: "icon",
-      type: "image/x-icon",
-      href: "/icons/favicon.ico"
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/icons/favicon.ico',
     },
     {
-      rel: "manifest",
-      href: "/resources/manifest.webmanifest"
-    }
+      rel: 'manifest',
+      href: '/resources/manifest.webmanifest',
+    },
+    {
+      rel: 'alternate',
+      type: 'application/rss+xml',
+      title: 'Cyberlife Music RSS Feed',
+      href: '/rss/index.xml',
+    },
   ];
 };
 
@@ -85,7 +90,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const data = json({
     url,
     description,
-    config
+    config,
   });
   return data;
 };
@@ -99,7 +104,7 @@ export function ErrorBoundary() {
     : 500;
   const config = getConfig();
   const message =
-    code === 404 ? "Nothing here!" : "A technical error occurred!";
+    code === 404 ? 'Nothing here!' : 'A technical error occurred!';
 
   return (
     <html lang="en">
@@ -126,31 +131,31 @@ export default function App() {
   useEffect(() => {
     let mounted = isMount;
     isMount = false;
-    if ("serviceWorker" in navigator) {
+    if ('serviceWorker' in navigator) {
       if (navigator.serviceWorker.controller) {
         navigator.serviceWorker.controller?.postMessage({
-          type: "REMIX_NAVIGATION",
+          type: 'REMIX_NAVIGATION',
           isMount: mounted,
           location,
           matches,
-          manifest: window.__remixManifest
+          manifest: window.__remixManifest,
         });
       } else {
         let listener = async () => {
           await navigator.serviceWorker.ready;
           navigator.serviceWorker.controller?.postMessage({
-            type: "REMIX_NAVIGATION",
+            type: 'REMIX_NAVIGATION',
             isMount: mounted,
             location,
             matches,
-            manifest: window.__remixManifest
+            manifest: window.__remixManifest,
           });
         };
-        navigator.serviceWorker.addEventListener("controllerchange", listener);
+        navigator.serviceWorker.addEventListener('controllerchange', listener);
         return () => {
           navigator.serviceWorker.removeEventListener(
-            "controllerchange",
-            listener
+            'controllerchange',
+            listener,
           );
         };
       }

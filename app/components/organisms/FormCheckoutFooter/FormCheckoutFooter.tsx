@@ -7,7 +7,7 @@ import { GrPowerReset } from 'react-icons/gr';
 import { RxCross2 } from 'react-icons/rx';
 import { FormCheckoutFooterProps } from './FormCheckoutFooter.types';
 import { motion } from 'framer-motion';
-import { useFluidTransition } from '~/hooks/useFluidTransition';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 
 const FormCheckoutFooter = ({
   reset,
@@ -17,6 +17,7 @@ const FormCheckoutFooter = ({
   onCancel,
 }: FormCheckoutFooterProps) => {
   const transition = useFluidTransition();
+
   return (
     <div className="flex flex-col items-end justify-end w-full gap-4">
       {values.carrier ? (

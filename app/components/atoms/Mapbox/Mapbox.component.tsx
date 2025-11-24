@@ -1,8 +1,10 @@
-import type { ViewStateChangeEvent } from "react-map-gl";
-import Map, { NavigationControl } from "react-map-gl";
-import type { Coordinates, MapboxProps } from "./Mapbox.types";
-import { useCallback } from "react";
-import { useConfigContext } from "~/components/contexts/ConfigContext";
+import Map, {
+  NavigationControl,
+  ViewStateChangeEvent,
+} from 'react-map-gl/mapbox';
+import type { Coordinates, MapboxProps } from './Mapbox.types';
+import { useConfigContext } from '~/components/contexts/ConfigContext';
+import { useCallback } from 'react';
 
 const Mapbox = ({
   children,
@@ -14,18 +16,18 @@ const Mapbox = ({
   onZoomChanged,
   onCenterChanged,
   onMapRendered,
-  onMapClicked
+  onMapClicked,
 }: MapboxProps) => {
   const {
     config: {
-      mapbox: { accessToken, style }
-    }
+      mapbox: { accessToken, style },
+    },
   } = useConfigContext();
   const onZoom = useCallback(
     (event: ViewStateChangeEvent) => {
       onZoomChanged?.(event.target.getZoom());
     },
-    [onZoomChanged]
+    [onZoomChanged],
   );
 
   const onDragEnd = useCallback(
@@ -34,7 +36,7 @@ const Mapbox = ({
       const coordinates: Coordinates = [center.lng, center.lat];
       onCenterChanged?.(coordinates);
     },
-    [onCenterChanged]
+    [onCenterChanged],
   );
 
   return (
@@ -45,7 +47,7 @@ const Mapbox = ({
       initialViewState={{
         longitude,
         latitude,
-        zoom
+        zoom,
       }}
       attributionControl={false}
       onZoom={onZoom}

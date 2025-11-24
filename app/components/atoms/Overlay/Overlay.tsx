@@ -1,8 +1,9 @@
-import { useCallback, useMemo, useEffect, useState, useRef } from "react";
-import { useOnClickOutside } from "~/hooks/useOnClickOutside";
-import { useModalOpen } from "~/hooks/useModalOpen";
-import clsx from "clsx";
-import type { OverlayProps } from "./Overlay.types";
+import { useCallback, useMemo, useEffect, useState, useRef } from 'react';
+import { useOutsideMouseClickEvent } from '~/hooks/events/useOutsideMouseClickEvent';
+import { useModalOpen } from '~/hooks/misc/useModalOpen';
+import clsx from 'clsx';
+import type { OverlayProps } from './Overlay.types';
+import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
 
 const Overlay = ({
   children,
@@ -10,11 +11,11 @@ const Overlay = ({
   containerClassName,
   isOpen = false,
   transitionDuration = 250,
-  onClose
+  onClose,
 }: OverlayProps) => {
   useModalOpen();
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [display, setDisplay] = useState(isOpen);
 
   useEffect(() => {
@@ -31,16 +32,22 @@ const Overlay = ({
     () =>
       clsx(
         `top-0 fixed z-40 backdrop-blur-sm block z-overlay h-full l-0 transition-colors duration-${transitionDuration} ease-in-out w-full`,
-        className
+        className,
       ),
-    [transitionDuration, className]
+    [transitionDuration, className],
   );
 
-  const onClickOutside = useCallback(() => {
+  const handleClose = useCallback(() => {
     onClose?.();
   }, [onClose]);
 
-  useOnClickOutside(containerRef, onClickOutside);
+  useOutsideMouseClickEvent(containerRef, handleClose);
+
+  useKeydownEvent((e) => {
+    if (e.key === 'Escape') {
+      handleClose();
+    }
+  });
 
   if (!display) return null;
 

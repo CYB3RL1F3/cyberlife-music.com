@@ -7,6 +7,24 @@
 // START Enums and Input Objects
 //==============================================================
 
+/**
+ * The type of autocomplete suggestions
+ */
+export enum AutocompleteLocationSuggestionType {
+  address = "address",
+  category = "category",
+  city = "city",
+  country = "country",
+  district = "district",
+  locality = "locality",
+  neighborhood = "neighborhood",
+  place = "place",
+  poi = "poi",
+  postcode = "postcode",
+  region = "region",
+  street = "street",
+}
+
 export enum Environment {
   dev = "dev",
   prod = "prod",
@@ -25,6 +43,14 @@ export interface AddressInput {
 export interface ArtistDto {
   name?: string | null;
   role?: string | null;
+}
+
+export interface AutocompleteLocationSuggestionInput {
+  country: string;
+  query: string;
+  limit?: number | null;
+  language?: string | null;
+  type: AutocompleteLocationSuggestionType;
 }
 
 export interface BillingDto {

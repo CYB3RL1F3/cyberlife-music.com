@@ -2,7 +2,7 @@ import { FormCheckoutValues } from '~/components/organisms/FormCheckout/FormChec
 import { CartItem } from '~/hooks/db/useCart';
 import { OrderDto, ReleaseDtoInput } from '~/types/gql/globalTypes';
 import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
-import { getConfig } from '../config';
+import { getConfig } from '~/utils/config';
 
 export const round = (value: number, decimals: number) => {
   return Number(Math.round(Number(value + 'e' + decimals)) + 'e-' + decimals);
@@ -22,7 +22,7 @@ export const getTtcPrice = (items: CartItem[]) => {
 
 export const getVat = (items: CartItem[]) => {
   return getHtPrice(items) * 0.2;
-}
+};
 
 export const getProduct = (
   item: CartItem,

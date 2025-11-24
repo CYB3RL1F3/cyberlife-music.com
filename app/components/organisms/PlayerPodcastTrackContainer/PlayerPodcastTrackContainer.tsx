@@ -1,16 +1,16 @@
-import { usePodcastTrackPlayer } from "~/hooks/player/usePodcastTrackPlayer";
-import PlayerTrack from "~/components/organisms/PlayerTrack";
-import type { PlayerTrackProps } from "~/components/organisms/PlayerTrack";
-import type { PlayerPodcastTrackContainerProps } from "./PlayerPodcastTrackContainer.types";
+import { usePodcastTrackPlayer } from '~/hooks/player/usePodcastTrackPlayer';
+import PlayerTrack from '~/components/organisms/PlayerTrack';
+import type { PlayerTrackProps } from '~/components/organisms/PlayerTrack';
+import type { PlayerPodcastTrackContainerProps } from './PlayerPodcastTrackContainer.types';
 
 const PlayerPodcastTrackContainer = ({
-  track
+  track,
 }: PlayerPodcastTrackContainerProps) => {
   const { waveform, id } = track;
 
   const { seek, load, setSeek, isPlaying } = usePodcastTrackPlayer(track);
 
-  const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
+  const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
   };
 

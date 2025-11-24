@@ -10,7 +10,6 @@ const DropdownItems = <T,>({
     typeof item === 'string' ? item : Math.random().toString(16),
   render,
 }: DropdownItemsProps<T>) => {
-  console.log('items ==> ', items);
   return (
     <ul className="min-w-full rounded-lg shadow-lg pointer-events-none">
       {items.map((item, index) => (

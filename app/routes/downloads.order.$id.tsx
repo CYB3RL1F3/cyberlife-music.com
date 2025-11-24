@@ -11,8 +11,6 @@ export default function DownloadOrderRoute() {
   const [value] = useSearchParams();
   const token = value.get('token');
 
-  console.log('id:', id, ', token:', token);
-
   if (!id) {
     return (
       <ErrorPage code={400} message="Invalid request: order ID not found!" />
@@ -27,3 +25,12 @@ export default function DownloadOrderRoute() {
 
   return <DownloadOrderPage id={id} token={token} />;
 }
+
+export const CatchBoundary = () => {
+  return (
+    <ErrorPage
+      code={500}
+      message="An error occurred while loading the download page"
+    />
+  );
+};

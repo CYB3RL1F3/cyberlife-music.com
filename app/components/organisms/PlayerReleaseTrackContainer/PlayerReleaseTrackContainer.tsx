@@ -1,24 +1,25 @@
-import { useReleaseTrackPlayer } from "~/hooks/player/useReleaseTrackPlayer";
-import PlayerTrack from "~/components/organisms/PlayerTrack";
-import type { PlayerTrackProps } from "~/components/organisms/PlayerTrack";
-import type { PlayerReleaseTrackContainerProps } from "./PlayerReleaseTrackContainer.types";
+import { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
+import PlayerTrack from '~/components/organisms/PlayerTrack';
+import type { PlayerTrackProps } from '~/components/organisms/PlayerTrack';
+import type { PlayerReleaseTrackContainerProps } from './PlayerReleaseTrackContainer.types';
 
 const PlayerReleaseTrackContainer = ({
   track,
-  id,
   artists,
   album,
   prevId,
-  nextId
+  nextId,
+  pageUrl,
 }: PlayerReleaseTrackContainerProps) => {
   const { waveform, id: trackId } = track;
-  const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, id, {
-    artist: artists?.map(({ name }) => name).join(", "),
+  const { seek, load, setSeek, isPlaying } = useReleaseTrackPlayer(track, {
+    artist: artists?.map(({ name }) => name).join(', '),
     album,
     prevId,
-    nextId
+    nextId,
+    pageUrl,
   });
-  const handleSeekChange: PlayerTrackProps["onSeekChange"] = (seek) => {
+  const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
   };
   if (!waveform || !trackId) return null;

@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import type { Environment } from "~/types/gql/globalTypes";
+import type { ReactNode } from 'react';
+import type { Environment } from '~/types/gql/globalTypes';
 
 export type Config = {
   mapbox: {
@@ -15,6 +15,8 @@ export type Config = {
     baseUrl: string;
   };
   webshopId: string;
+  domain: string;
+  contactEmail: string;
 };
 
 export type ConfigContextValues = {
