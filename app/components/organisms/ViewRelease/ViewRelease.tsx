@@ -6,7 +6,7 @@ import type { ViewReleaseProps } from './ViewRelease.types';
 import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { motion, useWillChange } from 'framer-motion';
-import { parseHtml, toHtml } from '~/utils/html';
+import { getTextToHtml } from '~/utils/html';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
   const willChange = useWillChange();
@@ -25,9 +25,11 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
     },
     style: { willChange },
   });
+
   if (!release.release) return <p>Release data is missing</p>;
 
   const { title, notes, tracklist, thumb, slug } = release.release;
+
   return (
     <article className="o-4">
       <PageDetailHeaderPortal>
@@ -38,7 +40,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       </motion.article>
       {notes ? (
         <motion.article className="py-4" {...transition(0.1, 0.15)}>
-          <Text.RightItalic>{parseHtml(toHtml(notes))}</Text.RightItalic>
+          <Text.RightItalic>{getTextToHtml(notes)}</Text.RightItalic>
         </motion.article>
       ) : null}
       {tracklist && (

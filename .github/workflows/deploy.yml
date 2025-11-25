@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - master
+      - main
       - develop
       - prod
   pull_request:
     branches:
       - master
+      - main
       - develop
       - prod
     types:
@@ -55,7 +57,7 @@ jobs:
             echo "VPS_IP is set."
           fi
 
-          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|main|prod)$ ]]; then
             export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
             export ENVIRONMENT=staging
@@ -82,7 +84,7 @@ jobs:
           VPS_IP: ${{ secrets.VPS_IP }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
-          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|main|prod)$ ]]; then
             export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
             export ENVIRONMENT=staging
@@ -111,7 +113,7 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
         shell: bash
         run: |
-          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|prod)$ ]]; then
+          if [[ "${GITHUB_REF}" =~ ^refs/heads/(master|main|prod)$ ]]; then
             export ENVIRONMENT=prod
           elif [[ "${GITHUB_REF}" == "refs/heads/develop" ]]; then
             export ENVIRONMENT=staging
