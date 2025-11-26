@@ -1,9 +1,8 @@
-import { usePlayerContext } from "~/components/contexts/PlayerContext";
-import { useTrackContext } from "./useTrackContext";
+import { useTrack } from './useTrack';
+import { usePlayerStore } from '../stores/player/usePlayerStore';
 
 export const useCurrentTrackPlayer = () => {
-  const context = usePlayerContext();
-  const id = context.currentTrackId;
-  const trackPlayer = useTrackContext(id || 0);
+  const { currentTrackId } = usePlayerStore();
+  const trackPlayer = useTrack(currentTrackId || 0);
   return trackPlayer;
 };

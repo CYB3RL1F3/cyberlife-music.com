@@ -7,12 +7,13 @@ export const usePodcastTrackPlayer = (
   track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks,
 ) => {
   const { prevId, nextId } = usePodcastTrackPosition(track.id);
-  const playerContext = useTrackPlayer(track, {
+
+  const podcastTrackPlayer = useTrackPlayer(track, {
     artist: 'Cyberlife',
     album: 'Podcasts',
     nextId,
     prevId,
     pageUrl: `/podcasts/${track.slug}`,
   });
-  return playerContext;
+  return podcastTrackPlayer;
 };

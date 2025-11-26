@@ -1,16 +1,18 @@
-import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 
-export const useTrackContext = (id: number) => {
+export const useTrack = (id: number) => {
   const {
     buffer,
     currentTrackId,
     volume,
     jumping,
-    currentContext,
     playing,
-    ...playerContext
-  } = usePlayerContext();
+    play,
+    pause,
+    setLoad,
+    setSeek,
+  } = usePlayerStore();
 
   const currentTrack = useMemo(() => buffer[id], [buffer, id]);
 
@@ -23,23 +25,23 @@ export const useTrackContext = (id: number) => {
 
   const togglePlay = () => {
     if (!isPlaying || !isCurrentTrack) {
-      playerContext.play(id);
+      play(id);
       return;
     }
-    playerContext.pause(id);
+    pause();
   };
 
-  const setLoad = (value: number) => {
-    playerContext.setLoad(id, value);
+  const setTrackLoad = (value: number) => {
+    setLoad(id, value);
   };
-  const setSeek = (value: number, jumping?: boolean) => {
-    playerContext.setSeek(id, value, jumping);
+  const setTrackSeek = (value: number, jumping?: boolean) => {
+    setSeek(id, value, jumping);
   };
 
   const onEnded = () => {
     const nextId = currentTrack?.nextId;
     if (!nextId) return;
-    playerContext.play(nextId, true);
+    play(nextId, true);
   };
 
   return {
@@ -55,8 +57,8 @@ export const useTrackContext = (id: number) => {
     volume,
     jumping,
     togglePlay,
-    setLoad,
-    setSeek,
+    setLoad: setTrackLoad,
+    setSeek: setTrackSeek,
     id,
     onEnded,
   };

@@ -1,6 +1,6 @@
-import { usePlayerContext } from "~/components/contexts/PlayerContext";
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 
 export const useVolume = () => {
-  const { volume, setVolume } = usePlayerContext();
+  const { volume, setVolume } = usePlayerStore();
   return [volume, setVolume] as const;
 };

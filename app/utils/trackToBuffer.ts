@@ -1,8 +1,8 @@
 import type { ReleaseFragmentTracklistStream } from '../types/gql/ReleaseFragment';
 import type { PlaylistQueryPlaylistTracks } from '../types/gql/PlaylistQuery';
 import type { PlaylistTrackQueryPlaylistTrack } from '../types/gql/PlaylistTrackQuery';
-import type { TrackToBuffer } from '~/components/contexts/PlayerContext/PlayerContext.types';
 import { getApiEndpoint } from './config';
+import { TrackToBuffer } from '~/hooks/stores/player/usePlayerStore.types';
 
 export type TrackType =
   | ReleaseFragmentTracklistStream
@@ -20,6 +20,7 @@ export type Extra = {
 export const getTrackToBuffer = (track: TrackType, extra?: Extra) => {
   const apiUrl = getApiEndpoint();
   const url = `${apiUrl}/cyberlife/playlists/${track.id}/stream`;
+
   const toBuffer: TrackToBuffer = {
     duration: track.duration || 0,
     id: track.id || 0,
@@ -33,5 +34,6 @@ export const getTrackToBuffer = (track: TrackType, extra?: Extra) => {
     prevId: extra?.prevId,
     pageUrl: extra?.pageUrl || '/',
   };
+
   return toBuffer;
 };

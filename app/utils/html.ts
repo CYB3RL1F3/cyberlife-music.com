@@ -1,11 +1,11 @@
 import reactHtmlParser from 'html-react-parser';
-import { sanitize } from 'isomorphic-dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 export const getSanitizedHtml = (
   html: string,
   strict: boolean = false,
 ): string =>
-  sanitize(html, {
+  DOMPurify.sanitize(html, {
     ALLOWED_TAGS: [
       'h1',
       'h2',

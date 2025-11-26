@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
-import { usePlayerContext } from '~/components/contexts/PlayerContext';
 import type { TrackType } from '~/utils/trackToBuffer';
 import { getTrackToBuffer } from '~/utils/trackToBuffer';
-import { useTrackContext } from './useTrackContext';
+import { useTrack } from './useTrack';
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 
 export const useTrackPlayer = (
   track: TrackType,
   extra?: Parameters<typeof getTrackToBuffer>[1],
 ) => {
-  const playerContext = usePlayerContext();
+  const { addTrackToBuffer } = usePlayerStore();
   const bufferTrack = getTrackToBuffer(track, extra);
 
   useEffect(() => {
-    playerContext.addTrackToBuffer(bufferTrack);
+    addTrackToBuffer(bufferTrack);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [extra?.nextId]);
 
-  const trackPlayer = useTrackContext(bufferTrack.id);
+  const trackPlayer = useTrack(bufferTrack.id);
   return trackPlayer;
 };
