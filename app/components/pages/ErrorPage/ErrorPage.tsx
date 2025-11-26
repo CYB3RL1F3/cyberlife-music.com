@@ -1,9 +1,9 @@
-import type { ErrorPageProps } from "./ErrorPage.types";
+import type { ErrorPageProps } from './ErrorPage.types';
 
 const ErrorPage = ({
   code,
-  message = "An exception occured",
-  extra
+  message = 'A fatal exception occurred',
+  extra,
 }: ErrorPageProps) => {
   return (
     <div className="flex flex-col items-center justify-center m-8 o-2">
@@ -12,7 +12,7 @@ const ErrorPage = ({
       </div>
       <p className="w-full p-0 m-0 text-center text-semilarge">{message}</p>
       <p className="mb-8 font-bold text-center text-xxl">:(</p>
-      <p className="text-center">{extra}</p>
+      {extra && <p className="text-center">{extra}</p>}
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const CatchBoundary = () => {
   return (
     <ErrorPage
       code={500}
-      message="An error occurred while loading release page"
+      message="An error occurred while loading this release page"
     />
   );
 };
