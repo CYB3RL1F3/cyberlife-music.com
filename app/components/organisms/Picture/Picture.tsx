@@ -1,23 +1,25 @@
 import Action from '~/components/atoms/Action';
 import Thumbnail from '~/components/molecules/Thumbnail';
-import ModalImage from '../ModalImage';
 import type { PictureProps } from './Picture.types';
-import { useToggleState } from '~/hooks/misc/useToggleState';
+import { useImageModal } from '~/hooks/misc/useImageModal';
 
 const Picture = ({ src, alt, variant }: PictureProps) => {
-  const [isOpen, open, close] = useToggleState();
-  const canOpen = !!src;
+  const { open } = useImageModal();
+
+  const handleOpen = () => {
+    open(src);
+  };
+
   return (
     <>
       <Thumbnail src={src} variant={variant}>
         <Action
           title={`open picture ${alt}`}
-          disabled={!canOpen}
-          onClick={open}
+          disabled={!src}
+          onClick={handleOpen}
           className="w-full h-full"
         />
       </Thumbnail>
-      <ModalImage isOpen={isOpen} onClose={close} alt={alt} src={src} />
     </>
   );
 };

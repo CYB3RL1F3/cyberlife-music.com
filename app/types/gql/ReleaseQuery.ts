@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface ReleaseQueryReleaseItemReleaseTracklistArtists {
-  __typename: "artist";
+  __typename: 'artist';
   /**
    * Artist Name
    */
@@ -20,7 +20,7 @@ export interface ReleaseQueryReleaseItemReleaseTracklistArtists {
 }
 
 export interface ReleaseQueryReleaseItemReleaseTracklistStream {
-  __typename: "Track";
+  __typename: 'Track';
   /**
    * track ID
    */
@@ -52,7 +52,7 @@ export interface ReleaseQueryReleaseItemReleaseTracklistStream {
 }
 
 export interface ReleaseQueryReleaseItemReleaseTracklist {
-  __typename: "ReleaseTrack";
+  __typename: 'ReleaseTrack';
   /**
    * Release's Track title
    */
@@ -76,7 +76,7 @@ export interface ReleaseQueryReleaseItemReleaseTracklist {
 }
 
 export interface ReleaseQueryReleaseItemRelease {
-  __typename: "ReleaseDtoOutput";
+  __typename: 'ReleaseDtoOutput';
   /**
    * release ID
    */
@@ -105,6 +105,10 @@ export interface ReleaseQueryReleaseItemRelease {
    * Release thumb url
    */
   thumb: string | null;
+  /**
+   * Release images
+   */
+  images: string[] | null;
   /**
    * Release label
    */
@@ -140,7 +144,7 @@ export interface ReleaseQueryReleaseItemRelease {
 }
 
 export interface ReleaseQueryReleaseItem {
-  __typename: "ReleaseItem";
+  __typename: 'ReleaseItem';
   /**
    * Item id
    */

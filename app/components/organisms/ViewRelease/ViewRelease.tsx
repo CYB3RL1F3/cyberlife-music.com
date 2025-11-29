@@ -7,6 +7,7 @@ import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { motion, useWillChange } from 'framer-motion';
 import { getTextToHtml } from '~/utils/html';
+import PicturesGallery from '~/components/organisms/PicturesGallery';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
   const willChange = useWillChange();
@@ -28,7 +29,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
 
   if (!release.release) return <p>Release data is missing</p>;
 
-  const { title, notes, tracklist, thumb, slug } = release.release;
+  const { title, images, notes, tracklist, thumb, slug } = release.release;
 
   return (
     <article className="o-4">
@@ -38,11 +39,17 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
       <motion.article className="w-full" {...transition(0.05, 0.1)}>
         <ReleaseDetails release={release} />
       </motion.article>
+      {images && images.length > 0 && (
+        <motion.article className="py-4" {...transition(0.2, 0.2)}>
+          <PicturesGallery images={images} />
+        </motion.article>
+      )}
       {notes ? (
-        <motion.article className="py-4" {...transition(0.1, 0.15)}>
+        <motion.article className="py-4" {...transition(0.15, 0.15)}>
           <Text.RightItalic>{getTextToHtml(notes)}</Text.RightItalic>
         </motion.article>
       ) : null}
+
       {tracklist && (
         <ReleaseTracklist
           id={slug}

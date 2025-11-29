@@ -6,6 +6,7 @@ fragment ReleaseFragment on ReleaseDtoOutput {
   role
   year
   thumb
+  images
   label
   tracklist {
     title

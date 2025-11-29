@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface SummaryQuerySummaryNextEventFlyer {
-  __typename: "flyer";
+  __typename: 'flyer';
   /**
    * front image source
    */
@@ -16,7 +16,7 @@ export interface SummaryQuerySummaryNextEventFlyer {
 }
 
 export interface SummaryQuerySummaryNextEvent {
-  __typename: "Event";
+  __typename: 'Event';
   /**
    * event ID
    */
@@ -56,7 +56,7 @@ export interface SummaryQuerySummaryNextEvent {
 }
 
 export interface SummaryQuerySummaryTopPodcast {
-  __typename: "Track";
+  __typename: 'Track';
   /**
    * track ID
    */
@@ -116,7 +116,7 @@ export interface SummaryQuerySummaryTopPodcast {
 }
 
 export interface SummaryQuerySummaryLatestPodcast {
-  __typename: "Track";
+  __typename: 'Track';
   /**
    * track ID
    */
@@ -176,7 +176,7 @@ export interface SummaryQuerySummaryLatestPodcast {
 }
 
 export interface SummaryQuerySummaryLatestReleasesReleaseTracklist {
-  __typename: "ReleaseTrack";
+  __typename: 'ReleaseTrack';
   /**
    * Release's Track title
    */
@@ -184,7 +184,7 @@ export interface SummaryQuerySummaryLatestReleasesReleaseTracklist {
 }
 
 export interface SummaryQuerySummaryLatestReleasesRelease {
-  __typename: "ReleaseDtoOutput";
+  __typename: 'ReleaseDtoOutput';
   /**
    * release ID
    */
@@ -213,6 +213,7 @@ export interface SummaryQuerySummaryLatestReleasesRelease {
    * Release thumb url
    */
   thumb: string | null;
+
   /**
    * Release label
    */
@@ -236,7 +237,7 @@ export interface SummaryQuerySummaryLatestReleasesRelease {
 }
 
 export interface SummaryQuerySummaryLatestReleases {
-  __typename: "ReleaseItem";
+  __typename: 'ReleaseItem';
   /**
    * Item id
    */
@@ -260,7 +261,7 @@ export interface SummaryQuerySummaryLatestReleases {
 }
 
 export interface SummaryQuerySummaryLatestVideo {
-  __typename: "Video";
+  __typename: 'Video';
   /**
    * Video url
    */
@@ -292,7 +293,7 @@ export interface SummaryQuerySummaryLatestVideo {
 }
 
 export interface SummaryQuerySummary {
-  __typename: "SummaryEntity";
+  __typename: 'SummaryEntity';
   /**
    * Next event
    */

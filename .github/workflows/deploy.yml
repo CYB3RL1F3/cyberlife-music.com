@@ -135,7 +135,10 @@ jobs:
               echo 'Attempt' \$i ': HTTP status' \$STATUS; \
               if [ \"\$STATUS\" -eq 200 ]; then \
                 echo '✅ Frontend is healthy!'; \
-                exit 0; \
+                echo 'Cleaning up...'; \
+                docker system prune -af \
+                echo '✅ Cleanup successful!' \
+                exit 0
               fi; \
               sleep 5; \
             done; \
