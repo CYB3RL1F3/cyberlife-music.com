@@ -1,16 +1,13 @@
 import { useQuery } from '@apollo/client/react';
-import type {
-  CarrierPrices,
-  CarrierPricesVariables,
-} from '~/types/gql/CarrierPrices';
 import { carrierPricesGqlQuery } from '~/queries/carrierPrices';
 import { profile } from '~/config';
+import { CarrierPricesQuery, CarrierPricesQueryVariables } from '~/types/gql';
 
 export const useCarrierPricesQuery = (
-  country: CarrierPricesVariables['country'],
-  items: CarrierPricesVariables['items'],
+  country: CarrierPricesQueryVariables['country'],
+  items: CarrierPricesQueryVariables['items'],
 ) => {
-  return useQuery<CarrierPrices, CarrierPricesVariables>(
+  return useQuery<CarrierPricesQuery, CarrierPricesQueryVariables>(
     carrierPricesGqlQuery,
     {
       variables: {

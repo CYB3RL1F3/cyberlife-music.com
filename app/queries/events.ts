@@ -1,20 +1,17 @@
-import { gql } from "@apollo/client";
-import { profile } from "~/config";
-import eventsQuery from "~/gql/queries/events.gql";
-import eventsSnippetFragment from "~/gql/fragments/eventSnippet.gql";
-import type {
-  EventsQuery,
-  EventsQueryVariables
-} from "~/types/gql/EventsQuery";
-import { runQuery } from "~/utils/graphql";
+import { gql } from '@apollo/client';
+import { profile } from '~/config';
+import eventsQuery from '~/gql/queries/events.gql';
+import eventsFragment from '~/gql/fragments/events.gql';
+import { runQuery } from '~/utils/graphql';
+import { EventsQuery, EventsQueryVariables } from '~/types/gql';
 
 export const eventsGqlQuery = gql`
-  ${eventsSnippetFragment}
+  ${eventsFragment}
   ${eventsQuery}
 `;
 
 export const runEventsQuery = () => {
   return runQuery<EventsQuery, EventsQueryVariables>(eventsGqlQuery, {
-    profile
+    profile,
   });
 };

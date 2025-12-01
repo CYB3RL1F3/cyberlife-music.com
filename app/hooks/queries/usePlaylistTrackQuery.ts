@@ -4,7 +4,7 @@ import { profile } from '~/config';
 import type {
   PlaylistTrackQuery,
   PlaylistTrackQueryVariables,
-} from '~/types/gql/PlaylistTrackQuery';
+} from '~/types/gql';
 import { playlistTrackGqlQuery } from '~/queries/playlistTrack';
 
 export const usePlaylistTrackQuery = (

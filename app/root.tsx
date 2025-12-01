@@ -87,12 +87,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   const res = await runInfosQuery();
   const description = res?.data?.infos?.bio?.content;
   const config = getConfig();
-  const data = json({
+  const value = json({
     url,
     description,
     config,
   });
-  return data;
+  return value;
 };
 
 export function ErrorBoundary() {

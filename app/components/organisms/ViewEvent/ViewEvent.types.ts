@@ -1,5 +1,5 @@
-import type { EventQueryEvent } from "~/types/gql/EventQuery";
+import { Event } from '~/types/gql';
 
 export type ViewEventProps = {
-  event: EventQueryEvent;
+  event: Event;
 };

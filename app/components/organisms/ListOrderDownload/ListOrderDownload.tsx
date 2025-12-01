@@ -1,6 +1,6 @@
-import DisplayEmptyList from '../DisplayEmptyList';
-import List from '../List/List';
-import ListOrderDownloadItem from '../ListOrderDownloadItem';
+import DisplayEmptyList from '~/components/organisms/DisplayEmptyList';
+import List from '~/components/organisms/List';
+import ListOrderDownloadItem from '~/components/organisms/ListOrderDownloadItem';
 import type { ListOrderDownloadProps } from './ListOrderDownload.types';
 
 const ListOrderDownload = ({ download }: ListOrderDownloadProps) => {
@@ -12,7 +12,11 @@ const ListOrderDownload = ({ download }: ListOrderDownloadProps) => {
     <List>
       {downloads.map(({ url, release }) =>
         release?.title ? (
-          <ListOrderDownloadItem key={release.id} url={url} release={release} />
+          <ListOrderDownloadItem
+            key={release._id}
+            url={url}
+            release={release}
+          />
         ) : null,
       )}
     </List>

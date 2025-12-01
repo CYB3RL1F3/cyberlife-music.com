@@ -4,7 +4,7 @@ import unsubscribeMutation from '~/gql/mutations/unsubscribe.gql';
 import type {
   UnSubscribeMutation,
   UnSubscribeMutationVariables,
-} from '~/types/gql/UnSubscribeMutation';
+} from '~/types/gql';
 
 const unsubscribeMutationGql = gql`
   ${unsubscribeMutation}

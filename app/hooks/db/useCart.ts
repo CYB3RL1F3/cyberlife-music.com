@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { toast } from 'react-toastify';
 import db from '~/db';
-import type { CartItemFragment } from '~/types/gql/CartItemFragment';
-import type { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
 import type { FormCheckoutValues } from '~/components/organisms/FormCheckout/FormCheckout.types';
 import type { Cart } from '~/db/db.types';
+import { ReleaseItem } from '~/types/gql';
+import { CartItemFragment } from '~/types/gql';
 
-export type CartItem = Omit<CartItemFragment, '__typename'> & {
-  release: ReleasesQueryReleaseItems;
+export type CartItem = CartItemFragment & {
+  release: ReleaseItem;
 };
 
 export const useCart = () => {

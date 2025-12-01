@@ -1,11 +1,11 @@
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
 import type { ViewPodcastProps } from './ViewPodcast.types';
-import PodcastDetails from '../PodcastDetails/PodcastDetails';
+import PodcastDetails from '~/components/organisms/PodcastDetails/PodcastDetails';
 import Text from '~/components/atoms/Text';
 import { getTextToHtml } from '~/utils/html';
 import DisplayPodcastTracklist from '~/components/organisms/DisplayPodcastTracklist';
-import DisplayPodcastLikes from '../DisplayPodcastLikes';
+import DisplayPodcastLikes from '~/components/organisms/DisplayPodcastLikes';
 import type { ListTagProps } from '~/components/molecules/ListTag';
 import ListTag from '~/components/molecules/ListTag';
 import DisplayPodcastComments from '~/components/organisms/DisplayPodcastComments';

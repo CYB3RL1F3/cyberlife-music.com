@@ -1,9 +1,9 @@
-import AvatarUser from "~/components/molecules/AvatarUser";
-import CardLayout from "~/components/molecules/CardLayout";
-import type { ListPodcastCommentsItemProps } from "./ListPodcastCommentsItem.types";
+import AvatarUser from '~/components/molecules/AvatarUser';
+import CardLayout from '~/components/molecules/CardLayout';
+import type { ListPodcastCommentsItemProps } from './ListPodcastCommentsItem.types';
 
 const ListPodcastCommentsItem = ({ comment }: ListPodcastCommentsItemProps) => {
-  if (!comment.user?.soundcloud || !comment.user?.userName) return null;
+  if (!comment?.user?.soundcloud || !comment?.user?.userName) return null;
   return (
     <CardLayout
       left={<AvatarUser url={comment.user.soundcloud} {...comment.user} />}

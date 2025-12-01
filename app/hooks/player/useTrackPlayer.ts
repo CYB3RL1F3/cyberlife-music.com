@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import type { TrackType } from '~/utils/trackToBuffer';
 import { getTrackToBuffer } from '~/utils/trackToBuffer';
 import { useTrack } from './useTrack';
 import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
+import { Track } from '~/types/gql';
 
 export const useTrackPlayer = (
-  track: TrackType,
+  track: Track,
   extra?: Parameters<typeof getTrackToBuffer>[1],
 ) => {
   const { addTrackToBuffer } = usePlayerStore();

@@ -2,10 +2,7 @@ import { useMutation } from '@apollo/client/react';
 import { gql } from '@apollo/client';
 import { profile } from '~/config';
 import contactMutation from '~/gql/mutations/contact.gql';
-import type {
-  ContactMutation,
-  ContactMutationVariables,
-} from '~/types/gql/ContactMutation';
+import type { ContactMutation, ContactMutationVariables } from '~/types/gql';
 
 const contactMutationGql = gql`
   ${contactMutation}

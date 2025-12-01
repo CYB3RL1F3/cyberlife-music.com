@@ -5,14 +5,14 @@ import FormOrderDownloadConfirmContainer, {
   FormOrderDownloadConfirmContainerProps,
 } from '~/components/organisms/FormOrderDownloadConfirmContainer';
 import { useState } from 'react';
-import { DownloadOrderTracks } from '~/types/gql/DownloadOrderTracks';
+import { DownloadOrderTracksMutation } from '~/types/gql';
 import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
 import FormOrderDownloadConfirmError from '~/components/organisms/FormOrderDownloadConfirmError';
 import ListOrderDownload from '~/components/organisms/ListOrderDownload';
 
 const DownloadOrderPage = ({ id, token }: DownloadOrderPageProps) => {
   const [values, setValues] =
-    useState<DownloadOrderTracks['downloadOrderTracks']>();
+    useState<DownloadOrderTracksMutation['downloadOrderTracks']>();
   const [error, setError] = useState<Error>();
   const [email, setEmail] = useState('');
   const handleRetry = () => {

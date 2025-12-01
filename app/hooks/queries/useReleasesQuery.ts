@@ -1,10 +1,7 @@
 import { useQuery } from '@apollo/client/react';
 import { profile, webshopId } from '~/config';
-import type {
-  ReleasesQuery,
-  ReleasesQueryVariables,
-} from '~/types/gql/ReleasesQuery';
 import { releasesGqlQuery } from '~/queries/releases';
+import { ReleasesQuery, ReleasesQueryVariables } from '~/types/gql';
 
 export const useReleasesQuery = () => {
   return useQuery<ReleasesQuery, ReleasesQueryVariables>(releasesGqlQuery, {

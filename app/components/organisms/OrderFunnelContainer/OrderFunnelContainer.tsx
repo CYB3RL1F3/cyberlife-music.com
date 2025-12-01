@@ -1,5 +1,5 @@
 import HandlerContent from '~/components/molecules/HandlerContent';
-import OrderFunnel from '../OrderFunnel/OrderFunnel';
+import OrderFunnel from '~/components/organisms/OrderFunnel';
 import { useCart } from '~/hooks/db/useCart';
 import Loader from '~/components/molecules/Loader';
 

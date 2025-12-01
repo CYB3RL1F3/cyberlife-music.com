@@ -1,5 +1,5 @@
-import type { ListPodcastCommentsProps } from "./ListPodcastComments.types";
-import ListPodcastCommentsItem from "~/components/organisms/ListPodcastCommentsItem";
+import type { ListPodcastCommentsProps } from './ListPodcastComments.types';
+import ListPodcastCommentsItem from '~/components/organisms/ListPodcastCommentsItem';
 
 const ListPodcastComments = ({ comments }: ListPodcastCommentsProps) => {
   return (
@@ -10,7 +10,7 @@ const ListPodcastComments = ({ comments }: ListPodcastCommentsProps) => {
             <li key={comment.id} className="p-0 m-0 list-none">
               <ListPodcastCommentsItem comment={comment} />
             </li>
-          )
+          ),
       )}
     </ul>
   );

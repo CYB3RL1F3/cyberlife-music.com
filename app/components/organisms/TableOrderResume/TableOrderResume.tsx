@@ -2,7 +2,7 @@ import Table from '~/components/atoms/Table';
 import type { TableOrderResumeProps } from './TableOrderResume.types';
 import { getHtPrice } from '~/utils/business/purchase';
 import { useMemo } from 'react';
-import OrderItemActions from '../OrderItemActions';
+import OrderItemActions from '~/components/organisms/OrderItemActions';
 import { toFixed } from '~/utils/number';
 
 const TableOrderResume = ({ items, readonly }: TableOrderResumeProps) => {

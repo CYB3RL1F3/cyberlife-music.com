@@ -5,7 +5,7 @@ import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Thumbnail from '~/components/molecules/Thumbnail';
 import PlayerPodcastTrackContainer from '~/components/organisms/PlayerPodcastTrackContainer';
 import type { ListPodcastsItemProps } from './ListPodcastsItem.types';
-import ListLinkIconsPodcast from '../ListLinkIconsPodcast';
+import ListLinkIconsPodcast from '~/components/organisms/ListLinkIconsPodcast';
 
 const ListPodcastsItem = ({
   podcast,

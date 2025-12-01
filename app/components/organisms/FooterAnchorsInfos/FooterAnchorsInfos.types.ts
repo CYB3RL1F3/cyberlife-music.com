@@ -1,5 +1,5 @@
-import type { InfosQueryInfos } from "~/types/gql/InfosQuery";
+import { Infos } from '~/types/gql';
 
 export type FooterAnchorsInfosProps = {
-  infos: InfosQueryInfos;
+  infos: Infos;
 };

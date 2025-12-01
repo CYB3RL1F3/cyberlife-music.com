@@ -1,7 +1,7 @@
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
-import ReleaseDetails from '../ReleaseDetails/ReleaseDetails';
-import ReleaseTracklist from '../ReleaseTracklist';
+import ReleaseDetails from '~/components/organisms/ReleaseDetails/ReleaseDetails';
+import ReleaseTracklist from '~/components/organisms/ReleaseTracklist';
 import type { ViewReleaseProps } from './ViewRelease.types';
 import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';

@@ -1,10 +1,8 @@
 import { useMemo } from 'react';
-import { useCarrierPricesQuery } from '../queries/useCarrierPricesQuery';
-import { useReleasesQuery } from '../queries/useReleasesQuery';
-import { CartItem } from '../db/useCart';
-import { ReleaseDtoInput } from '~/types/gql/globalTypes';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
-import { CarrierPricesVariables } from '~/types/gql/CarrierPrices';
+import { useCarrierPricesQuery } from '~/hooks/queries/useCarrierPricesQuery';
+import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
+import { CartItem } from '~/hooks/db/useCart';
+import { CarrierPricesQueryVariables, ReleaseItem } from '~/types/gql';
 
 export type Carrier = {
   carrier: string;
@@ -14,19 +12,15 @@ export type Carrier = {
 export const useCarrierPrices = (country: string, items: CartItem[]) => {
   const { data } = useReleasesQuery();
 
-  const getProduct = (
-    item: CartItem,
-    releaseItems: ReleasesQueryReleaseItems[],
-  ): ReleaseDtoInput => {
+  const getProduct = (item: CartItem, releaseItems: ReleaseItem[]) => {
     const value = releaseItems.find(
       (releaseItem) => releaseItem.id === item.id,
     )?.release!;
 
-    const { _id, __typename, ...release } = value;
-    return release;
+    return value;
   };
 
-  const cartItems: CarrierPricesVariables['items'] =
+  const cartItems: CarrierPricesQueryVariables['items'] =
     data?.releaseItems && items
       ? items.map((item) => ({
           amount: item.amount,

@@ -1,5 +1,5 @@
-import type { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
+import { ReleaseItem } from '~/types/gql';
 
 export type ListReleasesProps = {
-  releases?: ReleasesQueryReleaseItems[];
+  releases?: ReleaseItem[];
 };

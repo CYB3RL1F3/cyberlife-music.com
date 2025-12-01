@@ -1,7 +1,7 @@
-import List from "~/components/organisms/List";
-import DisplayEmptyList from "~/components/organisms/DisplayEmptyList";
-import ListVideosItem from "~/components/organisms/ListVideosItem";
-import type { ListVideosProps } from "./ListVideos.types";
+import List from '~/components/organisms/List';
+import DisplayEmptyList from '~/components/organisms/DisplayEmptyList';
+import ListVideosItem from '~/components/organisms/ListVideosItem';
+import type { ListVideosProps } from './ListVideos.types';
 
 const ListVideos = ({ videos }: ListVideosProps) => {
   if (!videos?.length) {
@@ -10,7 +10,7 @@ const ListVideos = ({ videos }: ListVideosProps) => {
   return (
     <List>
       {videos.map((video) =>
-        video.title ? <ListVideosItem key={video._id} video={video} /> : null
+        video.title ? <ListVideosItem key={video._id} video={video} /> : null,
       )}
     </List>
   );

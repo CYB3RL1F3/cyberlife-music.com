@@ -1,10 +1,10 @@
-import { EventsQueryEvents } from '~/types/gql/EventsQuery';
 import { getConfig } from '~/utils/config';
 import { buildRssFeed, RSSItem } from './builder.rss';
 import { getEventRssItem } from './event.rss';
+import { Event } from '~/types/gql';
 
 export const getEventsRssItems = (
-  events: EventsQueryEvents[],
+  events: Event[],
   config = getConfig(),
 ): RSSItem[] => {
   if (!config) return [];
@@ -20,10 +20,7 @@ export const getEventsRssItems = (
   return items;
 };
 
-export const getEventsRssFeed = (
-  events: EventsQueryEvents[],
-  config = getConfig(),
-) => {
+export const getEventsRssFeed = (events: Event[], config = getConfig()) => {
   if (!config) return null;
 
   const items = getEventsRssItems(events, config);

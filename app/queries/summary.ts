@@ -1,17 +1,14 @@
 import { gql } from '@apollo/client';
 import { profile } from '~/config';
 import summaryQuery from '~/gql/queries/summary.gql';
-import releaseFragment from '~/gql/fragments/releases.gql';
+import releaseFragment from '~/gql/fragments/release.gql';
 import videoFragment from '~/gql/fragments/video.gql';
-import trackFragment from '~/gql/fragments/trackSnippet.gql';
-import eventFragment from '~/gql/fragments/eventSnippet.gql';
+import trackFragment from '~/gql/fragments/track.gql';
+import eventFragment from '~/gql/fragments/events.gql';
 import summaryFragment from '~/gql/fragments/summary.gql';
-import type {
-  SummaryQuery,
-  SummaryQueryVariables,
-} from '~/types/gql/SummaryQuery';
 import { runQuery } from '~/utils/graphql';
 import { getConfig } from '~/utils/config';
+import { SummaryQuery, SummaryQueryVariables } from '~/types/gql';
 
 export const summaryGqlQuery = gql`
   ${releaseFragment}

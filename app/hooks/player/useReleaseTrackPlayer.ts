@@ -1,8 +1,8 @@
+import { Track } from '~/types/gql';
 import { useTrackPlayer } from './useTrackPlayer';
-import type { ReleaseFragmentTracklistStream } from '~/types/gql/ReleaseFragment';
 
 export const useReleaseTrackPlayer = (
-  track: ReleaseFragmentTracklistStream,
+  track: Track,
   extra?: Parameters<typeof useTrackPlayer>[1],
 ) => {
   const releaseTrackPlayer = useTrackPlayer(track, extra);

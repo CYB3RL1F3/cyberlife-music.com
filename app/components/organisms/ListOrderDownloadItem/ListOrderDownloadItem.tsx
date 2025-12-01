@@ -1,12 +1,11 @@
+import { IoMdDownload } from 'react-icons/io';
+
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
-import dayjs from 'dayjs';
-import Picture from '../Picture';
-import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
+import Picture from '~/components/organisms/Picture';
 import { ListOrderDownloadItemProps } from './ListOrderDownloadItem.types';
 import ButtonLink from '~/components/atoms/ButtonLink';
 import Icon from '~/components/atoms/Icon';
-import { IoMdDownload } from 'react-icons/io';
 
 const ListOrderDownloadItem = ({
   release,

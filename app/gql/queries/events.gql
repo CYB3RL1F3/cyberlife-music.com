@@ -1,5 +1,5 @@
 query EventsQuery($profile: String!) {
   events(profile: $profile) {
-    ...EventSnippetFragment
+    ...EventFragment
   }
 }

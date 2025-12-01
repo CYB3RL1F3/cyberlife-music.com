@@ -1,6 +1,6 @@
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
-import CarouselEvent from '../CarouselEvent';
+import CarouselEvent from '~/components/organisms/CarouselEvent';
 import type { ViewEventProps } from './ViewEvent.types';
 import Text from '~/components/atoms/Text';
 import { motion, useWillChange } from 'framer-motion';

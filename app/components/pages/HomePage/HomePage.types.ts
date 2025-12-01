@@ -1,6 +1,6 @@
-import type { SummaryQuery } from '~/types/gql/SummaryQuery';
+import { SummaryFragment } from '~/types/gql';
 
 export type HomePageProps = {
-  data?: SummaryQuery;
+  data?: SummaryFragment;
   loading?: boolean;
 };

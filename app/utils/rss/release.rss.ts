@@ -1,10 +1,10 @@
 import { getConfig } from '~/utils/config';
 import { cleanUrl, rssDateFormat, buildRssFeed, RSSItem } from './builder.rss';
 import dayjs from 'dayjs';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
+import { ReleaseItem } from '~/types/gql';
 
 export const getReleaseRssItem = (
-  release: ReleasesQueryReleaseItems,
+  release: ReleaseItem,
   config = getConfig(),
 ): RSSItem | null => {
   if (!config) return null;
@@ -39,7 +39,7 @@ export const getReleaseRssItem = (
 };
 
 export const getReleaseRssFeed = (
-  release: ReleasesQueryReleaseItems,
+  release: ReleaseItem,
   config = getConfig(),
 ) => {
   if (!config) return null;

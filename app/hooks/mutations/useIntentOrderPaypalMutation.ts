@@ -9,10 +9,10 @@ import expeditionFragment from '~/gql/fragments/expedition.gql';
 import paymentFragment from '~/gql/fragments/payment.gql';
 import paypalFragment from '~/gql/fragments/paypal.gql';
 
-import type {
-  IntentOrderPaypal,
-  IntentOrderPaypalVariables,
-} from '~/types/gql/intentOrderPaypal';
+import {
+  IntentOrderPaypalMutation,
+  IntentOrderPaypalMutationVariables,
+} from '~/types/gql';
 
 const intentOrderPaypalMutationGql = gql`
   ${cartItemFragment}
@@ -26,13 +26,15 @@ const intentOrderPaypalMutationGql = gql`
 
 export const useIntentOrderPaypalMutation = () => {
   const [mutation, mutationResults] = useMutation<
-    IntentOrderPaypal,
-    IntentOrderPaypalVariables
+    IntentOrderPaypalMutation,
+    IntentOrderPaypalMutationVariables
   >(intentOrderPaypalMutationGql, {
     errorPolicy: 'all',
   });
 
-  const intentOrderPaypal = (order: IntentOrderPaypalVariables['order']) => {
+  const intentOrderPaypal = (
+    order: IntentOrderPaypalMutationVariables['order'],
+  ) => {
     return mutation({
       variables: {
         profile,

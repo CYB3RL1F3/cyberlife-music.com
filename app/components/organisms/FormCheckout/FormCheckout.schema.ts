@@ -9,7 +9,7 @@ import {
   Failure,
   StructError,
 } from 'superstruct';
-import { refineEmail } from '../FormContact/FormContact.schema';
+import { refineEmail } from '~/components/organisms/FormContact/FormContact.schema';
 import { rule } from '~/utils/validator';
 
 export const refineFirstName = refine(string(), 'firstName', (value) => {

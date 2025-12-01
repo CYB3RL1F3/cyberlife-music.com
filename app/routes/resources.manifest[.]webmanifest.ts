@@ -1,8 +1,8 @@
-import { data } from '@remix-run/node';
+import { json } from '@remix-run/node';
 import type { LoaderFunction } from '@remix-run/node';
 
 export let loader: LoaderFunction = () => {
-  return data(
+  return json(
     {
       short_name: 'Cyberlife',
       name: 'Cyberlife Music',

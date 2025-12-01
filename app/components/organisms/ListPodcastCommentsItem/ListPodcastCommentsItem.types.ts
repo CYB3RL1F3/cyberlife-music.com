@@ -1,5 +1,5 @@
-import type { TrackFragment } from "~/types/gql/TrackFragment";
+import { Comment } from '~/types/gql';
 
 export type ListPodcastCommentsItemProps = {
-  comment: NonNullable<TrackFragment["comments"]>[number];
+  comment: Comment;
 };

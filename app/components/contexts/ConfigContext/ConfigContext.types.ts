@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { Environment } from '~/types/gql/globalTypes';
+import type { Environment } from '~/types/gql';
 
 export type Config = {
   mapbox: {
@@ -9,7 +9,7 @@ export type Config = {
   api: string;
   apiEndpoint: string;
   notificationPoolId: string;
-  env: Environment;
+  env: Environment
   paypal: {
     clientId: string;
     baseUrl: string;

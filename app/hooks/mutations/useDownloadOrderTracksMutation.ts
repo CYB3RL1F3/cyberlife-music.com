@@ -4,9 +4,9 @@ import { gql } from '@apollo/client';
 import { profile } from '~/config';
 import downloadOrderTracksMutation from '~/gql/mutations/downloadOrderTracks.gql';
 import type {
-  DownloadOrderTracks,
-  DownloadOrderTracksVariables,
-} from '~/types/gql/DownloadOrderTracks';
+  DownloadOrderTracksMutation,
+  DownloadOrderTracksMutationVariables,
+} from '~/types/gql';
 
 const downloadOrderTracksMutationGql = gql`
   ${downloadOrderFragment}
@@ -14,12 +14,12 @@ const downloadOrderTracksMutationGql = gql`
 `;
 
 export const useDownloadOrderTracksMutation = (
-  onCompleted: (data: DownloadOrderTracks) => void,
+  onCompleted: (data: DownloadOrderTracksMutation) => void,
   onError: (error: any) => void,
 ) => {
   const [mutation, mutationResults] = useMutation<
-    DownloadOrderTracks,
-    DownloadOrderTracksVariables
+    DownloadOrderTracksMutation,
+    DownloadOrderTracksMutationVariables
   >(downloadOrderTracksMutationGql, {
     onCompleted,
     onError,
@@ -27,7 +27,7 @@ export const useDownloadOrderTracksMutation = (
   });
 
   const downloadOrderTracks = (
-    variables: Omit<DownloadOrderTracksVariables, 'profile'>,
+    variables: Omit<DownloadOrderTracksMutationVariables, 'profile'>,
   ) => {
     return mutation({
       variables: {

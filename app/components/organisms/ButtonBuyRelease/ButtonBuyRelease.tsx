@@ -5,6 +5,8 @@ import { useCart } from '~/hooks/db/useCart';
 
 const ButtonBuyRelease = ({ release }: ButtonBuyReleaseProps) => {
   const { price, id, availableQuantity } = release;
+  console.log('price => ', price);
+  console.log('availableQuantity => ', availableQuantity);
   const { addItem, removeItem, isItemInCart } = useCart();
 
   const isActive = id ? isItemInCart(id) : false;

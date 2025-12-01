@@ -1,5 +1,5 @@
-import type { EventQueryEvent } from "~/types/gql/EventQuery";
+import { Event } from '~/types/gql';
 
 export type CarouselEventProps = {
-  event: NonNullable<EventQueryEvent>;
+  event: Event;
 };

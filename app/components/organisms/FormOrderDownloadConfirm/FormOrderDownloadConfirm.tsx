@@ -3,7 +3,7 @@ import {
   FormOrderDownloadConfirmValues,
   type FormOrderDownloadConfirmProps,
 } from './FormOrderDownloadConfirm.types';
-import ControlledFieldInput from '../ControlledFieldInput';
+import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
 import { motion } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { superstructResolver } from '@hookform/resolvers/superstruct';

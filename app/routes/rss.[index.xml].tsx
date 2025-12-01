@@ -14,12 +14,12 @@ const getContent = async () => {
     runVideosQuery(),
   ]);
 
-  const content = getIndexRssFeed(
+  const content = await getIndexRssFeed(
     {
-      events: events.data.events || [],
-      podcasts: podcasts.data.playlist.tracks || [],
-      releases: releases.data.releaseItems || [],
-      videos: videos.data.videos || [],
+      events: events.data?.events || [],
+      podcasts: podcasts.data?.playlist.tracks || [],
+      releases: releases.data?.releaseItems || [],
+      videos: videos.data?.videos || [],
     },
     config,
   );

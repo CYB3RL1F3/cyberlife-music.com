@@ -1,6 +1,6 @@
-import { usePlaylistQuery } from '../queries/usePlaylistQuery';
+import { usePlaylistQuery } from '~/hooks/queries/usePlaylistQuery';
 
-export const usePodcastTrackPosition = (id: number | null) => {
+export const usePodcastTrackPosition = (id?: number | null) => {
   const { data } = usePlaylistQuery('dj-sets');
   const tracks = data?.playlist?.tracks;
   const currentIndex = tracks?.findIndex((track) => track.id === id);

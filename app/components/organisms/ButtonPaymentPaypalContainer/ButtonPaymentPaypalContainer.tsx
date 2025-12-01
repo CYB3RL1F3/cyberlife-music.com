@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { PayPalButtonsComponentProps } from '@paypal/react-paypal-js';
 import { useRef } from 'react';
 import { useConfirmOrderPaypalMutation } from '~/hooks/mutations/useConfirmOrderPaypalMutation';
-import ButtonPaymentPaypal from '../ButtonPaymentPaypal/ButtonPaymentPaypal';
+import ButtonPaymentPaypal from '~/components/organisms/ButtonPaymentPaypal/ButtonPaymentPaypal';
 import { Link } from '@remix-run/react';
 import ClientOnly from '~/components/atoms/ClientOnly';
 import { useCancelOrderMutation } from '~/hooks/mutations/useCancelOrderPaypalMutation';

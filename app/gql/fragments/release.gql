@@ -28,13 +28,7 @@ fragment ReleaseFragment on ReleaseDtoOutput {
       role
     }
     stream {
-      id
-      title
-      artwork
-      uri
-      url
-      waveform
-      duration
+      ...TrackFragment
     }
   }
 }

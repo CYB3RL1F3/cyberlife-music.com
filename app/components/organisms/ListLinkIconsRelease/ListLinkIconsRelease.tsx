@@ -5,7 +5,7 @@ import ToggleIconLikeContainer from '~/components/organisms/ToggleIconLikeContai
 import DiscogsIcon from '~/icons/discogs.svg';
 import BandcampIcon from '~/icons/bandcamp.svg';
 import ListLinkIcons from '~/components/molecules/ListLinkIcons';
-import ButtonBuyRelease from '../ButtonBuyRelease';
+import ButtonBuyRelease from '~/components/organisms/ButtonBuyRelease';
 import FeatureFlag from '~/components/molecules/FeatureFlag';
 
 const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {

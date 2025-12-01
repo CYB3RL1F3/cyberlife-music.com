@@ -1,9 +1,10 @@
-import { DownloadOrderTracks } from "~/types/gql/DownloadOrderTracks";
+import { DownloadOrderTracksMutation } from '~/types/gql';
 
-  export type FormOrderDownloadConfirmContainerProps = {
-    id: string;
-    token: string;
-    onSuccess: (value: DownloadOrderTracks['downloadOrderTracks']) => void;
-    onError: (error: Error, email: string) => void;
-  }
-  
+export type FormOrderDownloadConfirmContainerProps = {
+  id: string;
+  token: string;
+  onSuccess: (
+    value: DownloadOrderTracksMutation['downloadOrderTracks'],
+  ) => void;
+  onError: (error: Error, email: string) => void;
+};

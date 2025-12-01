@@ -1,6 +1,6 @@
-import type { PlaylistQueryPlaylist } from "~/types/gql/PlaylistQuery";
+import { Playlist, Track } from '~/types/gql';
 
 export type ListPodcastsProps = {
-  podcasts?: PlaylistQueryPlaylist["tracks"];
-  artwork?: PlaylistQueryPlaylist["artwork"];
+  podcasts?: Track[] | null;
+  artwork?: Playlist['artwork'];
 };

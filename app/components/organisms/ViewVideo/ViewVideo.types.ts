@@ -1,5 +1,5 @@
-import type { VideoQueryVideo } from "~/types/gql/VideoQuery";
+import { Video } from '~/types/gql';
 
 export type ViewVideoProps = {
-  video: VideoQueryVideo;
+  video: Video;
 };

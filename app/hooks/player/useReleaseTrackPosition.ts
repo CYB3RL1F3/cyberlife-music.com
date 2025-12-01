@@ -1,5 +1,4 @@
-import { usePlaylistQuery } from '../queries/usePlaylistQuery';
-import { useReleaseQuery } from '../queries/useReleaseQuery';
+import { useReleaseQuery } from '~/hooks/queries/useReleaseQuery';
 
 export const useReleaseTrackPosition = (
   releaseId: string,

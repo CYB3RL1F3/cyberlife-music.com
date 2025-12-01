@@ -1,7 +1,7 @@
 import { FormCheckoutValues } from '~/components/organisms/FormCheckout/FormCheckout.types';
 import { CartItem } from '~/hooks/db/useCart';
-import { OrderDto, ReleaseDtoInput } from '~/types/gql/globalTypes';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
+import { OrderDto } from '~/types/gql';
+import { ReleaseItem } from '~/types/gql';
 import { getConfig } from '~/utils/config';
 
 export const round = (value: number, decimals: number) => {
@@ -24,21 +24,18 @@ export const getVat = (items: CartItem[]) => {
   return getHtPrice(items) * 0.2;
 };
 
-export const getProduct = (
-  item: CartItem,
-  releaseItems: ReleasesQueryReleaseItems[],
-): ReleaseDtoInput => {
+export const getProduct = (item: CartItem, releaseItems: ReleaseItem[]) => {
   const value = releaseItems.find(
     (releaseItem) => releaseItem.id === item.id,
   )?.release!;
-  const { _id, __typename, ...release } = value;
+  const { _id, ...release } = value;
   return release;
 };
 
 export const getOrder = (
   items: CartItem[],
   checkout: FormCheckoutValues,
-  releases: ReleasesQueryReleaseItems[],
+  releases: ReleaseItem[],
 ) => {
   const webshopId = getConfig()?.webshopId;
 

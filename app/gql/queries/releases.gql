@@ -1,5 +1,5 @@
 query ReleasesQuery($profile: String!, $webshopId: String!) {
   releaseItems(profile: $profile, webshopId: $webshopId) {
-    ...ReleaseSnippetItemFragment
+    ...ReleaseItemFragment
   }
 }

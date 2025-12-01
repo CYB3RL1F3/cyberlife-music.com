@@ -10,7 +10,7 @@ import ButtonSubmit from '~/components/molecules/ButtonSubmit/ButtonSubmit';
 import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
 import { motion, AnimatePresence, useWillChange } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import FormHeading from '../FormHeading';
+import FormHeading from '~/components/organisms/FormHeading';
 
 const FormContact = ({
   onSubmit,

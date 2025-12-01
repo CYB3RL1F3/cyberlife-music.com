@@ -903,10 +903,6 @@ video {
   height: calc(var(--vh) * 100);
 }
 
-.h-\[80vh\] {
-  height: 80vh;
-}
-
 .max-h-0 {
   max-height: 0px;
 }
@@ -1034,14 +1030,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[80vw\] {
-  width: 80vw;
-}
-
-.w-\[50vw\] {
-  width: 50vw;
 }
 
 .min-w-44 {

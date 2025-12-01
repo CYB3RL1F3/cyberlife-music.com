@@ -13,6 +13,7 @@ fragment ReleaseSnippetFragment on ReleaseDtoOutput {
   discogs
   bandcamp
   notes
+  artist
 }
 
 fragment ReleaseSnippetItemFragment on ReleaseItem {

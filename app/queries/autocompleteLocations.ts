@@ -1,20 +1,22 @@
 import { gql } from '@apollo/client';
 import autocompleteLocation from '~/gql/queries/autocompleteLocations.gql';
 import autocompleteLocationFragment from '~/gql/fragments/autocompleteLocation.gql';
-import type { AutocompleteLocation } from '~/types/gql/AutocompleteLocation';
 import { runQuery } from '~/utils/graphql';
-import { AutocompleteLocationSuggestionInput } from '~/types/gql/globalTypes';
+import {
+  AutoCompleteLocationsQuery,
+  AutoCompleteLocationsQueryVariables,
+} from '~/types/gql';
 
-export const autocompleteLocationsGql = gql`
+export const autocompleteLocationsQueryGql = gql`
   ${autocompleteLocationFragment}
   ${autocompleteLocation}
 `;
 
 export const runAutocompleteLocationQuery = (
-  payload: AutocompleteLocationSuggestionInput,
+  payload: AutoCompleteLocationsQueryVariables,
 ) => {
-  return runQuery<AutocompleteLocation, AutocompleteLocationSuggestionInput>(
-    autocompleteLocationsGql,
-    payload,
-  );
+  return runQuery<
+    AutoCompleteLocationsQuery,
+    AutoCompleteLocationsQueryVariables
+  >(autocompleteLocationsQueryGql, payload);
 };

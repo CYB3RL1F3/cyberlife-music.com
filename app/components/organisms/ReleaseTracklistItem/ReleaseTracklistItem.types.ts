@@ -1,11 +1,9 @@
-import {
-  ReleaseQueryReleaseItemRelease,
-  ReleaseQueryReleaseItemReleaseTracklist,
-} from '~/types/gql/ReleaseQuery';
-import { PlayerReleaseTrackContainerProps } from '../PlayerReleaseTrackContainer/PlayerReleaseTrackContainer.types';
+import { PlayerReleaseTrackContainerProps } from '~/components/organisms/PlayerReleaseTrackContainer/PlayerReleaseTrackContainer.types';
+
+import { Release } from '~/types/gql';
 
 export type ReleaseTracklistItemProps = {
-  track: ReleaseQueryReleaseItemReleaseTracklist;
-  thumb: ReleaseQueryReleaseItemRelease['thumb'];
-  album?: ReleaseQueryReleaseItemRelease['title'];
+  track: NonNullable<Release['tracklist']>[number];
+  thumb: Release['thumb'];
+  album?: Release['title'];
 } & Pick<PlayerReleaseTrackContainerProps, 'nextId' | 'prevId' | 'pageUrl'>;

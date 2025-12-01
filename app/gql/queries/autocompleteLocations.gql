@@ -1,4 +1,4 @@
-query AutoCompleteLocations($payload: AutocompleteLocationSuggestionInput!) {
+query AutoCompleteLocationsQuery($payload: AutocompleteLocationSuggestionInput!) {
   autocompleteLocations(payload: $payload) {
     ...AutocompleteLocation
   }

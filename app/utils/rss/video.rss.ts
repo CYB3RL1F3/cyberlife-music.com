@@ -7,10 +7,10 @@ import {
   cleanText,
 } from './builder.rss';
 import dayjs from 'dayjs';
-import { VideosQueryVideos } from '~/types/gql/VideosQuery';
+import { Video } from '~/types/gql';
 
 export const getVideoRssItem = (
-  video: VideosQueryVideos,
+  video: Video,
   config = getConfig(),
 ): RSSItem | null => {
   if (!config) return null;
@@ -44,10 +44,7 @@ export const getVideoRssItem = (
   return item;
 };
 
-export const getVideoRssFeed = (
-  video: VideosQueryVideos,
-  config = getConfig(),
-) => {
+export const getVideoRssFeed = (video: Video, config = getConfig()) => {
   if (!config) return null;
 
   const item = getVideoRssItem(video, config);

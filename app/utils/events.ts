@@ -1,12 +1,12 @@
 import dayjs, { Dayjs } from 'dayjs';
-import { EventsQueryEvents } from '~/types/gql/EventsQuery';
+import { Event } from '~/types/gql';
 
 export type SplittedEvents = {
-  forthcomingEvents: EventsQueryEvents[];
-  pastEvents: EventsQueryEvents[];
+  forthcomingEvents: Event[];
+  pastEvents: Event[];
 };
 
-export const isBeforeDate = (event: EventsQueryEvents, dateToCheck?: Dayjs) => {
+export const isBeforeDate = (event: Event, dateToCheck?: Dayjs) => {
   const date = event.endDate
     ? dayjs(event.endDate)
     : event.date
@@ -18,7 +18,7 @@ export const isBeforeDate = (event: EventsQueryEvents, dateToCheck?: Dayjs) => {
 };
 
 export const getSplittedEvents = (
-  events?: EventsQueryEvents[],
+  events?: Event[],
   dayToSplit?: dayjs.Dayjs,
 ): SplittedEvents => {
   const splittedEvents = (events || []).reduce<SplittedEvents>(

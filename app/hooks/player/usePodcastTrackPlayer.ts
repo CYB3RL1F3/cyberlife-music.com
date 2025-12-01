@@ -1,11 +1,8 @@
 import { useTrackPlayer } from './useTrackPlayer';
-import type { PlaylistTrackQueryPlaylistTrack } from '~/types/gql/PlaylistTrackQuery';
-import type { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
 import { usePodcastTrackPosition } from './usePodcastTrackPosition';
+import { Track } from '~/types/gql';
 
-export const usePodcastTrackPlayer = (
-  track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks,
-) => {
+export const usePodcastTrackPlayer = (track: Track) => {
   const { prevId, nextId } = usePodcastTrackPosition(track.id);
 
   const podcastTrackPlayer = useTrackPlayer(track, {

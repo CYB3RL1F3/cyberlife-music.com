@@ -5,7 +5,7 @@ import subscribeFragment from '~/gql/fragments/subscribe.gql';
 import type {
   SubscribeMutation,
   SubscribeMutationVariables,
-} from '~/types/gql/SubscribeMutation';
+} from '~/types/gql';
 
 const subscribeMutationGql = gql`
   ${subscribeFragment}

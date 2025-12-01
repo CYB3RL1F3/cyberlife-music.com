@@ -1,10 +1,10 @@
 import { getConfig } from '~/utils/config';
 import { buildRssFeed, RSSItem } from './builder.rss';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
 import { getReleaseRssItem } from './release.rss';
+import { ReleaseItem } from '~/types/gql';
 
 export const getReleasesRssItems = (
-  releases: ReleasesQueryReleaseItems[],
+  releases: ReleaseItem[],
   config = getConfig(),
 ): RSSItem[] => {
   if (!config) return [];
@@ -21,7 +21,7 @@ export const getReleasesRssItems = (
 };
 
 export const getReleasesRssFeed = (
-  releases: ReleasesQueryReleaseItems[],
+  releases: ReleaseItem[],
   config = getConfig(),
 ) => {
   if (!config) return null;

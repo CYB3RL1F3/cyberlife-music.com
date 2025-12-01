@@ -1,19 +1,23 @@
-import { AutocompleteLocationSuggestionType } from '~/types/gql/globalTypes';
-import { useAutocompleteLocationQuery } from '../queries/useAutocompleteLocationQuery';
+import { AutocompleteLocationSuggestionType } from '~/types/gql';
+import { useAutocompleteLocationQuery } from '~/hooks/queries/useAutocompleteLocationQuery';
 import { useEffect, useState } from 'react';
-import { AutocompleteLocation } from '~/types/gql/AutocompleteLocation';
+import { AutocompleteLocationEntity } from '~/types/gql';
 
 export const useLocationsSuggestions = (
   country: string,
   query: string,
   type: AutocompleteLocationSuggestionType,
 ) => {
-  const [cache, setCache] = useState<AutocompleteLocation['suggestions']>([]);
+  const [cache, setCache] = useState<AutocompleteLocationEntity['suggestions']>(
+    [],
+  );
   const { data, loading, error } = useAutocompleteLocationQuery(
     {
       country,
       query,
       type,
+      language: 'en',
+      limit: 10,
     },
     query.length >= 2 && country.length > 0,
   );

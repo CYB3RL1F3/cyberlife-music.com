@@ -5,7 +5,7 @@ import TableFinalOrder from '~/components/organisms/TableFinalOrder';
 import TableOrderResume from '~/components/organisms/TableOrderResume';
 import OrderShippingResume from '~/components/organisms/OrderShippingResume';
 import ButtonClearCart from '~/components/organisms/ButtonClearCart';
-import ButtonPaymentPaypalContainer from '../ButtonPaymentPaypalContainer';
+import ButtonPaymentPaypalContainer from '~/components/organisms/ButtonPaymentPaypalContainer';
 
 const OrderPayment = ({
   items,

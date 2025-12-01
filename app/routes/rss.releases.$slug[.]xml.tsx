@@ -5,10 +5,10 @@ import { getConfig } from '~/utils/config';
 import { getReleaseRssFeed } from '~/utils/rss/release.rss';
 
 const getContent = async (slug: string) => {
-  const release = await runReleaseQuery(slug);
+  const { data } = await runReleaseQuery(slug);
   const config = getConfig();
-  if (!release.data.releaseItem) return null;
-  const content = getReleaseRssFeed(release.data.releaseItem, config);
+  if (!data?.releaseItem) return null;
+  const content = getReleaseRssFeed(data.releaseItem, config);
   return content;
 };
 

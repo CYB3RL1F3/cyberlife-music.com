@@ -1,15 +1,15 @@
 fragment SummaryFragment on SummaryEntity {
   nextEvent {
-    ...EventSnippetFragment
+    ...EventFragment
   }
   topPodcast {
-    ...TrackSnippetFragment
+    ...TrackFragment
   }
   latestPodcast {
-    ...TrackSnippetFragment
+    ...TrackFragment
   }
   latestReleases {
-    ...ReleaseSnippetItemFragment
+    ...ReleaseItemFragment
   }
   latestVideo {
     ...VideoFragment

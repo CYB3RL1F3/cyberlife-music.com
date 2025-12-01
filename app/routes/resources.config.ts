@@ -1,9 +1,9 @@
 import type { LoaderFunction } from '@remix-run/node';
-import { data } from '@remix-run/node';
-import { Environment } from '~/types/gql/globalTypes';
+import { json } from '@remix-run/node';
+import { Environment } from '~/types/gql';
 
 export const loader: LoaderFunction = async () => {
-  return data(
+  return json(
     {
       api: process.env.API_URL,
       notificationPoolId: process.env.NOTIFICATION_POOL_ID,

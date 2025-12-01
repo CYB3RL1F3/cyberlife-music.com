@@ -4,25 +4,22 @@ import { getEventsRssItems } from './events.rss';
 import { getPodcastsRssItems } from './podcasts.rss';
 import { getReleasesRssItems } from './releases.rss';
 import { getVideosRssItems } from './videos.rss';
-import { EventsQueryEvents } from '~/types/gql/EventsQuery';
-import { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
-import { VideosQueryVideos } from '~/types/gql/VideosQuery';
 import { getConfig } from '~/utils/config';
+import { Track, Event, ReleaseItem, Video } from '~/types/gql';
 
 export type IndexRssItemsParams = {
-  events?: EventsQueryEvents[];
-  podcasts?: PlaylistQueryPlaylistTracks[];
-  releases?: ReleasesQueryReleaseItems[];
-  videos?: VideosQueryVideos[];
+  events?: Event[];
+  podcasts?: Track[];
+  releases?: ReleaseItem[];
+  videos?: Video[];
 };
 
-export const getIndexRssItems = (
+export const getIndexRssItems = async (
   { events, podcasts, releases, videos }: IndexRssItemsParams,
   config = getConfig(),
 ) => {
   const eventsItems = getEventsRssItems(events || [], config);
-  const podcastsItems = getPodcastsRssItems(podcasts || [], config);
+  const podcastsItems = await getPodcastsRssItems(podcasts || [], config);
   const releasesItems = getReleasesRssItems(releases || [], config);
   const videosItems = getVideosRssItems(videos || [], config);
 
@@ -41,11 +38,11 @@ export const getIndexRssItems = (
   return items;
 };
 
-export const getIndexRssFeed = (
+export const getIndexRssFeed = async (
   params: IndexRssItemsParams,
   config = getConfig(),
 ) => {
-  const items = getIndexRssItems(params, config);
+  const items = await getIndexRssItems(params, config);
 
   const content = buildRssFeed({
     title: 'Cyberlife Music RSS Feed',

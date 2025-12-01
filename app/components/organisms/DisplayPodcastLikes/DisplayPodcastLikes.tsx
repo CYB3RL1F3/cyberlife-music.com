@@ -1,5 +1,5 @@
 import type { DisplayPodcastLikesProps } from './DisplayPodcastLikes.types';
-import ListPodcastLikes from '../ListPodcastLikes';
+import ListPodcastLikes from '~/components/organisms/ListPodcastLikes';
 import WrapperListings from '~/components/molecules/WrapperListings';
 import { isCyberlife } from '~/utils/business/filters';
 

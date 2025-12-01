@@ -1,3 +1,3 @@
-import { SummaryQuerySummary } from '~/types/gql/SummaryQuery';
+import { SummaryFragment } from '~/types/gql';
 
-export type SummaryProps = Omit<SummaryQuerySummary, '__typename'>;
+export type SummaryProps = SummaryFragment;

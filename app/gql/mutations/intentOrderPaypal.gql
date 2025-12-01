@@ -1,4 +1,4 @@
-mutation intentOrderPaypal($profile: String!, $order: OrderDto!) {
+mutation IntentOrderPaypalMutation($profile: String!, $order: OrderDto!) {
   intentOrderPaypal(profile: $profile, order: $order) {
     ...OrderPaypalResponseFragment
   }

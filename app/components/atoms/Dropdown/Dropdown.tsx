@@ -4,7 +4,7 @@ import DropdownWrapper from './DropdownWrapper';
 import { DropdownItemsProps, DropdownProps } from './Dropdown.types';
 import DropdownItem from './DropdownItem';
 import DropdownButton from './DropdownButton';
-import Input from '../Input';
+import Input from '~/components/atoms/Input';
 
 const Dropdown = <T,>({
   label,
