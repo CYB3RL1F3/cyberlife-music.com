@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client/react';
+
 import { carrierPricesGqlQuery } from '~/queries/carrierPrices';
 import { profile } from '~/config';
 import { CarrierPricesQuery, CarrierPricesQueryVariables } from '~/types/gql';

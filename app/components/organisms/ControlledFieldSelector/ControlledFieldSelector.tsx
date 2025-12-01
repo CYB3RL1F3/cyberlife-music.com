@@ -1,7 +1,9 @@
-import type { FieldValues } from "react-hook-form";
-import { Controller } from "react-hook-form";
-import FieldSelector from "~/components/molecules/FieldSelector";
-import type { ControlledFieldSelectorProps } from "./ControlledFieldSelector.types";
+import type { FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+
+import FieldSelector from '~/components/molecules/FieldSelector';
+
+import type { ControlledFieldSelectorProps } from './ControlledFieldSelector.types';
 
 const ControlledFieldSelector = <T extends FieldValues, U>({
   name,

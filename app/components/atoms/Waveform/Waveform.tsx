@@ -1,6 +1,7 @@
-import clsx from "clsx";
-import { forwardRef } from "react";
-import type { WaveformProps } from "./Waveform.types";
+import clsx from 'clsx';
+import { forwardRef } from 'react';
+
+import type { WaveformProps } from './Waveform.types';
 
 const Waveform = forwardRef<HTMLDivElement, WaveformProps>(
   ({ src, className, onClick }, ref) => {
@@ -9,19 +10,19 @@ const Waveform = forwardRef<HTMLDivElement, WaveformProps>(
         ref={ref}
         onClick={onClick}
         className={clsx(
-          "w-full h-6 bg-lightPink transition-all duration-200 bg-contain",
-          className
+          'w-full h-6 bg-lightPink transition-all duration-200 bg-contain',
+          className,
         )}
         style={{
           backgroundImage: `url("${src}")`,
-          filter: "invert(1)",
-          backgroundSize: "100% 100%"
+          filter: 'invert(1)',
+          backgroundSize: '100% 100%',
         }}
       />
     );
-  }
+  },
 );
 
-Waveform.displayName = "Waveform";
+Waveform.displayName = 'Waveform';
 
 export default Waveform;

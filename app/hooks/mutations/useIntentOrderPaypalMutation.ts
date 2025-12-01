@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client/react';
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import intentOrderPaypalMutation from '~/gql/mutations/intentOrderPaypal.gql';
 import orderFragment from '~/gql/fragments/orders.gql';

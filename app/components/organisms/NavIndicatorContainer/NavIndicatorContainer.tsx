@@ -1,10 +1,12 @@
-import { useLocation } from '@remix-run/react';
 import { useRef, useEffect } from 'react';
+import { useLocation } from '@remix-run/react';
+
 import NavIndicator from '~/components/atoms/NavIndicator';
 import { debounce } from '~/utils/debounce';
-import { NavIndicatorContainerProps } from './NavIndicatorContainer.types';
 import { useNavStore } from '~/hooks/stores/nav/useNavStore';
 import { getCurrentRouteIndex } from '~/utils/nav';
+
+import { NavIndicatorContainerProps } from './NavIndicatorContainer.types';
 
 const NavIndicatorContainer = ({ routes }: NavIndicatorContainerProps) => {
   const { currentIndex, items, setOffset, setIndex } = useNavStore();

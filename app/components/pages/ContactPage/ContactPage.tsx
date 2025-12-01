@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import FormContactContainer from '~/components/organisms/FormContactContainer';
 import { useToggleState } from '~/hooks/misc/useToggleState';
 import FormContactSuccess from '~/components/organisms/FormContactSuccess/FormContactSuccess';
-import { AnimatePresence, motion } from 'framer-motion';
 import HandlerContent from '~/components/molecules/HandlerContent';
 
 const ContactPage = () => {

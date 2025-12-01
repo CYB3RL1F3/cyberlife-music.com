@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import featureFlagQuery from '~/gql/queries/featureFlag.gql';
 import featureFlagFragment from '~/gql/fragments/featureFlag.gql';

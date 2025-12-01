@@ -1,5 +1,6 @@
-import type { HtmlReaderProps } from "./HtmlReader.types";
-import { parseHtml } from "~/utils/html";
+import { parseHtml } from '~/utils/html';
+
+import type { HtmlReaderProps } from './HtmlReader.types';
 
 const HtmlReader = ({ value, className }: HtmlReaderProps) => {
   const data = value && parseHtml(value);

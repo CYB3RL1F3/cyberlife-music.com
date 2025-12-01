@@ -1,4 +1,5 @@
 import Loader from '~/components/molecules/Loader';
+
 import type { HandlerContentProps } from './HandlerContent.types';
 
 export const defaultLoader = <Loader message="Loading..." />;

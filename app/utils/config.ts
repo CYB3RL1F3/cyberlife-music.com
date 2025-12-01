@@ -1,5 +1,6 @@
-import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
 import dotenv from 'dotenv';
+
+import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
 import { Environment } from '~/types/gql';
 
 export const getServerConfig = (): Config | null => {

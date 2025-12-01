@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import carrierPricesQuery from '~/gql/queries/carrierPrices.gql';
 import type {

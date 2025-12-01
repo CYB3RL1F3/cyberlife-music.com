@@ -1,10 +1,12 @@
+import { useMemo } from 'react';
+import { Link } from '@remix-run/react';
+
 import { useCurrentTrackPlayer } from '~/hooks/player/useCurrentTrackPlayer';
 import Player from '~/components/organisms/Player';
 import Text from '~/components/atoms/Text';
-import { PlayerCurrentTrackContainerProps } from './PlayerCurrentTrackContainer.types';
 import { formatDuration, seekPercentToSeconds } from '~/utils/date';
-import { useMemo } from 'react';
-import { Link } from '@remix-run/react';
+
+import { PlayerCurrentTrackContainerProps } from './PlayerCurrentTrackContainer.types';
 
 const PlayerCurrentTrackContainer = ({
   id,

@@ -1,5 +1,6 @@
-import { useTrack } from './useTrack';
 import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
+
+import { useTrack } from './useTrack';
 
 export const useCurrentTrackPlayer = () => {
   const { currentTrackId } = usePlayerStore();

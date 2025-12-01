@@ -1,7 +1,9 @@
-import Anchor from '~/components/atoms/Anchor';
-import type { FooterAnchorsProps } from './FooterAnchors.types';
-import InlineListItem from '~/components/atoms/InlineListItem';
 import clsx from 'clsx';
+
+import Anchor from '~/components/atoms/Anchor';
+import InlineListItem from '~/components/atoms/InlineListItem';
+
+import type { FooterAnchorsProps } from './FooterAnchors.types';
 
 const FooterAnchors = ({ anchors, className }: FooterAnchorsProps) => {
   return (

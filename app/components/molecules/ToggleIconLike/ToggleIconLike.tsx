@@ -1,6 +1,7 @@
-import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
-import ToggleIcon from "~/components/atoms/ToggleIcon";
-import type { ToggleIconLikeProps } from "./ToggleIconLike.types";
+import { IoIosHeart, IoIosHeartEmpty } from 'react-icons/io';
+import ToggleIcon from '~/components/atoms/ToggleIcon';
+
+import type { ToggleIconLikeProps } from './ToggleIconLike.types';
 
 const ToggleIconLike = ({ value, active, setActive }: ToggleIconLikeProps) => {
   return (

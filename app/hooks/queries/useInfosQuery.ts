@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client/react';
+
 import { profile } from '~/config';
 import { infosGqlQuery } from '~/queries/infos';
 import { InfosQuery, InfosQueryVariables } from '~/types/gql';

@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { useKeydownEvent } from './useKeydownEvent';
+
+import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
 
 export const useKeypressedEvent = (
   key: string | string[],

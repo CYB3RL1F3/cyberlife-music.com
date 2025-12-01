@@ -1,4 +1,3 @@
-import type { ApplicationProps } from './Layout.types';
 import Background from '~/components/atoms/Background/Background';
 import Header from '~/components/organisms/Header';
 import Footer from '~/components/organisms/Footer';
@@ -6,6 +5,8 @@ import PageLayout from '~/components/layouts/PageLayout/PageLayout';
 import ExtraContent from '~/components/organisms/ExtraContent';
 import { useResize } from '~/hooks/misc/useResize';
 import ModalPortal from '~/components/molecules/ModalPortal';
+
+import type { ApplicationProps } from './Layout.types';
 
 const Layout = ({ children }: ApplicationProps) => {
   useResize(() => {

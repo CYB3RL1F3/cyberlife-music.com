@@ -1,11 +1,12 @@
-import CarouselControl from "~/components/atoms/CarouselControl";
-import type { CarouselControllerProps } from "./CarouselController.types";
+import CarouselControl from '~/components/atoms/CarouselControl';
+
+import type { CarouselControllerProps } from './CarouselController.types';
 
 const CarouselController = ({
   nbItems,
   index,
   onChange,
-  name
+  name,
 }: CarouselControllerProps) => {
   return (
     <ul className="flex justify-end h-8 gap-2">

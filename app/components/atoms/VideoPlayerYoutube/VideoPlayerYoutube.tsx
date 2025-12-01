@@ -1,6 +1,8 @@
 // app/components/VideoPlayer.tsx
-import ClientOnly from '~/components/atoms/ClientOnly';
 import { Suspense, lazy, useRef } from 'react';
+
+import ClientOnly from '~/components/atoms/ClientOnly';
+
 import { VideoPlayerYoutubeProps } from './VideoPlayerYoutube.types';
 
 const ReactPlayer = lazy(() => import('react-player'));

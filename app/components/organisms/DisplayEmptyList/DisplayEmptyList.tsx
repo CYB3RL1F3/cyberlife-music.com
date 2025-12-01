@@ -1,9 +1,10 @@
-import ButtonRefresh from "~/components/molecules/ButtonRefresh";
-import type { DisplayEmptyListProps } from "./DisplayEmptyList.types";
+import ButtonRefresh from '~/components/molecules/ButtonRefresh';
+
+import type { DisplayEmptyListProps } from './DisplayEmptyList.types';
 
 const DisplayEmptyList = ({
   children,
-  extra = <ButtonRefresh />
+  extra = <ButtonRefresh />,
 }: DisplayEmptyListProps) => {
   return (
     <div className="flex justify-center lg:justify-end">

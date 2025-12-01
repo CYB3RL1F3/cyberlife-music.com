@@ -1,7 +1,8 @@
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import type { FormHeadingProps } from './FormHeading.types';
-
 import { motion, useWillChange } from 'framer-motion';
+
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import type { FormHeadingProps } from './FormHeading.types';
 
 const FormHeading = ({ title, description }: FormHeadingProps) => {
   const willChange = useWillChange();

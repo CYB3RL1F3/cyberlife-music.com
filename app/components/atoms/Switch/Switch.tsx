@@ -1,15 +1,15 @@
-import type { SwitchProps } from "./Switch.types";
-import { clsx } from "clsx";
-import type { ReactEventHandler } from "react";
+import type { ReactEventHandler } from 'react';
+import { clsx } from 'clsx';
+
+import type { SwitchProps } from './Switch.types';
 
 const Switch = ({ value, onChange, id }: SwitchProps) => {
   const className = clsx({
-    "cursor-pointer border-none inline-flex items-center w-10 rounded-full h-4 transition-all duration-50":
-      true,
-    "bg-gray-200 justify-end": value,
-    "bg-gray-500 bg-opacity-50 justify-start": !value
+    'cursor-pointer border-none inline-flex items-center w-10 rounded-full h-4 transition-all duration-50': true,
+    'bg-gray-200 justify-end': value,
+    'bg-gray-500 bg-opacity-50 justify-start': !value,
   });
-  const textClassName = "flex items-center text-[8px] select-none";
+  const textClassName = 'flex items-center text-[8px] select-none';
 
   const handleChange: ReactEventHandler<HTMLInputElement> = (e) => {
     const value = e.currentTarget.checked;
@@ -27,7 +27,7 @@ const Switch = ({ value, onChange, id }: SwitchProps) => {
       <span
         className={clsx(textClassName, {
           hidden: !value,
-          "pr-1 text-gray-600": value
+          'pr-1 text-gray-600': value,
         })}
       >
         ON
@@ -36,7 +36,7 @@ const Switch = ({ value, onChange, id }: SwitchProps) => {
       <span
         className={clsx(textClassName, {
           hidden: value,
-          "pl-1 text-gray-500": !value
+          'pl-1 text-gray-500': !value,
         })}
       >
         OFF

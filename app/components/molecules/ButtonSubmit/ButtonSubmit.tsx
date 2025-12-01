@@ -1,13 +1,15 @@
-import Button from "~/components/atoms/Button";
-import type { ButtonSubmitProps } from "./ButtonSubmit.types";
-import { useMemo } from "react";
-import Spinner from "~/components/atoms/Spinner";
+import { useMemo } from 'react';
+
+import Button from '~/components/atoms/Button';
+import Spinner from '~/components/atoms/Spinner';
+
+import type { ButtonSubmitProps } from './ButtonSubmit.types';
 
 const ButtonSubmit = ({
   rightIcon,
   loading,
   disabled,
-  children
+  children,
 }: ButtonSubmitProps) => {
   const icon = useMemo(() => {
     if (loading) return <Spinner variant="xs" />;

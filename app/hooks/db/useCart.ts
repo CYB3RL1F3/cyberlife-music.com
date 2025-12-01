@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { toast } from 'react-toastify';
+
 import db from '~/db';
-import type { FormCheckoutValues } from '~/components/organisms/FormCheckout/FormCheckout.types';
 import type { Cart } from '~/db/db.types';
+import type { FormCheckoutValues } from '~/components/organisms/FormCheckout/FormCheckout.types';
 import { ReleaseItem } from '~/types/gql';
 import { CartItemFragment } from '~/types/gql';
 

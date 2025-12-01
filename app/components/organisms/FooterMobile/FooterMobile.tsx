@@ -1,7 +1,8 @@
+import clsx from 'clsx';
+
 import FooterAnchorsInfosContainer from '~/components/organisms/FooterAnchorsInfosContainer';
 import FooterAnchorsCopyrights from '~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights';
 import NotificationActivationSwitch from '~/components/organisms/NotificationActivationSwitch';
-import clsx from 'clsx';
 import { useCurrentTrackPlayer } from '~/hooks/player/useCurrentTrackPlayer';
 
 const FooterMobile = () => {

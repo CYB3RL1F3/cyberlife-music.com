@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import infosQuery from '~/gql/queries/infos.gql';
 import infosFragments from '~/gql/fragments/infos.gql';
 import { runQuery } from '~/utils/graphql';

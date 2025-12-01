@@ -1,15 +1,15 @@
-import { PassThrough } from "stream";
-// @ts-expect-error isbot
-import { isbot } from "isbot";
-import type { EntryContext } from "@remix-run/node";
-import { createReadableStreamFromReadable } from "@remix-run/node";
-import { RemixServer } from "@remix-run/react";
-import { renderToPipeableStream } from "react-dom/server";
-import { getDataFromTree } from "@apollo/client/react/ssr";
-import ApolloContext from "./components/contexts/ApolloContext";
-import { getClient } from "./components/contexts/ApolloContext/ApolloContext";
-import { StrictMode } from "react";
-import AnimationContextProvider from "./components/contexts/AnimationContext/AnimationContext.provider";
+import { StrictMode } from 'react';
+import { isbot } from 'isbot';
+import { PassThrough } from 'stream';
+import type { EntryContext } from '@remix-run/node';
+import { createReadableStreamFromReadable } from '@remix-run/node';
+import { RemixServer } from '@remix-run/react';
+import { renderToPipeableStream } from 'react-dom/server';
+import { getDataFromTree } from '@apollo/client/react/ssr';
+
+import ApolloContext from '~/components/contexts/ApolloContext';
+import { getClient } from '~/components/contexts/ApolloContext/ApolloContext';
+import AnimationContextProvider from '~/components/contexts/AnimationContext/AnimationContext.provider';
 
 const ABORT_DELAY = 5000;
 
@@ -17,20 +17,20 @@ export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
-  return isbot(request.headers.get("user-agent"))
+  return isbot(request.headers.get('user-agent'))
     ? handleBotRequest(
         request,
         responseStatusCode,
         responseHeaders,
-        remixContext
+        remixContext,
       )
     : handleBrowserRequest(
         request,
         responseStatusCode,
         responseHeaders,
-        remixContext
+        remixContext,
       );
 }
 const client = getClient();
@@ -39,7 +39,7 @@ function handleBotRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   const App = (
     <StrictMode>
@@ -59,8 +59,8 @@ function handleBotRequest(
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__APOLLO_STATE__=${JSON.stringify(
-              initialState
-            ).replace(/</g, "\\u003c")}` // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
+              initialState,
+            ).replace(/</g, '\\u003c')}`, // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
           }}
         />
       </>
@@ -70,13 +70,13 @@ function handleBotRequest(
         onShellReady() {
           const body = new PassThrough();
 
-          responseHeaders.set("Content-Type", "text/html");
+          responseHeaders.set('Content-Type', 'text/html');
 
           resolve(
             new Response(createReadableStreamFromReadable(body), {
               headers: responseHeaders,
-              status: didError ? 500 : responseStatusCode
-            })
+              status: didError ? 500 : responseStatusCode,
+            }),
           );
 
           pipe(body);
@@ -88,7 +88,7 @@ function handleBotRequest(
           didError = true;
 
           console.error(error);
-        }
+        },
       });
 
       setTimeout(abort, ABORT_DELAY);
@@ -100,7 +100,7 @@ function handleBrowserRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   const App = (
     <StrictMode>
@@ -121,8 +121,8 @@ function handleBrowserRequest(
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__APOLLO_STATE__=${JSON.stringify(
-              initialState
-            ).replace(/</g, "\\u003c")}` // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
+              initialState,
+            ).replace(/</g, '\\u003c')}`, // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
           }}
         />
       </>
@@ -131,13 +131,13 @@ function handleBrowserRequest(
       const { pipe, abort } = renderToPipeableStream(markup, {
         onShellReady() {
           const body = new PassThrough();
-          responseHeaders.set("Content-Type", "text/html");
+          responseHeaders.set('Content-Type', 'text/html');
 
           resolve(
             new Response(createReadableStreamFromReadable(body), {
               headers: responseHeaders,
-              status: didError ? 500 : responseStatusCode
-            })
+              status: didError ? 500 : responseStatusCode,
+            }),
           );
 
           pipe(body);
@@ -149,7 +149,7 @@ function handleBrowserRequest(
           didError = true;
 
           console.error(error);
-        }
+        },
       });
 
       setTimeout(abort, ABORT_DELAY);

@@ -1,4 +1,5 @@
 import { useParams } from '@remix-run/react';
+
 import ErrorPage from '~/components/pages/ErrorPage';
 import ReleasePage from '~/components/pages/ReleasePage';
 import ReleasesPage from '~/components/pages/ReleasesPage';

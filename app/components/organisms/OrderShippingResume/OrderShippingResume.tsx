@@ -1,5 +1,6 @@
 import { getCountryLabelByValue } from '~/utils/business/countries';
 import OrderShippingResumeItem from '~/components/organisms/OrderShippingResumeItem';
+
 import type { OrderShippingResumeProps } from './OrderShippingResume.types';
 
 const OrderShippingResume = ({ checkout }: OrderShippingResumeProps) => {

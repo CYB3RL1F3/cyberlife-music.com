@@ -1,8 +1,10 @@
-import { useCart } from '~/hooks/db/useCart';
-import type { FormOrderConsentContainerProps } from './FormOrderConsentContainer.types';
 import { toast } from 'react-toastify';
+
+import { useCart } from '~/hooks/db/useCart';
 import { FormOrderConsentProps } from '~/components/organisms/FormOrderConsent/FormOrderConsent.types';
 import FormOrderConsent from '~/components/organisms/FormOrderConsent';
+
+import type { FormOrderConsentContainerProps } from './FormOrderConsentContainer.types';
 
 const FormOrderConsentContainer = ({
   onSubmit,

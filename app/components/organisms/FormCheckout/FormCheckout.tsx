@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import type {
-  FormCheckoutProps,
-  FormCheckoutValues,
-} from './FormCheckout.types';
-import { superstructResolver } from '@hookform/resolvers/superstruct';
-import { formCheckoutSchema } from './FormCheckout.schema';
-import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { motion } from 'framer-motion';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+
+import CountryFlag from '~/components/atoms/CountryFlag';
 import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
 import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTextarea';
 import ControlledFieldInputAutoComplete from '~/components/organisms/ControlledFieldInputAutoComplete';
 import ControlledFieldSelector from '~/components/organisms/ControlledFieldSelector';
-import countries from '~/utils/business/countries';
-import CountryFlag from '~/components/atoms/CountryFlag';
-import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
 import ControlledFieldCheckbox from '~/components/organisms/ControlledFieldCheckbox';
 import ControlledCarrierSelector from '~/components/organisms/ControlledFieldCarrierSelector/ControlledFieldCarrierSelector';
 import { useLocationsSuggestions } from '~/hooks/data/useLocationsSuggestions';
+import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
 import { AutocompleteLocationSuggestionType } from '~/types/gql';
+import countries from '~/utils/business/countries';
+
+import { formCheckoutSchema } from './FormCheckout.schema';
+import type {
+  FormCheckoutProps,
+  FormCheckoutValues,
+} from './FormCheckout.types';
 
 const initialValues: Partial<FormCheckoutValues> = {
   firstName: '',

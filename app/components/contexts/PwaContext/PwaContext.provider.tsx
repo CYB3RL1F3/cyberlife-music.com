@@ -1,37 +1,38 @@
-import { useEffect, useState } from "react";
-import { PwaContext } from "./PwaContext";
-import type { PwaContextProps } from "./PwaContext.types";
+import { useEffect, useState } from 'react';
+
+import { PwaContext } from './PwaContext';
+import type { PwaContextProps } from './PwaContext.types';
 
 const PwaContextProvider = ({ children }: PwaContextProps) => {
   const [registration, setRegistration] =
     useState<ServiceWorkerRegistration | null>(null);
 
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
+    if ('serviceWorker' in navigator) {
       const loadPwaApplication = () => {
         navigator.serviceWorker
-          .register("/entry.worker.js")
+          .register('/entry.worker.js')
           .then(() => navigator.serviceWorker.ready)
           .then(() => {
             if (navigator.serviceWorker.controller) {
               navigator.serviceWorker.controller.postMessage({
-                type: "SYNC_REMIX_MANIFEST",
-                manifest: window.__remixManifest
+                type: 'SYNC_REMIX_MANIFEST',
+                manifest: window.__remixManifest,
               });
             } else {
               navigator.serviceWorker.addEventListener(
-                "controllerchange",
+                'controllerchange',
                 () => {
                   navigator.serviceWorker.controller?.postMessage({
-                    type: "SYNC_REMIX_MANIFEST",
-                    manifest: window.__remixManifest
+                    type: 'SYNC_REMIX_MANIFEST',
+                    manifest: window.__remixManifest,
                   });
-                }
+                },
               );
             }
           })
           .catch((error) => {
-            console.error("Service worker registration failed", error);
+            console.error('Service worker registration failed', error);
           });
 
         navigator.serviceWorker.ready.then((registration) => {
@@ -46,7 +47,7 @@ const PwaContextProvider = ({ children }: PwaContextProps) => {
   return (
     <PwaContext.Provider
       value={{
-        registration
+        registration,
       }}
     >
       {children}

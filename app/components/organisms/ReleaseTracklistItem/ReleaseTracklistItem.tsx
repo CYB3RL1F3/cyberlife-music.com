@@ -1,9 +1,10 @@
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Thumbnail from '~/components/molecules/Thumbnail';
-import type { ReleaseTracklistItemProps } from './ReleaseTracklistItem.types';
 import ReleaseActionPlayContainer from '~/components/organisms/ReleaseActionPlayContainer';
 import PlayerReleaseTrackContainer from '~/components/organisms/PlayerReleaseTrackContainer';
+
+import type { ReleaseTracklistItemProps } from './ReleaseTracklistItem.types';
 
 const ReleaseTracklistItem = ({
   track,

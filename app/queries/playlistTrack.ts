@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import trackQuery from '~/gql/queries/track.gql';
 import trackFragment from '~/gql/fragments/track.gql';
 

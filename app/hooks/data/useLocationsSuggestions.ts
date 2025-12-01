@@ -1,7 +1,10 @@
-import { AutocompleteLocationSuggestionType } from '~/types/gql';
-import { useAutocompleteLocationQuery } from '~/hooks/queries/useAutocompleteLocationQuery';
 import { useEffect, useState } from 'react';
-import { AutocompleteLocationEntity } from '~/types/gql';
+
+import { useAutocompleteLocationQuery } from '~/hooks/queries/useAutocompleteLocationQuery';
+import {
+  AutocompleteLocationSuggestionType,
+  type AutocompleteLocationEntity,
+} from '~/types/gql';
 
 export const useLocationsSuggestions = (
   country: string,

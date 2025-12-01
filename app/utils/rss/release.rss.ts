@@ -1,7 +1,9 @@
-import { getConfig } from '~/utils/config';
-import { cleanUrl, rssDateFormat, buildRssFeed, RSSItem } from './builder.rss';
 import dayjs from 'dayjs';
+
+import { getConfig } from '~/utils/config';
 import { ReleaseItem } from '~/types/gql';
+
+import { cleanUrl, rssDateFormat, buildRssFeed, RSSItem } from './builder.rss';
 
 export const getReleaseRssItem = (
   release: ReleaseItem,

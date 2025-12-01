@@ -1,10 +1,12 @@
-import { getConfig } from '~/utils/config';
-import type { ButtonPaymentPaypalProps } from './ButtonPaymentPaypal.types';
 import {
   PayPalScriptProvider,
   PayPalButtons,
   ScriptProviderProps,
 } from '@paypal/react-paypal-js';
+
+import { getConfig } from '~/utils/config';
+
+import type { ButtonPaymentPaypalProps } from './ButtonPaymentPaypal.types';
 
 const ButtonPaymentPaypal = ({
   createOrder,
@@ -34,6 +36,9 @@ const ButtonPaymentPaypal = ({
         onApprove={onApprove}
         onError={onError}
         onCancel={onCancel}
+        style={{
+          height: 40,
+        }}
       />
     </PayPalScriptProvider>
   );

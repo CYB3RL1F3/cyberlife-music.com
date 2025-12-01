@@ -1,8 +1,9 @@
-import type { HTMLProps } from "react";
+import type { HTMLProps, RefObject } from 'react';
+import type { RefCallBack } from 'react-hook-form';
 
 type InputBaseProps = Omit<
   HTMLProps<HTMLInputElement>,
-  "value" | "onChange" | "ref"
+  'value' | 'onChange' | 'ref'
 >;
 
 export type InputProps<T extends string = string> = InputBaseProps & {
@@ -10,4 +11,5 @@ export type InputProps<T extends string = string> = InputBaseProps & {
   onChange?: (value: T) => void;
   hasError?: boolean;
   onUnfocus?: () => void;
+  ref?: RefObject<HTMLInputElement> | RefCallBack;
 };

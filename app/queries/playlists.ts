@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import playlistQuery from '~/gql/queries/playlist.gql';
 import playlistFragment from '~/gql/fragments/playlist.gql';
 import { profile } from '~/config';

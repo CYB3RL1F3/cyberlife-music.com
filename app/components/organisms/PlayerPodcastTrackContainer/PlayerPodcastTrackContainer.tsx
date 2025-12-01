@@ -1,6 +1,7 @@
 import { usePodcastTrackPlayer } from '~/hooks/player/usePodcastTrackPlayer';
 import PlayerTrack from '~/components/organisms/PlayerTrack';
 import type { PlayerTrackProps } from '~/components/organisms/PlayerTrack';
+
 import type { PlayerPodcastTrackContainerProps } from './PlayerPodcastTrackContainer.types';
 
 const PlayerPodcastTrackContainer = ({

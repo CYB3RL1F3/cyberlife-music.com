@@ -1,5 +1,6 @@
-import type { ListPodcastCommentsProps } from './ListPodcastComments.types';
 import ListPodcastCommentsItem from '~/components/organisms/ListPodcastCommentsItem';
+
+import type { ListPodcastCommentsProps } from './ListPodcastComments.types';
 
 const ListPodcastComments = ({ comments }: ListPodcastCommentsProps) => {
   return (

@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import videosQuery from '~/gql/queries/videos.gql';
 import videoFragments from '~/gql/fragments/video.gql';

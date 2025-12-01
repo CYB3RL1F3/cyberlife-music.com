@@ -1,11 +1,12 @@
-import type { ListBrowserItemProps } from "./ListBrowserItem.types";
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
+
+import type { ListBrowserItemProps } from './ListBrowserItem.types';
 
 const ListBrowserItem = ({
   title,
   icon,
   href,
-  className
+  className,
 }: ListBrowserItemProps) => {
   if (!icon) return null;
   return (
@@ -20,7 +21,7 @@ const ListBrowserItem = ({
         alt={title}
         width={50}
         height={50}
-        className={clsx("w-[50px] h-[50px]", className)}
+        className={clsx('w-[50px] h-[50px]', className)}
       />
       <span className="w-full text-center text-md">{title}</span>
     </a>

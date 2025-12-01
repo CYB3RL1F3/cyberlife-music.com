@@ -1,7 +1,8 @@
 import { getConfig } from '~/utils/config';
+import { ReleaseItem } from '~/types/gql';
+
 import { buildRssFeed, RSSItem } from './builder.rss';
 import { getReleaseRssItem } from './release.rss';
-import { ReleaseItem } from '~/types/gql';
 
 export const getReleasesRssItems = (
   releases: ReleaseItem[],

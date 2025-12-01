@@ -1,11 +1,12 @@
-import clsx from "clsx";
-import { forwardRef, useImperativeHandle } from "react";
+import clsx from 'clsx';
+import { forwardRef, useImperativeHandle } from 'react';
 
-import type { ModalProps, OnCloseRefType } from "./Modal.types";
-import { IoMdClose } from "react-icons/io";
-import ModalPortal from "~/components/molecules/ModalPortal";
-import Icon from "~/components/atoms/Icon";
-import ModalWrapper from "~/components/organisms/ModalWrapper/ModalWrapper";
+import { IoMdClose } from 'react-icons/io';
+import ModalPortal from '~/components/molecules/ModalPortal';
+import Icon from '~/components/atoms/Icon';
+import ModalWrapper from '~/components/organisms/ModalWrapper/ModalWrapper';
+
+import type { ModalProps, OnCloseRefType } from './Modal.types';
 
 const Modal = forwardRef<OnCloseRefType, ModalProps>(
   (
@@ -14,15 +15,15 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
       isOpen,
       onClose,
       className,
-      maxWidth = "max-w-[80vw]",
+      maxWidth = 'max-w-[80vw]',
       transitionDuration = 250,
-      height = "h-fit",
-      portal = ModalPortal
+      height = 'h-fit',
+      portal = ModalPortal,
     },
-    ref
+    ref,
   ) => {
     useImperativeHandle(ref, () => ({
-      close
+      close,
     }));
 
     return (
@@ -36,10 +37,10 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
         <div
           className={clsx(
             `flex flex-col w-fit bg-black rounded-3xl desktop:rounded-3xl overflow-hidden pointer-events-auto`,
-            maxWidth
+            maxWidth,
           )}
           style={{
-            height
+            height,
           }}
           aria-hidden
         >
@@ -58,8 +59,8 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
           </div>
           <div
             className={clsx(
-              "flex-1 bg-black flex justify-center items-center overflow-auto w-fit h-fit max-h-[90vh] max-w-[80vw]",
-              maxWidth
+              'flex-1 bg-black flex justify-center items-center overflow-auto w-fit h-fit max-h-[90vh] max-w-[80vw]',
+              maxWidth,
             )}
           >
             {children}
@@ -67,9 +68,9 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
         </div>
       </ModalWrapper>
     );
-  }
+  },
 );
 
-Modal.displayName = "Modal";
+Modal.displayName = 'Modal';
 
 export default Modal;

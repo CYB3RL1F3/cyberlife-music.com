@@ -1,17 +1,19 @@
+import { toast } from 'react-toastify';
 import { useCallback, useEffect, useState } from 'react';
+
 import { useSubscribeMutation } from '~/hooks/mutations/useSubscribeMutation';
 import { useConfigContext } from '~/components/contexts/ConfigContext';
-import { NotificationContext } from './NotificationContext';
-import type { NotificationContextProviderProps } from './NotificationContext.types';
+import { usePwaContext } from '~/components/contexts/PwaContext/PwaContext.hook';
+import { useUnSubscribeMutation } from '~/hooks/mutations/useUnsubscribeMutation';
+import { useLocalStorage } from '~/hooks/misc/useLocaleStorage';
+
 import {
   getSubscription,
   getSubscriptionParameters,
 } from './NotificationContext.utils';
 
-import { usePwaContext } from '~/components/contexts/PwaContext/PwaContext.hook';
-import { useUnSubscribeMutation } from '~/hooks/mutations/useUnsubscribeMutation';
-import { useLocalStorage } from '~/hooks/misc/useLocaleStorage';
-import { toast } from 'react-toastify';
+import { NotificationContext } from './NotificationContext';
+import type { NotificationContextProviderProps } from './NotificationContext.types';
 
 const NotificationContextProvider = ({
   children,

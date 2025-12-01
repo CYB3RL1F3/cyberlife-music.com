@@ -1,9 +1,10 @@
-import clsx from "clsx";
-import { forwardRef, useImperativeHandle } from "react";
+import clsx from 'clsx';
+import { forwardRef, useImperativeHandle } from 'react';
 
-import Overlay from "~/components/atoms/Overlay";
-import type { ModalWrapperProps, OnCloseRefType } from "./ModalWrapper.types";
-import ModalPortal from "~/components/molecules/ModalPortal";
+import Overlay from '~/components/atoms/Overlay';
+import ModalPortal from '~/components/molecules/ModalPortal';
+
+import type { ModalWrapperProps, OnCloseRefType } from './ModalWrapper.types';
 
 const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
   (
@@ -13,12 +14,12 @@ const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
       onClose,
       className,
       transitionDuration = 250,
-      portal = ModalPortal
+      portal = ModalPortal,
     },
-    ref
+    ref,
   ) => {
     useImperativeHandle(ref, () => ({
-      close
+      close,
     }));
 
     const Portal = portal;
@@ -34,9 +35,9 @@ const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
           containerClassName={clsx(
             `flex desktop:items-center justify-center w-full h-full max-h-full transition-transform transform-gpu duration-${transitionDuration} ease-in-out desktop:py-6 pointer-events-none`,
             {
-              "translate-y-0": isOpen,
-              "translate-y-full": !isOpen
-            }
+              'translate-y-0': isOpen,
+              'translate-y-full': !isOpen,
+            },
           )}
         >
           <div className="flex items-center justify-center w-full h-full">
@@ -45,9 +46,9 @@ const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
         </Overlay>
       </Portal>
     );
-  }
+  },
 );
 
-ModalWrapper.displayName = "Modal";
+ModalWrapper.displayName = 'Modal';
 
 export default ModalWrapper;

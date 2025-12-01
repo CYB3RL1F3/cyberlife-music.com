@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from '@remix-run/react';
-import type { OrderFunnelProps } from './OrderFunnel.types';
+
 import OrderFunnelEmpty from '~/components/organisms/OrderFunnelEmpty';
 import OrderFunnelStep1 from '~/components/organisms/OrderFunnelStep1';
 import OrderFunnelStep2 from '~/components/organisms/OrderFunnelStep2';
 import OrderFunnelStep3 from '~/components/organisms/OrderFunnelStep3';
 import OrderFunnelSuccess from '~/components/organisms/OrderFunnelSuccess';
+
+import type { OrderFunnelProps } from './OrderFunnel.types';
 
 const OrderFunnel = ({ items, defaultStep = 0 }: OrderFunnelProps) => {
   const [step, setStep] = useState(defaultStep);

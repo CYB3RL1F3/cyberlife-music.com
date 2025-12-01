@@ -1,7 +1,8 @@
-import Textarea from "~/components/atoms/Textarea";
-import FieldWrapper from "../FieldWrapper";
-import type { FieldTextareaProps } from "./FieldTextarea.types";
-import { forwardRef } from "react";
+import { forwardRef } from 'react';
+import Textarea from '~/components/atoms/Textarea';
+import FieldWrapper from '~/components/molecules/FieldWrapper';
+
+import type { FieldTextareaProps } from './FieldTextarea.types';
 
 const FieldTextarea = forwardRef<HTMLTextAreaElement, FieldTextareaProps>(
   ({ error, ...props }, ref) => {
@@ -10,9 +11,9 @@ const FieldTextarea = forwardRef<HTMLTextAreaElement, FieldTextareaProps>(
         <Textarea ref={ref} hasError={!!error} {...props} />
       </FieldWrapper>
     );
-  }
+  },
 );
 
-FieldTextarea.displayName = "FieldTextarea";
+FieldTextarea.displayName = 'FieldTextarea';
 
 export default FieldTextarea;

@@ -1,11 +1,12 @@
-import PodcastActionPlayContainer from '~/components/organisms/PodcastActionPlayContainer';
 import Ellipsis from '~/components/molecules/Ellipsis';
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Thumbnail from '~/components/molecules/Thumbnail';
 import PlayerPodcastTrackContainer from '~/components/organisms/PlayerPodcastTrackContainer';
-import type { ListPodcastsItemProps } from './ListPodcastsItem.types';
+import PodcastActionPlayContainer from '~/components/organisms/PodcastActionPlayContainer';
 import ListLinkIconsPodcast from '~/components/organisms/ListLinkIconsPodcast';
+
+import type { ListPodcastsItemProps } from './ListPodcastsItem.types';
 
 const ListPodcastsItem = ({
   podcast,

@@ -1,8 +1,9 @@
-import { createContext } from "react";
-import type { AnimationContextValues } from "./AnimationContext.types";
+import { createContext } from 'react';
+
+import type { AnimationContextValues } from './AnimationContext.types';
 
 export const AnimationContext = createContext<AnimationContextValues>({
-  canAnimate: false
+  canAnimate: false,
 });
 
 export default AnimationContext;

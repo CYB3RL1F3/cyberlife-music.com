@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client/react';
+
 import { profile } from '~/config';
 import { videoGqlQuery } from '~/queries/video';
 import { VideoQuery, VideoQueryVariables } from '~/types/gql';

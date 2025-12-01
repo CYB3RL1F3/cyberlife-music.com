@@ -1,10 +1,11 @@
-import ButtonLink from "~/components/atoms/ButtonLink";
-import ViewEvent from "~/components/organisms/ViewEvent";
-import HandlerContent from "~/components/molecules/HandlerContent";
-import Loader from "~/components/molecules/Loader";
-import { useEventQuery } from "~/hooks/queries/useEventQuery";
-import ErrorPage from "../ErrorPage";
-import type { EventPageProps } from "./EventPage.types";
+import ButtonLink from '~/components/atoms/ButtonLink';
+import HandlerContent from '~/components/molecules/HandlerContent';
+import Loader from '~/components/molecules/Loader';
+import ViewEvent from '~/components/organisms/ViewEvent';
+import ErrorPage from '~/components/pages/ErrorPage';
+import { useEventQuery } from '~/hooks/queries/useEventQuery';
+
+import type { EventPageProps } from './EventPage.types';
 
 const EventPage = ({ id }: EventPageProps) => {
   const { data, loading } = useEventQuery(id);

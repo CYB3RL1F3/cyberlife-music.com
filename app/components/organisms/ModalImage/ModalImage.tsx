@@ -1,4 +1,5 @@
 import Modal from '~/components/organisms/Modal/Modal';
+
 import type { ModalImageProps } from './ModalImage.types';
 
 const ModalImage = ({ src, alt, ...props }: ModalImageProps) => {

@@ -1,13 +1,15 @@
 import { AnimatePresence, useWillChange } from 'framer-motion';
-import type { OrderFunnelStep1Props } from './OrderFunnelStep1.types';
+import { motion } from 'framer-motion';
+
 import FormHeading from '~/components/organisms/FormHeading';
 import TableOrderResume from '~/components/organisms/TableOrderResume';
 import FormOrderConsentContainer from '~/components/organisms/FormOrderConsentContainer';
 import TableOrderPrice from '~/components/organisms/TableOrderPrice';
 import ButtonLink from '~/components/atoms/ButtonLink';
 import ButtonClearCart from '~/components/organisms/ButtonClearCart';
-import { motion } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import type { OrderFunnelStep1Props } from './OrderFunnelStep1.types';
 
 const OrderFunnelStep1 = ({ items, onSubmit }: OrderFunnelStep1Props) => {
   const willChange = useWillChange();

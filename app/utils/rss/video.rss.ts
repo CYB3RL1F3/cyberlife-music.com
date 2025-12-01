@@ -1,4 +1,8 @@
+import dayjs from 'dayjs';
+
 import { getConfig } from '~/utils/config';
+import { Video } from '~/types/gql';
+
 import {
   cleanUrl,
   rssDateFormat,
@@ -6,8 +10,6 @@ import {
   RSSItem,
   cleanText,
 } from './builder.rss';
-import dayjs from 'dayjs';
-import { Video } from '~/types/gql';
 
 export const getVideoRssItem = (
   video: Video,

@@ -1,12 +1,13 @@
-import type { ListLinkIconsReleaseProps } from './ListLinkIconsRelease.types';
 import ImgIcon from '~/components/atoms/ImgIcon';
 import type { ListLinkIconsProps } from '~/components/molecules/ListLinkIcons';
+import ListLinkIcons from '~/components/molecules/ListLinkIcons';
+import FeatureFlag from '~/components/molecules/FeatureFlag';
 import ToggleIconLikeContainer from '~/components/organisms/ToggleIconLikeContainer';
+import ButtonBuyRelease from '~/components/organisms/ButtonBuyRelease';
 import DiscogsIcon from '~/icons/discogs.svg';
 import BandcampIcon from '~/icons/bandcamp.svg';
-import ListLinkIcons from '~/components/molecules/ListLinkIcons';
-import ButtonBuyRelease from '~/components/organisms/ButtonBuyRelease';
-import FeatureFlag from '~/components/molecules/FeatureFlag';
+
+import type { ListLinkIconsReleaseProps } from './ListLinkIconsRelease.types';
 
 const ListLinkIconsRelease = ({ release }: ListLinkIconsReleaseProps) => {
   if (!release.release) return null;

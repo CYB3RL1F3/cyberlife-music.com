@@ -1,7 +1,9 @@
-import type { NavProps } from './Nav.types';
-import NavIndicatorContainer from '~/components/organisms/NavIndicatorContainer';
 import clsx from 'clsx';
+
+import NavIndicatorContainer from '~/components/organisms/NavIndicatorContainer';
 import ClientOnly from '~/components/atoms/ClientOnly';
+
+import type { NavProps } from './Nav.types';
 
 const Nav = ({ routes, children, isOpen }: NavProps) => {
   return (

@@ -1,5 +1,5 @@
-import { getApiEndpoint } from './config';
 import { TrackToBuffer } from '~/hooks/stores/player/usePlayerStore.types';
+import { getApiEndpoint } from '~/utils/config';
 import { Track } from '~/types/gql';
 
 export type Extra = {

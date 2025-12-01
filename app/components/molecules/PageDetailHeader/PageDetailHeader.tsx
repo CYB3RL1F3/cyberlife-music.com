@@ -1,10 +1,12 @@
-import { HiArrowLeft } from 'react-icons/hi';
-import Heading from '~/components/atoms/Heading';
-import type { PageDetailHeaderProps } from './PageDetailHeader.types';
-import { Link, useLocation } from '@remix-run/react';
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { AnimatePresence, motion } from 'framer-motion';
 import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Link, useLocation } from '@remix-run/react';
+import { HiArrowLeft } from 'react-icons/hi';
+
+import Heading from '~/components/atoms/Heading';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import type { PageDetailHeaderProps } from './PageDetailHeader.types';
 
 const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
   const transition = useFluidTransition({

@@ -1,7 +1,8 @@
 import Action from '~/components/atoms/Action';
 import Thumbnail from '~/components/molecules/Thumbnail';
-import type { PictureProps } from './Picture.types';
 import { useImageModal } from '~/hooks/misc/useImageModal';
+
+import type { PictureProps } from './Picture.types';
 
 const Picture = ({ src, alt, variant }: PictureProps) => {
   const { open } = useImageModal();

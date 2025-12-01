@@ -6,7 +6,7 @@ const getContent = async () => {
   const config = getConfig();
   const events = await runEventsQuery();
 
-  const content = getEventsRssFeed(events.data.events, config);
+  const content = getEventsRssFeed(events.data?.events, config);
   return content;
 };
 

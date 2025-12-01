@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
+
 import { getTrackToBuffer } from '~/utils/trackToBuffer';
-import { useTrack } from './useTrack';
+import { useTrack } from '~/hooks/player/useTrack';
 import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 import { Track } from '~/types/gql';
 

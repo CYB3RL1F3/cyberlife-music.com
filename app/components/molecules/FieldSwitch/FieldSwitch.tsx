@@ -1,5 +1,6 @@
-import Switch from "~/components/atoms/Switch";
-import type { FieldSwitchProps } from "./FieldSwitch.types";
+import Switch from '~/components/atoms/Switch';
+
+import type { FieldSwitchProps } from './FieldSwitch.types';
 
 const FieldSwitch = ({ label, id, ...props }: FieldSwitchProps) => {
   return (

@@ -1,7 +1,8 @@
+import { AnimatePresence, motion } from 'framer-motion';
+
+import ClientOnly from '~/components/atoms/ClientOnly';
 import PlayerWidget from '~/components/organisms/PlayerWidget';
 import NotificationActivationSwitch from '~/components/organisms/NotificationActivationSwitch';
-import { AnimatePresence, motion } from 'framer-motion';
-import ClientOnly from '~/components/atoms/ClientOnly';
 
 const ExtraContent = () => {
   return (

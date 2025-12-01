@@ -1,9 +1,9 @@
 import ButtonLink from '~/components/atoms/ButtonLink';
 import HandlerContent from '~/components/molecules/HandlerContent';
 import Loader from '~/components/molecules/Loader';
-import { usePostQuery } from '~/hooks/queries/usePostQuery';
-import ErrorPage from '~/components/pages/ErrorPage';
 import PostDisplay from '~/components/organisms/PostDisplay/PostDisplay';
+import ErrorPage from '~/components/pages/ErrorPage';
+import { usePostQuery } from '~/hooks/queries/usePostQuery';
 
 const LegalNoticePage = () => {
   const postId = '66e350123dead97226352b0c';

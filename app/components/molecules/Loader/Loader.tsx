@@ -1,5 +1,6 @@
-import Spinner from "~/components/atoms/Spinner";
-import type { LoaderProps } from "./Loader.types";
+import Spinner from '~/components/atoms/Spinner';
+
+import type { LoaderProps } from './Loader.types';
 
 const Loader = ({ message }: LoaderProps) => {
   return (

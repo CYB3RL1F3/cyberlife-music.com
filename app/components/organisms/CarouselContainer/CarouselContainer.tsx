@@ -1,8 +1,10 @@
-import type { CarouselContainerProps } from "./CarouselContainer.types";
-import { Children } from "react";
-import Carousel from "~/components/atoms/Carousel";
-import CarouselController from "~/components/molecules/CarouselController";
-import ClientOnly from "~/components/atoms/ClientOnly";
+import { Children } from 'react';
+
+import Carousel from '~/components/atoms/Carousel';
+import CarouselController from '~/components/molecules/CarouselController';
+import ClientOnly from '~/components/atoms/ClientOnly';
+
+import type { CarouselContainerProps } from './CarouselContainer.types';
 
 const CarouselContainer = ({
   children,
@@ -10,7 +12,7 @@ const CarouselContainer = ({
   onChange,
   index = 0,
   canDrag = true,
-  onDrag
+  onDrag,
 }: CarouselContainerProps) => {
   const nbItems = Children.toArray(children).length;
 

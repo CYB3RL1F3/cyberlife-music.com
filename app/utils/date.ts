@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+
 import isBetween from 'dayjs/plugin/isBetween';
 import { Event } from '~/types/gql';
 

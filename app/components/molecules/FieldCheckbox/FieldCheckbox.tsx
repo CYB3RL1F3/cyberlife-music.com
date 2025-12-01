@@ -1,6 +1,7 @@
-import Checkbox from "~/components/atoms/Checkbox";
-import type { FieldCheckboxProps } from "./FieldCheckbox.types";
-import FieldWrapper from "../FieldWrapper";
+import Checkbox from '~/components/atoms/Checkbox';
+import FieldWrapper from '~/components/molecules/FieldWrapper';
+
+import type { FieldCheckboxProps } from './FieldCheckbox.types';
 
 const FieldCheckbox = ({ label, id, error, ...props }: FieldCheckboxProps) => {
   return (

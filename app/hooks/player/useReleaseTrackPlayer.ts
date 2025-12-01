@@ -1,5 +1,6 @@
 import { Track } from '~/types/gql';
-import { useTrackPlayer } from './useTrackPlayer';
+
+import { useTrackPlayer } from '~/hooks/player/useTrackPlayer';
 
 export const useReleaseTrackPlayer = (
   track: Track,

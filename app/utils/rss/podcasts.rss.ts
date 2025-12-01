@@ -1,8 +1,8 @@
 import { getConfig } from '~/utils/config';
-import { buildRssFeed, RSSItem } from './builder.rss';
-
-import { getPodcastRssItem } from './podcast.rss';
 import { Track } from '~/types/gql';
+
+import { buildRssFeed, RSSItem } from './builder.rss';
+import { getPodcastRssItem } from './podcast.rss';
 
 export const getPodcastsRssItems = async (
   podcasts: Track[],

@@ -1,6 +1,7 @@
-import type { ReleaseActionPlayContainerProps } from './ReleaseActionPlayContainer.types';
 import ActionPlay from '~/components/molecules/ActionPlay';
 import { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
+
+import type { ReleaseActionPlayContainerProps } from './ReleaseActionPlayContainer.types';
 
 const ReleaseActionPlayContainer = ({
   track,
@@ -17,6 +18,7 @@ const ReleaseActionPlayContainer = ({
     prevId,
     pageUrl,
   });
+
   return (
     <ActionPlay
       title={`play release ${title}`}

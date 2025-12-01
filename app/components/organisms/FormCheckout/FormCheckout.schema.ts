@@ -2,13 +2,13 @@ import {
   object,
   refine,
   string,
-  nonempty,
   optional,
   number,
   boolean,
   Failure,
   StructError,
 } from 'superstruct';
+
 import { refineEmail } from '~/components/organisms/FormContact/FormContact.schema';
 import { rule } from '~/utils/validator';
 

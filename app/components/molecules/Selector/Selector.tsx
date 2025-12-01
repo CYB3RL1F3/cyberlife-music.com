@@ -1,5 +1,6 @@
 import Dropdown, { DropdownProps } from '~/components/atoms/Dropdown';
 import Label from '~/components/atoms/Label';
+
 import { Item, SelectorProps } from './Selector.types';
 
 const Selector = <T,>({

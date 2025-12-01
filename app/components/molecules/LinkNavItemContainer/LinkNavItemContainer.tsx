@@ -1,9 +1,11 @@
-import type { LinkNavItemContainerProps } from './LinkNavItemContainer.types';
 import { useRef, useEffect, useCallback } from 'react';
+
 import LinkNavItem from '~/components/atoms/LinkNavItem';
 import { debounce } from '~/utils/debounce';
 import { useResize } from '~/hooks/misc/useResize';
 import { useNavStore } from '~/hooks/stores/nav/useNavStore';
+
+import type { LinkNavItemContainerProps } from './LinkNavItemContainer.types';
 
 const LinkNavItemContainer = ({
   index,

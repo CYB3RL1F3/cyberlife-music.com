@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import postQuery from '~/gql/queries/post.gql';
 import postFragments from '~/gql/fragments/post.gql';

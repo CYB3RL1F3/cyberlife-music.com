@@ -1,7 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
-import type { OrderFunnelStep2Props } from './OrderFunnelStep2.types';
+
 import FormHeading from '~/components/organisms/FormHeading';
 import FormCheckoutContainer from '~/components/organisms/FormCheckoutContainer';
+
+import type { OrderFunnelStep2Props } from './OrderFunnelStep2.types';
 
 const OrderFunnelStep2 = (props: OrderFunnelStep2Props) => {
   return (

@@ -1,17 +1,19 @@
-import PageDetailLayout from "~/components/layouts/PageDetailLayout/PageDetailLayout";
-import Thumbnail from "~/components/molecules/Thumbnail/Thumbnail";
-import type { ReleaseDetailsProps } from "./ReleaseDetails.types";
-import Text from "~/components/atoms/Text";
-import dayjs from "dayjs";
-import ListLinkIconsRelease from "~/components/organisms/ListLinkIconsRelease";
+import dayjs from 'dayjs';
+
+import PageDetailLayout from '~/components/layouts/PageDetailLayout/PageDetailLayout';
+import Thumbnail from '~/components/molecules/Thumbnail/Thumbnail';
+import Text from '~/components/atoms/Text';
+import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
+
+import type { ReleaseDetailsProps } from './ReleaseDetails.types';
 
 const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
   if (!release.release) return null;
   const { thumb, releaseDate, cat, label, role, genre, year } = release.release;
-  const date = releaseDate ? dayjs(releaseDate).format("DD/MM/YYYY") : year;
+  const date = releaseDate ? dayjs(releaseDate).format('DD/MM/YYYY') : year;
   return (
     <PageDetailLayout
-      thumbnail={<Thumbnail variant="wider" src={thumb || ""} />}
+      thumbnail={<Thumbnail variant="wider" src={thumb || ''} />}
       linkIcons={<ListLinkIconsRelease release={release} />}
     >
       <Text.RightItalic>

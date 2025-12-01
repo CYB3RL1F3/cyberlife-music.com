@@ -1,10 +1,12 @@
 // ApolloContext.tsx
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
-import type { ApolloContextProps } from './ApolloContext.types';
-import { omitDeep } from '~/utils/object';
-import { getApiUrl } from '~/utils/config';
 import { ApolloProvider } from '@apollo/client/react';
 import { BaseHttpLink } from '@apollo/client/link/http';
+
+import { omitDeep } from '~/utils/object';
+import { getApiUrl } from '~/utils/config';
+
+import type { ApolloContextProps } from './ApolloContext.types';
 
 // Déclare la shape de l'état hydraté si tu fais du SSR/SSG
 

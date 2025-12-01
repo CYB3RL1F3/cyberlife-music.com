@@ -1,7 +1,8 @@
-import { createContext, useContext, useRef } from 'react';
-import type { ContainerScrollPageProps } from './ContainerScrollPage.types';
 import clsx from 'clsx';
+
 import ContainerScrollContextProvider from '~/components/contexts/ContainerScrollContext';
+
+import type { ContainerScrollPageProps } from './ContainerScrollPage.types';
 
 const ContainerScrollPage = ({
   children,

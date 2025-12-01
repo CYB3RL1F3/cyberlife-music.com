@@ -1,10 +1,12 @@
-import Button from "~/components/atoms/Button";
-import type { ButtonMenuProps } from "./ButtonMenu.types";
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
+
+import Button from '~/components/atoms/Button';
+
+import type { ButtonMenuProps } from './ButtonMenu.types';
 
 const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
   const barClassName =
-    "block w-6 h-1 transition-all duration-75 ease-in-out bg-gray-200";
+    'block w-6 h-1 transition-all duration-75 ease-in-out bg-gray-200';
   return (
     <Button
       title="menu"
@@ -13,18 +15,18 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
     >
       <div
         className={clsx(barClassName, {
-          "rotate-45 translate-y-[6px] translate-x-[1px] scale-75": isOpen
+          'rotate-45 translate-y-[6px] translate-x-[1px] scale-75': isOpen,
         })}
       />
       <div
         className={clsx(barClassName, {
-          "h-0 opacity-0 scale-75": isOpen
+          'h-0 opacity-0 scale-75': isOpen,
         })}
       />
       <div
         className={clsx(barClassName, {
-          "rotate-[135deg] scale-75 translate-x-[1px] translate-y-[-5px]":
-            isOpen
+          'rotate-[135deg] scale-75 translate-x-[1px] translate-y-[-5px]':
+            isOpen,
         })}
       />
     </Button>

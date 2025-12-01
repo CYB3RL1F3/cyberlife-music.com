@@ -1,10 +1,11 @@
+import { useRef } from 'react';
+import { TfiLocationPin } from 'react-icons/tfi';
+
 import Icon from '~/components/atoms/Icon';
 import Mapbox from '~/components/atoms/Mapbox';
 import { Marker } from '~/components/atoms/MapboxElements';
+
 import type { EventMapProps } from './EventMap.types';
-import { TfiLocationPin } from 'react-icons/tfi';
-import type { MutableRefObject } from 'react';
-import { useRef } from 'react';
 
 const EventMap = ({ location, height = 272 }: EventMapProps) => {
   const ref = useRef<HTMLDivElement>(null);

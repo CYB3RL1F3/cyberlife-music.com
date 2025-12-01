@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
+
 import TableCell from '~/components/atoms/TableCell';
 import { useTableContext } from '~/components/atoms/Table/Table.context';
+
 import type { TableHeadProps } from './TableHead.types';
 
 const TableHead = ({ columns, className }: TableHeadProps) => {

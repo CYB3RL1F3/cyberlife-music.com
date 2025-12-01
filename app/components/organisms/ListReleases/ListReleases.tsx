@@ -1,8 +1,10 @@
+import dayjs from 'dayjs';
+
 import List from '~/components/organisms/List';
 import ListReleasesItem from '~/components/organisms/ListReleasesItem';
 import DisplayEmptyList from '~/components/organisms/DisplayEmptyList';
+
 import type { ListReleasesProps } from './ListReleases.types';
-import dayjs from 'dayjs';
 
 const ListReleases = ({ releases }: ListReleasesProps) => {
   if (!releases?.length) {

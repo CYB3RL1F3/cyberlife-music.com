@@ -1,9 +1,11 @@
-import type { AnchorProps } from './Anchor.types';
 import { clsx } from 'clsx';
-import { Link } from '@remix-run/react';
 import { useMemo } from 'react';
+import { Link } from '@remix-run/react';
+
 import { useButtonStyle } from '~/hooks/styles/useButtonStyle';
 import { useLinkStyle } from '~/hooks/styles/useLinkStyle';
+
+import type { AnchorProps } from './Anchor.types';
 
 const Anchor = ({
   children,

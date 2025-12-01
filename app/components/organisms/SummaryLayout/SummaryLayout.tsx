@@ -1,4 +1,5 @@
 import ListSeparator from '~/components/molecules/ListSeparator';
+
 import type { SummaryLayoutProps } from './SummaryLayout.types';
 
 const SummaryLayout = ({ children, title, extra }: SummaryLayoutProps) => {

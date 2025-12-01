@@ -410,3 +410,15 @@ input:-webkit-autofill:active{
 .ytp-chrome-top * {
   display: none !important;
 }
+
+.paypal-button-container, .paypal-button-container.paypal-buttons.paypal-buttons-context-iframe {
+  height: 40px !important;
+}
+
+.paypal-button-container div {
+  height: 40px !important;
+}
+
+.paypal-button-container iframe.component-frame.visible {
+  height: 40px !important;
+}

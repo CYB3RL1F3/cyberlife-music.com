@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import summaryQuery from '~/gql/queries/summary.gql';
 import releaseFragment from '~/gql/fragments/release.gql';

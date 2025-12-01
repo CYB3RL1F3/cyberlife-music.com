@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import { getConfig } from '~/utils/config';
 import {
   cleanUrl,
@@ -6,7 +8,6 @@ import {
   RSSItem,
   cleanText,
 } from './builder.rss';
-import dayjs from 'dayjs';
 import { Track } from '~/types/gql';
 
 export const getFileSize = async (url: string): Promise<number> => {

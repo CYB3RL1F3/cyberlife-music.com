@@ -1,9 +1,10 @@
-import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
 import ListReleases from '~/components/organisms/ListReleases';
 import HandlerContent from '~/components/molecules/HandlerContent';
 import Loader from '~/components/molecules/Loader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
 import ReleasesPageHeader from '~/components/organisms/ReleasesPageHeader';
+
+import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
 
 const ReleasesPage = () => {
   const { data, loading } = useReleasesQuery();

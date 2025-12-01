@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client/react';
 import { gql } from '@apollo/client';
+
 import unsubscribeMutation from '~/gql/mutations/unsubscribe.gql';
 import type {
   UnSubscribeMutation,

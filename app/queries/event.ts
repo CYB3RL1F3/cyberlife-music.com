@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import eventQuery from '~/gql/queries/event.gql';
 import eventFragment from '~/gql/fragments/events.gql';

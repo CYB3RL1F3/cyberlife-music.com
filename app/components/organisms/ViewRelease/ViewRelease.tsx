@@ -1,13 +1,15 @@
+import { motion, useWillChange } from 'framer-motion';
+
+import Text from '~/components/atoms/Text';
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
+import PicturesGallery from '~/components/organisms/PicturesGallery';
 import ReleaseDetails from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 import ReleaseTracklist from '~/components/organisms/ReleaseTracklist';
-import type { ViewReleaseProps } from './ViewRelease.types';
-import Text from '~/components/atoms/Text';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { motion, useWillChange } from 'framer-motion';
 import { getTextToHtml } from '~/utils/html';
-import PicturesGallery from '~/components/organisms/PicturesGallery';
+
+import type { ViewReleaseProps } from './ViewRelease.types';
 
 const ViewRelease = ({ release }: ViewReleaseProps) => {
   const willChange = useWillChange();

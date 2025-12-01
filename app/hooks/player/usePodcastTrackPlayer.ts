@@ -1,6 +1,7 @@
-import { useTrackPlayer } from './useTrackPlayer';
-import { usePodcastTrackPosition } from './usePodcastTrackPosition';
 import { Track } from '~/types/gql';
+
+import { useTrackPlayer } from '~/hooks/player/useTrackPlayer';
+import { usePodcastTrackPosition } from '~/hooks/player/usePodcastTrackPosition';
 
 export const usePodcastTrackPlayer = (track: Track) => {
   const { prevId, nextId } = usePodcastTrackPosition(track.id);

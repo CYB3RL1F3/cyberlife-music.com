@@ -1,13 +1,15 @@
+import { motion, useWillChange } from 'framer-motion';
+
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
 import CarouselEvent from '~/components/organisms/CarouselEvent';
-import type { ViewEventProps } from './ViewEvent.types';
 import Text from '~/components/atoms/Text';
-import { motion, useWillChange } from 'framer-motion';
 import Anchor from '~/components/atoms/Anchor';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import { getTextToHtml } from '~/utils/html';
 import { getEventDateDisplay } from '~/utils/date';
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import type { ViewEventProps } from './ViewEvent.types';
 
 const ViewEvent = ({ event }: ViewEventProps) => {
   const { title, address, country, cost, lineup, description, links } = event;

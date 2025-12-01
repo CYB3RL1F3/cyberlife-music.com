@@ -1,10 +1,12 @@
-import BackgroundImage from "~/components/atoms/BackgroundImage";
-import EventMap from "~/components/molecules/EventMap";
-import type { CarouselContainerProps } from "../CarouselContainer";
-import CarouselContainer from "../CarouselContainer";
-import type { CarouselEventProps } from "./CarouselEvent.types";
-import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import type { ReactNode } from 'react';
+import { useEffect, useState } from 'react';
+
+import BackgroundImage from '~/components/atoms/BackgroundImage';
+import EventMap from '~/components/molecules/EventMap';
+import type { CarouselContainerProps } from '~/components/organisms/CarouselContainer';
+import CarouselContainer from '~/components/organisms/CarouselContainer';
+
+import type { CarouselEventProps } from './CarouselEvent.types';
 
 const CarouselEvent = ({ event }: CarouselEventProps) => {
   const { flyer, location, title } = event;
@@ -15,7 +17,7 @@ const CarouselEvent = ({ event }: CarouselEventProps) => {
   }, [location]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleDrag: CarouselContainerProps["onDrag"] = (e, i) => {
+  const handleDrag: CarouselContainerProps['onDrag'] = (e, i) => {
     const delta = i.offset.x > 0 ? -1 : 1;
     if (currentIndex + delta < 0 || currentIndex + delta > 1) return;
     setCurrentIndex((index) => index + delta);

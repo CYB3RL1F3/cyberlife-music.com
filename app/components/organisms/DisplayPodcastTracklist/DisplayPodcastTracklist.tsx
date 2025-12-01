@@ -1,8 +1,9 @@
-import type { DisplayPodcastTracklistProps } from "./DisplayPodcastTracklist.types";
-import Text from "~/components/atoms/Text";
+import Text from '~/components/atoms/Text';
+
+import type { DisplayPodcastTracklistProps } from './DisplayPodcastTracklist.types';
 
 const DisplayPodcastTracklist = ({
-  tracklist
+  tracklist,
 }: DisplayPodcastTracklistProps) => {
   return (
     <ul className="p-0 m-0">
