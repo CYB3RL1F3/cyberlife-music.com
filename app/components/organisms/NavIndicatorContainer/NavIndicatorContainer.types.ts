@@ -1,5 +1,5 @@
+import { Routes } from '~/routes/routes';
 
-  export type NavIndicatorContainerProps = {
-    
-  }
-  
+export type NavIndicatorContainerProps = {
+  routes: readonly Routes[];
+};

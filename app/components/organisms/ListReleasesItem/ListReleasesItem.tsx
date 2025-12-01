@@ -1,20 +1,24 @@
-import type { ListReleasesItemProps } from './ListReleasesItem.types';
+import dayjs from 'dayjs';
+
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
-import dayjs from 'dayjs';
-import Picture from '../Picture';
+import Picture from '~/components/organisms/Picture';
 import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
+
+import type { ListReleasesItemProps } from './ListReleasesItem.types';
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
   if (!release.release) return null;
 
-  const { title, slug, releaseDate, role, thumb, label } = release.release;
+  const { title, slug, tracklist, releaseDate, role, thumb, label } =
+    release.release;
 
   const defaultThumb =
     'https://media.istockphoto.com/id/134119615/photo/vinyl-record.jpg';
 
   const artwork = thumb || defaultThumb;
   if (!title) return null;
+  const firstTrack = tracklist?.[0].stream;
   return (
     <ListItem thumbnail={<Picture alt={title} src={artwork} />}>
       <ListItemSnippet title={title} href={`/releases/${slug}`}>

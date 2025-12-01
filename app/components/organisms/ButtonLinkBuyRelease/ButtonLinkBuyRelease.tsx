@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
+import { FaCartShopping } from 'react-icons/fa6';
+
 import ButtonLink from '~/components/atoms/ButtonLink';
 import Icon from '~/components/atoms/Icon';
-import { FaCartShopping } from 'react-icons/fa6';
 import { useCart } from '~/hooks/db/useCart';
 
 const ButtonLinkBuyRelease = () => {

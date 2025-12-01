@@ -1,5 +1,6 @@
 // components/util/CrashBoundary.tsx
 import React from 'react';
+
 import { CrashBoundaryProps, CrashBoundaryState } from './CrashBoundary.types';
 
 export default class CrashBoundary extends React.Component<

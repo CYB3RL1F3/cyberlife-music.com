@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import useDebounceEffect from '../misc/useDebouncedEffect';
+
+import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 
 export const useMediaSession = () => {
-  const { currentTrack, jumping, isPlaying, play, pause, setSeek } =
-    usePlayerContext();
+  const { currentTrack, isPlaying, play, pause, setSeek } = usePlayerStore();
 
   const handlePlay = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.id) return;
@@ -15,7 +15,7 @@ export const useMediaSession = () => {
   const handlePause = useCallback<MediaSessionActionHandler>(() => {
     if (!currentTrack?.id) return;
     window.navigator.mediaSession.playbackState = 'paused';
-    pause(currentTrack.id);
+    pause();
   }, [currentTrack?.id, pause]);
 
   const handleSeek = useCallback<MediaSessionActionHandler>(

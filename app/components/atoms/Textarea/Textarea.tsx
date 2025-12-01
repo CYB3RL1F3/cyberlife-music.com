@@ -1,8 +1,9 @@
 import type { ChangeEventHandler } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
+
 import { useInputStyle } from '~/hooks/misc/useInputStyle';
 import type { TextareaProps } from './Textarea.types';
-import { twMerge } from 'tailwind-merge';
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (

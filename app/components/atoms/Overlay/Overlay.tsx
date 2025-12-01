@@ -1,9 +1,11 @@
-import { useCallback, useMemo, useEffect, useState, useRef } from 'react';
-import { useOutsideMouseClickEvent } from '~/hooks/events/useOutsideMouseClickEvent';
-import { useModalOpen } from '~/hooks/misc/useModalOpen';
 import clsx from 'clsx';
-import type { OverlayProps } from './Overlay.types';
+import { useCallback, useMemo, useEffect, useState, useRef } from 'react';
+
 import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
+import { useModalOpen } from '~/hooks/misc/useModalOpen';
+import { useOutsideMouseClickEvent } from '~/hooks/events/useOutsideMouseClickEvent';
+
+import type { OverlayProps } from './Overlay.types';
 
 const Overlay = ({
   children,

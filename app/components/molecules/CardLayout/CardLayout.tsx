@@ -1,5 +1,6 @@
-import Card from "~/components/atoms/Card";
-import type { CardLayoutProps } from "./CardLayout.types";
+import Card from '~/components/atoms/Card';
+
+import type { CardLayoutProps } from './CardLayout.types';
 
 const CardLayout = ({ children, left }: CardLayoutProps) => {
   return (

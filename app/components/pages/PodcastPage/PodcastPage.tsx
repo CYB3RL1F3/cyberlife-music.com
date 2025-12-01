@@ -1,10 +1,11 @@
-import type { PodcastPageProps } from "./PodcastPage.types";
-import { usePlaylistTrackQuery } from "~/hooks/queries/usePlaylistTrackQuery";
-import HandlerContent from "~/components/molecules/HandlerContent";
-import Loader from "~/components/molecules/Loader";
-import ViewPodcast from "~/components/organisms/ViewPodcast";
-import ErrorPage from "../ErrorPage";
-import ButtonLink from "~/components/atoms/ButtonLink";
+import ButtonLink from '~/components/atoms/ButtonLink';
+import HandlerContent from '~/components/molecules/HandlerContent';
+import Loader from '~/components/molecules/Loader';
+import ViewPodcast from '~/components/organisms/ViewPodcast';
+import ErrorPage from '~/components/pages/ErrorPage';
+import { usePlaylistTrackQuery } from '~/hooks/queries/usePlaylistTrackQuery';
+
+import type { PodcastPageProps } from './PodcastPage.types';
 
 const PodcastPage = ({ id }: PodcastPageProps) => {
   const { data, loading } = usePlaylistTrackQuery(id);

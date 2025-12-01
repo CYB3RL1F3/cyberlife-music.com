@@ -1,9 +1,11 @@
-import Table from '~/components/atoms/Table';
-import type { TableOrderResumeProps } from './TableOrderResume.types';
-import { getHtPrice } from '~/utils/business/purchase';
 import { useMemo } from 'react';
-import OrderItemActions from '../OrderItemActions';
+
+import Table from '~/components/atoms/Table';
+import { getHtPrice } from '~/utils/business/purchase';
+import OrderItemActions from '~/components/organisms/OrderItemActions';
 import { toFixed } from '~/utils/number';
+
+import type { TableOrderResumeProps } from './TableOrderResume.types';
 
 const TableOrderResume = ({ items, readonly }: TableOrderResumeProps) => {
   const totalPrice = useMemo(() => getHtPrice(items), [items]);

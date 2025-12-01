@@ -1,3 +1,1 @@
-export { default } from "./PodcastsPage";
-  export type { PodcastsPageProps } from "./PodcastsPage.types";
-  
+export { default } from './PodcastsPage';

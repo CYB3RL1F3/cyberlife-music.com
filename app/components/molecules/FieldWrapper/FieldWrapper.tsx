@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
-import LabelError from "~/components/atoms/LabelError";
-import type { FieldWrapperProps } from "./FieldWrapper.types";
+import { motion } from 'framer-motion';
+
+import LabelError from '~/components/atoms/LabelError';
+
+import type { FieldWrapperProps } from './FieldWrapper.types';
 
 const FieldWrapper = ({ children, error }: FieldWrapperProps) => {
   return (

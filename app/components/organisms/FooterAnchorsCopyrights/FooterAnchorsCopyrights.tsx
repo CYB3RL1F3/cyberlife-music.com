@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import type { FooterAnchorsProps } from '~/components/molecules/FooterAnchors';
 import FooterAnchors from '~/components/molecules/FooterAnchors';
 

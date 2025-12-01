@@ -1,7 +1,9 @@
-import type { FieldValues } from "react-hook-form";
-import { Controller } from "react-hook-form";
-import FieldTextarea from "~/components/molecules/FieldTextarea";
-import type { ControlledFieldTextareaProps } from "./ControlledFieldTextarea.types";
+import type { FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+
+import FieldTextarea from '~/components/molecules/FieldTextarea';
+
+import type { ControlledFieldTextareaProps } from './ControlledFieldTextarea.types';
 
 const ControlledFieldTextarea = <T extends FieldValues>({
   name,

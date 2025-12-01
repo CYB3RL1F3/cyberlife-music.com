@@ -1,12 +1,14 @@
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from '@remix-run/react';
+
 import AnimatedIconCheck from '~/components/atoms/AnimatedIconCheck';
 import Button from '~/components/atoms/Button';
-import type { OrderFunnelSuccessProps } from './OrderFunnelSuccess.types';
-import { Link } from '@remix-run/react';
 import { useCart } from '~/hooks/db/useCart';
-import { useEffect, useMemo, useState } from 'react';
 import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
 import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
+
+import type { OrderFunnelSuccessProps } from './OrderFunnelSuccess.types';
 
 const getAnimation = (i: number) => ({
   initial: { y: -50, opacity: 0 },

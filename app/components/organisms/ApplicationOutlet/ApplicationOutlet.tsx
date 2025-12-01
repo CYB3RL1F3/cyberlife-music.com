@@ -1,7 +1,9 @@
 import { AnimatePresence, motion, useWillChange } from 'framer-motion';
-import { ApplicationOutletProps } from './ApplicationOutlet.types';
 import { useLocation, useOutlet } from '@remix-run/react';
+
 import { useContainerScrollContext } from '~/components/contexts/ContainerScrollContext/ContainerScrollContext';
+
+import { ApplicationOutletProps } from './ApplicationOutlet.types';
 
 export const ApplicationOutlet = ({ children }: ApplicationOutletProps) => {
   const willChange = useWillChange();

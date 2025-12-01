@@ -1,35 +1,35 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from 'framer-motion';
 
 const pathCircleVariants = {
   from: {
     opacity: 0,
-    pathLength: 0
+    pathLength: 0,
   },
   to: {
     opacity: 1,
     pathLength: 1,
     transition: {
       duration: 1,
-      ease: "easeInOut"
-    }
-  }
-};
+      ease: 'easeInOut',
+    },
+  },
+} satisfies Variants;
 
 const pathCheckVariants = {
   from: {
     opacity: 0,
-    pathLength: 0
+    pathLength: 0,
   },
   to: {
     opacity: 1,
     pathLength: 1,
     transition: {
       duration: 1,
-      ease: "easeInOut",
-      delay: 0.8
-    }
-  }
-};
+      ease: 'easeInOut',
+      delay: 0.8,
+    },
+  },
+} satisfies Variants;
 
 const AnimatedIconCheck = () => {
   return (

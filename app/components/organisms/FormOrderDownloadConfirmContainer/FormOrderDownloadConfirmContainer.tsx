@@ -1,11 +1,13 @@
-import ButtonSubmit from '~/components/molecules/ButtonSubmit';
-import FormOrderDownloadConfirm from '../FormOrderDownloadConfirm/FormOrderDownloadConfirm';
-import type { FormOrderDownloadConfirmContainerProps } from './FormOrderDownloadConfirmContainer.types';
-import { FormOrderDownloadConfirmProps } from '../FormOrderDownloadConfirm/FormOrderDownloadConfirm.types';
-import { MdSend } from 'react-icons/md';
 import { useState } from 'react';
+import { MdSend } from 'react-icons/md';
+
+import ButtonSubmit from '~/components/molecules/ButtonSubmit';
+import FormOrderDownloadConfirm from '~/components/organisms/FormOrderDownloadConfirm/FormOrderDownloadConfirm';
+import { FormOrderDownloadConfirmProps } from '~/components/organisms/FormOrderDownloadConfirm/FormOrderDownloadConfirm.types';
 import { useDownloadOrderTracksMutation } from '~/hooks/mutations/useDownloadOrderTracksMutation';
-import { DownloadOrderTracks } from '~/types/gql/DownloadOrderTracks';
+import Spinner from '~/components/atoms/Spinner';
+
+import type { FormOrderDownloadConfirmContainerProps } from './FormOrderDownloadConfirmContainer.types';
 
 const FormOrderDownloadConfirmContainer = ({
   id,
@@ -40,7 +42,10 @@ const FormOrderDownloadConfirmContainer = ({
       onSubmit={handleSubmit}
       footer={() => (
         <div className="flex justify-end w-full">
-          <ButtonSubmit rightIcon={<MdSend />} loading={false}>
+          <ButtonSubmit
+            rightIcon={loading ? <Spinner variant="md" /> : <MdSend />}
+            loading={loading}
+          >
             Get audio files
           </ButtonSubmit>
         </div>

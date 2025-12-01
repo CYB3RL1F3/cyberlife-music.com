@@ -1,8 +1,8 @@
+import ButtonLink from '~/components/atoms/ButtonLink';
 import HandlerContent from '~/components/molecules/HandlerContent';
 import Loader from '~/components/molecules/Loader';
 import Summary from '~/components/organisms/Summary';
-import ErrorPage from '../ErrorPage';
-import ButtonLink from '~/components/atoms/ButtonLink';
+import ErrorPage from '~/components/pages/ErrorPage';
 import { useSummaryQuery } from '~/hooks/queries/useSummaryQuery';
 import { getConfig } from '~/utils/config';
 

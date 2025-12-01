@@ -8,31 +8,31 @@ const FooterAnchorsInfos = ({ infos }: FooterAnchorsInfosProps) => {
     () => [
       {
         label: 'Soundcloud',
-        href: infos.soundcloud,
+        href: infos.soundcloud || '/',
       },
       {
         label: 'Bandcamp',
-        href: infos.bandcamp,
+        href: infos.bandcamp || '/',
       },
       {
         label: 'Discogs',
-        href: infos.discogs,
+        href: infos.discogs || '/',
       },
       {
         label: 'Instagram',
-        href: infos.instagram,
+        href: infos.instagram || '/',
       },
       {
         label: 'Facebook',
-        href: infos.facebook,
+        href: infos.facebook || '/',
       },
       {
         label: 'Twitter',
-        href: infos.twitter,
+        href: infos.twitter || '/',
       },
       {
         label: 'Resident Advisor',
-        href: infos.RA,
+        href: infos.RA || '/',
       },
     ],
     [infos],

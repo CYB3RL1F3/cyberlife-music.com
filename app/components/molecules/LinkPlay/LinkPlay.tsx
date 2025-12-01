@@ -1,6 +1,8 @@
-import type { LinkPlayProps } from "./LinkPlay.types";
-import ShapePlay from "~/components/atoms/ShapePlay";
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react';
+
+import ShapePlay from '~/components/atoms/ShapePlay';
+
+import type { LinkPlayProps } from './LinkPlay.types';
 
 const LinkPlay = ({ to }: LinkPlayProps) => {
   return (

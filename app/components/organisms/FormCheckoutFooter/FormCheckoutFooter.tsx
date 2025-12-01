@@ -1,13 +1,15 @@
-import TableFinalOrder from '~/components/organisms/TableFinalOrder';
-import Button from '~/components/atoms/Button';
-import Spinner from '~/components/atoms/Spinner';
-import Icon from '~/components/atoms/Icon';
-import { MdOutlinePayments, MdWarning } from 'react-icons/md';
-import { GrPowerReset } from 'react-icons/gr';
-import { RxCross2 } from 'react-icons/rx';
-import { FormCheckoutFooterProps } from './FormCheckoutFooter.types';
 import { motion } from 'framer-motion';
+import { GrPowerReset } from 'react-icons/gr';
+import { MdOutlinePayments, MdWarning } from 'react-icons/md';
+import { RxCross2 } from 'react-icons/rx';
+
+import Button from '~/components/atoms/Button';
+import Icon from '~/components/atoms/Icon';
+import Spinner from '~/components/atoms/Spinner';
+import TableFinalOrder from '~/components/organisms/TableFinalOrder';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import { FormCheckoutFooterProps } from './FormCheckoutFooter.types';
 
 const FormCheckoutFooter = ({
   reset,

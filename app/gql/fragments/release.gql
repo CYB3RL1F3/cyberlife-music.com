@@ -6,6 +6,7 @@ fragment ReleaseFragment on ReleaseDtoOutput {
   role
   year
   thumb
+  images
   label
   tracklist {
     title
@@ -27,13 +28,7 @@ fragment ReleaseFragment on ReleaseDtoOutput {
       role
     }
     stream {
-      id
-      title
-      artwork
-      uri
-      url
-      waveform
-      duration
+      ...TrackFragment
     }
   }
 }

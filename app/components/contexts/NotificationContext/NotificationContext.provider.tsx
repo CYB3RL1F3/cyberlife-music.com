@@ -1,17 +1,19 @@
+import { toast } from 'react-toastify';
 import { useCallback, useEffect, useState } from 'react';
+
 import { useSubscribeMutation } from '~/hooks/mutations/useSubscribeMutation';
-import { useConfigContext } from '../ConfigContext';
-import { NotificationContext } from './NotificationContext';
-import type { NotificationContextProviderProps } from './NotificationContext.types';
+import { useConfigContext } from '~/components/contexts/ConfigContext';
+import { usePwaContext } from '~/components/contexts/PwaContext/PwaContext.hook';
+import { useUnSubscribeMutation } from '~/hooks/mutations/useUnsubscribeMutation';
+import { useLocalStorage } from '~/hooks/misc/useLocaleStorage';
+
 import {
   getSubscription,
   getSubscriptionParameters,
 } from './NotificationContext.utils';
 
-import { usePwaContext } from '../PwaContext/PwaContext.hook';
-import { useUnSubscribeMutation } from '~/hooks/mutations/useUnsubscribeMutation';
-import { useLocalStorage } from '~/hooks/misc/useLocaleStorage';
-import { toast } from 'react-toastify';
+import { NotificationContext } from './NotificationContext';
+import type { NotificationContextProviderProps } from './NotificationContext.types';
 
 const NotificationContextProvider = ({
   children,
@@ -72,7 +74,7 @@ const NotificationContextProvider = ({
 
       if (subscribed) {
         toast.success("You're now subscribed to notifications!", {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: 'bottom-right',
         });
       }
     } else {
@@ -80,7 +82,7 @@ const NotificationContextProvider = ({
 
       if (unsubscribed) {
         toast.info("You're now unsubscribed to notifications.", {
-          position: toast.POSITION.BOTTOM_RIGHT,
+          position: 'bottom-right',
         });
       }
     }

@@ -1,12 +1,13 @@
-import type { ButtonLinkProps } from "./ButtonLink.types";
-import Anchor from "~/components/atoms/Anchor";
+import Anchor from '~/components/atoms/Anchor';
+
+import type { ButtonLinkProps } from './ButtonLink.types';
 
 const ButtonLink = ({
   className,
   href,
-  target = "_blank",
+  target = '_blank',
   children,
-  rightIcon
+  rightIcon,
 }: ButtonLinkProps) => {
   return (
     <Anchor className={className} variant="button" href={href} target={target}>

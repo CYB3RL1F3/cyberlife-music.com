@@ -1,5 +1,18 @@
 fragment TrackFragment on Track {
-  ...TrackSnippetFragment
+  id
+  slug
+  title
+  genre
+  description
+  artwork
+  date
+  uri
+  url
+  duration
+  waveform
+  downloadable
+  download
+  soundcloud
   license
   stats {
     count

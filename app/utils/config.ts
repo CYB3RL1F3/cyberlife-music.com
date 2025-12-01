@@ -1,6 +1,7 @@
-import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
 import dotenv from 'dotenv';
-import { Environment } from '~/types/gql/globalTypes';
+
+import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
+import { Environment } from '~/types/gql';
 
 export const getServerConfig = (): Config | null => {
   const { parsed } = dotenv.config();
@@ -8,7 +9,9 @@ export const getServerConfig = (): Config | null => {
     return {
       api: parsed?.API_URL || process.env.API_URL || '',
       apiEndpoint: parsed?.API_ENDPOINT || process.env.API_ENDPOINT || '',
-      env: Environment[(parsed?.ENV || process.env.ENV || '') as Environment],
+      env: Environment[
+        (parsed?.ENV || process.env.ENV || '') as keyof typeof Environment
+      ],
       notificationPoolId:
         parsed?.NOTIFICATION_POOL_ID || process.env.NOTIFICATION_POOL_ID || '',
       mapbox: {

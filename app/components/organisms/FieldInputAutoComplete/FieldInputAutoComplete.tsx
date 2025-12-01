@@ -3,13 +3,17 @@ import AutoCompleteItem from '~/components/atoms/AutoCompleteItem';
 import ClientOnly from '~/components/atoms/ClientOnly';
 import FieldInput from '~/components/molecules/FieldInput';
 import { useToggleState } from '~/hooks/misc/useToggleState';
-import type { FieldInputAutoCompleteProps } from './FieldInputAutoComplete.types';
-import { forwardRef } from 'react';
 
-const FieldInputAutoComplete = forwardRef<
-  HTMLInputElement,
-  FieldInputAutoCompleteProps
->(({ size, values, value, onChange, ...props }, ref) => {
+import type { FieldInputAutoCompleteProps } from './FieldInputAutoComplete.types';
+
+const FieldInputAutoComplete = ({
+  size,
+  values,
+  value,
+  onChange,
+  ref,
+  ...props
+}: FieldInputAutoCompleteProps) => {
   const filteredValues = values.filter(
     (item) =>
       value &&
@@ -50,7 +54,7 @@ const FieldInputAutoComplete = forwardRef<
       </ClientOnly>
     </div>
   );
-});
+};
 
 FieldInputAutoComplete.displayName = 'FieldInputAutoComplete';
 

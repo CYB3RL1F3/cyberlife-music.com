@@ -1,6 +1,6 @@
-import type { PostQueryPost } from "~/types/gql/PostQuery";
+import { Post } from '~/types/gql';
 
 export type PostDisplayProps = {
-  post?: PostQueryPost;
+  post?: Post;
   className?: string;
 };

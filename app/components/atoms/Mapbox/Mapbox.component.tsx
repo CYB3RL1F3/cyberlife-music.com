@@ -1,10 +1,12 @@
+import { useCallback } from 'react';
 import Map, {
   NavigationControl,
   ViewStateChangeEvent,
 } from 'react-map-gl/mapbox';
-import type { Coordinates, MapboxProps } from './Mapbox.types';
+
 import { useConfigContext } from '~/components/contexts/ConfigContext';
-import { useCallback } from 'react';
+
+import type { Coordinates, MapboxProps } from './Mapbox.types';
 
 const Mapbox = ({
   children,

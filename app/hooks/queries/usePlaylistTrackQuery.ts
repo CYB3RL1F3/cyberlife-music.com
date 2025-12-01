@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client/react';
-import { profile } from '~/config';
 
+import { profile } from '~/config';
+import { playlistTrackGqlQuery } from '~/queries/playlistTrack';
 import type {
   PlaylistTrackQuery,
   PlaylistTrackQueryVariables,
-} from '~/types/gql/PlaylistTrackQuery';
-import { playlistTrackGqlQuery } from '~/queries/playlistTrack';
+} from '~/types/gql';
 
 export const usePlaylistTrackQuery = (
   trackId: PlaylistTrackQueryVariables['trackId'],

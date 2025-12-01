@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+
 import { usePlayerTrackVisibility } from '~/hooks/player/usePlayerTrackVisibility';
 import PlayerCurrentTrackContainer from '~/components/organisms/PlayerCurrentTrackContainer';
 

@@ -1,10 +1,11 @@
-import type { VideoPageProps } from "./VideoPage.types";
-import { useVideoQuery } from "~/hooks/queries/useVideoQuery";
-import HandlerContent from "~/components/molecules/HandlerContent";
-import Loader from "~/components/molecules/Loader";
-import ViewVideo from "~/components/organisms/ViewVideo";
-import ErrorPage from "../ErrorPage";
-import ButtonLink from "~/components/atoms/ButtonLink";
+import ButtonLink from '~/components/atoms/ButtonLink';
+import HandlerContent from '~/components/molecules/HandlerContent';
+import Loader from '~/components/molecules/Loader';
+import ViewVideo from '~/components/organisms/ViewVideo';
+import ErrorPage from '~/components/pages/ErrorPage';
+import { useVideoQuery } from '~/hooks/queries/useVideoQuery';
+
+import type { VideoPageProps } from './VideoPage.types';
 
 const VideoPage = ({ id }: VideoPageProps) => {
   const { data, loading } = useVideoQuery(id);

@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
-import AnimatedIconCheck from "~/components/atoms/AnimatedIconCheck";
-import Button from "~/components/atoms/Button";
-import type { FormContactSuccessProps } from "./FormContactSuccess.types";
+import { motion } from 'framer-motion';
+
+import AnimatedIconCheck from '~/components/atoms/AnimatedIconCheck';
+import Button from '~/components/atoms/Button';
+
+import type { FormContactSuccessProps } from './FormContactSuccess.types';
 
 const getAnimation = (i: number) => ({
   initial: { y: -50, opacity: 0 },
@@ -10,8 +12,8 @@ const getAnimation = (i: number) => ({
     opacity: 1,
     transition: {
       duration: 0.25,
-      delay: 0.3 + 0.2 * i
-    }
+      delay: 0.3 + 0.2 * i,
+    },
   },
   exit: {
     opacity: 0,
@@ -19,9 +21,9 @@ const getAnimation = (i: number) => ({
     delay: 0.3 * i,
     transition: {
       duration: 0.25,
-      delay: 0.1 * i
-    }
-  }
+      delay: 0.1 * i,
+    },
+  },
 });
 
 const FormContactSuccess = ({ onHide }: FormContactSuccessProps) => {

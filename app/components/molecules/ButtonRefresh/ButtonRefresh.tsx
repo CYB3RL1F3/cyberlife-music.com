@@ -1,6 +1,8 @@
-import { useNavigate } from '@remix-run/react';
 import { HiRefresh } from 'react-icons/hi';
+
+import { useNavigate } from '@remix-run/react';
 import Button from '~/components/atoms/Button';
+
 import type { ButtonRefreshProps } from './ButtonRefresh.types';
 
 const ButtonRefresh = ({ route = '.' }: ButtonRefreshProps) => {

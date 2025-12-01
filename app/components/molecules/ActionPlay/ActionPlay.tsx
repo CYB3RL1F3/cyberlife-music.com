@@ -1,6 +1,7 @@
-import Action from "~/components/atoms/Action";
-import type { ActionPlayProps } from "./ActionPlay.types";
-import ShapePlay from "~/components/atoms/ShapePlay";
+import Action from '~/components/atoms/Action';
+import ShapePlay from '~/components/atoms/ShapePlay';
+
+import type { ActionPlayProps } from './ActionPlay.types';
 
 const ActionPlay = ({ isPlaying, onChange, title }: ActionPlayProps) => {
   const handleClick = () => {

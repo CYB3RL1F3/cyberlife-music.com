@@ -1,8 +1,17 @@
+import Loader from '~/components/molecules/Loader';
+
 import type { HandlerContentProps } from './HandlerContent.types';
 
-const HandlerContent = ({ children, loader, loading }: HandlerContentProps) => {
-  if (loading) return <div className="w-full h-full">{loader}</div>;
-  return <div className="w-full h-full">{children}</div>;
+export const defaultLoader = <Loader message="Loading..." />;
+
+const HandlerContent = ({
+  children,
+  loader = defaultLoader,
+  loading,
+}: HandlerContentProps) => {
+  return (
+    <div className="w-full h-full">{loading && loader ? loader : children}</div>
+  );
 };
 
 export default HandlerContent;

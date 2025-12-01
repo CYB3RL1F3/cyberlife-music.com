@@ -1,11 +1,15 @@
-import type { MutableRefObject } from 'react';
 import { useRef, useEffect } from 'react';
-import NavIndicator from '~/components/atoms/NavIndicator';
-import { useNavContext } from '~/components/contexts/NavContext';
-import { debounce } from '~/utils/debounce';
+import { useLocation } from '@remix-run/react';
 
-const NavIndicatorContainer = () => {
-  const { currentIndex, items, setOffset } = useNavContext();
+import NavIndicator from '~/components/atoms/NavIndicator';
+import { debounce } from '~/utils/debounce';
+import { useNavStore } from '~/hooks/stores/nav/useNavStore';
+import { getCurrentRouteIndex } from '~/utils/nav';
+
+import { NavIndicatorContainerProps } from './NavIndicatorContainer.types';
+
+const NavIndicatorContainer = ({ routes }: NavIndicatorContainerProps) => {
+  const { currentIndex, items, setOffset, setIndex } = useNavStore();
   const currentItem = items[currentIndex];
   const ref = useRef<HTMLDivElement>(null);
 
@@ -19,6 +23,13 @@ const NavIndicatorContainer = () => {
   useEffect(() => {
     setTimeout(update, 300);
   }, [setOffset, update]);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const index = getCurrentRouteIndex(routes, pathname);
+    setIndex(index);
+  }, [pathname, routes]);
 
   return (
     <div ref={ref} className="hidden w-full h-1 md:flex">

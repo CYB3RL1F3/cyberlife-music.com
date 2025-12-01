@@ -1,4 +1,5 @@
 import LinkIcon from '~/components/atoms/LinkIcon/LinkIcon';
+
 import type { ListLinkIconsProps } from './ListLinkIcons.types';
 
 const ListLinkIcons = ({ linkIcons }: ListLinkIconsProps) => {

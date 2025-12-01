@@ -1,7 +1,9 @@
-import type { FieldValues } from "react-hook-form";
-import { Controller } from "react-hook-form";
-import FieldSwitch from "~/components/molecules/FieldSwitch";
-import type { ControlledFieldSwitchProps } from "./ControlledFieldSwitch.types";
+import type { FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+
+import FieldSwitch from '~/components/molecules/FieldSwitch';
+
+import type { ControlledFieldSwitchProps } from './ControlledFieldSwitch.types';
 
 const ControlledFieldSwitch = <T extends FieldValues>({
   name,
@@ -13,11 +15,7 @@ const ControlledFieldSwitch = <T extends FieldValues>({
       control={control}
       name={name}
       render={({ field, fieldState }) => (
-        <FieldSwitch
-          {...field}
-          error={fieldState.error?.message}
-          {...props}
-        />
+        <FieldSwitch {...field} error={fieldState.error?.message} {...props} />
       )}
     />
   );

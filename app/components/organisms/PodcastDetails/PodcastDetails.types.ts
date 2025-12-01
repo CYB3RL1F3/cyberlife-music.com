@@ -1,5 +1,5 @@
-import type { TrackFragment } from "~/types/gql/TrackFragment";
+import { Track } from '~/types/gql';
 
 export type PodcastDetailsProps = {
-  podcast: TrackFragment;
+  podcast: Track;
 };

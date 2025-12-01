@@ -1,3 +1,5 @@
+import type { ValueAnimationOptions } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
 import {
   Children,
   useRef,
@@ -6,9 +8,8 @@ import {
   useEffect,
   useState,
 } from 'react';
+
 import type { CarouselProps } from './Carousel.types';
-import type { ValueAnimationOptions } from 'framer-motion';
-import { motion, useMotionValue, animate } from 'framer-motion';
 
 const transition = {
   type: 'tween',

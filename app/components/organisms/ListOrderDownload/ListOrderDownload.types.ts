@@ -1,6 +1,5 @@
-import { DownloadFragment } from '~/types/gql/DownloadFragment';
-import { DownloadOrderTracksDownloadOrderTracks } from '~/types/gql/DownloadOrderTracks';
+import { Download } from '~/types/gql';
 
 export type ListOrderDownloadProps = {
-  download: DownloadOrderTracksDownloadOrderTracks;
+  download: Download;
 };

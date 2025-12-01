@@ -1,5 +1,5 @@
-import type { ReleasesQueryReleaseItems } from "~/types/gql/ReleasesQuery";
+import { ReleasesQuery } from '~/types/gql';
 
 export type ListLinkIconsReleaseProps = {
-  release: ReleasesQueryReleaseItems;
+  release: ReleasesQuery['releaseItems'][number];
 };

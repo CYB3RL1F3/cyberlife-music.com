@@ -12,10 +12,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export const loader: LoaderFunction = async () => {
   if (!process.env.APPLICATION_KEY) {
-    console.error(
-      'You must set the APPLICATION_KEY ' +
-        'environment variables. You can use the following ones:',
-    );
+    console.error('Application public key is not set in environment variables');
     return null;
   }
 

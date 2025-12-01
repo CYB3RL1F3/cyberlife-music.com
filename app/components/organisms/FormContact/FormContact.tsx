@@ -1,16 +1,18 @@
-import type { FormContactProps, FormContactValues } from './FormContact.types';
-import { superstructResolver } from '@hookform/resolvers/superstruct';
-import { useForm } from 'react-hook-form';
-import { formContactSchema } from './FormContact.schema';
-import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
-import ControlledFieldInputAutoComplete from '~/components/organisms/ControlledFieldInputAutoComplete/ControlledFieldInputAutoComplete';
-import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTextarea';
-import { IoMdSend } from 'react-icons/io';
-import ButtonSubmit from '~/components/molecules/ButtonSubmit/ButtonSubmit';
-import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
 import { motion, AnimatePresence, useWillChange } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { IoMdSend } from 'react-icons/io';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+
+import ButtonSubmit from '~/components/molecules/ButtonSubmit/ButtonSubmit';
+import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
+import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTextarea';
+import ControlledFieldInputAutoComplete from '~/components/organisms/ControlledFieldInputAutoComplete/ControlledFieldInputAutoComplete';
+import FormHeading from '~/components/organisms/FormHeading';
+import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import FormHeading from '../FormHeading';
+
+import type { FormContactProps, FormContactValues } from './FormContact.types';
+import { formContactSchema } from './FormContact.schema';
 
 const FormContact = ({
   onSubmit,

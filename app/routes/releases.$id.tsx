@@ -1,4 +1,5 @@
 import { useParams } from '@remix-run/react';
+
 import ErrorPage from '~/components/pages/ErrorPage';
 import ReleasePage from '~/components/pages/ReleasePage';
 import ReleasesPage from '~/components/pages/ReleasesPage';
@@ -15,7 +16,7 @@ export const CatchBoundary = () => {
   return (
     <ErrorPage
       code={500}
-      message="An error occurred while loading release page"
+      message="An error occurred while loading this release page"
     />
   );
 };

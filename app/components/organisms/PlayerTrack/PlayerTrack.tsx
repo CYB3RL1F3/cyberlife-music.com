@@ -1,8 +1,10 @@
-import type { MouseEventHandler } from 'react';
-import { useCallback, useRef } from 'react';
-import Waveform from '~/components/atoms/Waveform';
-import type { PlayerTrackProps } from './PlayerTrack.types';
 import { clsx } from 'clsx';
+import { useCallback, useRef } from 'react';
+import type { MouseEventHandler } from 'react';
+
+import Waveform from '~/components/atoms/Waveform';
+
+import type { PlayerTrackProps } from './PlayerTrack.types';
 
 const PlayerTrack = ({
   waveform,

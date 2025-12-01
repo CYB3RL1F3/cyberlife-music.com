@@ -1,10 +1,11 @@
+import dayjs from 'dayjs';
+
 import List from '~/components/organisms/List';
 import type { ListEventsProps } from './ListEvents.types';
 import ListEventsItem from '~/components/organisms/ListEventsItem';
 import ListEventsEmpty from '~/components/organisms/ListEventsEmpty';
 import ListSeparator from '~/components/molecules/ListSeparator';
 import { getSplittedEvents } from '~/utils/events';
-import dayjs from 'dayjs';
 
 const ListEvents = ({ events }: ListEventsProps) => {
   const { forthcomingEvents, pastEvents } = getSplittedEvents(events, dayjs());

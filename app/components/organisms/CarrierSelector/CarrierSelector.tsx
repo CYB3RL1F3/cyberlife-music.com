@@ -1,6 +1,7 @@
 import Selector from '~/components/molecules/Selector';
-import type { CarrierSelectorProps } from './CarrierSelector.types';
 import { useCarrierPrices } from '~/hooks/data/useCarriers';
+
+import type { CarrierSelectorProps } from './CarrierSelector.types';
 
 const CarrierSelector = ({
   country,
@@ -10,6 +11,8 @@ const CarrierSelector = ({
   label = 'Choose your transport',
 }: CarrierSelectorProps) => {
   const carrierPrices = useCarrierPrices(country, items);
+  console.log('CarrierSelector render', { country, carrierPrices });
+
   return (
     <Selector
       disabled={!carrierPrices.length}

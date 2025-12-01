@@ -1,12 +1,12 @@
-import { keys } from "./array";
+import { keys } from '~/utils/array';
 
 export const omitDeep = (obj: any, key: string): any => {
-  if (typeof obj === "object") {
+  if (typeof obj === 'object') {
     if (!obj) return obj;
-    if ("getDate" in obj) return obj;
+    if ('getDate' in obj) return obj;
     const res = keys(obj).reduce((acc, currentKey) => {
       if (currentKey === key) return acc;
-      if (typeof obj[currentKey] === "object") {
+      if (typeof obj[currentKey] === 'object') {
         if (Array.isArray(obj[currentKey])) {
           const x = obj[currentKey].map((row: any) => omitDeep(row, key));
           acc[currentKey] = x;

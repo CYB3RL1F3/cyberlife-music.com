@@ -1,5 +1,6 @@
-import Tag from "~/components/atoms/Tag";
-import type { ListTagProps } from "./ListTag.types";
+import Tag from '~/components/atoms/Tag';
+
+import type { ListTagProps } from './ListTag.types';
 
 const ListTag = ({ tags }: ListTagProps) => {
   return (
@@ -10,7 +11,7 @@ const ListTag = ({ tags }: ListTagProps) => {
             <li className="p-0 m-0 list-none" key={tag.value}>
               <Tag {...tag} />
             </li>
-          )
+          ),
       )}
     </ul>
   );

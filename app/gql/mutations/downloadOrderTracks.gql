@@ -1,4 +1,4 @@
-mutation DownloadOrderTracks($profile: String!, $orderId: String!, $token: String!, $email: String!) {
+mutation DownloadOrderTracksMutation($profile: String!, $orderId: String!, $token: String!, $email: String!) {
   downloadOrderTracks(profile: $profile, orderId: $orderId, token: $token, email: $email) {
     ...DownloadFragment
   }

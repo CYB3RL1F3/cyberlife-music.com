@@ -1,8 +1,9 @@
 import { AnimatePresence, motion, useWillChange } from 'framer-motion';
+import { useLocation } from '@remix-run/react';
 
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import ButtonLinkBuyRelease from '~/components/organisms/ButtonLinkBuyRelease';
-import { useLocation } from '@remix-run/react';
+
 import { ReleasesPageHeaderProps } from './ReleasesPageHeader.types';
 
 const ReleasesPageHeader = ({ id }: ReleasesPageHeaderProps) => {

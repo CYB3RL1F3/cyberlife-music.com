@@ -1,14 +1,16 @@
-import type { FieldValues } from "react-hook-form";
-import { Controller } from "react-hook-form";
-import FieldInputAutoComplete from "~/components/organisms/FieldInputAutoComplete";
-import type { ControlledFieldInputAutoCompleteProps } from "./ControlledFieldInputAutoComplete.types";
+import type { FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+
+import FieldInputAutoComplete from '~/components/organisms/FieldInputAutoComplete';
+
+import type { ControlledFieldInputAutoCompleteProps } from './ControlledFieldInputAutoComplete.types';
 
 const ControlledFieldInputAutoComplete = <T extends FieldValues>({
   name,
   control,
   values,
   placeholder,
-  size
+  size,
 }: ControlledFieldInputAutoCompleteProps<T>) => {
   return (
     <Controller

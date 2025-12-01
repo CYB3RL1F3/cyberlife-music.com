@@ -1,4 +1,3 @@
-import { EventsQueryEvents } from '~/types/gql/EventsQuery';
 import { getConfig } from '~/utils/config';
 import {
   cleanUrl,
@@ -8,10 +7,10 @@ import {
   cleanText,
 } from './builder.rss';
 import dayjs from 'dayjs';
-import { isBeforeDate } from '../events';
+import { Event } from '~/types/gql';
 
 export const getEventRssItem = (
-  event: EventsQueryEvents,
+  event: Event,
   config = getConfig(),
 ): RSSItem | null => {
   if (!config) return null;
@@ -47,10 +46,7 @@ export const getEventRssItem = (
   };
 };
 
-export const getEventRssFeed = (
-  event: EventsQueryEvents,
-  config = getConfig(),
-) => {
+export const getEventRssFeed = (event: Event, config = getConfig()) => {
   if (!config) return null;
 
   const item = getEventRssItem(event, config);

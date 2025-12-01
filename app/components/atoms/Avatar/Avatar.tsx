@@ -1,5 +1,6 @@
-import type { AvatarProps } from './Avatar.types';
 import { useDynamicSource } from '~/hooks/misc/useDynamicSource';
+
+import type { AvatarProps } from './Avatar.types';
 
 const Avatar = ({ src, alt }: AvatarProps) => {
   const placeholder =

@@ -1,6 +1,7 @@
+import OrderPayment from '~/components/organisms/OrderPayment/OrderPayment';
 import { useCart } from '~/hooks/db/useCart';
+
 import type { OrderPaymentContainerProps } from './OrderPaymentContainer.types';
-import OrderPayment from '../OrderPayment/OrderPayment';
 
 const OrderPaymentContainer = ({ ...props }: OrderPaymentContainerProps) => {
   const { items, checkout, confirmedCheckout } = useCart();

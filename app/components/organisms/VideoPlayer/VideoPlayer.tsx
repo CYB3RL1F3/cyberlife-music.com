@@ -1,4 +1,5 @@
 import VideoPlayerYoutube from '~/components/atoms/VideoPlayerYoutube';
+
 import type { VideoPlayerProps } from './VideoPlayer.types';
 
 const VideoPlayer = ({ url, width, height, type }: VideoPlayerProps) => {

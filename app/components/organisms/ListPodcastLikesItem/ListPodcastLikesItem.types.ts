@@ -1,5 +1,5 @@
-import type { TrackFragment } from "~/types/gql/TrackFragment";
+import { Like } from '~/types/gql';
 
 export type ListPodcastLikesItemProps = {
-  like: NonNullable<TrackFragment["likes"]>[number];
+  like: Like;
 };

@@ -1,10 +1,10 @@
 import { getConfig } from '~/utils/config';
 import { buildRssFeed, RSSItem } from './builder.rss';
-import { VideosQueryVideos } from '~/types/gql/VideosQuery';
 import { getVideoRssItem } from './video.rss';
+import { Video } from '~/types/gql';
 
 export const getVideosRssItems = (
-  videos: VideosQueryVideos[],
+  videos: Video[],
   config = getConfig(),
 ): RSSItem[] => {
   if (!config) return [];
@@ -20,10 +20,7 @@ export const getVideosRssItems = (
   return items;
 };
 
-export const getVideosRssFeed = (
-  videos: VideosQueryVideos[],
-  config = getConfig(),
-) => {
+export const getVideosRssFeed = (videos: Video[], config = getConfig()) => {
   if (!config) return null;
 
   const items = getVideosRssItems(videos, config);

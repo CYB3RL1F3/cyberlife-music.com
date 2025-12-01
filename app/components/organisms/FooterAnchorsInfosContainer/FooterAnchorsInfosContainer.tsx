@@ -1,5 +1,5 @@
-import FooterAnchorsInfos from "../FooterAnchorsInfos/FooterAnchorsInfos";
-import { useInfosQuery } from "~/hooks/queries/useInfosQuery";
+import FooterAnchorsInfos from '~/components/organisms/FooterAnchorsInfos/FooterAnchorsInfos';
+import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
 
 const FooterAnchorsInfosContainer = () => {
   const { data } = useInfosQuery();

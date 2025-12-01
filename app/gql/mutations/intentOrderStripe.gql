@@ -1,4 +1,4 @@
-mutation intentOrderStripe($profile: String!, $order: OrderDto!) {
+mutation IntentOrderStripeMutation($profile: String!, $order: OrderDto!) {
   intentOrderStripe(profile: $profile, order: $order) {
     ...OrderStripeResponseFragment
   }

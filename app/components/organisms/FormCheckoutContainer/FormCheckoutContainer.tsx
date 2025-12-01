@@ -1,9 +1,10 @@
 import FormCheckout from '~/components/organisms/FormCheckout/FormCheckout';
-import type { FormCheckoutContainerProps } from './FormCheckoutContainer.types';
-import FormCheckoutFooter from '../FormCheckoutFooter';
-import { FormCheckoutProps } from '../FormCheckout/FormCheckout.types';
+import FormCheckoutFooter from '~/components/organisms/FormCheckoutFooter';
+import { FormCheckoutProps } from '~/components/organisms/FormCheckout/FormCheckout.types';
 import { useCart } from '~/hooks/db/useCart';
 import Loader from '~/components/molecules/Loader';
+
+import type { FormCheckoutContainerProps } from './FormCheckoutContainer.types';
 
 const FormCheckoutContainer = ({
   onCancel,

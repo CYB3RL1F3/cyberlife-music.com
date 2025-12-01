@@ -1,10 +1,12 @@
-import type { FormOrderDownloadConfirmErrorProps } from './FormOrderDownloadConfirmError.types';
-import Button from '~/components/atoms/Button';
+import { motion } from 'framer-motion';
 import { Link } from '@remix-run/react';
 import { MdWarning } from 'react-icons/md';
+
+import Button from '~/components/atoms/Button';
 import Icon from '~/components/atoms/Icon';
-import { motion } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+
+import type { FormOrderDownloadConfirmErrorProps } from './FormOrderDownloadConfirmError.types';
 
 const FormOrderDownloadConfirmError = ({
   id,

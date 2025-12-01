@@ -1,11 +1,11 @@
 import { getConfig } from '~/utils/config';
-import { buildRssFeed, RSSItem } from './builder.rss';
+import { Track } from '~/types/gql';
 
-import { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
+import { buildRssFeed, RSSItem } from './builder.rss';
 import { getPodcastRssItem } from './podcast.rss';
 
 export const getPodcastsRssItems = async (
-  podcasts: PlaylistQueryPlaylistTracks[],
+  podcasts: Track[],
   config = getConfig(),
 ): Promise<RSSItem[]> => {
   if (!config) return [];
@@ -28,7 +28,7 @@ export const getPodcastsRssItems = async (
 };
 
 export const getPodcastsRssFeed = async (
-  podcasts: PlaylistQueryPlaylistTracks[],
+  podcasts: Track[],
   config = getConfig(),
 ) => {
   if (!config) return null;

@@ -1,4 +1,5 @@
 // codegen.ts
+import { maybeDependOnExistenceOfEntity } from '@apollo/client/cache/inmemory/entityStore';
 import type { CodegenConfig } from '@graphql-codegen/cli';
 import * as dotenv from 'dotenv';
 
@@ -19,12 +20,16 @@ const config: CodegenConfig = {
       plugins: ['typescript', 'typescript-operations'],
       config: {
         withHooks: true,
-        avoidOptionals: true,
+        avoidOptionals: false,
         useTypeImports: true,
         gqlTagName: 'gql',
         gqlImport: 'graphql-tag',
         skipTypename: true,
-        maybeValue: 'T | null | undefined',
+        omitOperationSuffix: true,
+        maybeValue: 'T | null',
+        arrayInputCoercion: false,
+        wrapList: true,
+        inputMaybeValue: 'T | null',
         namingConvention: {
           typeNames: 'change-case#pascalCase',
           enumValues: 'change-case#pascalCase',

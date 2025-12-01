@@ -1,13 +1,15 @@
 import { useForm } from 'react-hook-form';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+
+import Anchor from '~/components/atoms/Anchor';
+import Button from '~/components/atoms/Button';
+import ControlledFieldCheckbox from '~/components/organisms/ControlledFieldCheckbox';
+
 import type {
   FormOrderConsentProps,
   FormOrderConsentValues,
 } from './FormOrderConsent.types';
-import { superstructResolver } from '@hookform/resolvers/superstruct';
 import { formOrderConsentSchema } from './FormOrderConsent.schema';
-import ControlledFieldCheckbox from '~/components/organisms/ControlledFieldCheckbox';
-import Anchor from '~/components/atoms/Anchor';
-import Button from '~/components/atoms/Button';
 
 const FormOrderConsent = ({
   defaultValues,

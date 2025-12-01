@@ -1,8 +1,10 @@
+import { twMerge } from 'tailwind-merge';
+
 import ActionPlay from '~/components/molecules/ActionPlay';
 import type { PlayerTrackProps } from '~/components/organisms/PlayerTrack';
 import PlayerTrack from '~/components/organisms/PlayerTrack';
+
 import type { PlayerProps } from './Player.types';
-import { twMerge } from 'tailwind-merge';
 
 const Player = ({
   isPlaying,

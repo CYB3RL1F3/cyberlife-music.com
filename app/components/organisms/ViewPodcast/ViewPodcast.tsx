@@ -1,18 +1,20 @@
+import { useMemo } from 'react';
+import { motion, useWillChange } from 'framer-motion';
+
+import Text from '~/components/atoms/Text';
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
-import type { ViewPodcastProps } from './ViewPodcast.types';
-import PodcastDetails from '../PodcastDetails/PodcastDetails';
-import Text from '~/components/atoms/Text';
-import { parseHtml, toHtml } from '~/utils/html';
-import DisplayPodcastTracklist from '~/components/organisms/DisplayPodcastTracklist';
-import DisplayPodcastLikes from '../DisplayPodcastLikes';
 import type { ListTagProps } from '~/components/molecules/ListTag';
 import ListTag from '~/components/molecules/ListTag';
+import PodcastDetails from '~/components/organisms/PodcastDetails/PodcastDetails';
+import DisplayPodcastTracklist from '~/components/organisms/DisplayPodcastTracklist';
+import DisplayPodcastLikes from '~/components/organisms/DisplayPodcastLikes';
 import DisplayPodcastComments from '~/components/organisms/DisplayPodcastComments';
 import PlayerPodcastTrackContainer from '~/components/organisms/PlayerPodcastTrackContainer';
-import { useMemo } from 'react';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { motion, useWillChange } from 'framer-motion';
+import { getTextToHtml } from '~/utils/html';
+
+import type { ViewPodcastProps } from './ViewPodcast.types';
 
 const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
   const { title, description, tracklist, likes, comments, taglist } = podcast;
@@ -56,9 +58,7 @@ const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
         <PlayerPodcastTrackContainer track={podcast} />
       </motion.article>
       <motion.article {...transition(0.3)} className="pt-4 o-8">
-        {description && (
-          <Text>{parseHtml(toHtml(description, 'underline'))}</Text>
-        )}
+        {description && <Text>{getTextToHtml(description, 'underline')}</Text>}
         {!!tracklist && <DisplayPodcastTracklist tracklist={tracklist} />}
         {!!tags.length && <ListTag tags={tags} />}
         {!!likes?.length && <DisplayPodcastLikes likes={likes} />}

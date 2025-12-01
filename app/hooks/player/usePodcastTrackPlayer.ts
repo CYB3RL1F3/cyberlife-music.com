@@ -1,18 +1,17 @@
-import { useTrackPlayer } from './useTrackPlayer';
-import type { PlaylistTrackQueryPlaylistTrack } from '~/types/gql/PlaylistTrackQuery';
-import type { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
-import { usePodcastTrackPosition } from './usePodcastTrackPosition';
+import { Track } from '~/types/gql';
 
-export const usePodcastTrackPlayer = (
-  track: PlaylistTrackQueryPlaylistTrack | PlaylistQueryPlaylistTracks,
-) => {
+import { useTrackPlayer } from '~/hooks/player/useTrackPlayer';
+import { usePodcastTrackPosition } from '~/hooks/player/usePodcastTrackPosition';
+
+export const usePodcastTrackPlayer = (track: Track) => {
   const { prevId, nextId } = usePodcastTrackPosition(track.id);
-  const playerContext = useTrackPlayer(track, {
+
+  const podcastTrackPlayer = useTrackPlayer(track, {
     artist: 'Cyberlife',
     album: 'Podcasts',
     nextId,
     prevId,
     pageUrl: `/podcasts/${track.slug}`,
   });
-  return playerContext;
+  return podcastTrackPlayer;
 };

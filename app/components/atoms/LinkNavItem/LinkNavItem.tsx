@@ -1,7 +1,8 @@
-import type { LinkNavItemProps } from './LinkNavItem.types';
-import { Link } from '@remix-run/react';
 import { forwardRef } from 'react';
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
+
+import type { LinkNavItemProps } from './LinkNavItem.types';
 
 export const useLinkNavItemStyle = () =>
   clsx(

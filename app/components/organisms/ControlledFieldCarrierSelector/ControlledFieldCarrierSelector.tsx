@@ -1,8 +1,10 @@
-import type { FieldValues } from "react-hook-form";
-import { Controller } from "react-hook-form";
-import CarrierSelector from "~/components/organisms/CarrierSelector";
-import type { ControlledFieldCarrierSelectorProps } from "./ControlledFieldCarrierSelector.types";
-import FieldWrapper from "~/components/molecules/FieldWrapper";
+import type { FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
+
+import CarrierSelector from '~/components/organisms/CarrierSelector';
+import FieldWrapper from '~/components/molecules/FieldWrapper';
+
+import type { ControlledFieldCarrierSelectorProps } from './ControlledFieldCarrierSelector.types';
 
 const ControlledCarrierSelector = <T extends FieldValues>({
   name,

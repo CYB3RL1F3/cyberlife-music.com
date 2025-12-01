@@ -1,11 +1,12 @@
-import type { OrderPaymentProps } from './OrderPayment.types';
 import Button from '~/components/atoms/Button';
 import ButtonLink from '~/components/atoms/ButtonLink';
 import TableFinalOrder from '~/components/organisms/TableFinalOrder';
 import TableOrderResume from '~/components/organisms/TableOrderResume';
 import OrderShippingResume from '~/components/organisms/OrderShippingResume';
 import ButtonClearCart from '~/components/organisms/ButtonClearCart';
-import ButtonPaymentPaypalContainer from '../ButtonPaymentPaypalContainer';
+import ButtonPaymentPaypalContainer from '~/components/organisms/ButtonPaymentPaypalContainer';
+
+import type { OrderPaymentProps } from './OrderPayment.types';
 
 const OrderPayment = ({
   items,
@@ -43,7 +44,14 @@ const OrderPayment = ({
         Choose your payment method
       </h2>
       {
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-2">
+          <Button disabled className="mr-4 w-fit">
+            Ethereum (with Metamask, coming soon)
+          </Button>
+          <Button disabled className="mr-4 w-fit">
+            Credit Card (coming soon)
+          </Button>
+
           <ButtonPaymentPaypalContainer
             onPaymentSuccess={onSuccess}
             items={items}

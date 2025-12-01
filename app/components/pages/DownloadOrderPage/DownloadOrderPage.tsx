@@ -1,18 +1,20 @@
+import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import type { DownloadOrderPageProps } from './DownloadOrderPage.types';
+
 import FormHeading from '~/components/organisms/FormHeading';
 import FormOrderDownloadConfirmContainer, {
   FormOrderDownloadConfirmContainerProps,
 } from '~/components/organisms/FormOrderDownloadConfirmContainer';
-import { useState } from 'react';
-import { DownloadOrderTracks } from '~/types/gql/DownloadOrderTracks';
-import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
 import FormOrderDownloadConfirmError from '~/components/organisms/FormOrderDownloadConfirmError';
 import ListOrderDownload from '~/components/organisms/ListOrderDownload';
+import { useInfosQuery } from '~/hooks/queries/useInfosQuery';
+import { DownloadOrderTracksMutation } from '~/types/gql';
+
+import type { DownloadOrderPageProps } from './DownloadOrderPage.types';
 
 const DownloadOrderPage = ({ id, token }: DownloadOrderPageProps) => {
   const [values, setValues] =
-    useState<DownloadOrderTracks['downloadOrderTracks']>();
+    useState<DownloadOrderTracksMutation['downloadOrderTracks']>();
   const [error, setError] = useState<Error>();
   const [email, setEmail] = useState('');
   const handleRetry = () => {

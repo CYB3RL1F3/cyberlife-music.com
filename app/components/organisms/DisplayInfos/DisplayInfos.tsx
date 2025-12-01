@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import type { DisplayInfosProps } from './DisplayInfos.types';
 import { AnimatePresence, motion, useWillChange } from 'framer-motion';
+
+import type { DisplayInfosProps } from './DisplayInfos.types';
 
 const DisplayInfos = ({ infos }: DisplayInfosProps) => {
   const willChange = useWillChange();

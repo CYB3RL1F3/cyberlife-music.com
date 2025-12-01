@@ -1,13 +1,3 @@
-import type {
-  LayerProps,
-  MarkerProps,
-  NavigationControlProps,
-  PopupProps,
-  ScaleControlProps,
-  SourceProps,
-} from './MapboxElements.types';
-
-import ClientOnly from '~/components/atoms/ClientOnly';
 import { MarkerInstance, PopupInstance } from 'react-map-gl/mapbox';
 import {
   Marker as GLMarker,
@@ -17,6 +7,17 @@ import {
   Source as GLSource,
   NavigationControl as GLNavigationControl,
 } from 'react-map-gl/mapbox';
+
+import ClientOnly from '~/components/atoms/ClientOnly';
+
+import type {
+  LayerProps,
+  MarkerProps,
+  NavigationControlProps,
+  PopupProps,
+  ScaleControlProps,
+  SourceProps,
+} from './MapboxElements.types';
 
 export const Marker = (props: MarkerProps<any, MarkerInstance>) => {
   return <ClientOnly>{() => <GLMarker {...props} />}</ClientOnly>;

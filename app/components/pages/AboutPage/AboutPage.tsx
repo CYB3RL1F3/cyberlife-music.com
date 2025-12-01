@@ -1,12 +1,12 @@
-import ButtonLink from "~/components/atoms/ButtonLink";
-import HandlerContent from "~/components/molecules/HandlerContent";
-import Loader from "~/components/molecules/Loader";
-import { usePostQuery } from "~/hooks/queries/usePostQuery";
-import ErrorPage from "../ErrorPage";
-import PostDisplay from "~/components/organisms/PostDisplay/PostDisplay";
+import ButtonLink from '~/components/atoms/ButtonLink';
+import HandlerContent from '~/components/molecules/HandlerContent';
+import Loader from '~/components/molecules/Loader';
+import { usePostQuery } from '~/hooks/queries/usePostQuery';
+import ErrorPage from '~/components/pages/ErrorPage';
+import PostDisplay from '~/components/organisms/PostDisplay/PostDisplay';
 
 const AboutPage = () => {
-  const postId = "5e97808d1fd049230afe9516";
+  const postId = '5e97808d1fd049230afe9516';
   const { data, loading } = usePostQuery(postId);
   return (
     <HandlerContent

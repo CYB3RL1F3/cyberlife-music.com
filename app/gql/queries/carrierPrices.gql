@@ -1,4 +1,4 @@
-query CarrierPrices($profile: String!,$country: String!, $items: [CartItemInput!]!) {
+query CarrierPricesQuery($profile: String!,$country: String!, $items: [CartItemInput!]!) {
   carrierPrices(profile: $profile, country: $country, items: $items) {
     upsPrice
     colissimoPrice

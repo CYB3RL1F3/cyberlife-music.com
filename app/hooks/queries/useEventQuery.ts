@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client/react';
 
 import { profile } from '~/config';
-import type { EventQuery, EventQueryVariables } from '~/types/gql/EventQuery';
+import type { EventQuery, EventQueryVariables } from '~/types/gql';
 import { eventGqlQuery } from '~/queries/event';
 
 export const useEventQuery = (id: EventQueryVariables['id']) => {

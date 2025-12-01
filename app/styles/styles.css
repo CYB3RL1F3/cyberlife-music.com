@@ -724,6 +724,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.mr-4 {
+  margin-right: 1rem;
+}
+
 .mr-6 {
   margin-right: 1.5rem;
 }
@@ -2709,6 +2713,22 @@ input:-webkit-autofill:active{
 
 .mapboxgl-canvas-container {
   height: 100%;
+}
+
+.ytp-chrome-top * {
+  display: none !important;
+}
+
+.paypal-button-container, .paypal-button-container.paypal-buttons.paypal-buttons-context-iframe {
+  height: 40px !important;
+}
+
+.paypal-button-container div {
+  height: 40px !important;
+}
+
+.paypal-button-container iframe.component-frame.visible {
+  height: 40px !important;
 }
 
 .hover\:bg-gray-500:hover {

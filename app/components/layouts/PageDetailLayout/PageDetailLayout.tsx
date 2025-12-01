@@ -1,10 +1,11 @@
-import ListItem from "~/components/molecules/ListItem/ListItem";
-import type { PageDetailLayoutProps } from "./PageDetailLayout.types";
+import ListItem from '~/components/molecules/ListItem/ListItem';
+
+import type { PageDetailLayoutProps } from './PageDetailLayout.types';
 
 const PageDetailLayout = ({
   thumbnail,
   children,
-  linkIcons
+  linkIcons,
 }: PageDetailLayoutProps) => {
   return (
     <ListItem thumbnail={thumbnail}>

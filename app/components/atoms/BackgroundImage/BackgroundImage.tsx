@@ -1,17 +1,18 @@
-import type { BackgroundImageProps } from "./BackgroundImage.types";
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
+
+import type { BackgroundImageProps } from './BackgroundImage.types';
 
 const BackgroundImage = ({
   src,
   children,
   className,
-  backgroundType = "bg-cover"
+  backgroundType = 'bg-cover',
 }: BackgroundImageProps) => {
   return (
     <div
-      className={clsx("flex h-full", backgroundType, className)}
+      className={clsx('flex h-full', backgroundType, className)}
       style={{
-        backgroundImage: `url("${src}")`
+        backgroundImage: `url("${src}")`,
       }}
     >
       {children}

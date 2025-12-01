@@ -1,6 +1,8 @@
-import { Link } from "@remix-run/react";
-import type { ListItemSnippetProps } from "./ListItemSnippet.types";
-import Heading from "~/components/atoms/Heading";
+import { Link } from '@remix-run/react';
+
+import Heading from '~/components/atoms/Heading';
+
+import type { ListItemSnippetProps } from './ListItemSnippet.types';
 
 const ListItemSnippet = ({ children, title, href }: ListItemSnippetProps) => {
   return (

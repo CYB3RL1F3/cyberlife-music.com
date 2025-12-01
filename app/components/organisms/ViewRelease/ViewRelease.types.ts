@@ -1,5 +1,5 @@
-import type { ReleaseItemFragment } from "~/types/gql/ReleaseItemFragment";
+import { ReleaseItem } from '~/types/gql';
 
 export type ViewReleaseProps = {
-  release: ReleaseItemFragment;
+  release: ReleaseItem;
 };

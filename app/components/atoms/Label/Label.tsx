@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+
 import type { LabelProps } from './Label.types';
 
 const Label = ({ children, className, icon }: LabelProps) => {

@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import { getConfig } from '~/utils/config';
 import {
   cleanUrl,
@@ -6,8 +8,7 @@ import {
   RSSItem,
   cleanText,
 } from './builder.rss';
-import dayjs from 'dayjs';
-import { PlaylistQueryPlaylistTracks } from '~/types/gql/PlaylistQuery';
+import { Track } from '~/types/gql';
 
 export const getFileSize = async (url: string): Promise<number> => {
   const response = await fetch(url, {
@@ -20,7 +21,7 @@ export const getFileSize = async (url: string): Promise<number> => {
 };
 
 export const getPodcastRssItem = async (
-  podcast: PlaylistQueryPlaylistTracks,
+  podcast: Track,
   config = getConfig(),
 ): Promise<RSSItem | null> => {
   if (!config) return null;
@@ -61,7 +62,7 @@ export const getPodcastRssItem = async (
 };
 
 export const getPodcastRssFeed = async (
-  podcast: PlaylistQueryPlaylistTracks,
+  podcast: Track,
   config = getConfig(),
 ) => {
   if (!config) return null;

@@ -1,25 +1,27 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+
+import CountryFlag from '~/components/atoms/CountryFlag';
+import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
+import ControlledFieldTextarea from '~/components/organisms/ControlledFieldTextarea';
+import ControlledFieldInputAutoComplete from '~/components/organisms/ControlledFieldInputAutoComplete';
+import ControlledFieldSelector from '~/components/organisms/ControlledFieldSelector';
+import ControlledFieldCheckbox from '~/components/organisms/ControlledFieldCheckbox';
+import ControlledCarrierSelector from '~/components/organisms/ControlledFieldCarrierSelector/ControlledFieldCarrierSelector';
+import { useLocationsSuggestions } from '~/hooks/data/useLocationsSuggestions';
+import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
+import { AutocompleteLocationSuggestionType } from '~/types/gql';
+import countries from '~/utils/business/countries';
+
+import { formCheckoutSchema } from './FormCheckout.schema';
 import type {
   FormCheckoutProps,
   FormCheckoutValues,
 } from './FormCheckout.types';
-import { superstructResolver } from '@hookform/resolvers/superstruct';
-import { formCheckoutSchema } from './FormCheckout.schema';
-import { useMobileVibration } from '~/hooks/misc/useMobileVibration';
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { motion, useWillChange } from 'framer-motion';
-import ControlledFieldInput from '../ControlledFieldInput';
-import ControlledFieldTextarea from '../ControlledFieldTextarea';
-import ControlledFieldInputAutoComplete from '../ControlledFieldInputAutoComplete';
-import ControlledFieldSelector from '../ControlledFieldSelector';
-import countries from '~/utils/business/countries';
-import CountryFlag from '~/components/atoms/CountryFlag';
-import { useEffect, useState } from 'react';
-import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
-import ControlledFieldCheckbox from '../ControlledFieldCheckbox';
-import ControlledCarrierSelector from '../ControlledFieldCarrierSelector/ControlledFieldCarrierSelector';
-import { useLocationsSuggestions } from '~/hooks/data/useLocationsSuggestions';
-import { AutocompleteLocationSuggestionType } from '~/types/gql/globalTypes';
 
 const initialValues: Partial<FormCheckoutValues> = {
   firstName: '',
@@ -90,25 +92,25 @@ const FormCheckout = ({
   const suggestedCities = useLocationsSuggestions(
     country,
     city,
-    AutocompleteLocationSuggestionType.city,
+    AutocompleteLocationSuggestionType.City,
   );
 
   const suggestedZipCodes = useLocationsSuggestions(
     country,
     zipCode,
-    AutocompleteLocationSuggestionType.postcode,
+    AutocompleteLocationSuggestionType.Postcode,
   );
 
   const suggestedExpeditionCities = useLocationsSuggestions(
     expeditionCountry || '',
     expeditionCity || '',
-    AutocompleteLocationSuggestionType.city,
+    AutocompleteLocationSuggestionType.City,
   );
 
   const suggestedExpeditionZipCodes = useLocationsSuggestions(
     expeditionCountry || '',
     expeditionZipCode || '',
-    AutocompleteLocationSuggestionType.postcode,
+    AutocompleteLocationSuggestionType.Postcode,
   );
 
   useEffect(() => {

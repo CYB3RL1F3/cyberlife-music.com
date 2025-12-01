@@ -1,5 +1,5 @@
-import type { VideosQueryVideos } from "~/types/gql/VideosQuery";
+import { Video } from '~/types/gql';
 
 export type ListVideosProps = {
-  videos?: VideosQueryVideos[];
+  videos?: Video[];
 };

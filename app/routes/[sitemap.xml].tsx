@@ -1,9 +1,10 @@
+import dayjs from 'dayjs';
+
 import { sitemapGenerator } from '~/utils/sitemap-generator';
 import type { Path } from '~/utils/sitemap-generator';
 import { runEventsQuery } from '~/queries/events';
 import { runPlaylistQuery } from '~/queries/playlists';
 import { runReleasesQuery } from '~/queries/releases';
-import dayjs from 'dayjs';
 import { runVideosQuery } from '~/queries/videos';
 
 const getPath = (

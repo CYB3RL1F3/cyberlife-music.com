@@ -1,9 +1,12 @@
-import { Children } from "react";
-import type { ListProps } from "./List.types";
-import ListItemWrapper from "~/components/molecules/ListItemWrapper";
+import { Children } from 'react';
+
+import ListItemWrapper from '~/components/molecules/ListItemWrapper';
+
+import type { ListProps } from './List.types';
 
 const List = ({ children, noBorder }: ListProps) => {
   const childList = Children.toArray(children);
+
   return (
     <ul className="o-4">
       {childList.map((child, index) => (

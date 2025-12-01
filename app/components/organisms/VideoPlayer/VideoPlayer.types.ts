@@ -1,7 +1,7 @@
 import { VideoPlayerYoutubeProps } from '~/components/atoms/VideoPlayerYoutube';
-import type { VideoQueryVideo } from '~/types/gql/VideoQuery';
+import type { Video } from '~/types/gql';
 
-export type VideoPlayerProps = Pick<VideoQueryVideo, 'url' | 'type'> &
+export type VideoPlayerProps = Pick<Video, 'url' | 'type'> &
   Omit<VideoPlayerYoutubeProps, 'src'>;
 
 export type AbstractVideoPlayerProps = {

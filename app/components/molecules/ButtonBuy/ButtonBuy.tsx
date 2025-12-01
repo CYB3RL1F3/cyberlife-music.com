@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { FaCartShopping } from 'react-icons/fa6';
+
 import Button from '~/components/atoms/Button';
 import type { ButtonBuyProps } from './ButtonBuy.types';
 import Icon from '~/components/atoms/Icon';

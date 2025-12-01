@@ -1,10 +1,11 @@
-import type { LinkNavItemContainerProps } from './LinkNavItemContainer.types';
-import type { MutableRefObject } from 'react';
 import { useRef, useEffect, useCallback } from 'react';
-import { useNavContext } from '~/components/contexts/NavContext';
+
 import LinkNavItem from '~/components/atoms/LinkNavItem';
 import { debounce } from '~/utils/debounce';
 import { useResize } from '~/hooks/misc/useResize';
+import { useNavStore } from '~/hooks/stores/nav/useNavStore';
+
+import type { LinkNavItemContainerProps } from './LinkNavItemContainer.types';
 
 const LinkNavItemContainer = ({
   index,
@@ -12,7 +13,7 @@ const LinkNavItemContainer = ({
   ...props
 }: LinkNavItemContainerProps) => {
   const ref = useRef<HTMLAnchorElement>(null);
-  const { setItem, offset } = useNavContext();
+  const { setItem, offset } = useNavStore();
   const width = ref.current?.clientWidth;
 
   const position = (ref.current?.offsetLeft || 0) - (offset || 0);

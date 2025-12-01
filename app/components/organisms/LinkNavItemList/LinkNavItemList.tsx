@@ -1,7 +1,8 @@
-import LinkNavItemContainer from '~/components/molecules/LinkNavItemContainer';
-import type { LinkNavItemListProps } from './LinkNavItemList.types';
 import clsx from 'clsx';
+import LinkNavItemContainer from '~/components/molecules/LinkNavItemContainer';
 import InlineListItem from '~/components/atoms/InlineListItem';
+
+import type { LinkNavItemListProps } from './LinkNavItemList.types';
 
 const LinkNavItemList = ({ items, onChange, extra }: LinkNavItemListProps) => {
   return (

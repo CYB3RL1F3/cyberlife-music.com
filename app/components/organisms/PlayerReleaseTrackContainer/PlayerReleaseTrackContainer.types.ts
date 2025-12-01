@@ -1,9 +1,11 @@
 import type { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
-import { ReleaseFragmentTracklistArtists } from '~/types/gql/ReleaseFragment';
+import { Release } from '~/types/gql';
+
+export type TracklistItem = NonNullable<Release['tracklist']>[number];
 
 export type PlayerReleaseTrackContainerProps = {
   track: Parameters<typeof useReleaseTrackPlayer>[0];
-  artists: ReleaseFragmentTracklistArtists[] | null;
+  artists: TracklistItem['artists'];
   album?: string | null;
   prevId?: number | null;
   nextId?: number | null;

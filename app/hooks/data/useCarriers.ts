@@ -1,10 +1,14 @@
 import { useMemo } from 'react';
-import { useCarrierPricesQuery } from '../queries/useCarrierPricesQuery';
-import { useReleasesQuery } from '../queries/useReleasesQuery';
-import { CartItem } from '../db/useCart';
-import { ReleaseDtoInput } from '~/types/gql/globalTypes';
-import { ReleasesQueryReleaseItems } from '~/types/gql/ReleasesQuery';
-import { CarrierPricesVariables } from '~/types/gql/CarrierPrices';
+
+import { useCarrierPricesQuery } from '~/hooks/queries/useCarrierPricesQuery';
+import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
+import { CartItem } from '~/hooks/db/useCart';
+import {
+  CarrierPricesQueryVariables,
+  ReleaseDto,
+  ReleaseDtoInput,
+  ReleaseItem,
+} from '~/types/gql';
 
 export type Carrier = {
   carrier: string;
@@ -12,21 +16,41 @@ export type Carrier = {
 };
 
 export const useCarrierPrices = (country: string, items: CartItem[]) => {
+  console.log('useCarrierPrices called', { country, items });
   const { data } = useReleasesQuery();
 
-  const getProduct = (
-    item: CartItem,
-    releaseItems: ReleasesQueryReleaseItems[],
-  ): ReleaseDtoInput => {
+  const getProduct = (item: CartItem, releaseItems: ReleaseItem[]) => {
     const value = releaseItems.find(
       (releaseItem) => releaseItem.id === item.id,
     )?.release!;
 
-    const { _id, __typename, ...release } = value;
-    return release;
+    return {
+      artist: value?.artist,
+      title: value?.title,
+      slug: value?.slug,
+      bandcamp: value?.bandcamp,
+      cat: value?.cat,
+      thumb: value?.thumb,
+      tracklist: value?.tracklist,
+      type: value?.type,
+      uri: value?.uri,
+      stats: value?.stats,
+      role: value?.role,
+      resourceUrl: value?.resourceUrl,
+      releaseId: value?.releaseId,
+      releaseDate: value?.releaseDate,
+      notes: value?.notes,
+      label: value?.label,
+      genre: value?.genre,
+      year: value?.year,
+      images: value?.images,
+      format: value?.format,
+      country: value?.country,
+      discogs: value?.discogs,
+    } satisfies ReleaseDtoInput;
   };
 
-  const cartItems: CarrierPricesVariables['items'] =
+  const cartItems: CarrierPricesQueryVariables['items'] =
     data?.releaseItems && items
       ? items.map((item) => ({
           amount: item.amount,
@@ -38,6 +62,7 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
       : [];
 
   const carriers = useCarrierPricesQuery(country, cartItems);
+  console.log('CARRIERS DATA', { carriers });
 
   const carrierPrices = useMemo(() => {
     const value = [];
@@ -88,6 +113,8 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
 
     return value;
   }, [carriers.data]);
+
+  console.log('Computed carrierPrices', carrierPrices);
 
   return carrierPrices;
 };

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import type { InlineListItemProps } from './InlineListItem.types';
 
 const InlineListItem = ({

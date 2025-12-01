@@ -1,15 +1,17 @@
+import { toast } from 'react-toastify';
+import { Link } from '@remix-run/react';
+import { useRef } from 'react';
+import { PayPalButtonsComponentProps } from '@paypal/react-paypal-js';
+
 import { getOrder } from '~/utils/business/purchase';
-import type { ButtonPaymentPaypalContainerProps } from './ButtonPaymentPaypalContainer.types';
 import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
 import { useIntentOrderPaypalMutation } from '~/hooks/mutations/useIntentOrderPaypalMutation';
-import { toast } from 'react-toastify';
-import { PayPalButtonsComponentProps } from '@paypal/react-paypal-js';
-import { useRef } from 'react';
 import { useConfirmOrderPaypalMutation } from '~/hooks/mutations/useConfirmOrderPaypalMutation';
-import ButtonPaymentPaypal from '../ButtonPaymentPaypal/ButtonPaymentPaypal';
-import { Link } from '@remix-run/react';
+import ButtonPaymentPaypal from '~/components/organisms/ButtonPaymentPaypal/ButtonPaymentPaypal';
 import ClientOnly from '~/components/atoms/ClientOnly';
 import { useCancelOrderMutation } from '~/hooks/mutations/useCancelOrderPaypalMutation';
+
+import type { ButtonPaymentPaypalContainerProps } from './ButtonPaymentPaypalContainer.types';
 
 export type PaypalApproveParameters = {
   orderId: string;

@@ -1,5 +1,6 @@
 import type { RefObject } from 'react';
 import { useCallback } from 'react';
+
 import { useMouseEvent } from '~/hooks/events/useMouseEvent';
 
 export type MouseOrTouchEvent = MouseEvent | TouchEvent;

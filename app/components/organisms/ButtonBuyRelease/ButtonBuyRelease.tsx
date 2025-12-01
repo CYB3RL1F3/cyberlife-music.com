@@ -1,10 +1,14 @@
-import type { ButtonBuyReleaseProps } from './ButtonBuyRelease.types';
-import ButtonBuy from '~/components/molecules/ButtonBuy';
 import { toast } from 'react-toastify';
+import ButtonBuy from '~/components/molecules/ButtonBuy';
+
 import { useCart } from '~/hooks/db/useCart';
+
+import type { ButtonBuyReleaseProps } from './ButtonBuyRelease.types';
 
 const ButtonBuyRelease = ({ release }: ButtonBuyReleaseProps) => {
   const { price, id, availableQuantity } = release;
+  console.log('price => ', price);
+  console.log('availableQuantity => ', availableQuantity);
   const { addItem, removeItem, isItemInCart } = useCart();
 
   const isActive = id ? isItemInCart(id) : false;

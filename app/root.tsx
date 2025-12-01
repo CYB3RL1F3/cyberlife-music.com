@@ -4,7 +4,6 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from '@remix-run/node';
-import { json } from '@remix-run/node';
 import {
   Links,
   Meta,
@@ -87,12 +86,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   const res = await runInfosQuery();
   const description = res?.data?.infos?.bio?.content;
   const config = getConfig();
-  const data = json({
+  const value = {
     url,
     description,
     config,
-  });
-  return data;
+  };
+  return value;
 };
 
 export function ErrorBoundary() {

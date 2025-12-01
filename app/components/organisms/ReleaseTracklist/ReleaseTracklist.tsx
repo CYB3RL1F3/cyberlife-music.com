@@ -1,7 +1,8 @@
 import List from '~/components/organisms/List';
-import { getCyberlifeReleaseTracks } from '~/utils/business/filters';
 import ReleaseTracklistItem from '~/components/organisms/ReleaseTracklistItem';
-import type { ReleaseTracklistProps } from './ReleaseTracklist.types';
+import { getCyberlifeReleaseTracks } from '~/utils/business/filters';
+
+import { ReleaseTracklistProps } from './ReleaseTracklist.types';
 
 const ReleaseTracklist = ({
   tracks,
@@ -12,7 +13,7 @@ const ReleaseTracklist = ({
   const cyberTracks = getCyberlifeReleaseTracks(tracks);
   return (
     <List>
-      {cyberTracks.map(
+      {cyberTracks?.map(
         (track, index) =>
           id && (
             <ReleaseTracklistItem

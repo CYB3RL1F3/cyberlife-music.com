@@ -2,6 +2,6 @@ fragment PlaylistFragment on Playlist {
   id
   artwork
   tracks {
-    ...TrackSnippetFragment
+    ...TrackFragment
   }
 }

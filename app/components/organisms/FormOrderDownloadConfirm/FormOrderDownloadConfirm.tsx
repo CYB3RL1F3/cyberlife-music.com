@@ -1,13 +1,15 @@
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
+
+import ControlledFieldInput from '~/components/organisms/ControlledFieldInput';
+import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { superstructResolver } from '@hookform/resolvers/superstruct';
+
+import { formOrderDownloadConfirmSchema } from './FormOrderDownloadConfirm.schema';
 import {
   FormOrderDownloadConfirmValues,
   type FormOrderDownloadConfirmProps,
 } from './FormOrderDownloadConfirm.types';
-import ControlledFieldInput from '../ControlledFieldInput';
-import { motion } from 'framer-motion';
-import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
-import { superstructResolver } from '@hookform/resolvers/superstruct';
-import { formOrderDownloadConfirmSchema } from './FormOrderDownloadConfirm.schema';
 
 const FormOrderDownloadConfirm = ({
   defaultValues,

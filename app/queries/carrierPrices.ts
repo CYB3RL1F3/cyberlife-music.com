@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
+
 import { profile } from '~/config';
 import carrierPricesQuery from '~/gql/queries/carrierPrices.gql';
 import type {
-  CarrierPrices,
-  CarrierPricesVariables,
-} from '~/types/gql/CarrierPrices';
+  CarrierPricesQuery,
+  CarrierPricesQueryVariables,
+} from '~/types/gql';
 import { runQuery } from '~/utils/graphql';
 
 export const carrierPricesGqlQuery = gql`
@@ -12,10 +13,10 @@ export const carrierPricesGqlQuery = gql`
 `;
 
 export const runCarrierPricesQuery = (
-  country: CarrierPricesVariables['country'],
-  items: CarrierPricesVariables['items'],
+  country: CarrierPricesQueryVariables['country'],
+  items: CarrierPricesQueryVariables['items'],
 ) => {
-  return runQuery<CarrierPrices, CarrierPricesVariables>(
+  return runQuery<CarrierPricesQuery, CarrierPricesQueryVariables>(
     carrierPricesGqlQuery,
     {
       country,

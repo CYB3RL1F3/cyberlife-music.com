@@ -4,35 +4,27 @@ import {
   Scripts,
   ScrollRestoration,
   useLocation,
-  useMatches,
-  useOutlet,
 } from '@remix-run/react';
-import {
-  AnimatePresence,
-  domAnimation,
-  LazyMotion,
-  motion,
-} from 'framer-motion';
+import { domAnimation, LazyMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
-import Layout from './components/layouts/Layout';
-import DisplayInfosContainer from './components/organisms/DisplayInfosContainer/DisplayInfosContainer';
-import ContainerScrollPage from './components/organisms/ContainerScrollPage/ContainerScrollPage';
-import AudioContainer from './components/molecules/AudioContainer';
-import { ClientOnly } from './components/atoms/ClientOnly/ClientOnly';
-import PageDetailHeaderPortal from './components/molecules/PageDetailHeaderPortal/PageDetailHeaderPortal';
-import ConfigContextProvider from './components/contexts/ConfigContext/ConfigContext.provider';
-import NotificationContextProvider from './components/contexts/NotificationContext';
-import FooterMobile from './components/organisms/FooterMobile';
-import PwaContextProvider from './components/contexts/PwaContext';
-import type { Config } from './components/contexts/ConfigContext/ConfigContext.types';
-import { isSupported } from './utils/browser';
-import NotSupportedPage from './components/pages/NotSupportedPage';
-import PlayerContextProvider from './components/contexts/PlayerContext';
-import NoScript from './components/organisms/NoScript';
-import { useRemixNavigationPostMessage } from './hooks/misc/useRemixNavigationPostMessage';
-import ApplicationOutlet from './components/organisms/ApplicationOutlet';
-import dayjs from 'dayjs';
+import Layout from '~/components/layouts/Layout';
+import DisplayInfosContainer from '~/components/organisms/DisplayInfosContainer/DisplayInfosContainer';
+import ContainerScrollPage from '~/components/organisms/ContainerScrollPage/ContainerScrollPage';
+import AudioContainer from '~/components/molecules/AudioContainer';
+import { ClientOnly } from '~/components/atoms/ClientOnly/ClientOnly';
+import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal/PageDetailHeaderPortal';
+import ConfigContextProvider from '~/components/contexts/ConfigContext/ConfigContext.provider';
+import NotificationContextProvider from '~/components/contexts/NotificationContext';
+import FooterMobile from '~/components/organisms/FooterMobile';
+import PwaContextProvider from '~/components/contexts/PwaContext';
+import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
+import { isSupported } from '~/utils/browser';
+import NotSupportedPage from '~/components/pages/NotSupportedPage';
+import NoScript from '~/components/organisms/NoScript';
+import { useRemixNavigationPostMessage } from '~/hooks/misc/useRemixNavigationPostMessage';
+import ApplicationOutlet from '~/components/organisms/ApplicationOutlet';
+import ModalImageContainer from '~/components/organisms/ModalImageContainer';
 
 export type ApplicationProps = {
   config: Config;
@@ -54,38 +46,37 @@ const Application = ({ config, children }: ApplicationProps) => {
     <>
       <LazyMotion features={domAnimation}>
         <ConfigContextProvider config={config}>
-          <PlayerContextProvider>
-            <PwaContextProvider>
-              <NotificationContextProvider>
-                <Layout>
-                  <DisplayInfosContainer />
-                  <div className="relative">
-                    <div className="absolute z-10 w-full">
-                      <PageDetailHeaderPortal.Container />
-                    </div>
-                    <ContainerScrollPage>
-                      <NoScript />
-                      <ApplicationOutlet>{children}</ApplicationOutlet>
-                      <FooterMobile />
-                    </ContainerScrollPage>
+          <PwaContextProvider>
+            <NotificationContextProvider>
+              <Layout>
+                <DisplayInfosContainer />
+                <div className="relative">
+                  <div className="absolute z-10 w-full">
+                    <PageDetailHeaderPortal.Container />
                   </div>
-                  <ClientOnly>{() => <AudioContainer />}</ClientOnly>
-                </Layout>
-                <ToastContainer
-                  role="alert"
-                  position="bottom-left"
-                  theme="colored"
-                  autoClose={6000}
-                  hideProgressBar={false}
-                  newestOnTop
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  pauseOnHover
-                />
-              </NotificationContextProvider>
-            </PwaContextProvider>
-          </PlayerContextProvider>
+                  <ContainerScrollPage>
+                    <NoScript />
+                    <ApplicationOutlet>{children}</ApplicationOutlet>
+                    <FooterMobile />
+                  </ContainerScrollPage>
+                </div>
+                <ClientOnly>{() => <AudioContainer />}</ClientOnly>
+              </Layout>
+              <ToastContainer
+                role="alert"
+                position="bottom-left"
+                theme="colored"
+                autoClose={6000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                pauseOnHover
+              />
+              <ModalImageContainer />
+            </NotificationContextProvider>
+          </PwaContextProvider>
         </ConfigContextProvider>
       </LazyMotion>
       <ScrollRestoration /> <Scripts />

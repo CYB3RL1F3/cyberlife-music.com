@@ -1,7 +1,8 @@
-import type { DisplayPodcastLikesProps } from './DisplayPodcastLikes.types';
-import ListPodcastLikes from '../ListPodcastLikes';
+import ListPodcastLikes from '~/components/organisms/ListPodcastLikes';
 import WrapperListings from '~/components/molecules/WrapperListings';
 import { isCyberlife } from '~/utils/business/filters';
+
+import type { DisplayPodcastLikesProps } from './DisplayPodcastLikes.types';
 
 const DisplayPodcastLikes = ({ likes }: DisplayPodcastLikesProps) => {
   if (!likes.length) return null;

@@ -1,6 +1,7 @@
 import { useReleaseTrackPlayer } from '~/hooks/player/useReleaseTrackPlayer';
 import PlayerTrack from '~/components/organisms/PlayerTrack';
 import type { PlayerTrackProps } from '~/components/organisms/PlayerTrack';
+
 import type { PlayerReleaseTrackContainerProps } from './PlayerReleaseTrackContainer.types';
 
 const PlayerReleaseTrackContainer = ({

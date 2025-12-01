@@ -1,2 +1,3 @@
-export { default } from "./PwaContext.provider";
-export { usePwaContext } from "./PwaContext.hook";
+export { default } from './PwaContext.provider';
+
+export { usePwaContext } from './PwaContext.hook';

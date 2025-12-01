@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+
 import isBetween from 'dayjs/plugin/isBetween';
-import type { EventQueryEvent } from '~/types/gql/EventQuery';
-import type { EventsQueryEvents } from '~/types/gql/EventsQuery';
+import { Event } from '~/types/gql';
 
 dayjs.extend(advancedFormat);
 dayjs.extend(isBetween);
@@ -23,10 +23,7 @@ export const isInvalidDate = (value: string) => {
   return isNaN(date.get('milliseconds'));
 };
 
-export const getEventDateDisplay = (
-  event: EventQueryEvent,
-  format = 'DD/MM/YYYY',
-) => {
+export const getEventDateDisplay = (event: Event, format = 'DD/MM/YYYY') => {
   if (!event.date) return '';
   const date = getFormattedDate(event.date, format);
   const endDate = event.endDate
@@ -42,7 +39,7 @@ export const getEventDateDisplay = (
 };
 
 export const getShortEventDateDisplay = (
-  event: EventQueryEvent | EventsQueryEvents,
+  event: Event,
   format = 'DD/MM/YYYY',
 ) => {
   if (!event.date) return '';

@@ -1,28 +1,30 @@
-import type { ButtonProps } from "./Button.types";
-import { useButtonStyle } from "~/hooks/styles/useButtonStyle";
-import { useLinkStyle } from "~/hooks/styles/useLinkStyle";
-import { clsx } from "clsx";
-import { useMemo } from "react";
+import { clsx } from 'clsx';
+import { useMemo } from 'react';
+
+import { useButtonStyle } from '~/hooks/styles/useButtonStyle';
+import { useLinkStyle } from '~/hooks/styles/useLinkStyle';
+
+import type { ButtonProps } from './Button.types';
 
 const Button = ({
   children,
-  type = "button",
+  type = 'button',
   disabled,
   onClick,
   title,
   rightIcon,
-  variant = "button",
-  className
+  variant = 'button',
+  className,
 }: ButtonProps) => {
   const buttonStyle = useButtonStyle(className);
-  const linkStyle = useLinkStyle(clsx("bg-none border-none", className));
+  const linkStyle = useLinkStyle(clsx('bg-none border-none', className));
   const cls = useMemo(
     () =>
       clsx({
-        [linkStyle]: variant === "link",
-        [buttonStyle]: variant === "button"
+        [linkStyle]: variant === 'link',
+        [buttonStyle]: variant === 'button',
       }),
-    [buttonStyle, linkStyle, variant]
+    [buttonStyle, linkStyle, variant],
   );
   return (
     <button

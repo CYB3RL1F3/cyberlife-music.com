@@ -1,9 +1,10 @@
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Picture from '~/components/organisms/Picture';
-import type { ListEventsItemProps } from './ListEventsItem.types';
 import NowAlert from '~/components/molecules/NowAlert';
 import { checkIsToday, getShortEventDateDisplay } from '~/utils/date';
+
+import type { ListEventsItemProps } from './ListEventsItem.types';
 
 const ListEventsItem = ({ event }: ListEventsItemProps) => {
   const { slug, flyer, title, date, endDate, address, country } = event;

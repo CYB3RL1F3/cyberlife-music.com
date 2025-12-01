@@ -1,7 +1,8 @@
-import type { ListItemWrapperProps } from './ListItemWrapper.types';
+import clsx from 'clsx';
 import { useMemo } from 'react';
 import { motion, useWillChange } from 'framer-motion';
-import clsx from 'clsx';
+
+import type { ListItemWrapperProps } from './ListItemWrapper.types';
 
 const ListItemWrapper = ({
   children,

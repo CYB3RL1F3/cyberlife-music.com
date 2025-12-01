@@ -1,19 +1,22 @@
 import { useQuery } from '@apollo/client/react';
-import type { AutoCompleteLocationsVariables } from '~/types/gql/AutoCompleteLocations';
-import { autocompleteLocationsGql } from '~/queries/autocompleteLocations';
-import { AutoCompleteLocations } from '~/types/gql/AutoCompleteLocations';
+
+import { autocompleteLocationsQueryGql } from '~/queries/autocompleteLocations';
+import {
+  AutoCompleteLocationsQuery,
+  AutoCompleteLocationsQueryVariables,
+} from '~/types/gql';
 
 export const useAutocompleteLocationQuery = (
-  payload: AutoCompleteLocationsVariables['payload'],
+  payload: AutoCompleteLocationsQueryVariables['payload'],
   enabled?: boolean,
 ) => {
-  return useQuery<AutoCompleteLocations, AutoCompleteLocationsVariables>(
-    autocompleteLocationsGql,
-    {
-      variables: {
-        payload,
-      },
-      skip: !enabled,
+  return useQuery<
+    AutoCompleteLocationsQuery,
+    AutoCompleteLocationsQueryVariables
+  >(autocompleteLocationsQueryGql, {
+    variables: {
+      payload,
     },
-  );
+    skip: !enabled,
+  });
 };

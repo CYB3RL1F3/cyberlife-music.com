@@ -1,11 +1,12 @@
 import { useMutation } from '@apollo/client/react';
 import { gql } from '@apollo/client';
+
 import subscribeMutation from '~/gql/mutations/subscribe.gql';
 import subscribeFragment from '~/gql/fragments/subscribe.gql';
 import type {
   SubscribeMutation,
   SubscribeMutationVariables,
-} from '~/types/gql/SubscribeMutation';
+} from '~/types/gql';
 
 const subscribeMutationGql = gql`
   ${subscribeFragment}

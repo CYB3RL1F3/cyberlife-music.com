@@ -1,6 +1,5 @@
-import type { PlaylistQueryPlaylistTracks } from "~/types/gql/PlaylistQuery";
-import type { TrackFragment } from "~/types/gql/TrackFragment";
+import { Track } from '~/types/gql';
 
 export type ListLinkIconsPodcastProps = {
-  podcast: TrackFragment | PlaylistQueryPlaylistTracks;
+  podcast: Track;
 };

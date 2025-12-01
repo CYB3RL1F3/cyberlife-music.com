@@ -1,14 +1,15 @@
+import { motion, useWillChange } from 'framer-motion';
+
 import PageDetailHeader from '~/components/molecules/PageDetailHeader';
 import PageDetailHeaderPortal from '~/components/molecules/PageDetailHeaderPortal';
-import CarouselEvent from '../CarouselEvent';
-import type { ViewEventProps } from './ViewEvent.types';
+import CarouselEvent from '~/components/organisms/CarouselEvent';
 import Text from '~/components/atoms/Text';
-import { motion, useWillChange } from 'framer-motion';
 import Anchor from '~/components/atoms/Anchor';
-import { parseHtml, toHtml } from '~/utils/html';
-import { getEventDateDisplay } from '~/utils/date';
-import { AnimatePresence } from 'framer-motion';
 import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
+import { getTextToHtml } from '~/utils/html';
+import { getEventDateDisplay } from '~/utils/date';
+
+import type { ViewEventProps } from './ViewEvent.types';
 
 const ViewEvent = ({ event }: ViewEventProps) => {
   const { title, address, country, cost, lineup, description, links } = event;
@@ -39,7 +40,7 @@ const ViewEvent = ({ event }: ViewEventProps) => {
       </motion.div>
       {description && (
         <motion.div {...transition(0.2)} className="flex justify-end w-full">
-          <Text.RightMd>{parseHtml(toHtml(description))}</Text.RightMd>
+          <Text.RightMd>{getTextToHtml(description)}</Text.RightMd>
         </motion.div>
       )}
       <div className="flex justify-end w-full">

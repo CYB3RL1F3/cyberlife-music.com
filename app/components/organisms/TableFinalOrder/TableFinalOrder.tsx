@@ -1,8 +1,10 @@
-import Table from '~/components/atoms/Table';
-import type { TableFinalOrderProps } from './TableFinalOrder.types';
 import { useMemo } from 'react';
+
+import Table from '~/components/atoms/Table';
 import { getTtcPrice } from '~/utils/business/purchase';
 import { toFixed } from '~/utils/number';
+
+import type { TableFinalOrderProps } from './TableFinalOrder.types';
 
 const TableFinalOrder = ({ items, carrier }: TableFinalOrderProps) => {
   const totalPrice = useMemo(() => getTtcPrice(items), [items]);

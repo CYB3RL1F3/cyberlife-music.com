@@ -1,10 +1,10 @@
-import { usePlayerContext } from '~/components/contexts/PlayerContext';
-import { useLocation } from '@remix-run/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import useDebounceEffect from '../misc/useDebouncedEffect';
+
+import useDebounceEffect from '~/hooks/misc/useDebouncedEffect';
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
 
 export const usePlayerTrackVisibility = () => {
-  const { currentTrack } = usePlayerContext();
+  const { currentTrack } = usePlayerStore();
 
   const intersectionObserverRef = useRef<IntersectionObserver | null>(null);
   const mutationObserverRef = useRef<MutationObserver | null>(null);

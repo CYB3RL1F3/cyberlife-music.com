@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import type { AutoCompleteProps } from './AutoComplete.types';
-import { useCallback, useLayoutEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+
 import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
+
+import type { AutoCompleteProps } from './AutoComplete.types';
 
 const actionValues = {
   ArrowUp: -1 as const,

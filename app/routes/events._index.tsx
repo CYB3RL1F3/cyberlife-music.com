@@ -1,4 +1,5 @@
 import { LinksFunction } from '@remix-run/server-runtime';
+
 import ErrorPage from '~/components/pages/ErrorPage';
 import EventsPage from '~/components/pages/EventsPage';
 

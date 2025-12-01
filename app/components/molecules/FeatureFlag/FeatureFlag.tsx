@@ -1,4 +1,5 @@
 import { useFeatureFlagQuery } from '~/hooks/queries/useFeatureFlagQuery';
+
 import type { FeatureFlagProps } from './FeatureFlag.types';
 
 const FeatureFlag = ({ id, children, fallback = null }: FeatureFlagProps) => {
