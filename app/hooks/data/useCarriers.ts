@@ -6,6 +6,7 @@ import { CartItem } from '~/hooks/db/useCart';
 import {
   CarrierPricesQueryVariables,
   ReleaseDto,
+  ReleaseDtoInput,
   ReleaseItem,
 } from '~/types/gql';
 
@@ -46,7 +47,7 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
       format: value?.format,
       country: value?.country,
       discogs: value?.discogs,
-    } satisfies ReleaseDto;
+    } satisfies ReleaseDtoInput;
   };
 
   const cartItems: CarrierPricesQueryVariables['items'] =
