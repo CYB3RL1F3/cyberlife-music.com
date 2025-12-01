@@ -3,7 +3,11 @@ import { useMemo } from 'react';
 import { useCarrierPricesQuery } from '~/hooks/queries/useCarrierPricesQuery';
 import { useReleasesQuery } from '~/hooks/queries/useReleasesQuery';
 import { CartItem } from '~/hooks/db/useCart';
-import { CarrierPricesQueryVariables, ReleaseItem } from '~/types/gql';
+import {
+  CarrierPricesQueryVariables,
+  ReleaseDto,
+  ReleaseItem,
+} from '~/types/gql';
 
 export type Carrier = {
   carrier: string;
@@ -11,6 +15,7 @@ export type Carrier = {
 };
 
 export const useCarrierPrices = (country: string, items: CartItem[]) => {
+  console.log('useCarrierPrices called', { country, items });
   const { data } = useReleasesQuery();
 
   const getProduct = (item: CartItem, releaseItems: ReleaseItem[]) => {
@@ -18,7 +23,30 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
       (releaseItem) => releaseItem.id === item.id,
     )?.release!;
 
-    return value;
+    return {
+      artist: value?.artist,
+      title: value?.title,
+      slug: value?.slug,
+      bandcamp: value?.bandcamp,
+      cat: value?.cat,
+      thumb: value?.thumb,
+      tracklist: value?.tracklist,
+      type: value?.type,
+      uri: value?.uri,
+      stats: value?.stats,
+      role: value?.role,
+      resourceUrl: value?.resourceUrl,
+      releaseId: value?.releaseId,
+      releaseDate: value?.releaseDate,
+      notes: value?.notes,
+      label: value?.label,
+      genre: value?.genre,
+      year: value?.year,
+      images: value?.images,
+      format: value?.format,
+      country: value?.country,
+      discogs: value?.discogs,
+    } satisfies ReleaseDto;
   };
 
   const cartItems: CarrierPricesQueryVariables['items'] =
@@ -33,6 +61,7 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
       : [];
 
   const carriers = useCarrierPricesQuery(country, cartItems);
+  console.log('CARRIERS DATA', { carriers });
 
   const carrierPrices = useMemo(() => {
     const value = [];
@@ -83,6 +112,8 @@ export const useCarrierPrices = (country: string, items: CartItem[]) => {
 
     return value;
   }, [carriers.data]);
+
+  console.log('Computed carrierPrices', carrierPrices);
 
   return carrierPrices;
 };

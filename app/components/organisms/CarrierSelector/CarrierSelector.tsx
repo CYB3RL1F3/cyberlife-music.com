@@ -11,6 +11,8 @@ const CarrierSelector = ({
   label = 'Choose your transport',
 }: CarrierSelectorProps) => {
   const carrierPrices = useCarrierPrices(country, items);
+  console.log('CarrierSelector render', { country, carrierPrices });
+
   return (
     <Selector
       disabled={!carrierPrices.length}

@@ -19,8 +19,6 @@ export const useLocationsSuggestions = (
       country,
       query,
       type,
-      language: 'en',
-      limit: 10,
     },
     query.length >= 2 && country.length > 0,
   );
