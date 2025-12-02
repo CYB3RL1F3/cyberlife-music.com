@@ -3,6 +3,7 @@ import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Thumbnail from '~/components/molecules/Thumbnail';
 import ReleaseActionPlayContainer from '~/components/organisms/ReleaseActionPlayContainer';
 import PlayerReleaseTrackContainer from '~/components/organisms/PlayerReleaseTrackContainer';
+import { defaultThumb } from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 
 import type { ReleaseTracklistItemProps } from './ReleaseTracklistItem.types';
 
@@ -22,7 +23,7 @@ const ReleaseTracklistItem = ({
   return (
     <ListItem
       thumbnail={
-        <Thumbnail src={artwork || thumb || ''}>
+        <Thumbnail src={artwork || thumb || defaultThumb}>
           <ReleaseActionPlayContainer
             track={stream}
             album={album}
@@ -34,7 +35,7 @@ const ReleaseTracklistItem = ({
         </Thumbnail>
       }
     >
-      <ListItemSnippet title={title || ''}>
+      <ListItemSnippet title={title || defaultThumb}>
         <div className="w-full h-16" />
         <div className="max-md:hidden">
           <PlayerReleaseTrackContainer

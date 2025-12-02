@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 
 import ListItem from '~/components/molecules/ListItem';
 import ListItemSnippet from '~/components/molecules/ListItemSnippet';
-import Picture from '~/components/organisms/Picture';
 import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
+import Thumbnail from '~/components/molecules/Thumbnail';
+import ReleaseActionPlayContainer from '~/components/organisms/ReleaseActionPlayContainer';
+import { defaultThumb } from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 
 import type { ListReleasesItemProps } from './ListReleasesItem.types';
-import Thumbnail from '~/components/molecules/Thumbnail';
-import ReleaseActionPlayContainer from '../ReleaseActionPlayContainer';
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
   if (!release.release) return null;
@@ -16,9 +16,6 @@ const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
     release.release;
 
   if (!title) return null;
-
-  const defaultThumb =
-    'https://media.istockphoto.com/id/134119615/photo/vinyl-record.jpg';
 
   const artwork = thumb || defaultThumb;
   const firstTrack = tracklist?.[0].stream;

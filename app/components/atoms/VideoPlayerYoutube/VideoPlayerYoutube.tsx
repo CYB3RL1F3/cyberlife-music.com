@@ -32,6 +32,7 @@ export const VideoPlayerYoutube = ({
                 fs: 0,
                 rel: 0,
                 iv_load_policy: 3,
+                color: 'white',
               },
             }}
           />
