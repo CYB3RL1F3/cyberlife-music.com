@@ -42,7 +42,10 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
         <ReleaseDetails release={release} />
       </motion.article>
       {images && images.length > 0 && (
-        <motion.article className="py-4" {...transition(0.2, 0.2)}>
+        <motion.article
+          className="flex flex-wrap justify-end w-full py-4 h-fit"
+          {...transition(0.2, 0.2)}
+        >
           <PicturesGallery images={images} />
         </motion.article>
       )}
