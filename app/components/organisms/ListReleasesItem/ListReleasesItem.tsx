@@ -6,21 +6,40 @@ import Picture from '~/components/organisms/Picture';
 import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
 
 import type { ListReleasesItemProps } from './ListReleasesItem.types';
+import Thumbnail from '~/components/molecules/Thumbnail';
+import ReleaseActionPlayContainer from '../ReleaseActionPlayContainer';
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
   if (!release.release) return null;
 
-  const { title, slug, tracklist, releaseDate, role, thumb, label } =
+  const { title, slug, artist, tracklist, releaseDate, role, thumb, label } =
     release.release;
+
+  if (!title) return null;
 
   const defaultThumb =
     'https://media.istockphoto.com/id/134119615/photo/vinyl-record.jpg';
 
   const artwork = thumb || defaultThumb;
-  if (!title) return null;
   const firstTrack = tracklist?.[0].stream;
+  const nextId = tracklist?.[1]?.stream?.id;
+
   return (
-    <ListItem thumbnail={<Picture alt={title} src={artwork} />}>
+    <ListItem
+      thumbnail={
+        <Thumbnail src={artwork}>
+          {firstTrack && (
+            <ReleaseActionPlayContainer
+              track={firstTrack}
+              album={release.name}
+              pageUrl={`/releases/${slug}`}
+              artist={artist}
+              nextId={nextId}
+            />
+          )}
+        </Thumbnail>
+      }
+    >
       <ListItemSnippet title={title} href={`/releases/${slug}`}>
         <div className="w-full h-14">
           <p className="text-sm italic text-right">{label}</p>
