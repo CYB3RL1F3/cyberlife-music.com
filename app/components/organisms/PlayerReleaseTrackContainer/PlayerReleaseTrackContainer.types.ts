@@ -5,9 +5,5 @@ export type TracklistItem = NonNullable<Release['tracklist']>[number];
 
 export type PlayerReleaseTrackContainerProps = {
   track: Parameters<typeof useReleaseTrackPlayer>[0];
-  artists: TracklistItem['artists'];
-  album?: string | null;
-  prevId?: number | null;
-  nextId?: number | null;
-  pageUrl: string;
+  release: Parameters<typeof useReleaseTrackPlayer>[1];
 };

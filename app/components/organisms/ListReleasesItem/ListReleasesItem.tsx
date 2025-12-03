@@ -8,18 +8,20 @@ import ReleaseActionPlayContainer from '~/components/organisms/ReleaseActionPlay
 import { defaultThumb } from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 
 import type { ListReleasesItemProps } from './ListReleasesItem.types';
+import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
+import { useEffect } from 'react';
+import { getTrackToBuffer } from '~/utils/trackToBuffer';
 
 const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
   if (!release.release) return null;
 
-  const { title, slug, artist, tracklist, releaseDate, role, thumb, label } =
+  const { title, slug, tracklist, releaseDate, role, thumb, label } =
     release.release;
 
   if (!title) return null;
 
   const artwork = thumb || defaultThumb;
   const firstTrack = tracklist?.[0].stream;
-  const nextId = tracklist?.[1]?.stream?.id;
 
   return (
     <ListItem
@@ -28,10 +30,7 @@ const ListReleasesItem = ({ release }: ListReleasesItemProps) => {
           {firstTrack && (
             <ReleaseActionPlayContainer
               track={firstTrack}
-              album={release.name}
-              pageUrl={`/releases/${slug}`}
-              artist={artist}
-              nextId={nextId}
+              release={release.release}
             />
           )}
         </Thumbnail>

@@ -31,7 +31,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
 
   if (!release.release) return <p>Release data is missing</p>;
 
-  const { title, images, notes, tracklist, thumb, slug } = release.release;
+  const { title, images, notes, tracklist } = release.release;
 
   return (
     <article className="o-4">
@@ -55,14 +55,7 @@ const ViewRelease = ({ release }: ViewReleaseProps) => {
         </motion.article>
       ) : null}
 
-      {tracklist && (
-        <ReleaseTracklist
-          id={slug}
-          tracks={tracklist}
-          thumb={thumb}
-          album={title}
-        />
-      )}
+      {tracklist && <ReleaseTracklist release={release.release} />}
     </article>
   );
 };

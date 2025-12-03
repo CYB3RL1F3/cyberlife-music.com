@@ -6,7 +6,6 @@ import ReleasesPage from '~/components/pages/ReleasesPage';
 
 export default function ReleaseRoute() {
   const { id } = useParams();
-  console.log('RELEASE ID >> ', id);
 
   if (!id) return <ReleasesPage />;
   return <ReleasePage id={id} />;

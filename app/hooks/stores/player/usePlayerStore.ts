@@ -131,11 +131,11 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
     if (!currentTrackId) return;
 
     const seek = buffer[currentTrackId]?.seek ?? 0;
-    const jump = seek > 0.1;
+    const jumping = seek > 0.1;
 
     set({
       playing: !playing,
-      jumping: jump,
+      jumping,
     });
   },
 

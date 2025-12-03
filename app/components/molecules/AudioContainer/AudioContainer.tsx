@@ -7,6 +7,7 @@ const AudioContainer = () => {
   const currentTrack = useCurrentTrackPlayer();
 
   if (!currentTrack.isPlaying || !currentTrack.url) return null;
+
   return <Audio {...currentTrack} />;
 };
 

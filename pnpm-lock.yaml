@@ -11,7 +11,7 @@ overrides:
 dependencies:
   '@apollo/client':
     specifier: 4.0.9
-    version: 4.0.9(graphql@16.11.0)(react-dom@19.2.0)(react@19.2.0)(rxjs@7.8.2)
+    version: 4.0.9(graphql@16.11.0)(react-dom@19.2.1)(react@19.2.1)(rxjs@7.8.2)
   '@esbuild/darwin-x64':
     specifier: 0.27.0
     version: 0.27.0
@@ -20,7 +20,7 @@ dependencies:
     version: 5.2.2(react-hook-form@7.67.0)
   '@paypal/react-paypal-js':
     specifier: 8.9.2
-    version: 8.9.2(react-dom@19.2.0)(react@19.2.0)
+    version: 8.9.2(react-dom@19.2.1)(react@19.2.1)
   '@remix-run/dev':
     specifier: 2.17.2
     version: 2.17.2(@remix-run/react@2.17.2)(@remix-run/serve@2.17.2)(@types/node@24.10.1)(ts-node@10.9.2)(typescript@5.9.3)
@@ -29,7 +29,7 @@ dependencies:
     version: 2.17.2(typescript@5.9.3)
   '@remix-run/react':
     specifier: 2.17.2
-    version: 2.17.2(react-dom@19.2.0)(react@19.2.0)(typescript@5.9.3)
+    version: 2.17.2(react-dom@19.2.1)(react@19.2.1)(typescript@5.9.3)
   '@remix-run/serve':
     specifier: 2.17.2
     version: 2.17.2(typescript@5.9.3)
@@ -68,7 +68,7 @@ dependencies:
     version: 4.2.1
   dexie-react-hooks:
     specifier: 4.2.0
-    version: 4.2.0(@types/react@19.2.7)(dexie@4.2.1)(react@19.2.0)
+    version: 4.2.0(@types/react@19.2.7)(dexie@4.2.1)(react@19.2.1)
   dompurify:
     specifier: 3.3.0
     version: 3.3.0
@@ -80,7 +80,7 @@ dependencies:
     version: 0.27.0
   framer-motion:
     specifier: 12.23.25
-    version: 12.23.25(react-dom@19.2.0)(react@19.2.0)
+    version: 12.23.25(react-dom@19.2.1)(react@19.2.1)
   graphql:
     specifier: 16.11.0
     version: 16.11.0
@@ -89,7 +89,7 @@ dependencies:
     version: 2.12.6(graphql@16.11.0)
   html-react-parser:
     specifier: 5.2.10
-    version: 5.2.10(@types/react@19.2.7)(react@19.2.0)
+    version: 5.2.10(@types/react@19.2.7)(react@19.2.1)
   isbot:
     specifier: 5.1.32
     version: 5.1.32
@@ -115,35 +115,35 @@ dependencies:
     specifier: 8.5.6
     version: 8.5.6
   react:
-    specifier: 19.2.0
-    version: 19.2.0
+    specifier: 19.2.1
+    version: 19.2.1
   react-audio-player:
     specifier: 0.17.0
-    version: 0.17.0(react-dom@19.2.0)(react@19.2.0)
+    version: 0.17.0(react-dom@19.2.1)(react@19.2.1)
   react-country-flag:
     specifier: 3.1.0
-    version: 3.1.0(react@19.2.0)
+    version: 3.1.0(react@19.2.1)
   react-dom:
-    specifier: 19.2.0
-    version: 19.2.0(react@19.2.0)
+    specifier: 19.2.1
+    version: 19.2.1(react@19.2.1)
   react-hook-form:
     specifier: 7.67.0
-    version: 7.67.0(react@19.2.0)
+    version: 7.67.0(react@19.2.1)
   react-hooks-form:
     specifier: 2.0.1
-    version: 2.0.1(react-dom@19.2.0)(react@19.2.0)
+    version: 2.0.1(react-dom@19.2.1)(react@19.2.1)
   react-icons:
     specifier: 5.5.0
-    version: 5.5.0(react@19.2.0)
+    version: 5.5.0(react@19.2.1)
   react-map-gl:
     specifier: 8.1.0
-    version: 8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.0)(react@19.2.0)
+    version: 8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.1)(react@19.2.1)
   react-player:
     specifier: 3.4.0
-    version: 3.4.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.0)(react@19.2.0)
+    version: 3.4.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.1)(react@19.2.1)
   react-toastify:
     specifier: 11.0.5
-    version: 11.0.5(react-dom@19.2.0)(react@19.2.0)
+    version: 11.0.5(react-dom@19.2.1)(react@19.2.1)
   remix:
     specifier: 2.17.2
     version: 2.17.2
@@ -191,15 +191,15 @@ dependencies:
     version: 1.1.0
   zustand:
     specifier: ^5.0.9
-    version: 5.0.9(@types/react@19.2.7)(react@19.2.0)
+    version: 5.0.9(@types/react@19.2.7)(react@19.2.1)
 
 devDependencies:
   '@graphql-codegen/cli':
     specifier: 6.1.0
     version: 6.1.0(@types/node@24.10.1)(graphql@16.11.0)(typescript@5.9.3)
   '@graphql-codegen/near-operation-file-preset':
-    specifier: 3.1.0
-    version: 3.1.0(graphql@16.11.0)
+    specifier: 4.0.0
+    version: 4.0.0(graphql@16.11.0)
   '@graphql-codegen/typescript':
     specifier: 5.0.6
     version: 5.0.6(graphql@16.11.0)
@@ -211,7 +211,7 @@ devDependencies:
     version: 4.3.3(graphql@16.11.0)
   '@remix-run/eslint-config':
     specifier: 2.17.2
-    version: 2.17.2(eslint@9.39.1)(react@19.2.0)(typescript@5.9.3)
+    version: 2.17.2(eslint@9.39.1)(react@19.2.1)(typescript@5.9.3)
   '@types/dompurify':
     specifier: 3.2.0
     version: 3.2.0
@@ -234,8 +234,8 @@ devDependencies:
     specifier: 9.39.1
     version: 9.39.1
   prettier:
-    specifier: 3.7.3
-    version: 3.7.3
+    specifier: 3.7.4
+    version: 3.7.4
   ts-node:
     specifier: 10.9.2
     version: 10.9.2(@types/node@24.10.1)(typescript@5.9.3)
@@ -254,7 +254,7 @@ packages:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
 
-  /@apollo/client@4.0.9(graphql@16.11.0)(react-dom@19.2.0)(react@19.2.0)(rxjs@7.8.2):
+  /@apollo/client@4.0.9(graphql@16.11.0)(react-dom@19.2.1)(react@19.2.1)(rxjs@7.8.2):
     resolution: {integrity: sha512-Lh2drMzFE9x5jVS8RKmlGL5SORkvpyUJIT+wTErxDUR2HpWePiBfhhcHHRSlZFiCR866ewCv4euTc4IDF0GWxw==}
     peerDependencies:
       graphql: 16.11.0
@@ -280,8 +280,8 @@ packages:
       graphql: 16.11.0
       graphql-tag: 2.12.6(graphql@16.11.0)
       optimism: 0.18.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       rxjs: 7.8.2
       tslib: 2.8.1
     dev: false
@@ -1836,16 +1836,6 @@ packages:
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
     dev: true
 
-  /@graphql-codegen/add@3.2.3(graphql@16.11.0):
-    resolution: {integrity: sha512-sQOnWpMko4JLeykwyjFTxnhqjd/3NOG2OyMuvK76Wnnwh8DRrNf2VEs2kmSvLl7MndMlOj7Kh5U154dVcvhmKQ==}
-    peerDependencies:
-      graphql: 16.11.0
-    dependencies:
-      '@graphql-codegen/plugin-helpers': 3.1.2(graphql@16.11.0)
-      graphql: 16.11.0
-      tslib: 2.4.1
-    dev: true
-
   /@graphql-codegen/add@6.0.0(graphql@16.11.0):
     resolution: {integrity: sha512-biFdaURX0KTwEJPQ1wkT6BRgNasqgQ5KbCI1a3zwtLtO7XTo7/vKITPylmiU27K5DSOWYnY/1jfSqUAEBuhZrQ==}
     engines: {node: '>=16'}
@@ -1974,22 +1964,21 @@ packages:
       - encoding
     dev: true
 
-  /@graphql-codegen/near-operation-file-preset@3.1.0(graphql@16.11.0):
-    resolution: {integrity: sha512-sXIIi0BPP3IcARdzSztpE51oJTcGB67hi7ddBYfLinks/R/5aFG1Ry/J61707Kt+6Q5WhTnf5XAQUAqi6200yA==}
+  /@graphql-codegen/near-operation-file-preset@4.0.0(graphql@16.11.0):
+    resolution: {integrity: sha512-InHE3tN0dZKCZivrQ950y6Tnxtt/DJbvqqm5iCOmExJeIzhLoMOB0Rq2ex4KsRdSY9YtpYbYNCmO2xSU3MbRcg==}
     engines: {node: '>= 16.0.0'}
     peerDependencies:
       graphql: 16.11.0
     dependencies:
-      '@graphql-codegen/add': 3.2.3(graphql@16.11.0)
-      '@graphql-codegen/plugin-helpers': 3.1.2(graphql@16.11.0)
-      '@graphql-codegen/visitor-plugin-common': 2.13.8(graphql@16.11.0)
-      '@graphql-tools/utils': 10.9.1(graphql@16.11.0)
+      '@graphql-codegen/add': 6.0.0(graphql@16.11.0)
+      '@graphql-codegen/plugin-helpers': 6.1.0(graphql@16.11.0)
+      '@graphql-codegen/visitor-plugin-common': 6.2.1(graphql@16.11.0)
+      '@graphql-tools/utils': 10.11.0(graphql@16.11.0)
       graphql: 16.11.0
       parse-filepath: 1.0.2
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
-      - supports-color
     dev: true
 
   /@graphql-codegen/plugin-helpers@3.1.2(graphql@16.11.0):
@@ -2792,7 +2781,7 @@ packages:
       react-hook-form: ^7.55.0
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.67.0(react@19.2.0)
+      react-hook-form: 7.67.0(react@19.2.1)
     dev: false
 
   /@humanfs/core@0.19.1:
@@ -3165,7 +3154,7 @@ packages:
       mux-embed: 5.9.0
     dev: false
 
-  /@mux/mux-player-react@3.9.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.0)(react@19.2.0):
+  /@mux/mux-player-react@3.9.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-AYBX89T02qOJ6rF4X2sB8WmPoHBQIrASvp6rxCf9wWYdp5lYtAjjTwaAM2aTlVEXSzdDPaOwgC7VmR7LhBJn3g==}
     peerDependencies:
       '@types/react': ^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
@@ -3178,22 +3167,22 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@mux/mux-player': 3.9.0(react@19.2.0)
+      '@mux/mux-player': 3.9.0(react@19.2.1)
       '@mux/playback-core': 0.31.3
       '@types/react': 19.2.7
       '@types/react-dom': 19.2.3(@types/react@19.2.7)
       prop-types: 15.8.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /@mux/mux-player@3.9.0(react@19.2.0):
+  /@mux/mux-player@3.9.0(react@19.2.1):
     resolution: {integrity: sha512-OjRXdJFPstCoTipqJCXyC3e3PVoLp8jOheCaWxe2a8qvHkSs/sg+UoYegr++hAoLXXIyy2M7F6vi+tWq0W5bYA==}
     dependencies:
       '@mux/mux-video': 0.28.0
       '@mux/playback-core': 0.31.3
-      media-chrome: 4.16.0(react@19.2.0)
-      player.style: 0.3.0(react@19.2.0)
+      media-chrome: 4.16.0(react@19.2.1)
+      player.style: 0.3.0(react@19.2.1)
     transitivePeerDependencies:
       - react
     dev: false
@@ -3305,7 +3294,7 @@ packages:
       promise-polyfill: 8.3.0
     dev: false
 
-  /@paypal/react-paypal-js@8.9.2(react-dom@19.2.0)(react@19.2.0):
+  /@paypal/react-paypal-js@8.9.2(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-z1GoA7KAkhFCSmpIsRxe9aseXRvfOMgF6vCJ2Mym0VOSYJm8bZSC3Ui4SjONnglfV8S4P8djpe5QB7FtKsDXrQ==}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -3313,8 +3302,8 @@ packages:
     dependencies:
       '@paypal/paypal-js': 9.0.1
       '@paypal/sdk-constants': 1.0.155
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
   /@paypal/sdk-constants@1.0.155:
@@ -3361,7 +3350,7 @@ packages:
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
       '@remix-run/node': 2.17.2(typescript@5.9.3)
-      '@remix-run/react': 2.17.2(react-dom@19.2.0)(react@19.2.0)(typescript@5.9.3)
+      '@remix-run/react': 2.17.2(react-dom@19.2.1)(react@19.2.1)(typescript@5.9.3)
       '@remix-run/router': 1.23.0
       '@remix-run/serve': 2.17.2(typescript@5.9.3)
       '@remix-run/server-runtime': 2.17.2(typescript@5.9.3)
@@ -3429,7 +3418,7 @@ packages:
       - yaml
     dev: false
 
-  /@remix-run/eslint-config@2.17.2(eslint@9.39.1)(react@19.2.0)(typescript@5.9.3):
+  /@remix-run/eslint-config@2.17.2(eslint@9.39.1)(react@19.2.1)(typescript@5.9.3):
     resolution: {integrity: sha512-amaXcAWYrLQ9d9u/IbfWNWyKnp1lSx+EcvhAoXRZdw7pL3Ndk5dAQNy2oU9lu/CxvRB4LKi7RcFckZ/VuQwHdw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3457,7 +3446,7 @@ packages:
       eslint-plugin-react: 7.37.5(eslint@9.39.1)
       eslint-plugin-react-hooks: 4.6.2(eslint@9.39.1)
       eslint-plugin-testing-library: 5.11.1(eslint@9.39.1)(typescript@5.9.3)
-      react: 19.2.0
+      react: 19.2.1
       typescript: 5.9.3
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
@@ -3500,7 +3489,7 @@ packages:
       undici: 6.21.3
     dev: false
 
-  /@remix-run/react@2.17.2(react-dom@19.2.0)(react@19.2.0)(typescript@5.9.3):
+  /@remix-run/react@2.17.2(react-dom@19.2.1)(react@19.2.1)(typescript@5.9.3):
     resolution: {integrity: sha512-/s/PYqDjTsQ/2bpsmY3sytdJYXuFHwPX3IRHKcM+UZXFRVGPKF5dgGuvCfb+KW/TmhVKNgpQv0ybCoGpCuF6aA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3513,10 +3502,10 @@ packages:
     dependencies:
       '@remix-run/router': 1.23.0
       '@remix-run/server-runtime': 2.17.2(typescript@5.9.3)
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-router: 6.30.0(react@19.2.0)
-      react-router-dom: 6.30.0(react-dom@19.2.0)(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      react-router: 6.30.0(react@19.2.1)
+      react-router-dom: 6.30.0(react-dom@19.2.1)(react@19.2.1)
       turbo-stream: 2.4.1
       typescript: 5.9.3
     dev: false
@@ -4347,7 +4336,7 @@ packages:
       weakmap-polyfill: 2.0.4
     dev: false
 
-  /@vis.gl/react-mapbox@8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.0)(react@19.2.0):
+  /@vis.gl/react-mapbox@8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-FwvH822oxEjWYOr+pP2L8hpv+7cZB2UsQbHHHT0ryrkvvqzmTgt7qHDhamv0EobKw86e1I+B4ojENdJ5G5BkyQ==}
     peerDependencies:
       mapbox-gl: '>=3.5.0'
@@ -4358,11 +4347,11 @@ packages:
         optional: true
     dependencies:
       mapbox-gl: 3.16.0
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /@vis.gl/react-maplibre@8.1.0(react-dom@19.2.0)(react@19.2.0):
+  /@vis.gl/react-maplibre@8.1.0(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-PkAK/gp3mUfhCLhUuc+4gc3PN9zCtVGxTF2hB6R5R5yYUw+hdg84OZ770U5MU4tPMTCG6fbduExuIW6RRKN6qQ==}
     peerDependencies:
       maplibre-gl: '>=4.0.0'
@@ -4373,8 +4362,8 @@ packages:
         optional: true
     dependencies:
       '@maplibre/maplibre-gl-style-spec': 19.3.3
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
   /@web3-storage/multipart-parser@1.0.0:
@@ -5043,12 +5032,12 @@ packages:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
     dev: false
 
-  /ce-la-react@0.3.1(react@19.2.0):
+  /ce-la-react@0.3.1(react@19.2.1):
     resolution: {integrity: sha512-g0YwpZDPIwTwFumGTzNHcgJA6VhFfFCJkSNdUdC04br2UfU+56JDrJrJva3FZ7MToB4NDHAFBiPE/PZdNl1mQA==}
     peerDependencies:
       react: '>=17.0.0'
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
   /chalk@2.4.2:
@@ -5682,7 +5671,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /dexie-react-hooks@4.2.0(@types/react@19.2.7)(dexie@4.2.1)(react@19.2.0):
+  /dexie-react-hooks@4.2.0(@types/react@19.2.7)(dexie@4.2.1)(react@19.2.1):
     resolution: {integrity: sha512-u7KqTX9JpBQK8+tEyA9X0yMGXlSCsbm5AU64N6gjvGk/IutYDpLBInMYEAEC83s3qhIvryFS+W+sqLZUBEvePQ==}
     peerDependencies:
       '@types/react': '>=16'
@@ -5691,7 +5680,7 @@ packages:
     dependencies:
       '@types/react': 19.2.7
       dexie: 4.2.1
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
   /dexie@4.2.1:
@@ -6835,7 +6824,7 @@ packages:
     resolution: {integrity: sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==}
     dev: false
 
-  /framer-motion@12.23.25(react-dom@19.2.0)(react@19.2.0):
+  /framer-motion@12.23.25(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-gUHGl2e4VG66jOcH0JHhuJQr6ZNwrET9g31ZG0xdXzT0CznP7fHX4P8Bcvuc4MiUB90ysNnWX2ukHRIggkl6hQ==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
@@ -6851,8 +6840,8 @@ packages:
     dependencies:
       motion-dom: 12.23.23
       motion-utils: 12.23.6
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       tslib: 2.8.1
     dev: false
 
@@ -7278,7 +7267,7 @@ packages:
     resolution: {integrity: sha512-kig+rMn/QOVRvr7c86gQ8lWXq+Hkv6CbAH1hLu+RG338StTpE8Z0b44SDVaqVu7HGKf27frdmUYEs9hTUX/cLQ==}
     dev: false
 
-  /html-react-parser@5.2.10(@types/react@19.2.7)(react@19.2.0):
+  /html-react-parser@5.2.10(@types/react@19.2.7)(react@19.2.1):
     resolution: {integrity: sha512-DjOLloguuDA+Ed7Q7PKhvMQmCl2+Yk/pfvvca68fvn15QFBbL4uHGxXwoXQ4sqS0UyuRH2lJb0S8yZCL3lvehQ==}
     peerDependencies:
       '@types/react': 0.14 || 15 || 16 || 17 || 18 || 19
@@ -7290,7 +7279,7 @@ packages:
       '@types/react': 19.2.7
       domhandler: 5.0.3
       html-dom-parser: 5.1.2
-      react: 19.2.0
+      react: 19.2.1
       react-property: 2.0.2
       style-to-js: 1.1.21
     dev: false
@@ -8368,18 +8357,18 @@ packages:
       '@types/mdast': 3.0.15
     dev: false
 
-  /media-chrome@4.14.0(react@19.2.0):
+  /media-chrome@4.14.0(react@19.2.1):
     resolution: {integrity: sha512-IEdFb4blyF15vLvQzLIn6USJBv7Kf2ne+TfLQKBYI5Z0f9VEBVZz5MKy4Uhi0iA9lStl2S9ENIujJRuJIa5OiA==}
     dependencies:
-      ce-la-react: 0.3.1(react@19.2.0)
+      ce-la-react: 0.3.1(react@19.2.1)
     transitivePeerDependencies:
       - react
     dev: false
 
-  /media-chrome@4.16.0(react@19.2.0):
+  /media-chrome@4.16.0(react@19.2.1):
     resolution: {integrity: sha512-c5xpTYcYo9nYsC/G/C1PyOcPXEL6iIaSR9MH3GncVuj4S90aHqvGbsyUWFDPPBKx5sCwWLxDnbszE/24eMT54g==}
     dependencies:
-      ce-la-react: 0.3.1(react@19.2.0)
+      ce-la-react: 0.3.1(react@19.2.1)
     transitivePeerDependencies:
       - react
     dev: false
@@ -9527,10 +9516,10 @@ packages:
       pathe: 2.0.3
     dev: false
 
-  /player.style@0.3.0(react@19.2.0):
+  /player.style@0.3.0(react@19.2.1):
     resolution: {integrity: sha512-ny1TbqA2ZsUd6jzN+F034+UMXVK7n5SrwepsrZ2gIqVz00Hn0ohCUbbUdst/2IOFCy0oiTbaOXkSFxRw1RmSlg==}
     dependencies:
-      media-chrome: 4.14.0(react@19.2.0)
+      media-chrome: 4.14.0(react@19.2.1)
     transitivePeerDependencies:
       - react
     dev: false
@@ -9699,8 +9688,8 @@ packages:
     hasBin: true
     dev: false
 
-  /prettier@3.7.3:
-    resolution: {integrity: sha512-QgODejq9K3OzoBbuyobZlUhznP5SKwPqp+6Q6xw6o8gnhr4O85L2U915iM2IDcfF2NPXVaM9zlo9tdwipnYwzg==}
+  /prettier@3.7.4:
+    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -9846,45 +9835,45 @@ packages:
       unpipe: 1.0.0
     dev: false
 
-  /react-audio-player@0.17.0(react-dom@19.2.0)(react@19.2.0):
+  /react-audio-player@0.17.0(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-aCZgusPxA9HK7rLZcTdhTbBH9l6do9vn3NorgoDZRxRxJlOy9uZWzPaKjd7QdcuP2vXpxGA/61JMnnOEY7NXeA==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
       prop-types: 15.8.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /react-country-flag@3.1.0(react@19.2.0):
+  /react-country-flag@3.1.0(react@19.2.1):
     resolution: {integrity: sha512-JWQFw1efdv9sTC+TGQvTKXQg1NKbDU2mBiAiRWcKM9F1sK+/zjhP2yGmm8YDddWyZdXVkR8Md47rPMJmo4YO5g==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
-  /react-dom@19.2.0(react@19.2.0):
-    resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
+  /react-dom@19.2.1(react@19.2.1):
+    resolution: {integrity: sha512-ibrK8llX2a4eOskq1mXKu/TGZj9qzomO+sNfO98M6d9zIPOEhlBkMkBUBLd1vgS0gQsLDBzA+8jJBVXDnfHmJg==}
     peerDependencies:
-      react: ^19.2.0
+      react: ^19.2.1
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
       scheduler: 0.27.0
     dev: false
 
-  /react-hook-form@7.67.0(react@19.2.0):
+  /react-hook-form@7.67.0(react@19.2.1):
     resolution: {integrity: sha512-E55EOwKJHHIT/I6J9DmQbCWToAYSw9nN5R57MZw9rMtjh+YQreMDxRLfdjfxQbiJ3/qbg3Z02wGzBX4M+5fMtQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
-  /react-hooks-form@2.0.1(react-dom@19.2.0)(react@19.2.0):
+  /react-hooks-form@2.0.1(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-h/4qBKn3rW/yU3ywqtY5aWpyrMkZ+YjNnbuS1gZUYb12FyHXyBHXcKj+htyleMgPUxIjn2z2w6WuTy71BcKOYA==}
     peerDependencies:
       react: ^16.8.0
@@ -9892,16 +9881,16 @@ packages:
     dependencies:
       lodash: 4.17.21
       prop-types: 15.6.2
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /react-icons@5.5.0(react@19.2.0):
+  /react-icons@5.5.0(react@19.2.1):
     resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
       react: '*'
     dependencies:
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
   /react-is@16.13.1:
@@ -9911,7 +9900,7 @@ packages:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
-  /react-map-gl@8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.0)(react@19.2.0):
+  /react-map-gl@8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-vDx/QXR3Tb+8/ap/z6gdMjJQ8ZEyaZf6+uMSPz7jhWF5VZeIsKsGfPvwHVPPwGF43Ryn+YR4bd09uEFNR5OPdg==}
     peerDependencies:
       mapbox-gl: '>=1.13.0'
@@ -9924,27 +9913,27 @@ packages:
       maplibre-gl:
         optional: true
     dependencies:
-      '@vis.gl/react-mapbox': 8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.0)(react@19.2.0)
-      '@vis.gl/react-maplibre': 8.1.0(react-dom@19.2.0)(react@19.2.0)
+      '@vis.gl/react-mapbox': 8.1.0(mapbox-gl@3.16.0)(react-dom@19.2.1)(react@19.2.1)
+      '@vis.gl/react-maplibre': 8.1.0(react-dom@19.2.1)(react@19.2.1)
       mapbox-gl: 3.16.0
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /react-player@3.4.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.0)(react@19.2.0):
+  /react-player@3.4.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-QpQSHXtnMBKjQVNeaCYMtTVcynWQ0DDDhz/FJu1OR9PHLC1Aih94UqNstywzSHbJ6Oc7lI8/7kDDqcIvyTI6zQ==}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18 || ^19
       react: ^17.0.2 || ^18 || ^19
       react-dom: ^17.0.2 || ^18 || ^19
     dependencies:
-      '@mux/mux-player-react': 3.9.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.0)(react@19.2.0)
+      '@mux/mux-player-react': 3.9.0(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.1)(react@19.2.1)
       '@types/react': 19.2.7
       cloudflare-video-element: 1.3.4
       dash-video-element: 0.3.0
       hls-video-element: 1.5.9
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
       spotify-audio-element: 1.0.3
       tiktok-video-element: 0.1.1
       twitch-video-element: 0.1.5
@@ -9964,7 +9953,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /react-router-dom@6.30.0(react-dom@19.2.0)(react@19.2.0):
+  /react-router-dom@6.30.0(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-x30B78HV5tFk8ex0ITwzC9TTZMua4jGyA9IUlH1JLQYQTFyxr/ZxwOJq7evg1JX1qGVUcvhsmQSKdPncQrjTgA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -9972,34 +9961,34 @@ packages:
       react-dom: '>=16.8'
     dependencies:
       '@remix-run/router': 1.23.0
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-router: 6.30.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
+      react-router: 6.30.0(react@19.2.1)
     dev: false
 
-  /react-router@6.30.0(react@19.2.0):
+  /react-router@6.30.0(react@19.2.1):
     resolution: {integrity: sha512-D3X8FyH9nBcTSHGdEKurK7r8OYE1kKFn3d/CF+CoxbSHkxU7o37+Uh7eAHRXr6k2tSExXYO++07PeXJtA/dEhQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
       '@remix-run/router': 1.23.0
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
-  /react-toastify@11.0.5(react-dom@19.2.0)(react@19.2.0):
+  /react-toastify@11.0.5(react-dom@19.2.1)(react@19.2.1):
     resolution: {integrity: sha512-EpqHBGvnSTtHYhCPLxML05NLY2ZX0JURbAdNYa6BUkk+amz4wbKBQvoKQAB0ardvSarUBuY4Q4s1sluAzZwkmA==}
     peerDependencies:
       react: ^18 || ^19
       react-dom: ^18 || ^19
     dependencies:
       clsx: 2.1.1
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
+      react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
     dev: false
 
-  /react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+  /react@19.2.1:
+    resolution: {integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==}
     engines: {node: '>=0.10.0'}
 
   /read-cache@1.0.0:
@@ -12014,7 +12003,7 @@ packages:
     resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
     dev: false
 
-  /zustand@5.0.9(@types/react@19.2.7)(react@19.2.0):
+  /zustand@5.0.9(@types/react@19.2.7)(react@19.2.1):
     resolution: {integrity: sha512-ALBtUj0AfjJt3uNRQoL1tL2tMvj6Gp/6e39dnfT6uzpelGru8v1tPOGBzayOWbPJvujM8JojDk3E1LxeFisBNg==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
@@ -12033,7 +12022,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 19.2.7
-      react: 19.2.0
+      react: 19.2.1
     dev: false
 
   /zwitch@2.0.4:

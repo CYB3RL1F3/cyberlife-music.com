@@ -53,6 +53,8 @@ export const useTrack = (id: number) => {
     title: currentTrack?.title,
     duration: currentTrack?.duration,
     pageUrl: currentTrack?.pageUrl,
+    nextId: currentTrack?.nextId,
+    prevId: currentTrack?.prevId,
     isPlaying,
     isCurrentTrack,
     volume,

@@ -5,19 +5,12 @@ import type { ReleaseActionPlayContainerProps } from './ReleaseActionPlayContain
 
 const ReleaseActionPlayContainer = ({
   track,
-  album,
-  artist,
-  nextId,
-  prevId,
-  pageUrl,
+  release,
 }: ReleaseActionPlayContainerProps) => {
-  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(track, {
-    album,
-    artist,
-    nextId,
-    prevId,
-    pageUrl,
-  });
+  const { isPlaying, title, togglePlay } = useReleaseTrackPlayer(
+    track,
+    release,
+  );
 
   return (
     <ActionPlay
