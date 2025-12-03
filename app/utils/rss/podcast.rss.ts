@@ -48,15 +48,15 @@ export const getPodcastRssItem = async (
         href: `${config?.domain || ''}/podcasts/${podcast.slug}`,
       },
     },
-    enclosure: {
-      _attributes: {
-        url: cleanUrl(
-          `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
-        ),
-        type: 'audio/mpeg',
-        length,
-      },
-    },
+    // enclosure: {
+    //   _attributes: {
+    //     url: cleanUrl(
+    //       `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+    //     ),
+    //     type: 'audio/mpeg',
+    //     length,
+    //   },
+    // },
     guid: `${config?.domain || ''}/rss/podcasts/${podcast.slug}.xml`,
   };
 };
