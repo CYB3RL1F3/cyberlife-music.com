@@ -1,11 +1,15 @@
-import type { PodcastActionPlayContainerProps } from "./PodcastActionPlayContainer.types";
-import ActionPlay from "~/components/molecules/ActionPlay";
-import { usePodcastTrackPlayer } from "~/hooks/player/usePodcastTrackPlayer";
+import type { PodcastActionPlayContainerProps } from './PodcastActionPlayContainer.types';
+import ActionPlay from '~/components/molecules/ActionPlay';
+import { usePodcastTrackPlayer } from '~/hooks/player/usePodcastTrackPlayer';
 
 const PodcastActionPlayContainer = ({
-  track
+  track,
+  podcasts = [],
 }: PodcastActionPlayContainerProps) => {
-  const { isPlaying, togglePlay, title } = usePodcastTrackPlayer(track);
+  const { isPlaying, togglePlay, title } = usePodcastTrackPlayer(
+    track,
+    podcasts,
+  );
   return (
     <ActionPlay
       title={`play podcast ${title}`}

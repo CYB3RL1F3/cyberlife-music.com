@@ -9,7 +9,7 @@ import ListLinkIconsPodcast from '~/components/organisms/ListLinkIconsPodcast';
 import { getMappedLicenseLabel } from '~/utils/business/labels';
 import { getFormattedDuration } from '~/utils/duration';
 
-const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
+const PodcastDetails = ({ podcast, podcasts = [] }: PodcastDetailsProps) => {
   const { artwork, date, duration, license } = podcast;
   const licenseLabel = getMappedLicenseLabel(license);
 
@@ -17,7 +17,7 @@ const PodcastDetails = ({ podcast }: PodcastDetailsProps) => {
     <PageDetailLayout
       thumbnail={
         <Thumbnail variant="wider" src={artwork || ''}>
-          <PodcastActionPlayContainer track={podcast} />
+          <PodcastActionPlayContainer track={podcast} podcasts={podcasts} />
         </Thumbnail>
       }
       linkIcons={<ListLinkIconsPodcast podcast={podcast} />}

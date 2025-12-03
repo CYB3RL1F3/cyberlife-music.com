@@ -16,7 +16,7 @@ import { getTextToHtml } from '~/utils/html';
 
 import type { ViewPodcastProps } from './ViewPodcast.types';
 
-const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
+const ViewPodcast = ({ podcast, podcasts }: ViewPodcastProps) => {
   const { title, description, tracklist, likes, comments, taglist } = podcast;
 
   const tags: ListTagProps['tags'] = useMemo(
@@ -55,7 +55,7 @@ const ViewPodcast = ({ podcast }: ViewPodcastProps) => {
         <PodcastDetails podcast={podcast} />
       </motion.article>
       <motion.article {...transition(0.2)}>
-        <PlayerPodcastTrackContainer track={podcast} />
+        <PlayerPodcastTrackContainer track={podcast} podcasts={podcasts} />
       </motion.article>
       <motion.article {...transition(0.3)} className="pt-4 o-8">
         {description && <Text>{getTextToHtml(description, 'underline')}</Text>}

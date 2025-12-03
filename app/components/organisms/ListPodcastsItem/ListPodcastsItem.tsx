@@ -11,6 +11,7 @@ import type { ListPodcastsItemProps } from './ListPodcastsItem.types';
 const ListPodcastsItem = ({
   podcast,
   artworkFallback,
+  podcasts,
 }: ListPodcastsItemProps) => {
   const { artwork, title, slug, description, waveform } = podcast;
   if (!title || !waveform) return null;
@@ -18,7 +19,7 @@ const ListPodcastsItem = ({
     <ListItem
       thumbnail={
         <Thumbnail src={artwork || artworkFallback || ''}>
-          <PodcastActionPlayContainer track={podcast} />
+          <PodcastActionPlayContainer podcasts={podcasts} track={podcast} />
         </Thumbnail>
       }
     >
@@ -32,7 +33,7 @@ const ListPodcastsItem = ({
           </div>
         </div>
         <div className="hidden md:block">
-          <PlayerPodcastTrackContainer track={podcast} />
+          <PlayerPodcastTrackContainer track={podcast} podcasts={podcasts} />
         </div>
       </ListItemSnippet>
     </ListItem>
