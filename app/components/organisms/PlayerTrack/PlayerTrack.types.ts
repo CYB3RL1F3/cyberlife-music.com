@@ -6,4 +6,5 @@ export type PlayerTrackProps = {
   id: number | string;
   onSeekChange?: (seek: number) => void;
   uniqId?: string;
+  disabled?: boolean;
 };

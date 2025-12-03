@@ -10,6 +10,7 @@ import { getDataFromTree } from '@apollo/client/react/ssr';
 import ApolloContext from '~/components/contexts/ApolloContext';
 import { getClient } from '~/components/contexts/ApolloContext/ApolloContext';
 import AnimationContextProvider from '~/components/contexts/AnimationContext/AnimationContext.provider';
+import SecurityContextProvider from './components/contexts/SecurityContext/SecurityContext.provider';
 
 const ABORT_DELAY = 5000;
 
@@ -43,11 +44,13 @@ function handleBotRequest(
 ) {
   const App = (
     <StrictMode>
-      <ApolloContext client={client}>
-        <AnimationContextProvider>
-          <RemixServer context={remixContext} url={request.url} />
-        </AnimationContextProvider>
-      </ApolloContext>
+      <SecurityContextProvider isBot>
+        <ApolloContext client={client}>
+          <AnimationContextProvider>
+            <RemixServer context={remixContext} url={request.url} />
+          </AnimationContextProvider>
+        </ApolloContext>
+      </SecurityContextProvider>
     </StrictMode>
   );
   return getDataFromTree(App).then(() => {
@@ -102,13 +105,16 @@ function handleBrowserRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
+  console.log('HANDLING BROWSER REQUEST');
   const App = (
     <StrictMode>
-      <ApolloContext client={client}>
-        <AnimationContextProvider canAnimate>
-          <RemixServer context={remixContext} url={request.url} />
-        </AnimationContextProvider>
-      </ApolloContext>
+      <SecurityContextProvider>
+        <ApolloContext client={client}>
+          <AnimationContextProvider canAnimate>
+            <RemixServer context={remixContext} url={request.url} />
+          </AnimationContextProvider>
+        </ApolloContext>
+      </SecurityContextProvider>
     </StrictMode>
   );
 
