@@ -19,7 +19,7 @@ import NotificationContextProvider from '~/components/contexts/NotificationConte
 import FooterMobile from '~/components/organisms/FooterMobile';
 import PwaContextProvider from '~/components/contexts/PwaContext';
 import type { Config } from '~/components/contexts/ConfigContext/ConfigContext.types';
-import { isSupported } from '~/utils/browser';
+import { isIe, isSupported } from '~/utils/browser';
 import NotSupportedPage from '~/components/pages/NotSupportedPage';
 import NoScript from '~/components/organisms/NoScript';
 import { useRemixNavigationPostMessage } from '~/hooks/misc/useRemixNavigationPostMessage';
@@ -37,9 +37,10 @@ const Application = ({ config, children }: ApplicationProps) => {
   useRemixNavigationPostMessage(location);
 
   const isAppSupported = isSupported();
+  const isIeBrowser = isIe();
 
   if (!isAppSupported && typeof window !== 'undefined') {
-    return <NotSupportedPage />;
+    return <NotSupportedPage isIe={isIeBrowser} />;
   }
 
   return (

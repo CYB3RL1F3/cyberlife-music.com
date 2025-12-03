@@ -5,10 +5,11 @@ import { useMediaSession } from '~/hooks/player/useMediaSession';
 const AudioContainer = () => {
   useMediaSession();
   const currentTrack = useCurrentTrackPlayer();
+  const isBot = false;
 
   if (!currentTrack.isPlaying || !currentTrack.url) return null;
 
-  return <Audio {...currentTrack} />;
+  return <Audio {...currentTrack} disabled={isBot} />;
 };
 
 export default AudioContainer;
