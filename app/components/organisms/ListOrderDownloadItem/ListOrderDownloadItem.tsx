@@ -6,6 +6,7 @@ import Picture from '~/components/organisms/Picture';
 import { ListOrderDownloadItemProps } from './ListOrderDownloadItem.types';
 import ButtonLink from '~/components/atoms/ButtonLink';
 import Icon from '~/components/atoms/Icon';
+import { defaultThumb } from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 
 const ListOrderDownloadItem = ({
   release,
@@ -14,9 +15,6 @@ const ListOrderDownloadItem = ({
   if (!release) return null;
 
   const { title, slug, thumb, label } = release;
-
-  const defaultThumb =
-    'https://media.istockphoto.com/id/134119615/photo/vinyl-record.jpg';
 
   const artwork = thumb || defaultThumb;
   if (!title) return null;

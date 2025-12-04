@@ -17,6 +17,7 @@ const ListPodcasts = ({ podcasts, artwork }: ListPodcastsProps) => {
             key={podcast.id}
             podcast={podcast}
             artworkFallback={artwork}
+            podcasts={podcasts}
           />
         ) : null,
       )}

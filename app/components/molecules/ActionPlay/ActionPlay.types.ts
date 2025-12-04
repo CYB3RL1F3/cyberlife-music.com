@@ -1,6 +1,7 @@
-import type { ActionProps } from "~/components/atoms/Action";
+import type { ActionProps } from '~/components/atoms/Action';
 
-export type ActionPlayProps = Pick<ActionProps, "title"> & {
+export type ActionPlayProps = Pick<ActionProps, 'title'> & {
   isPlaying?: boolean;
-  onChange?: (playing: ActionPlayProps["isPlaying"]) => void;
+  disabled?: boolean;
+  onChange?: (playing: ActionPlayProps['isPlaying']) => void;
 };

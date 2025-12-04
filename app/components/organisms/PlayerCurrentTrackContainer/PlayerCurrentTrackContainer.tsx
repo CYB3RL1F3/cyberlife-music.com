@@ -7,6 +7,7 @@ import Text from '~/components/atoms/Text';
 import { formatDuration, seekPercentToSeconds } from '~/utils/date';
 
 import { PlayerCurrentTrackContainerProps } from './PlayerCurrentTrackContainer.types';
+import { useSecurityContext } from '~/components/contexts/SecurityContext/SecurityContext.hook';
 
 const PlayerCurrentTrackContainer = ({
   id,
@@ -20,6 +21,8 @@ const PlayerCurrentTrackContainer = ({
       `${formatDuration(seekPercentToSeconds(seek, duration) || 0)} / ${formatDuration(duration)}`,
     [seek, duration],
   );
+
+  const { isBot } = useSecurityContext();
 
   return (
     <div className="flex-col w-[95vw] lg:w-full h-fit">
@@ -36,7 +39,12 @@ const PlayerCurrentTrackContainer = ({
           {formattedSeek}
         </Text>
       </div>
-      <Player {...currentTrackPlayer} id={id} className={className} />
+      <Player
+        {...currentTrackPlayer}
+        disabled={isBot}
+        id={id}
+        className={className}
+      />
     </div>
   );
 };

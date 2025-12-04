@@ -1,11 +1,14 @@
 import dayjs from 'dayjs';
 
 import PageDetailLayout from '~/components/layouts/PageDetailLayout/PageDetailLayout';
-import Thumbnail from '~/components/molecules/Thumbnail/Thumbnail';
+import Picture from '~/components/organisms/Picture';
 import Text from '~/components/atoms/Text';
 import ListLinkIconsRelease from '~/components/organisms/ListLinkIconsRelease';
 
 import type { ReleaseDetailsProps } from './ReleaseDetails.types';
+
+export const defaultThumb =
+  'https://cdn.cyberlife-music.com/images/vinyl_default.jpg';
 
 const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
   if (!release.release) return null;
@@ -13,7 +16,13 @@ const ReleaseDetails = ({ release }: ReleaseDetailsProps) => {
   const date = releaseDate ? dayjs(releaseDate).format('DD/MM/YYYY') : year;
   return (
     <PageDetailLayout
-      thumbnail={<Thumbnail variant="wider" src={thumb || ''} />}
+      thumbnail={
+        <Picture
+          alt={release.release.title || 'release thumbnail'}
+          variant="wider"
+          src={thumb || defaultThumb}
+        />
+      }
       linkIcons={<ListLinkIconsRelease release={release} />}
     >
       <Text.RightItalic>

@@ -16,6 +16,7 @@ const Player = ({
   waveform,
   id,
   className,
+  disabled,
 }: PlayerProps) => {
   const handleSeekChange: PlayerTrackProps['onSeekChange'] = (seek) => {
     setSeek(seek, true);
@@ -26,7 +27,12 @@ const Player = ({
   return (
     <article className="flex w-full h-12">
       <div className="w-12 h-12">
-        <ActionPlay title={title} isPlaying={isPlaying} onChange={togglePlay} />
+        <ActionPlay
+          disabled={disabled}
+          title={title}
+          isPlaying={isPlaying}
+          onChange={togglePlay}
+        />
       </div>
       <div className={twMerge('flex items-center w-full h-12 ml-2', className)}>
         <PlayerTrack
@@ -36,6 +42,7 @@ const Player = ({
           isPlaying={isPlaying}
           onSeekChange={handleSeekChange}
           id={id}
+          disabled={disabled}
         />
       </div>
     </article>

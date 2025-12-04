@@ -12,9 +12,8 @@
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "download:schema": "apollo service:download --endpoint=http://localhost:4001/v2/graphql ./graphql-schema.json",
-    "clean:types": "npx ts-node ./scripts/move-type-files.ts",
     "generate:component": "npx ts-node ./scripts/create-component.ts",
-    "generate:graphql": "pnpm codegen && pnpm clean:types",
+    "generate:graphql": "pnpm codegen",
     "codegen": "pnpm download:schema && graphql-codegen --config ./codegen.ts"
   },
   "dependencies": {
@@ -47,16 +46,16 @@
     "html-react-parser": "5.2.10",
     "isbot": "5.1.32",
     "isomorphic-dompurify": "2.26.0",
-    "mapbox-gl": "3.16.0",
+    "mapbox-gl": "3.17.0",
     "node-fetch": "3.3.2",
     "node-persist": "4.0.4",
     "npm-run-all": "4.1.5",
     "optimism": "0.18.1",
     "postcss": "8.5.6",
-    "react": "19.2.0",
+    "react": "19.2.1",
     "react-audio-player": "0.17.0",
     "react-country-flag": "3.1.0",
-    "react-dom": "19.2.0",
+    "react-dom": "19.2.1",
     "react-hook-form": "7.67.0",
     "react-hooks-form": "2.0.1",
     "react-icons": "5.5.0",
@@ -82,7 +81,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "6.1.0",
-    "@graphql-codegen/near-operation-file-preset": "3.1.0",
+    "@graphql-codegen/near-operation-file-preset": "4.0.0",
     "@graphql-codegen/typescript": "5.0.6",
     "@graphql-codegen/typescript-operations": "5.0.6",
     "@graphql-codegen/typescript-react-apollo": "4.3.3",
@@ -94,7 +93,7 @@
     "@types/react-dom": "19.2.3",
     "@types/react-map-gl": "6.1.7",
     "eslint": "9.39.1",
-    "prettier": "3.7.3",
+    "prettier": "3.7.4",
     "ts-node": "10.9.2"
   },
   "engines": {

@@ -3,48 +3,31 @@ import ListItemSnippet from '~/components/molecules/ListItemSnippet';
 import Thumbnail from '~/components/molecules/Thumbnail';
 import ReleaseActionPlayContainer from '~/components/organisms/ReleaseActionPlayContainer';
 import PlayerReleaseTrackContainer from '~/components/organisms/PlayerReleaseTrackContainer';
+import { defaultThumb } from '~/components/organisms/ReleaseDetails/ReleaseDetails';
 
 import type { ReleaseTracklistItemProps } from './ReleaseTracklistItem.types';
 
 const ReleaseTracklistItem = ({
   track,
-  thumb,
-  album,
-  nextId,
-  prevId,
-  pageUrl,
+  release,
 }: ReleaseTracklistItemProps) => {
-  const { title, stream, artists } = track;
+  const { title, stream } = track;
+  const { thumb = defaultThumb } = release;
   if (!stream) return null;
   const { artwork } = stream;
-  console.log('pageUrl', pageUrl);
 
   return (
     <ListItem
       thumbnail={
-        <Thumbnail src={artwork || thumb || ''}>
-          <ReleaseActionPlayContainer
-            track={stream}
-            album={album}
-            artist={artists?.map(({ name }) => name).join(', ')}
-            nextId={nextId}
-            prevId={prevId}
-            pageUrl={pageUrl}
-          />
+        <Thumbnail src={artwork || thumb || defaultThumb}>
+          <ReleaseActionPlayContainer track={stream} release={release} />
         </Thumbnail>
       }
     >
-      <ListItemSnippet title={title || ''}>
+      <ListItemSnippet title={title || defaultThumb}>
         <div className="w-full h-16" />
         <div className="max-md:hidden">
-          <PlayerReleaseTrackContainer
-            track={stream}
-            artists={artists}
-            album={album}
-            nextId={nextId}
-            prevId={prevId}
-            pageUrl={pageUrl}
-          />
+          <PlayerReleaseTrackContainer track={stream} release={release} />
         </div>
       </ListItemSnippet>
     </ListItem>

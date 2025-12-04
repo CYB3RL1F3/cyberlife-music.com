@@ -1,19 +1,32 @@
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  Date: { input: any; output: any; }
-  JSON: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  Date: { input: any; output: any };
+  JSON: { input: any; output: any };
 };
 
 export type Address = {
@@ -95,7 +108,7 @@ export enum AutocompleteLocationSuggestionType {
   Poi = 'poi',
   Postcode = 'postcode',
   Region = 'region',
-  Street = 'street'
+  Street = 'street',
 }
 
 export type Billing = {
@@ -382,7 +395,7 @@ export type DownloadItem = {
 export enum Environment {
   Dev = 'dev',
   Prod = 'prod',
-  Staging = 'staging'
+  Staging = 'staging',
 }
 
 export type Event = {
@@ -640,12 +653,10 @@ export type Mutation = {
   unsubscribe: Deleted;
 };
 
-
 export type MutationCancelOrderArgs = {
   orderId: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
-
 
 export type MutationConfirmOrderPaypalArgs = {
   orderId: Scalars['String']['input'];
@@ -653,19 +664,16 @@ export type MutationConfirmOrderPaypalArgs = {
   profile: Scalars['String']['input'];
 };
 
-
 export type MutationConfirmOrderStripeArgs = {
   orderId: Scalars['String']['input'];
   payment: PaymentInput;
   profile: Scalars['String']['input'];
 };
 
-
 export type MutationContactArgs = {
   message: ContactDto;
   profile: Scalars['String']['input'];
 };
-
 
 export type MutationDownloadOrderTracksArgs = {
   email: Scalars['String']['input'];
@@ -674,24 +682,20 @@ export type MutationDownloadOrderTracksArgs = {
   token: Scalars['String']['input'];
 };
 
-
 export type MutationIntentOrderPaypalArgs = {
   order: OrderDto;
   profile: Scalars['String']['input'];
 };
-
 
 export type MutationIntentOrderStripeArgs = {
   order: OrderDto;
   profile: Scalars['String']['input'];
 };
 
-
 export type MutationSubscribeArgs = {
   notificationPoolId: Scalars['String']['input'];
   subscription: SubscriptionDto;
 };
-
 
 export type MutationUnsubscribeArgs = {
   endpoint: Scalars['String']['input'];
@@ -956,7 +960,6 @@ export type Query = {
   order: Order;
   playlist: Playlist;
   playlistTrack: Track;
-  playlistTrackStream: Scalars['String']['output'];
   playlists: Playlist;
   post: Post;
   posts: Array<Post>;
@@ -971,12 +974,10 @@ export type Query = {
   videos: Array<Video>;
 };
 
-
 export type QueryAutocompleteLocationsArgs = {
   payload: AutocompleteLocationSuggestionInput;
   source?: InputMaybe<Source>;
 };
-
 
 export type QueryCarrierPricesArgs = {
   country: Scalars['String']['input'];
@@ -984,22 +985,18 @@ export type QueryCarrierPricesArgs = {
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryChartsArgs = {
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryEventArgs = {
   eventId: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryEventsArgs = {
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryFeatureFlagArgs = {
   environment: Environment;
@@ -1007,23 +1004,19 @@ export type QueryFeatureFlagArgs = {
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryFeatureFlagsArgs = {
   environment: Environment;
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryInfosArgs = {
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryOrderArgs = {
   id: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryPlaylistArgs = {
   keyType?: InputMaybe<Scalars['String']['input']>;
@@ -1031,68 +1024,52 @@ export type QueryPlaylistArgs = {
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryPlaylistTrackArgs = {
   keyType?: InputMaybe<Scalars['String']['input']>;
   profile: Scalars['String']['input'];
   trackId: Scalars['String']['input'];
 };
 
-
-export type QueryPlaylistTrackStreamArgs = {
-  id: Scalars['Float']['input'];
-};
-
-
 export type QueryPlaylistsArgs = {
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryPostArgs = {
   author: Scalars['String']['input'];
   id: Scalars['String']['input'];
 };
 
-
 export type QueryPostsArgs = {
   author: Scalars['String']['input'];
 };
-
 
 export type QueryReleaseArgs = {
   id: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryReleaseItemArgs = {
   id: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
-
 
 export type QueryReleaseItemsArgs = {
   profile: Scalars['String']['input'];
   webshopId: Scalars['String']['input'];
 };
 
-
 export type QueryReleaseTrackByIdArgs = {
   id: Scalars['String']['input'];
   profile: Scalars['String']['input'];
 };
 
-
 export type QueryReleaseTrackStreamArgs = {
   id: Scalars['Float']['input'];
 };
 
-
 export type QueryReleasesArgs = {
   profile: Scalars['String']['input'];
 };
-
 
 export type QuerySummaryArgs = {
   expectedNbReleases?: InputMaybe<Scalars['Float']['input']>;
@@ -1102,13 +1079,11 @@ export type QuerySummaryArgs = {
   webshopId: Scalars['String']['input'];
 };
 
-
 export type QueryVideoArgs = {
   author: Scalars['String']['input'];
   id: Scalars['String']['input'];
   keyType?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryVideosArgs = {
   author: Scalars['String']['input'];
@@ -1472,7 +1447,7 @@ export type SoundcloudDto = {
 /** The source of the autocomplete suggestions */
 export enum Source {
   Geoapify = 'geoapify',
-  Mapbox = 'mapbox'
+  Mapbox = 'mapbox',
 }
 
 export type StatsDto = {
@@ -1821,65 +1796,736 @@ export type Ttl = {
   soundcloud?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type AutocompleteLocation = { suggestions: Array<{ zipcode: string, city: string, country: string, countryCode: string }> };
+export type AutocompleteLocation = {
+  suggestions: Array<{
+    zipcode: string;
+    city: string;
+    country: string;
+    countryCode: string;
+  }>;
+};
 
-export type CartFragment = { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> };
+export type CartFragment = {
+  amount: number;
+  amountWithTax: number;
+  vat: number;
+  redeem?: string | null;
+  items: Array<{
+    id: string;
+    quantity: number;
+    amount: number;
+    productId: string;
+  }>;
+};
 
-export type CartItemFragment = { id: string, quantity: number, amount: number, productId: string };
+export type CartItemFragment = {
+  id: string;
+  quantity: number;
+  amount: number;
+  productId: string;
+};
 
-export type DownloadFragment = { id: string, token: string, email: string, date: any, expire: any, downloads: Array<{ name: string, url: string, release: { slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, label?: string | null } }> };
+export type DownloadFragment = {
+  id: string;
+  token: string;
+  email: string;
+  date: any;
+  expire: any;
+  downloads: Array<{
+    name: string;
+    url: string;
+    release: {
+      slug?: string | null;
+      title?: string | null;
+      releaseDate?: any | null;
+      role?: string | null;
+      year?: number | null;
+      thumb?: string | null;
+      label?: string | null;
+    };
+  }>;
+};
 
-export type EventFragment = { _id?: string | null, slug?: string | null, title?: string | null, date?: any | null, endDate?: any | null, description?: string | null, country?: string | null, address?: string | null, cost?: string | null, lineup?: Array<string> | null, promoter?: string | null, venue?: string | null, flyer?: { front?: string | null, back?: string | null } | null, time?: { begin?: string | null, end?: string | null } | null, location?: { position?: Array<number> | null } | null, links?: { event?: string | null, venue?: string | null } | null };
+export type EventFragment = {
+  _id?: string | null;
+  slug?: string | null;
+  title?: string | null;
+  date?: any | null;
+  endDate?: any | null;
+  description?: string | null;
+  country?: string | null;
+  address?: string | null;
+  cost?: string | null;
+  lineup?: Array<string> | null;
+  promoter?: string | null;
+  venue?: string | null;
+  flyer?: { front?: string | null; back?: string | null } | null;
+  time?: { begin?: string | null; end?: string | null } | null;
+  location?: { position?: Array<number> | null } | null;
+  links?: { event?: string | null; venue?: string | null } | null;
+};
 
-export type AddressFragment = { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null };
+export type AddressFragment = {
+  name: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  country: string;
+  extra?: string | null;
+};
 
-export type ExpeditionFragment = { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } };
+export type ExpeditionFragment = {
+  trackingNumber?: string | null;
+  service: string;
+  status: string;
+  email: string;
+  phone: string;
+  amountWithTax: number;
+  vat: number;
+  address: {
+    name: string;
+    address: string;
+    zipCode: string;
+    city: string;
+    country: string;
+    extra?: string | null;
+  };
+};
 
-export type FeatureFlagFragment = { flag?: string | null, isActive: boolean };
+export type FeatureFlagFragment = { flag?: string | null; isActive: boolean };
 
-export type InfosFragment = { instagram?: string | null, RA?: string | null, facebook?: string | null, bandcamp?: string | null, twitter?: string | null, soundcloud?: string | null, discogs?: string | null, bookingDetails?: string | null, bio?: { content?: string | null } | null };
+export type InfosFragment = {
+  instagram?: string | null;
+  RA?: string | null;
+  facebook?: string | null;
+  bandcamp?: string | null;
+  twitter?: string | null;
+  soundcloud?: string | null;
+  discogs?: string | null;
+  bookingDetails?: string | null;
+  bio?: { content?: string | null } | null;
+};
 
-export type OrderFragment = { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } };
+export type OrderFragment = {
+  orderAt: any;
+  updatedAt: any;
+  query?: string | null;
+  webshopId: string;
+  _id: string;
+  status: string;
+  cart: {
+    amount: number;
+    amountWithTax: number;
+    vat: number;
+    redeem?: string | null;
+    items: Array<{
+      id: string;
+      quantity: number;
+      amount: number;
+      productId: string;
+    }>;
+  };
+  expedition: {
+    trackingNumber?: string | null;
+    service: string;
+    status: string;
+    email: string;
+    phone: string;
+    amountWithTax: number;
+    vat: number;
+    address: {
+      name: string;
+      address: string;
+      zipCode: string;
+      city: string;
+      country: string;
+      extra?: string | null;
+    };
+  };
+  payment: {
+    id: string;
+    transactionId: string;
+    paymentMethod: string;
+    transactionDate: any;
+  };
+};
 
-export type PaymentFragment = { id: string, transactionId: string, paymentMethod: string, transactionDate: any };
+export type PaymentFragment = {
+  id: string;
+  transactionId: string;
+  paymentMethod: string;
+  transactionDate: any;
+};
 
-export type PaypalLinkFragment = { href: string, rel: string, method: string };
+export type PaypalLinkFragment = { href: string; rel: string; method: string };
 
-export type PaypalIntentFragment = { status: string, id: string, links: Array<{ href: string, rel: string, method: string }> };
+export type PaypalIntentFragment = {
+  status: string;
+  id: string;
+  links: Array<{ href: string; rel: string; method: string }>;
+};
 
-export type PaypalResponseFragment = { status: number, intent: { status: string, id: string, links: Array<{ href: string, rel: string, method: string }> } };
+export type PaypalResponseFragment = {
+  status: number;
+  intent: {
+    status: string;
+    id: string;
+    links: Array<{ href: string; rel: string; method: string }>;
+  };
+};
 
-export type OrderPaypalResponseFragment = { order: { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } }, paymentIntent: { status: number, intent: { status: string, id: string, links: Array<{ href: string, rel: string, method: string }> } } };
+export type OrderPaypalResponseFragment = {
+  order: {
+    orderAt: any;
+    updatedAt: any;
+    query?: string | null;
+    webshopId: string;
+    _id: string;
+    status: string;
+    cart: {
+      amount: number;
+      amountWithTax: number;
+      vat: number;
+      redeem?: string | null;
+      items: Array<{
+        id: string;
+        quantity: number;
+        amount: number;
+        productId: string;
+      }>;
+    };
+    expedition: {
+      trackingNumber?: string | null;
+      service: string;
+      status: string;
+      email: string;
+      phone: string;
+      amountWithTax: number;
+      vat: number;
+      address: {
+        name: string;
+        address: string;
+        zipCode: string;
+        city: string;
+        country: string;
+        extra?: string | null;
+      };
+    };
+    payment: {
+      id: string;
+      transactionId: string;
+      paymentMethod: string;
+      transactionDate: any;
+    };
+  };
+  paymentIntent: {
+    status: number;
+    intent: {
+      status: string;
+      id: string;
+      links: Array<{ href: string; rel: string; method: string }>;
+    };
+  };
+};
 
-export type PlaylistFragment = { id?: number | null, artwork?: string | null, tracks?: Array<{ id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null }> | null };
+export type PlaylistFragment = {
+  id?: number | null;
+  artwork?: string | null;
+  tracks?: Array<{
+    id?: number | null;
+    slug?: string | null;
+    title?: string | null;
+    genre?: string | null;
+    description?: string | null;
+    artwork?: string | null;
+    date?: any | null;
+    uri?: string | null;
+    url?: string | null;
+    duration?: number | null;
+    waveform?: string | null;
+    downloadable?: boolean | null;
+    download?: string | null;
+    soundcloud?: string | null;
+    license?: string | null;
+    taglist?: Array<string> | null;
+    tracklist?: Array<string> | null;
+    stats?: { count?: number | null; downloads?: number | null } | null;
+    likes?: Array<{
+      id?: number | null;
+      avatar?: string | null;
+      userName?: string | null;
+      soundcloud?: string | null;
+      uri?: string | null;
+    }> | null;
+    comments?: Array<{
+      id?: number | null;
+      createdAt?: string | null;
+      body?: string | null;
+      user?: {
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      } | null;
+    }> | null;
+  }> | null;
+};
 
-export type PostFragment = { content?: string | null, title?: string | null, subtitle?: string | null, _id?: string | null };
+export type PostFragment = {
+  content?: string | null;
+  title?: string | null;
+  subtitle?: string | null;
+  _id?: string | null;
+};
 
-export type ReleaseFragment = { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null };
+export type ReleaseFragment = {
+  _id?: string | null;
+  slug?: string | null;
+  title?: string | null;
+  releaseDate?: any | null;
+  role?: string | null;
+  year?: number | null;
+  thumb?: string | null;
+  images?: Array<string> | null;
+  label?: string | null;
+  discogs?: string | null;
+  bandcamp?: string | null;
+  notes?: string | null;
+  cat?: string | null;
+  format?: string | null;
+  genre?: string | null;
+  tracklist?: Array<{
+    title?: string | null;
+    position?: string | null;
+    id?: string | null;
+    artists?: Array<{ name?: string | null; role?: string | null }> | null;
+    stream?: {
+      id?: number | null;
+      slug?: string | null;
+      title?: string | null;
+      genre?: string | null;
+      description?: string | null;
+      artwork?: string | null;
+      date?: any | null;
+      uri?: string | null;
+      url?: string | null;
+      duration?: number | null;
+      waveform?: string | null;
+      downloadable?: boolean | null;
+      download?: string | null;
+      soundcloud?: string | null;
+      license?: string | null;
+      taglist?: Array<string> | null;
+      tracklist?: Array<string> | null;
+      stats?: { count?: number | null; downloads?: number | null } | null;
+      likes?: Array<{
+        id?: number | null;
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      }> | null;
+      comments?: Array<{
+        id?: number | null;
+        createdAt?: string | null;
+        body?: string | null;
+        user?: {
+          avatar?: string | null;
+          userName?: string | null;
+          soundcloud?: string | null;
+          uri?: string | null;
+        } | null;
+      }> | null;
+    } | null;
+  }> | null;
+};
 
-export type ReleaseItemFragment = { id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null } | null };
+export type ReleaseItemFragment = {
+  id?: string | null;
+  name?: string | null;
+  price?: number | null;
+  availableQuantity?: number | null;
+  release?: {
+    _id?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    releaseDate?: any | null;
+    role?: string | null;
+    year?: number | null;
+    thumb?: string | null;
+    images?: Array<string> | null;
+    label?: string | null;
+    discogs?: string | null;
+    bandcamp?: string | null;
+    notes?: string | null;
+    cat?: string | null;
+    format?: string | null;
+    genre?: string | null;
+    tracklist?: Array<{
+      title?: string | null;
+      position?: string | null;
+      id?: string | null;
+      artists?: Array<{ name?: string | null; role?: string | null }> | null;
+      stream?: {
+        id?: number | null;
+        slug?: string | null;
+        title?: string | null;
+        genre?: string | null;
+        description?: string | null;
+        artwork?: string | null;
+        date?: any | null;
+        uri?: string | null;
+        url?: string | null;
+        duration?: number | null;
+        waveform?: string | null;
+        downloadable?: boolean | null;
+        download?: string | null;
+        soundcloud?: string | null;
+        license?: string | null;
+        taglist?: Array<string> | null;
+        tracklist?: Array<string> | null;
+        stats?: { count?: number | null; downloads?: number | null } | null;
+        likes?: Array<{
+          id?: number | null;
+          avatar?: string | null;
+          userName?: string | null;
+          soundcloud?: string | null;
+          uri?: string | null;
+        }> | null;
+        comments?: Array<{
+          id?: number | null;
+          createdAt?: string | null;
+          body?: string | null;
+          user?: {
+            avatar?: string | null;
+            userName?: string | null;
+            soundcloud?: string | null;
+            uri?: string | null;
+          } | null;
+        }> | null;
+      } | null;
+    }> | null;
+  } | null;
+};
 
-export type ReleaseSnippetFragment = { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, artist?: string | null, tracklist?: Array<{ title?: string | null }> | null };
+export type ReleaseSnippetFragment = {
+  _id?: string | null;
+  slug?: string | null;
+  title?: string | null;
+  releaseDate?: any | null;
+  role?: string | null;
+  year?: number | null;
+  thumb?: string | null;
+  label?: string | null;
+  discogs?: string | null;
+  bandcamp?: string | null;
+  notes?: string | null;
+  artist?: string | null;
+  tracklist?: Array<{ title?: string | null }> | null;
+};
 
-export type ReleaseSnippetItemFragment = { id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, artist?: string | null, tracklist?: Array<{ title?: string | null }> | null } | null };
+export type ReleaseSnippetItemFragment = {
+  id?: string | null;
+  name?: string | null;
+  price?: number | null;
+  availableQuantity?: number | null;
+  release?: {
+    _id?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    releaseDate?: any | null;
+    role?: string | null;
+    year?: number | null;
+    thumb?: string | null;
+    label?: string | null;
+    discogs?: string | null;
+    bandcamp?: string | null;
+    notes?: string | null;
+    artist?: string | null;
+    tracklist?: Array<{ title?: string | null }> | null;
+  } | null;
+};
 
-export type StripeIntentFragment = { status: string, intent: any };
+export type StripeIntentFragment = { status: string; intent: any };
 
-export type OrderStripeResponseFragment = { order: { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } }, paymentIntent: { status: string, intent: any } };
+export type OrderStripeResponseFragment = {
+  order: {
+    orderAt: any;
+    updatedAt: any;
+    query?: string | null;
+    webshopId: string;
+    _id: string;
+    status: string;
+    cart: {
+      amount: number;
+      amountWithTax: number;
+      vat: number;
+      redeem?: string | null;
+      items: Array<{
+        id: string;
+        quantity: number;
+        amount: number;
+        productId: string;
+      }>;
+    };
+    expedition: {
+      trackingNumber?: string | null;
+      service: string;
+      status: string;
+      email: string;
+      phone: string;
+      amountWithTax: number;
+      vat: number;
+      address: {
+        name: string;
+        address: string;
+        zipCode: string;
+        city: string;
+        country: string;
+        extra?: string | null;
+      };
+    };
+    payment: {
+      id: string;
+      transactionId: string;
+      paymentMethod: string;
+      transactionDate: any;
+    };
+  };
+  paymentIntent: { status: string; intent: any };
+};
 
-export type SubscriptionFragment = { endpoint?: string | null, keys?: { auth?: string | null, p256dh?: string | null } | null };
+export type SubscriptionFragment = {
+  endpoint?: string | null;
+  keys?: { auth?: string | null; p256dh?: string | null } | null;
+};
 
-export type SummaryFragment = { nextEvent?: { _id?: string | null, slug?: string | null, title?: string | null, date?: any | null, endDate?: any | null, description?: string | null, country?: string | null, address?: string | null, cost?: string | null, lineup?: Array<string> | null, promoter?: string | null, venue?: string | null, flyer?: { front?: string | null, back?: string | null } | null, time?: { begin?: string | null, end?: string | null } | null, location?: { position?: Array<number> | null } | null, links?: { event?: string | null, venue?: string | null } | null } | null, topPodcast?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null, latestPodcast?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null, latestReleases?: Array<{ id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null } | null }> | null, latestVideo?: { url?: string | null, title?: string | null, description?: string | null, type?: string | null, illustration?: string | null, slug?: string | null, _id?: string | null } | null };
+export type SummaryFragment = {
+  nextEvent?: {
+    _id?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    date?: any | null;
+    endDate?: any | null;
+    description?: string | null;
+    country?: string | null;
+    address?: string | null;
+    cost?: string | null;
+    lineup?: Array<string> | null;
+    promoter?: string | null;
+    venue?: string | null;
+    flyer?: { front?: string | null; back?: string | null } | null;
+    time?: { begin?: string | null; end?: string | null } | null;
+    location?: { position?: Array<number> | null } | null;
+    links?: { event?: string | null; venue?: string | null } | null;
+  } | null;
+  topPodcast?: {
+    id?: number | null;
+    slug?: string | null;
+    title?: string | null;
+    genre?: string | null;
+    description?: string | null;
+    artwork?: string | null;
+    date?: any | null;
+    uri?: string | null;
+    url?: string | null;
+    duration?: number | null;
+    waveform?: string | null;
+    downloadable?: boolean | null;
+    download?: string | null;
+    soundcloud?: string | null;
+    license?: string | null;
+    taglist?: Array<string> | null;
+    tracklist?: Array<string> | null;
+    stats?: { count?: number | null; downloads?: number | null } | null;
+    likes?: Array<{
+      id?: number | null;
+      avatar?: string | null;
+      userName?: string | null;
+      soundcloud?: string | null;
+      uri?: string | null;
+    }> | null;
+    comments?: Array<{
+      id?: number | null;
+      createdAt?: string | null;
+      body?: string | null;
+      user?: {
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      } | null;
+    }> | null;
+  } | null;
+  latestPodcast?: {
+    id?: number | null;
+    slug?: string | null;
+    title?: string | null;
+    genre?: string | null;
+    description?: string | null;
+    artwork?: string | null;
+    date?: any | null;
+    uri?: string | null;
+    url?: string | null;
+    duration?: number | null;
+    waveform?: string | null;
+    downloadable?: boolean | null;
+    download?: string | null;
+    soundcloud?: string | null;
+    license?: string | null;
+    taglist?: Array<string> | null;
+    tracklist?: Array<string> | null;
+    stats?: { count?: number | null; downloads?: number | null } | null;
+    likes?: Array<{
+      id?: number | null;
+      avatar?: string | null;
+      userName?: string | null;
+      soundcloud?: string | null;
+      uri?: string | null;
+    }> | null;
+    comments?: Array<{
+      id?: number | null;
+      createdAt?: string | null;
+      body?: string | null;
+      user?: {
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      } | null;
+    }> | null;
+  } | null;
+  latestReleases?: Array<{
+    id?: string | null;
+    name?: string | null;
+    price?: number | null;
+    availableQuantity?: number | null;
+    release?: {
+      _id?: string | null;
+      slug?: string | null;
+      title?: string | null;
+      releaseDate?: any | null;
+      role?: string | null;
+      year?: number | null;
+      thumb?: string | null;
+      images?: Array<string> | null;
+      label?: string | null;
+      discogs?: string | null;
+      bandcamp?: string | null;
+      notes?: string | null;
+      cat?: string | null;
+      format?: string | null;
+      genre?: string | null;
+      tracklist?: Array<{
+        title?: string | null;
+        position?: string | null;
+        id?: string | null;
+        artists?: Array<{ name?: string | null; role?: string | null }> | null;
+        stream?: {
+          id?: number | null;
+          slug?: string | null;
+          title?: string | null;
+          genre?: string | null;
+          description?: string | null;
+          artwork?: string | null;
+          date?: any | null;
+          uri?: string | null;
+          url?: string | null;
+          duration?: number | null;
+          waveform?: string | null;
+          downloadable?: boolean | null;
+          download?: string | null;
+          soundcloud?: string | null;
+          license?: string | null;
+          taglist?: Array<string> | null;
+          tracklist?: Array<string> | null;
+          stats?: { count?: number | null; downloads?: number | null } | null;
+          likes?: Array<{
+            id?: number | null;
+            avatar?: string | null;
+            userName?: string | null;
+            soundcloud?: string | null;
+            uri?: string | null;
+          }> | null;
+          comments?: Array<{
+            id?: number | null;
+            createdAt?: string | null;
+            body?: string | null;
+            user?: {
+              avatar?: string | null;
+              userName?: string | null;
+              soundcloud?: string | null;
+              uri?: string | null;
+            } | null;
+          }> | null;
+        } | null;
+      }> | null;
+    } | null;
+  }> | null;
+  latestVideo?: {
+    url?: string | null;
+    title?: string | null;
+    description?: string | null;
+    type?: string | null;
+    illustration?: string | null;
+    slug?: string | null;
+    _id?: string | null;
+  } | null;
+};
 
-export type TrackFragment = { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null };
+export type TrackFragment = {
+  id?: number | null;
+  slug?: string | null;
+  title?: string | null;
+  genre?: string | null;
+  description?: string | null;
+  artwork?: string | null;
+  date?: any | null;
+  uri?: string | null;
+  url?: string | null;
+  duration?: number | null;
+  waveform?: string | null;
+  downloadable?: boolean | null;
+  download?: string | null;
+  soundcloud?: string | null;
+  license?: string | null;
+  taglist?: Array<string> | null;
+  tracklist?: Array<string> | null;
+  stats?: { count?: number | null; downloads?: number | null } | null;
+  likes?: Array<{
+    id?: number | null;
+    avatar?: string | null;
+    userName?: string | null;
+    soundcloud?: string | null;
+    uri?: string | null;
+  }> | null;
+  comments?: Array<{
+    id?: number | null;
+    createdAt?: string | null;
+    body?: string | null;
+    user?: {
+      avatar?: string | null;
+      userName?: string | null;
+      soundcloud?: string | null;
+      uri?: string | null;
+    } | null;
+  }> | null;
+};
 
-export type VideoFragment = { url?: string | null, title?: string | null, description?: string | null, type?: string | null, illustration?: string | null, slug?: string | null, _id?: string | null };
+export type VideoFragment = {
+  url?: string | null;
+  title?: string | null;
+  description?: string | null;
+  type?: string | null;
+  illustration?: string | null;
+  slug?: string | null;
+  _id?: string | null;
+};
 
 export type CancelOrderMutationVariables = Exact<{
   profile: Scalars['String']['input'];
   orderId: Scalars['String']['input'];
 }>;
-
 
 export type CancelOrderMutation = { cancelOrder: boolean };
 
@@ -1889,14 +2535,56 @@ export type ConfirmOrderPaypalMutationVariables = Exact<{
   payment: PaymentInput;
 }>;
 
-
-export type ConfirmOrderPaypalMutation = { confirmOrderPaypal: { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } } };
+export type ConfirmOrderPaypalMutation = {
+  confirmOrderPaypal: {
+    orderAt: any;
+    updatedAt: any;
+    query?: string | null;
+    webshopId: string;
+    _id: string;
+    status: string;
+    cart: {
+      amount: number;
+      amountWithTax: number;
+      vat: number;
+      redeem?: string | null;
+      items: Array<{
+        id: string;
+        quantity: number;
+        amount: number;
+        productId: string;
+      }>;
+    };
+    expedition: {
+      trackingNumber?: string | null;
+      service: string;
+      status: string;
+      email: string;
+      phone: string;
+      amountWithTax: number;
+      vat: number;
+      address: {
+        name: string;
+        address: string;
+        zipCode: string;
+        city: string;
+        country: string;
+        extra?: string | null;
+      };
+    };
+    payment: {
+      id: string;
+      transactionId: string;
+      paymentMethod: string;
+      transactionDate: any;
+    };
+  };
+};
 
 export type ContactMutationVariables = Exact<{
   profile: Scalars['String']['input'];
   message: ContactDto;
 }>;
-
 
 export type ContactMutation = { contact: boolean };
 
@@ -1907,38 +2595,160 @@ export type DownloadOrderTracksMutationVariables = Exact<{
   email: Scalars['String']['input'];
 }>;
 
-
-export type DownloadOrderTracksMutation = { downloadOrderTracks: { id: string, token: string, email: string, date: any, expire: any, downloads: Array<{ name: string, url: string, release: { slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, label?: string | null } }> } };
+export type DownloadOrderTracksMutation = {
+  downloadOrderTracks: {
+    id: string;
+    token: string;
+    email: string;
+    date: any;
+    expire: any;
+    downloads: Array<{
+      name: string;
+      url: string;
+      release: {
+        slug?: string | null;
+        title?: string | null;
+        releaseDate?: any | null;
+        role?: string | null;
+        year?: number | null;
+        thumb?: string | null;
+        label?: string | null;
+      };
+    }>;
+  };
+};
 
 export type IntentOrderPaypalMutationVariables = Exact<{
   profile: Scalars['String']['input'];
   order: OrderDto;
 }>;
 
-
-export type IntentOrderPaypalMutation = { intentOrderPaypal: { order: { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } }, paymentIntent: { status: number, intent: { status: string, id: string, links: Array<{ href: string, rel: string, method: string }> } } } };
+export type IntentOrderPaypalMutation = {
+  intentOrderPaypal: {
+    order: {
+      orderAt: any;
+      updatedAt: any;
+      query?: string | null;
+      webshopId: string;
+      _id: string;
+      status: string;
+      cart: {
+        amount: number;
+        amountWithTax: number;
+        vat: number;
+        redeem?: string | null;
+        items: Array<{
+          id: string;
+          quantity: number;
+          amount: number;
+          productId: string;
+        }>;
+      };
+      expedition: {
+        trackingNumber?: string | null;
+        service: string;
+        status: string;
+        email: string;
+        phone: string;
+        amountWithTax: number;
+        vat: number;
+        address: {
+          name: string;
+          address: string;
+          zipCode: string;
+          city: string;
+          country: string;
+          extra?: string | null;
+        };
+      };
+      payment: {
+        id: string;
+        transactionId: string;
+        paymentMethod: string;
+        transactionDate: any;
+      };
+    };
+    paymentIntent: {
+      status: number;
+      intent: {
+        status: string;
+        id: string;
+        links: Array<{ href: string; rel: string; method: string }>;
+      };
+    };
+  };
+};
 
 export type IntentOrderStripeMutationVariables = Exact<{
   profile: Scalars['String']['input'];
   order: OrderDto;
 }>;
 
-
-export type IntentOrderStripeMutation = { intentOrderStripe: { order: { orderAt: any, updatedAt: any, query?: string | null, webshopId: string, _id: string, status: string, cart: { amount: number, amountWithTax: number, vat: number, redeem?: string | null, items: Array<{ id: string, quantity: number, amount: number, productId: string }> }, expedition: { trackingNumber?: string | null, service: string, status: string, email: string, phone: string, amountWithTax: number, vat: number, address: { name: string, address: string, zipCode: string, city: string, country: string, extra?: string | null } }, payment: { id: string, transactionId: string, paymentMethod: string, transactionDate: any } }, paymentIntent: { status: string, intent: any } } };
+export type IntentOrderStripeMutation = {
+  intentOrderStripe: {
+    order: {
+      orderAt: any;
+      updatedAt: any;
+      query?: string | null;
+      webshopId: string;
+      _id: string;
+      status: string;
+      cart: {
+        amount: number;
+        amountWithTax: number;
+        vat: number;
+        redeem?: string | null;
+        items: Array<{
+          id: string;
+          quantity: number;
+          amount: number;
+          productId: string;
+        }>;
+      };
+      expedition: {
+        trackingNumber?: string | null;
+        service: string;
+        status: string;
+        email: string;
+        phone: string;
+        amountWithTax: number;
+        vat: number;
+        address: {
+          name: string;
+          address: string;
+          zipCode: string;
+          city: string;
+          country: string;
+          extra?: string | null;
+        };
+      };
+      payment: {
+        id: string;
+        transactionId: string;
+        paymentMethod: string;
+        transactionDate: any;
+      };
+    };
+    paymentIntent: { status: string; intent: any };
+  };
+};
 
 export type SubscribeMutationVariables = Exact<{
   notificationPoolId: Scalars['String']['input'];
   subscription: SubscriptionDto;
 }>;
 
-
-export type SubscribeMutation = { subscribe: { endpoint?: string | null, keys?: { auth?: string | null, p256dh?: string | null } | null } };
+export type SubscribeMutation = {
+  subscribe: {
+    endpoint?: string | null;
+    keys?: { auth?: string | null; p256dh?: string | null } | null;
+  };
+};
 
 export type UnSubscribeMutationVariables = Exact<{
   notificationPoolId: Scalars['String']['input'];
   endpoint: Scalars['String']['input'];
 }>;
-
 
 export type UnSubscribeMutation = { unsubscribe: { deleted?: boolean | null } };
 
@@ -1946,8 +2756,16 @@ export type AutoCompleteLocationsQueryVariables = Exact<{
   payload: AutocompleteLocationSuggestionInput;
 }>;
 
-
-export type AutoCompleteLocationsQuery = { autocompleteLocations: { suggestions: Array<{ zipcode: string, city: string, country: string, countryCode: string }> } };
+export type AutoCompleteLocationsQuery = {
+  autocompleteLocations: {
+    suggestions: Array<{
+      zipcode: string;
+      city: string;
+      country: string;
+      countryCode: string;
+    }>;
+  };
+};
 
 export type CarrierPricesQueryVariables = Exact<{
   profile: Scalars['String']['input'];
@@ -1955,23 +2773,64 @@ export type CarrierPricesQueryVariables = Exact<{
   items: Array<CartItemInput>;
 }>;
 
-
-export type CarrierPricesQuery = { carrierPrices: { upsPrice: number, colissimoPrice: number, mondialRelayPrice?: number | null } };
+export type CarrierPricesQuery = {
+  carrierPrices: {
+    upsPrice: number;
+    colissimoPrice: number;
+    mondialRelayPrice?: number | null;
+  };
+};
 
 export type EventQueryVariables = Exact<{
   profile: Scalars['String']['input'];
   id: Scalars['String']['input'];
 }>;
 
-
-export type EventQuery = { event: { _id?: string | null, slug?: string | null, title?: string | null, date?: any | null, endDate?: any | null, description?: string | null, country?: string | null, address?: string | null, cost?: string | null, lineup?: Array<string> | null, promoter?: string | null, venue?: string | null, flyer?: { front?: string | null, back?: string | null } | null, time?: { begin?: string | null, end?: string | null } | null, location?: { position?: Array<number> | null } | null, links?: { event?: string | null, venue?: string | null } | null } };
+export type EventQuery = {
+  event: {
+    _id?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    date?: any | null;
+    endDate?: any | null;
+    description?: string | null;
+    country?: string | null;
+    address?: string | null;
+    cost?: string | null;
+    lineup?: Array<string> | null;
+    promoter?: string | null;
+    venue?: string | null;
+    flyer?: { front?: string | null; back?: string | null } | null;
+    time?: { begin?: string | null; end?: string | null } | null;
+    location?: { position?: Array<number> | null } | null;
+    links?: { event?: string | null; venue?: string | null } | null;
+  };
+};
 
 export type EventsQueryVariables = Exact<{
   profile: Scalars['String']['input'];
 }>;
 
-
-export type EventsQuery = { events: Array<{ _id?: string | null, slug?: string | null, title?: string | null, date?: any | null, endDate?: any | null, description?: string | null, country?: string | null, address?: string | null, cost?: string | null, lineup?: Array<string> | null, promoter?: string | null, venue?: string | null, flyer?: { front?: string | null, back?: string | null } | null, time?: { begin?: string | null, end?: string | null } | null, location?: { position?: Array<number> | null } | null, links?: { event?: string | null, venue?: string | null } | null }> };
+export type EventsQuery = {
+  events: Array<{
+    _id?: string | null;
+    slug?: string | null;
+    title?: string | null;
+    date?: any | null;
+    endDate?: any | null;
+    description?: string | null;
+    country?: string | null;
+    address?: string | null;
+    cost?: string | null;
+    lineup?: Array<string> | null;
+    promoter?: string | null;
+    venue?: string | null;
+    flyer?: { front?: string | null; back?: string | null } | null;
+    time?: { begin?: string | null; end?: string | null } | null;
+    location?: { position?: Array<number> | null } | null;
+    links?: { event?: string | null; venue?: string | null } | null;
+  }>;
+};
 
 export type FeatureFlagQueryVariables = Exact<{
   profile: Scalars['String']['input'];
@@ -1979,47 +2838,241 @@ export type FeatureFlagQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
-
-export type FeatureFlagQuery = { featureFlag: { flag?: string | null, isActive: boolean } };
+export type FeatureFlagQuery = {
+  featureFlag: { flag?: string | null; isActive: boolean };
+};
 
 export type InfosQueryVariables = Exact<{
   profile: Scalars['String']['input'];
 }>;
 
-
-export type InfosQuery = { infos: { instagram?: string | null, RA?: string | null, facebook?: string | null, bandcamp?: string | null, twitter?: string | null, soundcloud?: string | null, discogs?: string | null, bookingDetails?: string | null, bio?: { content?: string | null } | null } };
+export type InfosQuery = {
+  infos: {
+    instagram?: string | null;
+    RA?: string | null;
+    facebook?: string | null;
+    bandcamp?: string | null;
+    twitter?: string | null;
+    soundcloud?: string | null;
+    discogs?: string | null;
+    bookingDetails?: string | null;
+    bio?: { content?: string | null } | null;
+  };
+};
 
 export type PlaylistQueryVariables = Exact<{
   profile: Scalars['String']['input'];
   name: Scalars['String']['input'];
 }>;
 
-
-export type PlaylistQuery = { playlist: { id?: number | null, artwork?: string | null, tracks?: Array<{ id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null }> | null } };
+export type PlaylistQuery = {
+  playlist: {
+    id?: number | null;
+    artwork?: string | null;
+    tracks?: Array<{
+      id?: number | null;
+      slug?: string | null;
+      title?: string | null;
+      genre?: string | null;
+      description?: string | null;
+      artwork?: string | null;
+      date?: any | null;
+      uri?: string | null;
+      url?: string | null;
+      duration?: number | null;
+      waveform?: string | null;
+      downloadable?: boolean | null;
+      download?: string | null;
+      soundcloud?: string | null;
+      license?: string | null;
+      taglist?: Array<string> | null;
+      tracklist?: Array<string> | null;
+      stats?: { count?: number | null; downloads?: number | null } | null;
+      likes?: Array<{
+        id?: number | null;
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      }> | null;
+      comments?: Array<{
+        id?: number | null;
+        createdAt?: string | null;
+        body?: string | null;
+        user?: {
+          avatar?: string | null;
+          userName?: string | null;
+          soundcloud?: string | null;
+          uri?: string | null;
+        } | null;
+      }> | null;
+    }> | null;
+  };
+};
 
 export type PostQueryVariables = Exact<{
   profile: Scalars['String']['input'];
   id: Scalars['String']['input'];
 }>;
 
-
-export type PostQuery = { post: { content?: string | null, title?: string | null, subtitle?: string | null, _id?: string | null } };
+export type PostQuery = {
+  post: {
+    content?: string | null;
+    title?: string | null;
+    subtitle?: string | null;
+    _id?: string | null;
+  };
+};
 
 export type ReleaseQueryVariables = Exact<{
   profile: Scalars['String']['input'];
   id: Scalars['String']['input'];
 }>;
 
-
-export type ReleaseQuery = { releaseItem: { id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null } | null } };
+export type ReleaseQuery = {
+  releaseItem: {
+    id?: string | null;
+    name?: string | null;
+    price?: number | null;
+    availableQuantity?: number | null;
+    release?: {
+      _id?: string | null;
+      slug?: string | null;
+      title?: string | null;
+      releaseDate?: any | null;
+      role?: string | null;
+      year?: number | null;
+      thumb?: string | null;
+      images?: Array<string> | null;
+      label?: string | null;
+      discogs?: string | null;
+      bandcamp?: string | null;
+      notes?: string | null;
+      cat?: string | null;
+      format?: string | null;
+      genre?: string | null;
+      tracklist?: Array<{
+        title?: string | null;
+        position?: string | null;
+        id?: string | null;
+        artists?: Array<{ name?: string | null; role?: string | null }> | null;
+        stream?: {
+          id?: number | null;
+          slug?: string | null;
+          title?: string | null;
+          genre?: string | null;
+          description?: string | null;
+          artwork?: string | null;
+          date?: any | null;
+          uri?: string | null;
+          url?: string | null;
+          duration?: number | null;
+          waveform?: string | null;
+          downloadable?: boolean | null;
+          download?: string | null;
+          soundcloud?: string | null;
+          license?: string | null;
+          taglist?: Array<string> | null;
+          tracklist?: Array<string> | null;
+          stats?: { count?: number | null; downloads?: number | null } | null;
+          likes?: Array<{
+            id?: number | null;
+            avatar?: string | null;
+            userName?: string | null;
+            soundcloud?: string | null;
+            uri?: string | null;
+          }> | null;
+          comments?: Array<{
+            id?: number | null;
+            createdAt?: string | null;
+            body?: string | null;
+            user?: {
+              avatar?: string | null;
+              userName?: string | null;
+              soundcloud?: string | null;
+              uri?: string | null;
+            } | null;
+          }> | null;
+        } | null;
+      }> | null;
+    } | null;
+  };
+};
 
 export type ReleasesQueryVariables = Exact<{
   profile: Scalars['String']['input'];
   webshopId: Scalars['String']['input'];
 }>;
 
-
-export type ReleasesQuery = { releaseItems: Array<{ id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null } | null }> };
+export type ReleasesQuery = {
+  releaseItems: Array<{
+    id?: string | null;
+    name?: string | null;
+    price?: number | null;
+    availableQuantity?: number | null;
+    release?: {
+      _id?: string | null;
+      slug?: string | null;
+      title?: string | null;
+      releaseDate?: any | null;
+      role?: string | null;
+      year?: number | null;
+      thumb?: string | null;
+      images?: Array<string> | null;
+      label?: string | null;
+      discogs?: string | null;
+      bandcamp?: string | null;
+      notes?: string | null;
+      cat?: string | null;
+      format?: string | null;
+      genre?: string | null;
+      tracklist?: Array<{
+        title?: string | null;
+        position?: string | null;
+        id?: string | null;
+        artists?: Array<{ name?: string | null; role?: string | null }> | null;
+        stream?: {
+          id?: number | null;
+          slug?: string | null;
+          title?: string | null;
+          genre?: string | null;
+          description?: string | null;
+          artwork?: string | null;
+          date?: any | null;
+          uri?: string | null;
+          url?: string | null;
+          duration?: number | null;
+          waveform?: string | null;
+          downloadable?: boolean | null;
+          download?: string | null;
+          soundcloud?: string | null;
+          license?: string | null;
+          taglist?: Array<string> | null;
+          tracklist?: Array<string> | null;
+          stats?: { count?: number | null; downloads?: number | null } | null;
+          likes?: Array<{
+            id?: number | null;
+            avatar?: string | null;
+            userName?: string | null;
+            soundcloud?: string | null;
+            uri?: string | null;
+          }> | null;
+          comments?: Array<{
+            id?: number | null;
+            createdAt?: string | null;
+            body?: string | null;
+            user?: {
+              avatar?: string | null;
+              userName?: string | null;
+              soundcloud?: string | null;
+              uri?: string | null;
+            } | null;
+          }> | null;
+        } | null;
+      }> | null;
+    } | null;
+  }>;
+};
 
 export type SummaryQueryVariables = Exact<{
   profile: Scalars['String']['input'];
@@ -2029,8 +3082,183 @@ export type SummaryQueryVariables = Exact<{
   expectedNbReleases?: InputMaybe<Scalars['Float']['input']>;
 }>;
 
-
-export type SummaryQuery = { summary: { nextEvent?: { _id?: string | null, slug?: string | null, title?: string | null, date?: any | null, endDate?: any | null, description?: string | null, country?: string | null, address?: string | null, cost?: string | null, lineup?: Array<string> | null, promoter?: string | null, venue?: string | null, flyer?: { front?: string | null, back?: string | null } | null, time?: { begin?: string | null, end?: string | null } | null, location?: { position?: Array<number> | null } | null, links?: { event?: string | null, venue?: string | null } | null } | null, topPodcast?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null, latestPodcast?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null, latestReleases?: Array<{ id?: string | null, name?: string | null, price?: number | null, availableQuantity?: number | null, release?: { _id?: string | null, slug?: string | null, title?: string | null, releaseDate?: any | null, role?: string | null, year?: number | null, thumb?: string | null, images?: Array<string> | null, label?: string | null, discogs?: string | null, bandcamp?: string | null, notes?: string | null, cat?: string | null, format?: string | null, genre?: string | null, tracklist?: Array<{ title?: string | null, position?: string | null, id?: string | null, artists?: Array<{ name?: string | null, role?: string | null }> | null, stream?: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } | null }> | null } | null }> | null, latestVideo?: { url?: string | null, title?: string | null, description?: string | null, type?: string | null, illustration?: string | null, slug?: string | null, _id?: string | null } | null } };
+export type SummaryQuery = {
+  summary: {
+    nextEvent?: {
+      _id?: string | null;
+      slug?: string | null;
+      title?: string | null;
+      date?: any | null;
+      endDate?: any | null;
+      description?: string | null;
+      country?: string | null;
+      address?: string | null;
+      cost?: string | null;
+      lineup?: Array<string> | null;
+      promoter?: string | null;
+      venue?: string | null;
+      flyer?: { front?: string | null; back?: string | null } | null;
+      time?: { begin?: string | null; end?: string | null } | null;
+      location?: { position?: Array<number> | null } | null;
+      links?: { event?: string | null; venue?: string | null } | null;
+    } | null;
+    topPodcast?: {
+      id?: number | null;
+      slug?: string | null;
+      title?: string | null;
+      genre?: string | null;
+      description?: string | null;
+      artwork?: string | null;
+      date?: any | null;
+      uri?: string | null;
+      url?: string | null;
+      duration?: number | null;
+      waveform?: string | null;
+      downloadable?: boolean | null;
+      download?: string | null;
+      soundcloud?: string | null;
+      license?: string | null;
+      taglist?: Array<string> | null;
+      tracklist?: Array<string> | null;
+      stats?: { count?: number | null; downloads?: number | null } | null;
+      likes?: Array<{
+        id?: number | null;
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      }> | null;
+      comments?: Array<{
+        id?: number | null;
+        createdAt?: string | null;
+        body?: string | null;
+        user?: {
+          avatar?: string | null;
+          userName?: string | null;
+          soundcloud?: string | null;
+          uri?: string | null;
+        } | null;
+      }> | null;
+    } | null;
+    latestPodcast?: {
+      id?: number | null;
+      slug?: string | null;
+      title?: string | null;
+      genre?: string | null;
+      description?: string | null;
+      artwork?: string | null;
+      date?: any | null;
+      uri?: string | null;
+      url?: string | null;
+      duration?: number | null;
+      waveform?: string | null;
+      downloadable?: boolean | null;
+      download?: string | null;
+      soundcloud?: string | null;
+      license?: string | null;
+      taglist?: Array<string> | null;
+      tracklist?: Array<string> | null;
+      stats?: { count?: number | null; downloads?: number | null } | null;
+      likes?: Array<{
+        id?: number | null;
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      }> | null;
+      comments?: Array<{
+        id?: number | null;
+        createdAt?: string | null;
+        body?: string | null;
+        user?: {
+          avatar?: string | null;
+          userName?: string | null;
+          soundcloud?: string | null;
+          uri?: string | null;
+        } | null;
+      }> | null;
+    } | null;
+    latestReleases?: Array<{
+      id?: string | null;
+      name?: string | null;
+      price?: number | null;
+      availableQuantity?: number | null;
+      release?: {
+        _id?: string | null;
+        slug?: string | null;
+        title?: string | null;
+        releaseDate?: any | null;
+        role?: string | null;
+        year?: number | null;
+        thumb?: string | null;
+        images?: Array<string> | null;
+        label?: string | null;
+        discogs?: string | null;
+        bandcamp?: string | null;
+        notes?: string | null;
+        cat?: string | null;
+        format?: string | null;
+        genre?: string | null;
+        tracklist?: Array<{
+          title?: string | null;
+          position?: string | null;
+          id?: string | null;
+          artists?: Array<{
+            name?: string | null;
+            role?: string | null;
+          }> | null;
+          stream?: {
+            id?: number | null;
+            slug?: string | null;
+            title?: string | null;
+            genre?: string | null;
+            description?: string | null;
+            artwork?: string | null;
+            date?: any | null;
+            uri?: string | null;
+            url?: string | null;
+            duration?: number | null;
+            waveform?: string | null;
+            downloadable?: boolean | null;
+            download?: string | null;
+            soundcloud?: string | null;
+            license?: string | null;
+            taglist?: Array<string> | null;
+            tracklist?: Array<string> | null;
+            stats?: { count?: number | null; downloads?: number | null } | null;
+            likes?: Array<{
+              id?: number | null;
+              avatar?: string | null;
+              userName?: string | null;
+              soundcloud?: string | null;
+              uri?: string | null;
+            }> | null;
+            comments?: Array<{
+              id?: number | null;
+              createdAt?: string | null;
+              body?: string | null;
+              user?: {
+                avatar?: string | null;
+                userName?: string | null;
+                soundcloud?: string | null;
+                uri?: string | null;
+              } | null;
+            }> | null;
+          } | null;
+        }> | null;
+      } | null;
+    }> | null;
+    latestVideo?: {
+      url?: string | null;
+      title?: string | null;
+      description?: string | null;
+      type?: string | null;
+      illustration?: string | null;
+      slug?: string | null;
+      _id?: string | null;
+    } | null;
+  };
+};
 
 export type PlaylistTrackQueryVariables = Exact<{
   profile: Scalars['String']['input'];
@@ -2038,8 +3266,46 @@ export type PlaylistTrackQueryVariables = Exact<{
   keyType?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-
-export type PlaylistTrackQuery = { playlistTrack: { id?: number | null, slug?: string | null, title?: string | null, genre?: string | null, description?: string | null, artwork?: string | null, date?: any | null, uri?: string | null, url?: string | null, duration?: number | null, waveform?: string | null, downloadable?: boolean | null, download?: string | null, soundcloud?: string | null, license?: string | null, taglist?: Array<string> | null, tracklist?: Array<string> | null, stats?: { count?: number | null, downloads?: number | null } | null, likes?: Array<{ id?: number | null, avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null }> | null, comments?: Array<{ id?: number | null, createdAt?: string | null, body?: string | null, user?: { avatar?: string | null, userName?: string | null, soundcloud?: string | null, uri?: string | null } | null }> | null } };
+export type PlaylistTrackQuery = {
+  playlistTrack: {
+    id?: number | null;
+    slug?: string | null;
+    title?: string | null;
+    genre?: string | null;
+    description?: string | null;
+    artwork?: string | null;
+    date?: any | null;
+    uri?: string | null;
+    url?: string | null;
+    duration?: number | null;
+    waveform?: string | null;
+    downloadable?: boolean | null;
+    download?: string | null;
+    soundcloud?: string | null;
+    license?: string | null;
+    taglist?: Array<string> | null;
+    tracklist?: Array<string> | null;
+    stats?: { count?: number | null; downloads?: number | null } | null;
+    likes?: Array<{
+      id?: number | null;
+      avatar?: string | null;
+      userName?: string | null;
+      soundcloud?: string | null;
+      uri?: string | null;
+    }> | null;
+    comments?: Array<{
+      id?: number | null;
+      createdAt?: string | null;
+      body?: string | null;
+      user?: {
+        avatar?: string | null;
+        userName?: string | null;
+        soundcloud?: string | null;
+        uri?: string | null;
+      } | null;
+    }> | null;
+  };
+};
 
 export type VideoQueryVariables = Exact<{
   profile: Scalars['String']['input'];
@@ -2047,12 +3313,30 @@ export type VideoQueryVariables = Exact<{
   keyType?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-
-export type VideoQuery = { video: { url?: string | null, title?: string | null, description?: string | null, type?: string | null, illustration?: string | null, slug?: string | null, _id?: string | null } };
+export type VideoQuery = {
+  video: {
+    url?: string | null;
+    title?: string | null;
+    description?: string | null;
+    type?: string | null;
+    illustration?: string | null;
+    slug?: string | null;
+    _id?: string | null;
+  };
+};
 
 export type VideosQueryVariables = Exact<{
   profile: Scalars['String']['input'];
 }>;
 
-
-export type VideosQuery = { videos: Array<{ url?: string | null, title?: string | null, description?: string | null, type?: string | null, illustration?: string | null, slug?: string | null, _id?: string | null }> };
+export type VideosQuery = {
+  videos: Array<{
+    url?: string | null;
+    title?: string | null;
+    description?: string | null;
+    type?: string | null;
+    illustration?: string | null;
+    slug?: string | null;
+    _id?: string | null;
+  }>;
+};

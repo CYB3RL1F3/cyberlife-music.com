@@ -34,7 +34,6 @@ export const getPodcastsRssFeed = async (
   if (!config) return null;
 
   const items = await getPodcastsRssItems(podcasts, config);
-
   const content = buildRssFeed({
     title: 'Cyberlife Music Podcasts RSS Feed',
     description: "Cyberlife Music's podcasts",

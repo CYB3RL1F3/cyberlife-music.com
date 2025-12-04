@@ -13,6 +13,7 @@ const BackgroundImage = ({
       className={clsx('flex h-full', backgroundType, className)}
       style={{
         backgroundImage: `url("${src}")`,
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {children}

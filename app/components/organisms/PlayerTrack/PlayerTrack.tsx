@@ -13,13 +13,14 @@ const PlayerTrack = ({
   isPlaying,
   onSeekChange,
   id,
+  disabled,
 }: PlayerTrackProps) => {
   const waveformRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
 
   const moveSeek = useCallback<MouseEventHandler<HTMLDivElement>>(
     (e) => {
-      if (!waveformRef?.current || !playerRef?.current) return;
+      if (!waveformRef?.current || !playerRef?.current || disabled) return;
       e.preventDefault();
       e.stopPropagation();
       const offsetLeft = playerRef.current.getClientRects().item(0)?.left;
@@ -30,7 +31,7 @@ const PlayerTrack = ({
       const percent = (position / waveformRef.current.offsetWidth) * 100;
       onSeekChange?.(percent);
     },
-    [onSeekChange],
+    [onSeekChange, disabled],
   );
 
   return (

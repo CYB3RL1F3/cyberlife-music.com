@@ -19663,7 +19663,6 @@ const cities: Record<string, City[]> = {
 
 export const getCountryData = (country: string) => {
   const code = country.toUpperCase();
-  console.log(code, Object.keys(cities));
   if (!Object.keys(cities).includes(code)) {
     return [];
   }

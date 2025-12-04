@@ -6,16 +6,22 @@ import ErrorPage from '~/components/pages/ErrorPage';
 import { usePlaylistTrackQuery } from '~/hooks/queries/usePlaylistTrackQuery';
 
 import type { PodcastPageProps } from './PodcastPage.types';
+import { usePlaylistQuery } from '~/hooks/queries/usePlaylistQuery';
 
 const PodcastPage = ({ id }: PodcastPageProps) => {
   const { data, loading } = usePlaylistTrackQuery(id);
+  const { data: podcasts, loading: loadingPodcasts } =
+    usePlaylistQuery('dj-sets');
   return (
     <HandlerContent
-      loading={!data && loading}
+      loading={!data && loading && !podcasts && loadingPodcasts}
       loader={<Loader message="Please wait while we're chasing podcast..." />}
     >
       {data?.playlistTrack ? (
-        <ViewPodcast podcast={data?.playlistTrack} />
+        <ViewPodcast
+          podcast={data?.playlistTrack}
+          podcasts={podcasts?.playlist?.tracks || []}
+        />
       ) : (
         <ErrorPage
           code={404}

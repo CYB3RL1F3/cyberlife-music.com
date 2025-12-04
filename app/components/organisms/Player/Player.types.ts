@@ -6,4 +6,5 @@ export type PlayerProps = Omit<
 > & {
   id: string | number;
   className?: string;
+  disabled?: boolean;
 };
