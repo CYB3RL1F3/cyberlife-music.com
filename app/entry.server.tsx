@@ -4,8 +4,10 @@ import { PassThrough } from 'stream';
 import type { EntryContext } from '@remix-run/node';
 import { createReadableStreamFromReadable } from '@remix-run/node';
 import { RemixServer } from '@remix-run/react';
+import { prerenderToNodeStream } from 'react-dom/static';
+import reactHtmlParser from 'html-react-parser';
 import { renderToPipeableStream } from 'react-dom/server';
-import { getDataFromTree } from '@apollo/client/react/ssr';
+import { prerenderStatic } from '@apollo/client/react/ssr';
 
 import ApolloContext from '~/components/contexts/ApolloContext';
 import { getClient } from '~/components/contexts/ApolloContext/ApolloContext';
@@ -36,67 +38,104 @@ export default function handleRequest(
 }
 const client = getClient();
 
-function handleBotRequest(
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext,
-) {
-  const App = (
+function buildApp({
+  request,
+  remixContext,
+  isBot,
+  canAnimate,
+}: {
+  request: Request;
+  remixContext: EntryContext;
+  isBot: boolean;
+  canAnimate: boolean;
+}) {
+  return (
     <StrictMode>
-      <SecurityContextProvider isBot>
+      <SecurityContextProvider isBot={isBot}>
         <ApolloContext client={client}>
-          <AnimationContextProvider>
+          <AnimationContextProvider canAnimate={canAnimate}>
             <RemixServer context={remixContext} url={request.url} />
           </AnimationContextProvider>
         </ApolloContext>
       </SecurityContextProvider>
     </StrictMode>
   );
-  return getDataFromTree(App).then(() => {
-    let didError = false;
+}
+
+function renderWithApollo(app: React.ReactElement, diagnostics = false) {
+  return prerenderStatic({
+    tree: app,
+    context: { client },
+    renderFunction: prerenderToNodeStream,
+    diagnostics,
+  }).then(({ result }) => {
     const initialState = client.extract();
     const markup = (
       <>
-        {App}
+        {reactHtmlParser(result)}
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__APOLLO_STATE__=${JSON.stringify(
               initialState,
-            ).replace(/</g, '\\u003c')}`, // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
+            ).replace(/</g, '\\u003c')}`,
           }}
         />
       </>
     );
-    return new Promise((resolve, reject) => {
-      const { pipe, abort } = renderToPipeableStream(markup, {
-        onShellReady() {
-          const body = new PassThrough();
-
-          responseHeaders.set('Content-Type', 'text/html');
-
-          resolve(
-            new Response(createReadableStreamFromReadable(body), {
-              headers: responseHeaders,
-              status: didError ? 500 : responseStatusCode,
-            }),
-          );
-
-          pipe(body);
-        },
-        onShellError(error: unknown) {
-          reject(error);
-        },
-        onError(error: unknown) {
-          didError = true;
-
-          console.error(error);
-        },
-      });
-
-      setTimeout(abort, ABORT_DELAY);
-    });
+    return markup;
   });
+}
+
+function streamMarkup(
+  markup: React.ReactElement,
+  responseStatusCode: number,
+  responseHeaders: Headers,
+) {
+  let didError = false;
+
+  return new Promise<Response>((resolve, reject) => {
+    const { pipe, abort } = renderToPipeableStream(markup, {
+      onShellReady() {
+        const body = new PassThrough();
+        responseHeaders.set('Content-Type', 'text/html');
+
+        resolve(
+          new Response(createReadableStreamFromReadable(body), {
+            headers: responseHeaders,
+            status: didError ? 500 : responseStatusCode,
+          }),
+        );
+
+        pipe(body);
+      },
+      onShellError(error: unknown) {
+        reject(error);
+      },
+      onError(error: unknown) {
+        didError = true;
+        console.error(error);
+      },
+    });
+
+    setTimeout(abort, ABORT_DELAY);
+  });
+}
+
+function handleBotRequest(
+  request: Request,
+  responseStatusCode: number,
+  responseHeaders: Headers,
+  remixContext: EntryContext,
+) {
+  const app = buildApp({
+    request,
+    remixContext,
+    isBot: true,
+    canAnimate: false,
+  });
+  return renderWithApollo(app, false).then((markup) =>
+    streamMarkup(markup, responseStatusCode, responseHeaders),
+  );
 }
 
 function handleBrowserRequest(
@@ -105,59 +144,14 @@ function handleBrowserRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  const App = (
-    <StrictMode>
-      <SecurityContextProvider>
-        <ApolloContext client={client}>
-          <AnimationContextProvider canAnimate>
-            <RemixServer context={remixContext} url={request.url} />
-          </AnimationContextProvider>
-        </ApolloContext>
-      </SecurityContextProvider>
-    </StrictMode>
-  );
-
-  return getDataFromTree(App).then(() => {
-    let didError = false;
-    const initialState = client.extract();
-    const markup = (
-      <>
-        {App}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.__APOLLO_STATE__=${JSON.stringify(
-              initialState,
-            ).replace(/</g, '\\u003c')}`, // The replace call escapes the < character to prevent cross-site scripting attacks that are possible via the presence of </script> in a string literal
-          }}
-        />
-      </>
-    );
-    return new Promise((resolve, reject) => {
-      const { pipe, abort } = renderToPipeableStream(markup, {
-        onShellReady() {
-          const body = new PassThrough();
-          responseHeaders.set('Content-Type', 'text/html');
-
-          resolve(
-            new Response(createReadableStreamFromReadable(body), {
-              headers: responseHeaders,
-              status: didError ? 500 : responseStatusCode,
-            }),
-          );
-
-          pipe(body);
-        },
-        onShellError(err: unknown) {
-          reject(err);
-        },
-        onError(error: unknown) {
-          didError = true;
-
-          console.error(error);
-        },
-      });
-
-      setTimeout(abort, ABORT_DELAY);
-    });
+  const app = buildApp({
+    request,
+    remixContext,
+    isBot: false,
+    canAnimate: true,
   });
+
+  return renderWithApollo(app, true).then((markup) =>
+    streamMarkup(markup, responseStatusCode, responseHeaders),
+  );
 }
