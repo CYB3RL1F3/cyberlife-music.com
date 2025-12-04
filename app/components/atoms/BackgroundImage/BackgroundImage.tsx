@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { BackgroundImageProps } from './BackgroundImage.types';
 
@@ -10,7 +10,7 @@ const BackgroundImage = ({
 }: BackgroundImageProps) => {
   return (
     <div
-      className={clsx('flex h-full', backgroundType, className)}
+      className={cn('flex h-full', backgroundType, className)}
       style={{
         backgroundImage: `url("${src}")`,
         backgroundRepeat: 'no-repeat',

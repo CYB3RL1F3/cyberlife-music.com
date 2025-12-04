@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { InlineListItemProps } from './InlineListItem.types';
 
@@ -9,7 +9,7 @@ const InlineListItem = ({
 }: InlineListItemProps) => {
   return (
     <li
-      className={clsx(
+      className={cn(
         'inline-flex',
         {
           "md:before:content-['-'] md:before:w-4 md:before:text-center":

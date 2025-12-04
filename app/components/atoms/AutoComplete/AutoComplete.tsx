@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { useCallback, useState } from 'react';
 
 import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
@@ -52,7 +52,7 @@ const AutoComplete = ({
   useKeydownEvent(handleKeyboard);
 
   return (
-    <div className={clsx('relative', size)}>
+    <div className={cn('relative', size)}>
       {isOpen && !disabled && (
         <div className="absolute flex flex-col gap-1 z-[10000] w-inherit">
           {values.map((value, index) =>

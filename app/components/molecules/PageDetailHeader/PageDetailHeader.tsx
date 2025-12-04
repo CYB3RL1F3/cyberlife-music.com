@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from '@remix-run/react';
 import { HiArrowLeft } from 'react-icons/hi';
@@ -40,7 +40,7 @@ const PageDetailHeader = ({ title, url }: PageDetailHeaderProps) => {
         {...transition(0.75, 0.5)}
         key={`header__${key}`}
         id={`header__${key}`}
-        className={clsx(
+        className={cn(
           'z-20 flex justify-between w-full h-16 pt-4 pr-6 max-md:absolute',
         )}
       >

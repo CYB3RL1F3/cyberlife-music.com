@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { ToggleIconProps } from './ToggleIcon.types';
 
@@ -22,7 +22,7 @@ const ToggleIcon = ({
         value={value}
         onChange={handleChange}
       />
-      <span className={clsx('text-md', className)}>
+      <span className={cn('text-md', className)}>
         {active ? activeIcon : inactiveIcon}
       </span>
     </label>

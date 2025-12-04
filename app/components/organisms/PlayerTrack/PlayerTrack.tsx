@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 import { useCallback, useRef } from 'react';
 import type { MouseEventHandler } from 'react';
 
@@ -39,7 +39,7 @@ const PlayerTrack = ({
       id={`player__${id}`}
       ref={playerRef}
       onClick={moveSeek}
-      className={clsx('relative w-full h-6 cursor-pointer opacity-80', {
+      className={cn('relative w-full h-6 cursor-pointer opacity-80', {
         grayscale: !isPlaying,
       })}
     >

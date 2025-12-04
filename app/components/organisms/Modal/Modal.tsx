@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { forwardRef, useImperativeHandle } from 'react';
 
 import { IoMdClose } from 'react-icons/io';
@@ -35,7 +35,7 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
         portal={portal}
       >
         <div
-          className={clsx(
+          className={cn(
             `flex flex-col w-fit bg-black rounded-3xl desktop:rounded-3xl overflow-hidden pointer-events-auto`,
             maxWidth,
           )}
@@ -58,7 +58,7 @@ const Modal = forwardRef<OnCloseRefType, ModalProps>(
             </button>
           </div>
           <div
-            className={clsx(
+            className={cn(
               'flex-1 bg-black flex justify-center items-center overflow-auto w-fit h-fit max-h-[90vh] max-w-[80vw]',
               maxWidth,
             )}

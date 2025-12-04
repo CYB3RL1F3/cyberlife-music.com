@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { forwardRef, useImperativeHandle } from 'react';
 
 import Overlay from '~/components/atoms/Overlay';
@@ -32,7 +32,7 @@ const ModalWrapper = forwardRef<OnCloseRefType, ModalWrapperProps>(
           onClose={onClose}
           className={className}
           transitionDuration={transitionDuration}
-          containerClassName={clsx(
+          containerClassName={cn(
             `flex desktop:items-center justify-center w-full h-full max-h-full transition-transform transform-gpu duration-${transitionDuration} ease-in-out desktop:py-6 pointer-events-none`,
             {
               'translate-y-0': isOpen,

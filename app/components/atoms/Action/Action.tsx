@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from '~/utils/cn';
 import type { ActionProps } from "./Action.types";
 
 const Action = ({
@@ -15,7 +15,7 @@ const Action = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={clsx("border-none bg-none cursor-pointer", className)}
+      className={cn("border-none bg-none cursor-pointer", className)}
       style={style}
       title={title}
     >

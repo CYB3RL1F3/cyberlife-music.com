@@ -1,7 +1,5 @@
-import clsx from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
 import Icon from '~/components/atoms/Icon';
+import { cn } from '~/utils/cn';
 import type { ButtonIconProps } from './ButtonIcon.types';
 
 const ButtonIcon = ({
@@ -12,15 +10,13 @@ const ButtonIcon = ({
   onClick,
   size = 16,
 }: ButtonIconProps) => {
-  const style = twMerge(
-    clsx(
-      'flex items-center justify-center w-6 h-6 px-2 text-sm bg-gray-600 bg-opacity-0 rounded-md text-bold',
-      {
-        'hover:bg-opacity-90 text-white': !disabled,
-        'text-gray-400': disabled,
-      },
-      className,
-    ),
+  const style = cn(
+    'flex items-center justify-center w-6 h-6 px-2 text-sm bg-gray-600 bg-opacity-0 rounded-md text-bold',
+    {
+      'hover:bg-opacity-90 text-white': !disabled,
+      'text-gray-400': disabled,
+    },
+    className,
   );
   return (
     <button type={type} disabled={disabled} onClick={onClick} className={style}>

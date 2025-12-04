@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { forwardRef } from 'react';
 
 import type { WaveformProps } from './Waveform.types';
@@ -9,7 +9,7 @@ const Waveform = forwardRef<HTMLDivElement, WaveformProps>(
       <div
         ref={ref}
         onClick={onClick}
-        className={clsx(
+        className={cn(
           'w-full h-6 bg-lightPink transition-all duration-200 bg-contain',
           className,
         )}

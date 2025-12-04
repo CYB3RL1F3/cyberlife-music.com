@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { ListBrowserItemProps } from './ListBrowserItem.types';
 
@@ -21,7 +21,7 @@ const ListBrowserItem = ({
         alt={title}
         width={50}
         height={50}
-        className={clsx('w-[50px] h-[50px]', className)}
+        className={cn('w-[50px] h-[50px]', className)}
       />
       <span className="w-full text-center text-md">{title}</span>
     </a>

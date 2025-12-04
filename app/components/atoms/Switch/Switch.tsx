@@ -1,10 +1,10 @@
 import type { ReactEventHandler } from 'react';
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { SwitchProps } from './Switch.types';
 
 const Switch = ({ value, onChange, id }: SwitchProps) => {
-  const className = clsx({
+  const className = cn({
     'cursor-pointer border-none inline-flex items-center w-10 rounded-full h-4 transition-all duration-50': true,
     'bg-gray-200 justify-end': value,
     'bg-gray-500 bg-opacity-50 justify-start': !value,
@@ -25,7 +25,7 @@ const Switch = ({ value, onChange, id }: SwitchProps) => {
         id={id}
       />
       <span
-        className={clsx(textClassName, {
+        className={cn(textClassName, {
           hidden: !value,
           'pr-1 text-gray-600': value,
         })}
@@ -34,7 +34,7 @@ const Switch = ({ value, onChange, id }: SwitchProps) => {
       </span>
       <span className="flex w-3 h-3 mx-1 bg-gray-900 rounded-full" />
       <span
-        className={clsx(textClassName, {
+        className={cn(textClassName, {
           hidden: value,
           'pl-1 text-gray-500': !value,
         })}

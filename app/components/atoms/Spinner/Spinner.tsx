@@ -1,11 +1,11 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { SpinnerProps } from './Spinner.types';
 
 const Spinner = ({ variant = 'md' }: SpinnerProps) => {
   return (
     <div
-      className={clsx({
+      className={cn({
         ' animate-spin ease-linear border-t-neutral-300 rounded-full border-8 border-t-8 border-gray-800': true,
         'w-64 h-64': variant === 'xl',
         'w-48 h-48': variant === 'lg',
