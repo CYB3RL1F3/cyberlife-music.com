@@ -105,7 +105,6 @@ function handleBrowserRequest(
   responseHeaders: Headers,
   remixContext: EntryContext,
 ) {
-  console.log('HANDLING BROWSER REQUEST');
   const App = (
     <StrictMode>
       <SecurityContextProvider>
