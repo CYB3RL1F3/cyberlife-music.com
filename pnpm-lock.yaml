@@ -37,15 +37,6 @@ dependencies:
   '@remix-run/server-runtime':
     specifier: 2.17.2
     version: 2.17.2(typescript@5.9.3)
-  '@wry/context':
-    specifier: 0.7.4
-    version: 0.7.4
-  '@wry/equality':
-    specifier: 0.5.7
-    version: 0.5.7
-  '@wry/trie':
-    specifier: 0.5.0
-    version: 0.5.0
   autoprefixer:
     specifier: 10.4.22
     version: 10.4.22(postcss@8.5.6)
@@ -160,9 +151,6 @@ dependencies:
   tailwindcss:
     specifier: 4.1.17
     version: 4.1.17
-  ts-invariant:
-    specifier: 0.10.3
-    version: 0.10.3
   tslib:
     specifier: 2.8.1
     version: 2.8.1
@@ -175,9 +163,6 @@ dependencies:
   xml-js:
     specifier: 1.6.11
     version: 1.6.11
-  zen-observable-ts:
-    specifier: 1.1.0
-    version: 1.1.0
   zustand:
     specifier: ^5.0.9
     version: 5.0.9(@types/react@19.2.7)(react@19.2.1)
@@ -4049,10 +4034,6 @@ packages:
     dependencies:
       '@types/node': 24.10.1
     dev: true
-
-  /@types/zen-observable@0.8.3:
-    resolution: {integrity: sha512-fbF6oTd4sGGy0xjHPKAt+eS2CrxJ3+6gQ3FGcBoIJR2TLAyCkCyI8JqZNy+FeON0AhVgNJoUumVoZQjBFUqHkw==}
-    dev: false
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@9.39.1)(typescript@5.9.3):
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
@@ -11179,13 +11160,6 @@ packages:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
     dev: false
 
-  /ts-invariant@0.10.3:
-    resolution: {integrity: sha512-uivwYcQaxAucv1CzRp2n/QdYPo4ILf9VXgH19zEIjFx2EJufV16P0JtJVpYHy89DItG6Kwj2oIUjrcK5au+4tQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      tslib: 2.8.1
-    dev: false
-
   /ts-log@2.2.7:
     resolution: {integrity: sha512-320x5Ggei84AxzlXp91QkIGSw5wgaLT6GeAH0KsqDmRZdVWW2OiSeVvElVoatk3f7nicwXlElXsoFkARiGE2yg==}
     dev: true
@@ -12043,17 +12017,6 @@ packages:
 
   /youtube-video-element@1.8.1:
     resolution: {integrity: sha512-+5UuAGaj+5AnBf39huLVpy/4dLtR0rmJP1TxOHVZ81bac4ZHFpTtQ4Dz2FAn2GPnfXISezvUEaQoAdFW4hH9Xg==}
-    dev: false
-
-  /zen-observable-ts@1.1.0:
-    resolution: {integrity: sha512-1h4zlLSqI2cRLPJUHJFL8bCWHhkpuXkF+dbGkRaWjgDIG26DmzyshUMrdV/rL3UnR+mhaX4fRq8LPouq0MYYIA==}
-    dependencies:
-      '@types/zen-observable': 0.8.3
-      zen-observable: 0.8.15
-    dev: false
-
-  /zen-observable@0.8.15:
-    resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
     dev: false
 
   /zustand@5.0.9(@types/react@19.2.7)(react@19.2.1):
