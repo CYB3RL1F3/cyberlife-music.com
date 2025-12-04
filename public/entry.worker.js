@@ -45,7 +45,6 @@ var validMutationMethodsArr = ["post", "put", "patch", "delete"];
 var validMutationMethods = new Set(validMutationMethodsArr);
 var validRequestMethodsArr = ["get", ...validMutationMethodsArr];
 var validRequestMethods = new Set(validRequestMethodsArr);
-var UNSAFE_DEFERRED_SYMBOL = Symbol("deferred");
 
 // node_modules/.pnpm/@remix-run+server-runtime@2.17.2_typescript@5.9.3/node_modules/@remix-run/server-runtime/dist/esm/responses.js
 var json3 = (data, init = {}) => {
