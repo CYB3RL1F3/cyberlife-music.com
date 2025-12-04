@@ -40,7 +40,6 @@ RUN pnpm prune --prod
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/build ./build
-COPY --from=builder /app/app/styles ./app/styles
 
 COPY --from=builder /app/ecosystem.config.js ./
 COPY --from=builder /app/.env .env
