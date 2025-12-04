@@ -15,7 +15,7 @@ import {
 } from '@remix-run/react';
 
 import Application from './application';
-import styles from '~/tailwind.css';
+import styles from '~/styles.css';
 import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css';
 import ErrorPage from './components/pages/ErrorPage';
 import { runInfosQuery } from '~/queries/infos';
