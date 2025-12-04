@@ -210,7 +210,7 @@ const FormCheckout = ({
           control={control}
           name="address"
           placeholder="Your billing address"
-          className="min-h-[6rem]"
+          className="min-h-24"
         />
       </motion.div>
       <motion.div {...transition(0.2)} className="w-full">
@@ -301,7 +301,7 @@ const FormCheckout = ({
               control={control}
               name="expedition.address"
               placeholder="Recipient address"
-              className="min-h-[6rem]"
+              className="min-h-24"
             />
           </motion.div>
           <motion.div {...transition(0.2)} className="w-full">
@@ -372,7 +372,7 @@ const FormCheckout = ({
           control={control}
           name="query"
           placeholder="Any additional information? (delay, delivery extra informations, special request...)"
-          className="min-h-[6rem]"
+          className="min-h-24"
         />
       </motion.div>
 

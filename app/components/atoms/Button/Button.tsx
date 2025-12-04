@@ -35,7 +35,7 @@ const Button = ({
       onClick={onClick}
     >
       {children}
-      {rightIcon && <span className="ml-2 min-w-[1rem]">{rightIcon}</span>}
+      {rightIcon && <span className="ml-2 min-w-4">{rightIcon}</span>}
     </button>
   );
 };

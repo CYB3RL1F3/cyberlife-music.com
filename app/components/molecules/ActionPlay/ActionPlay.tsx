@@ -17,7 +17,7 @@ const ActionPlay = ({
       title={title}
       disabled={disabled}
       onClick={handleClick}
-      className="flex items-center justify-center w-full h-full transition-all duration-75 bg-black bg-opacity-20 hover:bg-opacity-40"
+      className="flex items-center justify-center w-full h-full transition-all duration-75 bg-black/20 hover:bg-black/40"
     >
       <ShapePlay isPlaying={isPlaying} />
     </Action>

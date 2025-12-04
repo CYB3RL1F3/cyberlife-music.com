@@ -21,7 +21,7 @@ const ListEventsItem = ({ event }: ListEventsItemProps) => {
       }
     >
       {isToday && (
-        <NowAlert className="absolute px-2 md:p-3 top-[5rem] md:top-0" />
+        <NowAlert className="absolute px-2 md:p-3 top-20 md:top-0" />
       )}
 
       <ListItemSnippet title={title} href={`/events/${slug}`}>

@@ -48,7 +48,7 @@ const Dropdown = <T,>({
         <div className="relative flex items-center justify-center w-full h-12 px-2 mt-2">
           <Input
             placeholder={filterPlaceholder}
-            className="w-full text-white bg-gray-600 bg-opacity-50 placeholder-slate-400"
+            className="w-full text-white bg-gray-600/50 placeholder-slate-400"
             onChange={handleFilter}
           />
         </div>

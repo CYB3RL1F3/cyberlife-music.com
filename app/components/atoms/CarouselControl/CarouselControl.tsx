@@ -14,8 +14,9 @@ const CarouselControl = ({
   };
 
   const className = cn({
-    'w-8 h-8 rounded-full bg-gray-500 cursor-pointer transition-all duration-150': true,
-    'bg-opacity-50': !isActive,
+    'w-8 h-8 rounded-full cursor-pointer transition-all duration-150': true,
+    'bg-gray-500/50': !isActive,
+    'bg-gray-500': isActive,
   });
   return <button title={title} onClick={handleClick} className={className} />;
 };

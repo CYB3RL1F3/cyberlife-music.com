@@ -11,7 +11,7 @@ const NowAlert = ({ className }: NowAlertProps) => {
       transition={{ duration: 0.75, repeat: Infinity, repeatType: 'reverse' }}
       className={cn('w-12 md:w-16 h-6 md:h-12', className)}
     >
-      <p className="w-12 text-xs text-center text-white bg-green-700 rounded-sm md:text-sm md:w-16 bg-opacity-80">
+      <p className="w-12 text-xs text-center text-white rounded-sm bg-green-700/80 md:text-sm md:w-16">
         NOW
       </p>
     </motion.div>

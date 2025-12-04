@@ -15,7 +15,7 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
     >
       <div
         className={cn(barClassName, {
-          'rotate-45 translate-y-[6px] translate-x-[1px] scale-75': isOpen,
+          'rotate-45 translate-y-[6px] translate-x-px scale-75': isOpen,
         })}
       />
       <div
@@ -25,7 +25,7 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
       />
       <div
         className={cn(barClassName, {
-          'rotate-[135deg] scale-75 translate-x-[1px] translate-y-[-5px]':
+          'rotate-135 scale-75 translate-x-px translate-y-[-5px]':
             isOpen,
         })}
       />

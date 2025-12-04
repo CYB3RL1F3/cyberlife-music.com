@@ -15,7 +15,7 @@ import {
 } from '@remix-run/react';
 
 import Application from './application';
-import styles from '~/styles/styles.css';
+import styles from '~/tailwind.css';
 import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css';
 import ErrorPage from './components/pages/ErrorPage';
 import { runInfosQuery } from '~/queries/infos';
@@ -63,6 +63,10 @@ export const links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: styles },
     { rel: 'stylesheet', href: reactToastifyStyles },
+    {
+      rel: 'stylesheet',
+      href: 'https://p.typekit.net/p.css?s=1&k=byj4hso&ht=tk&f=6801.6805.6806.9945.6807.6808.6809.6810.6811.8414.8415.8416.8417.8418.6844.6845.6846.6847.6848.6849.6850.6851.6852.6853.27069.27070.27073.27074&a=110560041&app=typekit&e=css',
+    },
     {
       rel: 'icon',
       type: 'image/x-icon',

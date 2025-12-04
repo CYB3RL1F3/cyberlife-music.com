@@ -15,7 +15,7 @@ const ListEventsEmpty = () => {
         </p>
       </div>
       <div className="h-full">
-        <p className="text-white text-[60px] md:text-xxl leading-[1] w-12">
+        <p className="text-white text-[60px] md:text-xxl leading-none w-12">
           :(
         </p>
       </div>

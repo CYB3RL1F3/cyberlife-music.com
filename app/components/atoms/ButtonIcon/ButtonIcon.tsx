@@ -11,9 +11,9 @@ const ButtonIcon = ({
   size = 16,
 }: ButtonIconProps) => {
   const style = cn(
-    'flex items-center justify-center w-6 h-6 px-2 text-sm bg-gray-600 bg-opacity-0 rounded-md text-bold',
+    'flex items-center justify-center w-6 h-6 px-2 text-sm bg-transparent rounded-md text-bold',
     {
-      'hover:bg-opacity-90 text-white': !disabled,
+      'hover:bg-gray-600/90 text-white': !disabled,
       'text-gray-400': disabled,
     },
     className,
