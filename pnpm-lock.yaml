@@ -158,8 +158,8 @@ dependencies:
     specifier: 4.0.0
     version: 4.0.0
   tailwind-merge:
-    specifier: 2.5.2
-    version: 2.5.2
+    specifier: 3.4.0
+    version: 3.4.0
   tailwind-scrollbar:
     specifier: 3.1.0
     version: 3.1.0(tailwindcss@3.4.10)
@@ -10874,8 +10874,8 @@ packages:
       whatwg-mimetype: 4.0.0
     dev: true
 
-  /tailwind-merge@2.5.2:
-    resolution: {integrity: sha512-kjEBm+pvD+6eAwzJL2Bi+02/9LFLal1Gs61+QB7HvTfQQ0aXwC5LGT8PEt1gS0CWKktKe6ysPTAy3cBC5MeiIg==}
+  /tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
     dev: false
 
   /tailwind-scrollbar@3.1.0(tailwindcss@3.4.10):
