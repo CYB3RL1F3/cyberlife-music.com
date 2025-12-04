@@ -25,7 +25,7 @@ const CarouselEvent = ({ event }: CarouselEventProps) => {
 
   return (
     <div className="flex justify-end w-full">
-      <div className="w-[48rem]">
+      <div className="w-3xl">
         <CarouselContainer
           onChange={setCurrentIndex}
           index={currentIndex}

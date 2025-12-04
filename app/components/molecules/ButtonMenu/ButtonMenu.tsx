@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import Button from '~/components/atoms/Button';
 
@@ -14,18 +14,18 @@ const ButtonMenu = ({ isOpen, onClick }: ButtonMenuProps) => {
       className="bg-transparent absolute rounded-sm z-20 flex flex-col items-center justify-center w-8 h-[30px] gap-1 right-2 top-2 md:hidden"
     >
       <div
-        className={clsx(barClassName, {
-          'rotate-45 translate-y-[6px] translate-x-[1px] scale-75': isOpen,
+        className={cn(barClassName, {
+          'rotate-45 translate-y-[6px] translate-x-px scale-75': isOpen,
         })}
       />
       <div
-        className={clsx(barClassName, {
+        className={cn(barClassName, {
           'h-0 opacity-0 scale-75': isOpen,
         })}
       />
       <div
-        className={clsx(barClassName, {
-          'rotate-[135deg] scale-75 translate-x-[1px] translate-y-[-5px]':
+        className={cn(barClassName, {
+          'rotate-135 scale-75 translate-x-px translate-y-[-5px]':
             isOpen,
         })}
       />

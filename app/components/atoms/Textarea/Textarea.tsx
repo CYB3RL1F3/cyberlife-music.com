@@ -21,7 +21,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       const nextValue = e.currentTarget.value;
       onChange?.(nextValue);
     };
-    const textareaClassName = 'min-h-[10rem]';
+    const textareaClassName = 'min-h-40';
     const { className, onFocus, onBlur } = useInputStyle(
       hasError,
       textareaClassName,

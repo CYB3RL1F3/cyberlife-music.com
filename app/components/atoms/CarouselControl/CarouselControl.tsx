@@ -1,5 +1,5 @@
 import type { MouseEventHandler } from 'react';
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { CarouselControlProps } from './CarouselControl.types';
 
@@ -13,9 +13,10 @@ const CarouselControl = ({
     onChange?.(index);
   };
 
-  const className = clsx({
-    'w-8 h-8 rounded-full bg-gray-500 cursor-pointer transition-all duration-150': true,
-    'bg-opacity-50': !isActive,
+  const className = cn({
+    'w-8 h-8 rounded-full cursor-pointer transition-all duration-150': true,
+    'bg-gray-500/50': !isActive,
+    'bg-gray-500': isActive,
   });
   return <button title={title} onClick={handleClick} className={className} />;
 };

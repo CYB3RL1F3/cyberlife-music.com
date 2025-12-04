@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import HtmlReader from '~/components/molecules/HtmlReader';
 
@@ -10,7 +10,7 @@ const PostDisplay = ({ post, className }: PostDisplayProps) => {
   return (
     <article className="o-8">
       <HtmlReader
-        className={clsx('o-2 text-sm', className)}
+        className={cn('o-2 text-sm', className)}
         value={post?.content}
       />
     </article>

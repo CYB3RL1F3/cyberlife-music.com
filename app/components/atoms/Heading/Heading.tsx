@@ -1,8 +1,8 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import type { HeadingProps } from './Heading.types';
 
 const Heading = ({ children, variant, className }: HeadingProps) => {
-  const cls = clsx(
+  const cls = cn(
     'text-sm font-semibold text-right uppercase md:text-md cursor-pointer hover:text-white line-clamp-1',
     {
       italic: variant === 'italic',

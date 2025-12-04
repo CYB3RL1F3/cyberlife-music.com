@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 
 import FooterAnchorsInfosContainer from '~/components/organisms/FooterAnchorsInfosContainer';
 import FooterAnchorsCopyrights from '~/components/organisms/FooterAnchorsCopyrights/FooterAnchorsCopyrights';
@@ -9,7 +9,7 @@ const FooterMobile = () => {
   const { isPlaying } = useCurrentTrackPlayer();
   return (
     <div
-      className={clsx('px-4 my-4 o-4 md:hidden', {
+      className={cn('px-4 my-4 o-4 md:hidden', {
         'mb-16': isPlaying,
       })}
     >

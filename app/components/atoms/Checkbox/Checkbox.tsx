@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 import type { ReactEventHandler } from 'react';
 import { FaCheck } from 'react-icons/fa6';
 
@@ -7,7 +7,7 @@ import Icon from '~/components/atoms/Icon';
 import type { CheckboxProps } from './Checkbox.types';
 
 const Checkbox = ({ value, className, onChange, id }: CheckboxProps) => {
-  const style = clsx(
+  const style = cn(
     'cursor-pointer border-none inline-flex items-center transition-all duration-200',
     {
       'bg-gray-500 text-white': value,
@@ -23,7 +23,7 @@ const Checkbox = ({ value, className, onChange, id }: CheckboxProps) => {
   return (
     <label
       htmlFor={id}
-      className={clsx('flex items-center cursor-pointer', className)}
+      className={cn('flex items-center cursor-pointer', className)}
     >
       <input
         type="checkbox"
@@ -33,7 +33,7 @@ const Checkbox = ({ value, className, onChange, id }: CheckboxProps) => {
         id={id}
       />
       <span
-        className={clsx(
+        className={cn(
           style,
           'w-4 h-4 flex justify-center items-center rounded-xs',
         )}

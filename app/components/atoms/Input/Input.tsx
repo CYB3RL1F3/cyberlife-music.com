@@ -20,7 +20,7 @@ const Input = ({
     onChange?.(nextValue);
   };
 
-  const inputClassName = 'h-10 leading-[3rem]';
+  const inputClassName = 'h-10 leading-12';
   const {
     className,
     onFocus: onInputFocus,

@@ -1,11 +1,11 @@
-import clsx from "clsx";
+import { cn } from '~/utils/cn';
 
 import type { IconProps } from "./Icon.types";
 
 const Icon = ({ icon, size, className }: IconProps) => {
   return (
     <span
-      className={clsx("block", className)}
+      className={cn("block", className)}
       style={{ width: size, fontSize: size }}
     >
       {icon}

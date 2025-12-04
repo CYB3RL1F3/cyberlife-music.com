@@ -10,11 +10,10 @@ import { usePlaylistQuery } from '~/hooks/queries/usePlaylistQuery';
 
 const PodcastPage = ({ id }: PodcastPageProps) => {
   const { data, loading } = usePlaylistTrackQuery(id);
-  const { data: podcasts, loading: loadingPodcasts } =
-    usePlaylistQuery('dj-sets');
+  const { data: podcasts } = usePlaylistQuery('dj-sets');
   return (
     <HandlerContent
-      loading={!data && loading && !podcasts && loadingPodcasts}
+      loading={!data && loading}
       loader={<Loader message="Please wait while we're chasing podcast..." />}
     >
       {data?.playlistTrack ? (

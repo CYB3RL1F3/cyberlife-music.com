@@ -42,10 +42,7 @@ const FormOrderDownloadConfirmContainer = ({
       onSubmit={handleSubmit}
       footer={() => (
         <div className="flex justify-end w-full">
-          <ButtonSubmit
-            rightIcon={loading ? <Spinner variant="md" /> : <MdSend />}
-            loading={loading}
-          >
+          <ButtonSubmit rightIcon={<MdSend />} loading={loading}>
             Get audio files
           </ButtonSubmit>
         </div>

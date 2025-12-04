@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 import { useMemo } from 'react';
 import { Link } from '@remix-run/react';
 
@@ -18,7 +18,7 @@ const Anchor = ({
   const linkStyle = useLinkStyle(className);
   const cls = useMemo(
     () =>
-      clsx({
+      cn({
         [linkStyle]: variant === 'link',
         [buttonStyle]: variant === 'button',
       }),

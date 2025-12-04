@@ -1,6 +1,6 @@
 import Picture from '~/components/organisms/Picture';
 import type { PicturesGalleryProps } from './PicturesGallery.types';
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { useImageModalsKeyboardNavigation } from '~/hooks/misc/useImageModalsKeyboardNavigation';
 
 const PicturesGallery = ({
@@ -12,7 +12,7 @@ const PicturesGallery = ({
 
   return (
     <div
-      className={clsx(
+      className={cn(
         'flex flex-wrap gap-4 justify-end min-h-24 h-auto',
         className,
       )}

@@ -1,6 +1,4 @@
-import clsx from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
+import { cn } from '~/utils/cn';
 import { useTableContext } from '~/components/atoms/Table/Table.context';
 
 import type { TableRowProps } from './TableRow.types';
@@ -8,10 +6,8 @@ import type { TableRowProps } from './TableRow.types';
 const TableRow = ({ children, className, bordered }: TableRowProps) => {
   const { template } = useTableContext();
 
-  const style = twMerge(
-    clsx(
-      `grid ${template} ${bordered && 'border-b border-gray-500'} gap-4 p-2`,
-    ),
+  const style = cn(
+    `grid ${template} ${bordered && 'border-b border-gray-500'} gap-4 p-2`,
     className,
   );
 

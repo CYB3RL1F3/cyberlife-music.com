@@ -1,11 +1,11 @@
 import { forwardRef } from 'react';
 import { Link } from '@remix-run/react';
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { LinkNavItemProps } from './LinkNavItem.types';
 
 export const useLinkNavItemStyle = () =>
-  clsx(
+  cn(
     'h-16 leading-16 md:h-24 md:leading-24 md:leading-8 md:h-8 inline-flex items-center uppercase text-xl md:text-lg font-semibold',
     'cursor-pointer hover:text-white',
   );

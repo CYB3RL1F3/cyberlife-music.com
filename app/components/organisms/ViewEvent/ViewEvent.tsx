@@ -46,7 +46,7 @@ const ViewEvent = ({ event }: ViewEventProps) => {
       <div className="flex justify-end w-full">
         <motion.div
           {...transition(0.3)}
-          className="flex justify-center gap-4 w-[48rem]"
+          className="flex justify-center gap-4 w-3xl"
         >
           <div className="w-1/2 o-4">
             <Text.RightMdSemiBold className="whitespace-pre-line">

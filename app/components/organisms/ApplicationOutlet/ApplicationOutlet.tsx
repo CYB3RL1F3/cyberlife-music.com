@@ -28,7 +28,7 @@ export const ApplicationOutlet = ({ children }: ApplicationOutletProps) => {
       }}
     >
       <motion.div
-        className="max-md:min-h-[calc(100vh_-_21rem)]"
+        className="max-md:min-h-[calc(100vh-21rem)]"
         key={key}
         style={{ willChange }}
       >

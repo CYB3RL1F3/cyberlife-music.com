@@ -12,7 +12,7 @@ const ButtonLink = ({
   return (
     <Anchor className={className} variant="button" href={href} target={target}>
       {children}
-      {rightIcon && <span className="ml-2 min-w-[1rem]">{rightIcon}</span>}
+      {rightIcon && <span className="ml-2 min-w-4">{rightIcon}</span>}
     </Anchor>
   );
 };

@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 import { useMemo } from 'react';
 
 import { useButtonStyle } from '~/hooks/styles/useButtonStyle';
@@ -17,10 +17,10 @@ const Button = ({
   className,
 }: ButtonProps) => {
   const buttonStyle = useButtonStyle(className);
-  const linkStyle = useLinkStyle(clsx('bg-none border-none', className));
+  const linkStyle = useLinkStyle(cn('bg-none border-none', className));
   const cls = useMemo(
     () =>
-      clsx({
+      cn({
         [linkStyle]: variant === 'link',
         [buttonStyle]: variant === 'button',
       }),
@@ -35,7 +35,7 @@ const Button = ({
       onClick={onClick}
     >
       {children}
-      {rightIcon && <span className="ml-2 min-w-[1rem]">{rightIcon}</span>}
+      {rightIcon && <span className="ml-2 min-w-4">{rightIcon}</span>}
     </button>
   );
 };

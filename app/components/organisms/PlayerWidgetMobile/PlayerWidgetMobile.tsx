@@ -13,7 +13,7 @@ const PlayerWidgetMobile = () => {
   return (
     <div className="fixed bottom-0 z-10 w-screen h-18 md:hidden">
       <motion.div
-        className="flex w-screen h-full bg-black md:hidden bg-opacity-80"
+        className="flex w-screen h-full bg-black/80 md:hidden"
         animate={showExternalPlayer ? 'open' : 'closed'}
         variants={variants}
         transition={{ duration: 0.3, ease: 'easeInOut' }}

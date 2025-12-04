@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '~/utils/cn';
 
 import ListBrowsers from '~/components/organisms/ListBrowsers';
 
@@ -12,7 +12,7 @@ const NotSupportedPageLayout = ({
 }: NotSupportedPageLayoutProps) => {
   return (
     <div
-      className={clsx('z-20 w-screen h-[100vh] text-white', backgroundColor)}
+      className={cn('z-20 w-screen h-[100vh] text-white', backgroundColor)}
     >
       <div className="px-8 py-12 md:px-24 o-8">
         <h1 className="text-semilarge md:text-xxl">Uh oh! :(</h1>
@@ -20,7 +20,7 @@ const NotSupportedPageLayout = ({
         {children}
       </div>
       <div
-        className={clsx(
+        className={cn(
           'absolute z-30 top-[70vh] w-screen px-8 md:px-24 bottom o-8',
         )}
       >

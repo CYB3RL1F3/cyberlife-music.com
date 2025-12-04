@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { useMemo } from 'react';
 import { motion, useWillChange } from 'framer-motion';
 
@@ -17,7 +17,7 @@ const ListItemWrapper = ({
 
   const opacityDelay = useMemo(() => STATIC_DELAY + delay, [delay]);
 
-  const className = clsx('flex justify-end border-gray-400', {
+  const className = cn('flex justify-end border-gray-400', {
     'border-t pt-4': !noBorder,
   });
   const willChange = useWillChange();

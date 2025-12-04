@@ -1,6 +1,4 @@
-import clsx from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
+import { cn } from '~/utils/cn';
 import TableCell from '~/components/atoms/TableCell';
 import { useTableContext } from '~/components/atoms/Table/Table.context';
 
@@ -9,10 +7,7 @@ import type { TableHeadProps } from './TableHead.types';
 const TableHead = ({ columns, className }: TableHeadProps) => {
   const { template } = useTableContext();
 
-  const headGridClass = twMerge(
-    clsx(`grid ${template} gap-4 border-b-2 border-gray-200 p-2`),
-    className,
-  );
+  const headGridClass = cn(`grid ${template} gap-4 border-b-2 border-gray-200 p-2`, className);
 
   return (
     <div className={headGridClass}>

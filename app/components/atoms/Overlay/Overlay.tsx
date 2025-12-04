@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 import { useCallback, useMemo, useEffect, useState, useRef } from 'react';
 
 import { useKeydownEvent } from '~/hooks/events/useKeydownEvent';
@@ -32,7 +32,7 @@ const Overlay = ({
 
   const finalClassName = useMemo(
     () =>
-      clsx(
+      cn(
         `top-0 fixed z-40 backdrop-blur-sm block z-overlay h-full l-0 transition-colors duration-${transitionDuration} ease-in-out w-full`,
         className,
       ),

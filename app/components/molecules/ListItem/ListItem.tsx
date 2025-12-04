@@ -1,10 +1,10 @@
-import clsx from 'clsx';
+import { cn } from '~/utils/cn';
 
 import type { ListItemProps } from './ListItem.types';
 
 const ListItem = ({ children, thumbnail, emphasis }: ListItemProps) => {
-  const className = clsx('flex w-full gap-4', {
-    'bg-slate-800 bg-opacity-60': emphasis,
+  const className = cn('flex w-full gap-4', {
+    'bg-slate-800/60': emphasis,
   });
   return (
     <div className={className}>
