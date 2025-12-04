@@ -1,3 +1,4 @@
 export type SpinnerProps = {
-  variant?: "xs" | "sm" | "md" | "lg" | "xl";
+  variant?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
 };

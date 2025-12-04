@@ -10,7 +10,7 @@ const InlineListItem = ({
   return (
     <li
       className={cn(
-        'inline-flex',
+        'inline-flex h-full items-center',
         {
           "md:before:content-['-'] md:before:w-4 md:before:text-center":
             index > 0,

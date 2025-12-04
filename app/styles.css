@@ -72,6 +72,12 @@
   to   { mask-size: 100vw; }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* -------------------------- */
 /*        Utilities v4        */
 /* -------------------------- */
@@ -650,4 +656,8 @@ input:-webkit-autofill:active {
 
 .paypal-button-container iframe.component-frame.visible {
   height: 40px !important;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }

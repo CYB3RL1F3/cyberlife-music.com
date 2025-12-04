@@ -12,7 +12,7 @@ const ButtonSubmit = ({
   children,
 }: ButtonSubmitProps) => {
   const icon = useMemo(() => {
-    if (loading) return <Spinner variant="xs" />;
+    if (loading) return <Spinner variant="xs" className="border-gray-200/80" />;
     return rightIcon;
   }, [rightIcon, loading]);
   return (
