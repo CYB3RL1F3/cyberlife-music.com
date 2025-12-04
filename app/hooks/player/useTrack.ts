@@ -15,14 +15,11 @@ export const useTrack = (id: number) => {
     setSeek,
   } = usePlayerStore();
 
-  const currentTrack = useMemo(() => buffer[id], [buffer, id]);
+  const currentTrack = buffer[id];
 
   const isCurrentTrack = currentTrackId === id;
 
-  const isPlaying = useMemo(
-    () => isCurrentTrack && playing,
-    [isCurrentTrack, playing],
-  );
+  const isPlaying = isCurrentTrack && playing;
 
   const togglePlay = () => {
     if (!isPlaying || !isCurrentTrack) {
