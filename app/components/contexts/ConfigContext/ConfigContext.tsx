@@ -21,5 +21,6 @@ export const ConfigContext = createContext<ConfigContextValues>({
       accessToken: '',
       style: '',
     },
+    isMaintenance: false,
   },
 });

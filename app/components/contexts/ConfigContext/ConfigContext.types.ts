@@ -9,7 +9,7 @@ export type Config = {
   api: string;
   apiEndpoint: string;
   notificationPoolId: string;
-  env: Environment
+  env: Environment;
   paypal: {
     clientId: string;
     baseUrl: string;
@@ -17,6 +17,7 @@ export type Config = {
   webshopId: string;
   domain: string;
   contactEmail: string;
+  isMaintenance: boolean;
 };
 
 export type ConfigContextValues = {

@@ -20,6 +20,7 @@ import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css';
 import ErrorPage from './components/pages/ErrorPage';
 import { runInfosQuery } from '~/queries/infos';
 import { getConfig } from './utils/config';
+import MaintenancePage from './components/pages/MaintenancePage';
 
 let isMount = true;
 
@@ -118,7 +119,11 @@ export function ErrorBoundary() {
       <body className="w-screen h-screen p-0 m-0 overflow-hidden text-gray-400 bg-black">
         {config && (
           <Application config={config}>
-            <ErrorPage code={code} message={message} />
+            {config.isMaintenance ? (
+              <MaintenancePage />
+            ) : (
+              <ErrorPage code={code} message={message} />
+            )}
           </Application>
         )}
       </body>

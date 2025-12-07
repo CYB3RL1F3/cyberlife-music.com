@@ -32,6 +32,9 @@ export const getServerConfig = (): Config | null => {
         parsed?.CONTACT_EMAIL ||
         process.env.CONTACT_EMAIL ||
         'contact@cyberlife-music.com',
+      isMaintenance:
+        parsed?.IS_MAINTENANCE === 'true' ||
+        process.env.IS_MAINTENANCE === 'true',
     };
   }
   return null;

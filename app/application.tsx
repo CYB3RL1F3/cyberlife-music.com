@@ -25,6 +25,7 @@ import NoScript from '~/components/organisms/NoScript';
 import { useRemixNavigationPostMessage } from '~/hooks/misc/useRemixNavigationPostMessage';
 import ApplicationOutlet from '~/components/organisms/ApplicationOutlet';
 import ModalImageContainer from '~/components/organisms/ModalImageContainer';
+import MaintenancePage from './components/pages/MaintenancePage';
 
 export type ApplicationProps = {
   config: Config;
@@ -37,10 +38,9 @@ const Application = ({ config, children }: ApplicationProps) => {
   useRemixNavigationPostMessage(location);
 
   const isAppSupported = isSupported();
-  const isIeBrowser = isIe();
 
   if (!isAppSupported && typeof window !== 'undefined') {
-    return <NotSupportedPage isIe={isIeBrowser} />;
+    return <NotSupportedPage isIe={isIe()} />;
   }
 
   return (
@@ -50,7 +50,7 @@ const Application = ({ config, children }: ApplicationProps) => {
           <PwaContextProvider>
             <NotificationContextProvider>
               <Layout>
-                <DisplayInfosContainer />
+                {!config.isMaintenance && <DisplayInfosContainer />}
                 <div className="relative">
                   <div className="absolute z-10 w-full">
                     <PageDetailHeaderPortal.Container />
