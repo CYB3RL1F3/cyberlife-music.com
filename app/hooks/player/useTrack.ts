@@ -49,6 +49,7 @@ export const useTrack = (id: number) => {
       type: 'track',
       date: dayjs().toISOString(),
     };
+
     if (typeof window === 'undefined') return currentTrack?.url;
     const tokenString = window.btoa(JSON.stringify(token));
     const endpoint = currentTrack?.url ? new URL(currentTrack.url) : undefined;
