@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useMemo } from 'react';
 
 import { usePlayerStore } from '~/hooks/stores/player/usePlayerStore';
@@ -42,24 +43,38 @@ export const useTrack = (id: number) => {
     play(nextId, true);
   };
 
+  const url = useMemo(() => {
+    const token = {
+      id,
+      type: 'track',
+      date: dayjs().toISOString(),
+    };
+    if (typeof window === 'undefined') return currentTrack?.url;
+    const tokenString = window.btoa(JSON.stringify(token));
+    const endpoint = currentTrack?.url ? new URL(currentTrack.url) : undefined;
+    if (endpoint) endpoint?.searchParams?.append?.('token', tokenString);
+    const url = endpoint?.toString();
+    return url;
+  }, [currentTrack?.url, id]);
+
   return {
+    id,
+    url,
+    isPlaying,
+    isCurrentTrack,
+    volume,
+    jumping,
     load: currentTrack?.load || 0,
     seek: currentTrack?.seek || 0,
-    url: currentTrack?.url || undefined,
     waveform: currentTrack?.waveform,
     title: currentTrack?.title,
     duration: currentTrack?.duration,
     pageUrl: currentTrack?.pageUrl,
     nextId: currentTrack?.nextId,
     prevId: currentTrack?.prevId,
-    isPlaying,
-    isCurrentTrack,
-    volume,
-    jumping,
     togglePlay,
+    onEnded,
     setLoad: setTrackLoad,
     setSeek: setTrackSeek,
-    id,
-    onEnded,
   };
 };

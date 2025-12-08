@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
 import type { SecurityContextProviderProps } from './SecurityContext.types';
 import { SecurityContext } from './SecurityContext';
+import { useMouseMoveEvent } from '~/hooks/events/useMouseMoveEvent';
 
 const SecurityContextProvider = ({
   isBot,
   children,
 }: SecurityContextProviderProps) => {
   const [isBotDetected, setIsBotDetected] = useState(isBot);
+  const [hasMouseMovement, setHasMouseMovement] = useState(false);
+
+  useMouseMoveEvent(() => {
+    if (isBotDetected) {
+      return;
+    }
+    setHasMouseMovement(true);
+  });
 
   useEffect(() => {
     // Check user agent for common bot patterns
@@ -79,7 +88,7 @@ const SecurityContextProvider = ({
   return (
     <SecurityContext.Provider
       value={{
-        isBot: isBotDetected,
+        isBot: isBotDetected || !hasMouseMovement,
       }}
     >
       {children}

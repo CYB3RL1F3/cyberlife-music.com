@@ -1,13 +1,7 @@
 import dayjs from 'dayjs';
 
 import { getConfig } from '~/utils/config';
-import {
-  cleanUrl,
-  rssDateFormat,
-  buildRssFeed,
-  RSSItem,
-  cleanText,
-} from './builder.rss';
+import { rssDateFormat, buildRssFeed, RSSItem, cleanText } from './builder.rss';
 import { Track } from '~/types/gql';
 
 export const getFileSize = async (url: string): Promise<number> => {
@@ -26,11 +20,11 @@ export const getPodcastRssItem = async (
 ): Promise<RSSItem | null> => {
   if (!config) return null;
 
-  const length = await getFileSize(
-    `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
-  );
+  // const length = await getFileSize(
+  //   `${config?.apiEndpoint}/cyberlife/playlists/${podcast.id}/stream`,
+  // );
 
-  if (!length || !podcast.url) return null;
+  if (!podcast.url) return null;
 
   return {
     title: podcast.title || '',

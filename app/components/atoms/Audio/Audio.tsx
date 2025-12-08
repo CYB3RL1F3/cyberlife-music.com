@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import type { AudioProps } from './Audio.types';
+import dayjs from 'dayjs';
 
 const Audio = ({
   url,
@@ -12,6 +13,7 @@ const Audio = ({
   volume,
   jumping,
   onEnded,
+  id,
 }: AudioProps) => {
   let playerRef = useRef<ReactAudioPlayer>(null);
   let element = playerRef.current?.audioEl;

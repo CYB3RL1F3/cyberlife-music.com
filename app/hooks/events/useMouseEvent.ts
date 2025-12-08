@@ -1,17 +1,25 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export type MouseOrTouchEvent = MouseEvent | TouchEvent;
 
 export type MouseEventCallback = (event: MouseOrTouchEvent) => void;
 
 export const useMouseEvent = (callback: MouseEventCallback) => {
+  const handleClick = useCallback(
+    (event: MouseOrTouchEvent) => {
+      if (!event.isTrusted) return;
+      callback(event);
+    },
+    [callback],
+  );
+
   useEffect(() => {
-    document.addEventListener('mousedown', callback);
-    document.addEventListener('touchstart', callback);
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('touchstart', handleClick);
 
     return () => {
-      document.removeEventListener('mousedown', callback);
-      document.removeEventListener('touchstart', callback);
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('touchstart', handleClick);
     };
-  }, [callback]);
+  }, [handleClick]);
 };
