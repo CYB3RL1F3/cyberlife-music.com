@@ -13,6 +13,7 @@ import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 
 import type { FormContactProps, FormContactValues } from './FormContact.types';
 import { formContactSchema } from './FormContact.schema';
+import { useSecurityContext } from '~/components/contexts/SecurityContext/SecurityContext.hook';
 
 const FormContact = ({
   onSubmit,
@@ -35,6 +36,8 @@ const FormContact = ({
 
   const willChange = useWillChange();
   const transition = useFluidTransition({ style: { willChange } });
+
+  const { isBot } = useSecurityContext();
 
   return (
     <AnimatePresence mode="wait">
@@ -102,7 +105,7 @@ const FormContact = ({
               />
               <ButtonSubmit
                 loading={isSubmitting}
-                disabled={!isDirty}
+                disabled={!isDirty || isBot}
                 rightIcon={<IoMdSend />}
                 className="w-24"
               >
