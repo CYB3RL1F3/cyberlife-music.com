@@ -29,64 +29,461 @@ export const isForbiddenEmail = (value: string) =>
     value,
   );
 
-export const hasInvalidContent = (value: string) => {
-  const trimmedValue = value.trim();
+export const hasInvalidContent = (value: string): boolean => {
+  const text = value.trim();
+  if (text.length < 3) return true;
 
-  // Check if empty or too short
-  if (trimmedValue.length < 3) return true;
+  // If long but no whitespace, it's almost certainly garbage (you already had this)
+  if (!/\s/.test(text) && text.length > 15) return true;
 
-  // Check for random character sequences (e.g., "asdfghjkl", "qwerty")
-  const hasRepeatingPattern = /(.)\1{4,}/i.test(trimmedValue);
-  if (hasRepeatingPattern) return true;
+  const WHITELIST = new Set([
+    // keep yours; I truncated here for readability
+    'ok',
+    'okay',
+    'oui',
+    'non',
+    'ye',
+    'yes',
+    'no',
+    'yo',
+    'hey',
+    'hi',
+    'cr',
+    'hello',
+    'lol',
+    'mdr',
+    'ptdr',
+    'xd',
+    'i',
+    'u',
+    'y',
+    'e',
+    'a',
+    'ha',
+    'ah',
+    'hah',
+    'ho',
+    'he',
+    'she',
+    'it',
+    'we',
+    'they',
+    'im',
+    "i'm",
+    "you're",
+    "he'",
+    "i'",
+    "c'",
+    "s'",
+    "l'",
+    'dm',
+    'rm',
+    'fun',
+    'luv',
+    'jus',
+    'wan',
+    'wa',
+    'w',
+    'wo',
+    'wu',
+    'xx',
+    'xoxo',
+    'xo',
+    'plz',
+    'pls',
+    'up',
+    'or',
+    'ni',
+    'car',
+    'buy',
+    'can',
+    'ban',
+    'czn',
+    'bzn',
+    'biz',
+    'und',
+    'ja',
+    'eo',
+    'ik',
+    'is',
+    'tru',
+    'svp',
+    'stp',
+    'dsl',
+    'pck',
+    'pk',
+    'pq',
+    'jsp',
+    'tkt',
+    'thx',
+    'ty',
+    'merci',
+    'and',
+    'the',
+    'a',
+    'o',
+    'an',
+    'as',
+    'at',
+    'and',
+    'al',
+    'au',
+    'ae',
+    'ei',
+    'usa',
+    'us',
+    'ne',
+    'je',
+    'fui',
+    'fus',
+    'lu',
+    'cru',
+    'su',
+    'es',
+    'is',
+    'it',
+    'en',
+    'na',
+    'too',
+    'wu',
+    'ya',
+    'to',
+    'of',
+    'in',
+    'for',
+    'vs',
+    'etc',
+    'mais',
+    'de',
+    'le',
+    'la',
+    'les',
+    'des',
+    'je',
+    'tu',
+    'il',
+    'on',
+    'ep',
+    'lp',
+    'mix',
+    'dj',
+    'db',
+    'dnb',
+    'ft',
+    'xl',
+    'lg',
+    'md',
+    'sm',
+    'xs',
+    'tb',
+    'kb',
+    'mb',
+    'gb',
+    'ar',
+    'pr',
+    'png',
+    'jpg',
+    'jpeg',
+    'gif',
+    'pdf',
+    'doc',
+    'docx',
+    'txt',
+    'rtf',
+    'mp3',
+    'wav',
+    'flac',
+    'aac',
+    'ogg',
+    'wma',
+    'mov',
+    'mp4',
+    'avi',
+    'mkv',
+    'zip',
+    'rar',
+    '7z',
+    'exe',
+    'dmg',
+    'iso',
+    'html',
+    'css',
+    'js',
+    'ts',
+    'json',
+    'xml',
+    'csv',
+    'yml',
+    'yaml',
+    'sh',
+    'ssh',
+    'en',
+    'y',
+    'un',
+    'une',
+    'one',
+    'two',
+    'thr',
+    'for',
+    'fiv',
+    'six',
+    'sev',
+    'eig',
+    'nin',
+    'ten',
+    'twl',
+    'twn',
+    'bcd',
+    'cod',
+    'dev',
+    'ops',
+    'js',
+    'ts',
+    'api',
+    'mp',
+    'dm',
+    'ui',
+    'ux',
+    'cpu',
+    'gpu',
+    'ram',
+    'dns',
+    'ip',
+    'ssh',
+    'http',
+    'https',
+    'ssl',
+    'tls',
+    'uuid',
+    'jwt',
+    'oauth',
+    'npm',
+    'pnpm',
+    'yarn',
+    'git',
+    'ci',
+    'cd',
+    'std',
+    'lmt',
+    'rus',
+    'rue',
+    'ru',
+    'ra',
+    'rat',
+    'tri',
+    'tro',
+    'tru',
+    'tre',
+    'try',
+    'cat',
+    'bat',
+    'dat',
+    'ama',
+    'uwu',
+    'owo',
+    'tm',
+    'cm',
+    'mm',
+    'dm',
+    'hm',
+    'km',
+    'hmr',
+    'spe',
+    'ux',
+    'ui',
+    'ad',
+    'ads',
+    'adw',
+    'seo',
+    'sem',
+    'com',
+    'net',
+    'org',
+    'io',
+    'fls',
+    'flo',
+    'flu',
+    'der',
+    'ter',
+    'tv',
+    'dl',
+    'sql',
+    'k8s',
+    're',
+    'min',
+    'sec',
+    'hr',
+    'wk',
+    'mo',
+    'yr',
+    'me',
+    'te',
+    'se',
+    'ma',
+    'ta',
+    'sa',
+    'di',
+    'do',
+    're',
+    'fa',
+    'sol',
+    'la',
+    'si',
+    'ut',
+    'ti',
+    'io',
+    'ai',
+    'vr',
+    'ar',
+    'mr',
+    'ms',
+    'jr',
+    'sr',
+    'dr',
+    'pro',
+    'inc',
+    'ltd',
+    'llc',
+    'btw',
+    'fyi',
+    'idk',
+    'imho',
+    'brb',
+    'afk',
+    'tba',
+    'tbd',
+    'ago',
+    'diy',
+    'wtf',
+    'bff',
+    'gbh',
+    'imo',
+    'irl',
+    'jk',
+    'lmk',
+    'nm',
+    'pa',
+    'pc',
+    'pd',
+    'pm',
+    'po',
+    'pt',
+    'qt',
+    'rp',
+    'sb',
+    'tc',
+    'tl',
+    'ty',
+    'yw',
+    'zz',
+  ]);
 
-  // Check for keyboard mashing patterns
-  const keyboardPatterns = [
-    /qwerty|asdfgh|zxcvbn/i,
-    /123456|098765|111111/,
-    /qazwsx|poiuyt/i,
-  ];
+  const normalizeToken = (t: string) => t.toLowerCase().replace(/[“”’]/g, "'");
 
-  if (keyboardPatterns.some((pattern) => pattern.test(trimmedValue)))
-    return true;
+  const rawTokens = text.split(/\s+/).filter(Boolean);
+  const tokens = rawTokens.map(normalizeToken).filter(Boolean);
 
-  // Check ratio of consonants/vowels - gibberish usually has poor ratio
-  const vowels = trimmedValue.match(/[aeiouàâäéèêëïîôùûüÿæœ]/gi) || [];
-  const consonants = trimmedValue.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [];
-  const totalLetters = vowels.length + consonants.length;
+  // If everything is super short => invalid
+  if (tokens.length > 0 && tokens.every((t) => t.length < 3)) return true;
 
-  if (totalLetters > 5) {
-    const vowelRatio = vowels.length / totalLetters;
-    // Gibberish typically has less than 15% or more than 70% vowels
-    if (vowelRatio < 0.15 || vowelRatio > 0.7) return true;
+  // ---------- Character-level "gibberish" signals ----------
+  let score = 0;
 
-    // Check for excessive consonant clusters (6+ consonants in a row)
-    if (/[bcdfghjklmnpqrstvwxyz]{6,}/i.test(trimmedValue)) return true;
+  // Long repeated char streak (xxxxxxxxxx)
+  if (/(.)\1{6,}/i.test(text)) score += 3;
 
-    // Check for excessive numbers relative to text
-    const numbers = trimmedValue.match(/\d/g) || [];
-    const letters = trimmedValue.match(/[a-zàâäéèêëïîôùûüÿæœ]/gi) || [];
+  // Low diversity overall
+  const chars = text.replace(/\s/g, '').toLowerCase();
+  const uniqueChars = new Set(chars);
+  if (chars.length >= 12 && uniqueChars.size / chars.length < 0.22) score += 3;
 
-    if (
-      letters.length > 0 &&
-      numbers.length / (letters.length + numbers.length) > 0.8
-    ) {
-      return true;
-    }
+  // Very long consonant or vowels run anywhere
+  if (/[bcdfghjklmnpqrstvwxz]{7,}/i.test(text)) score += 3;
+  if (/[aeiouyàâäéèêëïîôùûüÿæœ]{7,}/i.test(text)) score += 3;
 
-    // Check for random alternating case
-    const hasRandomCase = /([a-z][A-Z]|[A-Z][a-z]){5,}/.test(
-      trimmedValue.replace(/\s/g, ''),
-    );
-    if (hasRandomCase) {
-      return true;
-    }
-
-    const hasSpace = /\s/.test(trimmedValue);
-    if (!hasSpace) {
-      return true;
-    }
-
-    return false;
+  // Weird digit-in-the-middle token (hel3lo)
+  if (
+    tokens.some((t) =>
+      /^[a-zàâäéèêëïîôùûüÿæœ]+\d+[a-zàâäéèêëïîôùûüÿæœ]+$/i.test(t),
+    )
+  ) {
+    score += 4;
   }
-  return false;
+
+  // Special chars density
+  const letters = chars.match(/[a-zàâäéèêëïîôùûüÿæœ]/gi) || [];
+  const specialChars = text.match(/[^a-z0-9àâäéèêëïîôùûüÿæœ\s\r'-]/gi) || [];
+  if (letters.length === 0) return true;
+  if (letters.length > 0 && specialChars.length / letters.length > 0.25)
+    score += 2;
+
+  // ---------- Token-level "message quality" signals ----------
+
+  // 1) Short token spam
+  const short1 = tokens.filter((t) => t.length === 1).length;
+  const short2 = tokens.filter((t) => t.length === 2).length;
+  const shortRatio = tokens.length ? (short1 + short2) / tokens.length : 1;
+
+  // If a message is mostly 1–2 char tokens, it’s almost always junk
+  if (tokens.length >= 6 && shortRatio >= 0.75) score += 5;
+  else if (tokens.length >= 8 && shortRatio >= 0.6) score += 3;
+
+  // 2) "Wordlike" tokens (no dictionary needed)
+  const isWhitelisted = (t: string) => WHITELIST.has(t.toLocaleLowerCase());
+  const hasVowel = (t: string) => /[aeiouyàâäéèêëïîôùûüÿæœ]/i.test(t);
+
+  const isWordLike = (t: string) => {
+    if (isWhitelisted(t)) return true;
+    if (t.length < 3) return false;
+
+    // must contain at least one vowel for Latin-ish words
+    if (!hasVowel(t)) return false;
+
+    // avoid insane consonant clusters inside the token
+    if (/[bcdfghjklmnpqrstvwxz]{5,}/i.test(t)) return false;
+
+    // avoid tokens that are basically alnum soup
+    const digits = t.match(/\d/g)?.length ?? 0;
+    if (digits > 0 && digits / t.length > 0.34) return false;
+
+    // too many repeated chars inside the token
+    if (/(.)\1{3,}/i.test(t)) return false;
+
+    return true;
+  };
+
+  const whitelistedCount = tokens.filter(isWhitelisted).length;
+  const wordLikeCount = tokens.filter(isWordLike).length;
+  const countShortWords = tokens.filter((t) => t.length < 4).length;
+
+  // 3) A “real message” should not be rescued by one single word
+  // Require at least 2 wordlike tokens for longer messages,
+  // unless it’s short and mostly whitelist (like "ok merci")
+  const isMostlyWhitelist =
+    tokens.length >= 2 && whitelistedCount / countShortWords >= 0.7;
+
+  const balanceShortWords = countShortWords / tokens.length;
+
+  if (!isMostlyWhitelist && balanceShortWords > 0.5) {
+    score += 4;
+  }
+
+  if (tokens.length >= 6 && wordLikeCount <= 1) score += 5;
+  else if (tokens.length >= 4 && wordLikeCount === 0) score += 4;
+
+  // 4) Penalize "token soup": too many tiny/meaningless tokens + only 1 real word
+  // Example: "a e 3 d 4 dd 9 re fullword"
+  const meaningfulRatio = tokens.length ? wordLikeCount / tokens.length : 0;
+  if (tokens.length >= 7 && meaningfulRatio < 0.25) score += 4;
+  else if (tokens.length >= 10 && meaningfulRatio < 0.33) score += 3;
+
+  // 5) Single digits sprinkled everywhere (3 4 9) are usually noise
+  // But allow normal numbers like "3 pigs are here" (one number + real words)
+  const singleDigitTokens = tokens.filter((t) => /^\d$/.test(t)).length;
+  if (singleDigitTokens >= 3 && wordLikeCount <= 2) score += 3;
+
+  // 6) If message is quite long, require *some* quality
+  if (text.length >= 20 && wordLikeCount <= 1) score += 3;
+
+  return score >= 6;
 };

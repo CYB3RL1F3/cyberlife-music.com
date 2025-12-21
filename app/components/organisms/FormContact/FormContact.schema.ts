@@ -19,10 +19,12 @@ export const refineSubject = refine(nonempty(string()), 'message', (value) => {
   if (!value) return 'Your subject is required.';
   if (value.length < 2)
     return 'Your subject must contain serious content with at least 2 characters.';
-  if (value.length > 50)
-    return "Your subject can't contain more than 50 characters.";
+  if (value.length > 70)
+    return "Your subject can't contain more than 70 characters.";
   if (hasInsults(value))
     return "Your subject contains insults and can't be sent. Please be polite!";
+  if (hasInvalidContent(value))
+    return "Your subject contains strange content that can't be understood. Please provide meaningful content.";
   return true;
 });
 
@@ -35,7 +37,7 @@ export const refineMessage = refine(nonempty(string()), 'message', (value) => {
   if (hasInsults(value))
     return "Your message contains insults and can't be sent. Please be polite!";
   if (hasInvalidContent(value))
-    return "Your message contains content that can't be understood. Please provide meaningful content.";
+    return "Your message contains strange content that can't be understood. Please provide meaningful content.";
   return true;
 });
 
