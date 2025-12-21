@@ -14,6 +14,7 @@ import { useFluidTransition } from '~/hooks/misc/useFluidTransition';
 import type { FormContactProps, FormContactValues } from './FormContact.types';
 import { formContactSchema } from './FormContact.schema';
 import { useSecurityContext } from '~/components/contexts/SecurityContext/SecurityContext.hook';
+import Text from '~/components/atoms/Text';
 
 const FormContact = ({
   onSubmit,
@@ -95,14 +96,33 @@ const FormContact = ({
           </motion.div>
 
           <motion.div {...transition(0.3)} className="w-full">
-            <div className="flex justify-between h-12">
-              <ControlledFieldInput
-                autoComplete="off"
-                autoCorrect="off"
-                control={control}
-                name="address"
-                type="hidden"
-              />
+            <div className="flex justify-between h-24 md:h-8">
+              <ul className="flex flex-col w-full">
+                {[
+                  'Fill all fields to send your message',
+                  '15 characters min, 6000 characters max',
+                  'Please be polite and understandable by a human',
+                  'No spam!!',
+                ].map((rule) => (
+                  <li key={rule}>
+                    <Text
+                      size="sm"
+                      className="italic text-gray-500 dark:text-gray-400"
+                    >
+                      {rule}
+                    </Text>
+                  </li>
+                ))}
+              </ul>
+              <div className="w-24">
+                <ControlledFieldInput
+                  autoComplete="off"
+                  autoCorrect="off"
+                  control={control}
+                  name="address"
+                  type="hidden"
+                />
+              </div>
               <ButtonSubmit
                 loading={isSubmitting}
                 disabled={!isDirty || isBot}
