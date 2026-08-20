@@ -8,8 +8,6 @@ import { getApiUrl } from '~/utils/config';
 
 import type { ApolloContextProps } from './ApolloContext.types';
 
-// Déclare la shape de l'état hydraté si tu fais du SSR/SSG
-
 const requestHandler: ApolloLink.RequestHandler = (operation, forward) => {
   if (operation.variables) {
     operation.variables = omitDeep(operation.variables, '__typename');

@@ -10,9 +10,9 @@
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/entry.worker.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "download:schema": "apollo service:download --endpoint=http://localhost:4001/v2/graphql ./graphql-schema.json",
-    "generate:component": "npx ts-node ./scripts/create-component.ts",
+    "codegen": "pnpm download:schema && graphql-codegen --config ./codegen.ts",
     "generate:graphql": "pnpm codegen",
-    "codegen": "pnpm download:schema && graphql-codegen --config ./codegen.ts"
+    "generate:component": "npx ts-node ./scripts/create-component.ts"
   },
   "dependencies": {
     "@apollo/client": "4.0.11",
